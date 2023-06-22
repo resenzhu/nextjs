@@ -1,12 +1,12 @@
 import {Analytics} from '@vercel/analytics/react';
 import {ReactNode} from 'react';
 
-type RootLayout =
+type RootLayoutProps =
 {
   children: ReactNode
 };
 
-const RootLayout = ({children}: RootLayout): JSX.Element =>
+const RootLayout = ({children}: RootLayoutProps): JSX.Element =>
 (
   <html lang='en'>
     <body>
