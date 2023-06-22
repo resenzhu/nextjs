@@ -19,6 +19,7 @@
     "no-unmodified-loop-condition": "error",
     "no-unreachable-loop": "error",
     "no-unused-private-class-members": "error",
+    "no-unused-vars": ["error", {"args": "none"}],
     "no-use-before-define": "error",
     "require-atomic-updates": "error",
     "accessor-pairs": "warn",
