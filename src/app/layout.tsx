@@ -1,5 +1,5 @@
 import {Analytics} from '@vercel/analytics/react';
-import {ReactNode} from 'react';
+import type {ReactNode} from 'react';
 
 type RootLayoutProps =
 {
