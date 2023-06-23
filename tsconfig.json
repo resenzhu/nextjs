@@ -5,6 +5,7 @@
     "allowUnusedLabels": false,
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "declaration": true,
     "esModuleInterop": true,
     "exactOptionalPropertyTypes": true,
