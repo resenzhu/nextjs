@@ -31,7 +31,7 @@
     "paths":
     {
       "@app/*": ["src/app/*"],
-      "@components": ["src/components/*"]
+      "@components/*": ["src/components/*"]
     },
     "plugins":
     [
