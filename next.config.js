@@ -5,6 +5,9 @@ const withPlugins = require('next-compose-plugins');
 
 const development = process.env.NODE_ENV === 'development';
 
+/**
+ * @type {import('next').NextConfig}
+ **/
 const nextConfig =
 {
   compiler:
