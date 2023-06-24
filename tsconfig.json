@@ -31,7 +31,10 @@
     "paths":
     {
       "@app/*": ["src/app/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@redux/*": ["src/redux/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "plugins":
     [
