@@ -1,6 +1,7 @@
 import 'normalize.css/normalize.css';
 import {Analytics} from '@vercel/analytics/react';
 import type {ReactNode} from 'react';
+import {rootMetadata as metadata} from '@utils/metadata';
 
 type RootLayoutProps =
 {
@@ -17,4 +18,5 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element =>
   </html>
 );
 
+export {metadata};
 export default RootLayout;
