@@ -1,3 +1,4 @@
+import 'normalize.css/normalize.css';
 import {Analytics} from '@vercel/analytics/react';
 import type {ReactNode} from 'react';
 
