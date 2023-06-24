@@ -44,7 +44,7 @@ const nextHeaders =
             mediaSrc: ['\'self\''],
             objectSrc: ['\'self\''],
             scriptSrc: ['\'self\'', 'https://va.vercel-scripts.com', ...(development ? ['\'unsafe-inline\'', '\'unsafe-eval\''] : [])],
-            styleSrc: ['\'self\''],
+            styleSrc: ['\'self\'', ...(development ? ['\'unsafe-inline\'']: [])],
             workerSrc: ['\'self\'']
           }
         },
