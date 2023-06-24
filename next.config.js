@@ -34,17 +34,34 @@ const nextHeaders =
           {
             baseURI: ['\'self\''],
             childSrc: ['\'self\''],
-            connectSrc: ['\'self\'', 'https://vitals.vercel-insights.com'],
+            connectSrc:
+            [
+              '\'self\'',
+              'https://vitals.vercel-insights.com'
+            ],
             defaultSrc: ['\'self\''],
             fontSrc: ['\'self\''],
             formAction: ['\'self\''],
             frameSrc: ['\'self\''],
-            imgSrc: ['\'self\''],
+            imgSrc:
+            [
+              '\'self\'',
+              'data:'
+            ],
             manifestSrc: ['\'self\''],
             mediaSrc: ['\'self\''],
             objectSrc: ['\'self\''],
-            scriptSrc: ['\'self\'', 'https://va.vercel-scripts.com', ...(development ? ['\'unsafe-inline\'', '\'unsafe-eval\''] : [])],
-            styleSrc: ['\'self\'', ...(development ? ['\'unsafe-inline\'']: [])],
+            scriptSrc:
+            [
+              '\'self\'',
+              'https://va.vercel-scripts.com',
+              ...(development ? ['\'unsafe-inline\'', '\'unsafe-eval\''] : [])
+            ],
+            styleSrc:
+            [
+              '\'self\'',
+              ...(development ? ['\'unsafe-inline\'']: [])
+            ],
             workerSrc: ['\'self\'']
           }
         },
