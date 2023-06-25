@@ -5,7 +5,7 @@
  **/
 const tailwindConfig =
 {
-  content: [],
+  content: ['src/**/*.{ts,tsx}'],
   theme:
   {
     extend: {}
