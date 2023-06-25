@@ -23,6 +23,9 @@ const nextConfig =
   reactStrictMode: true
 };
 
+/**
+ * @type {import('next').NextConfig}
+ **/
 const nextHeaders =
 {
   headers: async () =>
