@@ -3,6 +3,9 @@
 const {createSecureHeaders} = require('next-secure-headers');
 const withPlugins = require('next-compose-plugins');
 
+/**
+ * @type {boolean}
+ */
 const development = process.env.NODE_ENV === 'development';
 
 /**
