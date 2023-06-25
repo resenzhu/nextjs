@@ -1,6 +1,6 @@
-import {Roboto_Flex} from 'next/font/google';
+import {Roboto_Flex as googleRobotoFlex} from 'next/font/google';
 
-export const roboto_flex = Roboto_Flex(
+export const robotoFlex = googleRobotoFlex(
 {
   subsets: ['latin'],
   display: 'swap',
