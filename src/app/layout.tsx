@@ -13,10 +13,11 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element =>
 (
   <html lang='en'>
     <body>
-      <Navbar
-        logo='/navbar/logo.webp'
-        title='RESEN'
-      />
+      <Navbar logo='/navbar/logo.webp' title='RESEN'>
+        <Navbar.Menu url='/about' label='About' />
+        <Navbar.Menu url='/portfolio' label='Portfolio' />
+        <Navbar.Menu url='/contact' label='Contact' />
+      </Navbar>
       {children}
       <Analytics />
     </body>
