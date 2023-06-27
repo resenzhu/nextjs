@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "next dev",
     "lint": "next lint",
-    "prettier": "prettier --write src",
+    "prettier": "prettier --write .",
     "build": "next build",
     "start": "next start"
   },

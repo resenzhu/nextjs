@@ -11,14 +11,11 @@ const development = process.env.NODE_ENV === 'development';
 /**
  * @type {import('next').NextConfig}
  **/
-const nextConfig =
-{
-  compiler:
-  {
+const nextConfig = {
+  compiler: {
     removeConsole: true
   },
-  eslint:
-  {
+  eslint: {
     dirs: ['src']
   },
   generateEtags: false,
@@ -29,49 +26,31 @@ const nextConfig =
 /**
  * @type {import('next').NextConfig}
  **/
-const nextHeaders =
-{
-  headers: async () =>
-  [
+const nextHeaders = {
+  headers: async () => [
     {
       source: '/:path*',
-      headers: createSecureHeaders(
-      {
-        contentSecurityPolicy:
-        {
-          directives:
-          {
-            baseURI: ['\'self\''],
-            childSrc: ['\'self\''],
-            connectSrc:
-            [
-              '\'self\'',
-              'https://vitals.vercel-insights.com'
-            ],
-            defaultSrc: ['\'self\''],
-            fontSrc: ['\'self\''],
-            formAction: ['\'self\''],
-            frameSrc: ['\'self\''],
-            imgSrc:
-            [
-              '\'self\'',
-              'data:'
-            ],
-            manifestSrc: ['\'self\''],
-            mediaSrc: ['\'self\''],
-            objectSrc: ['\'self\''],
-            scriptSrc:
-            [
-              '\'self\'',
+      headers: createSecureHeaders({
+        contentSecurityPolicy: {
+          directives: {
+            baseURI: ["'self'"],
+            childSrc: ["'self'"],
+            connectSrc: ["'self'", 'https://vitals.vercel-insights.com'],
+            defaultSrc: ["'self'"],
+            fontSrc: ["'self'"],
+            formAction: ["'self'"],
+            frameSrc: ["'self'"],
+            imgSrc: ["'self'", 'data:'],
+            manifestSrc: ["'self'"],
+            mediaSrc: ["'self'"],
+            objectSrc: ["'self'"],
+            scriptSrc: [
+              "'self'",
               'https://va.vercel-scripts.com',
-              ...(development ? ['\'unsafe-inline\'', '\'unsafe-eval\''] : [])
+              ...(development ? ["'unsafe-inline'", "'unsafe-eval'"] : [])
             ],
-            styleSrc:
-            [
-              '\'self\'',
-              ...(development ? ['\'unsafe-inline\'']: [])
-            ],
-            workerSrc: ['\'self\'']
+            styleSrc: ["'self'", ...(development ? ["'unsafe-inline'"] : [])],
+            workerSrc: ["'self'"]
           }
         },
         expectCT: false,
@@ -85,8 +64,7 @@ const nextHeaders =
     },
     {
       source: '/:path*',
-      headers:
-      [
+      headers: [
         {
           key: 'Access-Control-Allow-Origin',
           value: process.env.NEXT_PUBLIC_SITE_URL

@@ -1,9 +1,7 @@
 'use strict';
 
-const postcssConfig =
-{
-  plugins:
-  {
+const postcssConfig = {
+  plugins: {
     tailwindcss: {},
     autoprefixer: {}
   }

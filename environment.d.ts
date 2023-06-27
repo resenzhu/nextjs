@@ -1,7 +1,5 @@
-declare namespace NodeJS
-{
-  interface ProcessEnv
-  {
-    NEXT_PUBLIC_SITE_URL: string
+declare namespace NodeJS {
+  interface ProcessEnv {
+    NEXT_PUBLIC_SITE_URL: string;
   }
 }

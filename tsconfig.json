@@ -1,6 +1,5 @@
 {
-  "compilerOptions":
-  {
+  "compilerOptions": {
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "allowJs": true,
@@ -13,12 +12,7 @@
     "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib":
-    [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -28,16 +22,14 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths":
-    {
+    "paths": {
       "@app/*": ["src/app/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@redux/*": ["src/redux/*"],
       "@utils/*": ["src/utils/*"]
     },
-    "plugins":
-    [
+    "plugins": [
       {
         "name": "next"
       }
@@ -47,15 +39,11 @@
     "sourceMap": true,
     "strict": true
   },
-  "include":
-  [
+  "include": [
     "environment.d.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "src/**/*"
   ],
-  "exclude":
-  [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

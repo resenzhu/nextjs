@@ -3,11 +3,9 @@
 /**
  * @type {import('tailwindcss').Config}
  **/
-const tailwindConfig =
-{
+const tailwindConfig = {
   content: ['src/**/*.{ts,tsx}'],
-  theme:
-  {
+  theme: {
     extend: {}
   },
   plugins: []
