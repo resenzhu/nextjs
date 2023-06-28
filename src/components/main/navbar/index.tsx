@@ -14,7 +14,7 @@ const Navbar = ({logo, title}: NavbarProps): JSX.Element => (
         logo={logo}
         label={title}
       />
-      <button className='flex'>
+      <button className='flex' type='button'>
         <FontAwesomeIcon
           className='w-6 text-2xl text-gray-500'
           icon={faEllipsisVertical}
