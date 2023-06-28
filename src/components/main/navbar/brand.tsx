@@ -22,4 +22,5 @@ const Brand = ({logo, label}: BrandProps): JSX.Element => (
   </Link>
 );
 
+export type {BrandProps};
 export default Brand;

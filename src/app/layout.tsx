@@ -48,4 +48,5 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
 };
 
 export {metadata};
+export type {RootLayoutProps};
 export default RootLayout;
