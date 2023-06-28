@@ -14,12 +14,10 @@ const Navbar = ({logo, title}: NavbarProps): JSX.Element => (
         logo={logo}
         label={title}
       />
-      <button>
+      <button className='flex'>
         <FontAwesomeIcon
-          className='text-gray-500'
+          className='w-6 text-2xl text-gray-500'
           icon={faEllipsisVertical}
-          width={25}
-          height={25}
         />
       </button>
     </div>
