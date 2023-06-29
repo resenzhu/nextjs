@@ -1,27 +1,43 @@
+import type {HTMLAttributeAnchorTarget, ReactNode} from 'react';
 import Brand from '@components/main/navbar/brand';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEllipsisVertical} from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
+import Nav from '@components/main/navbar/nav';
 
 type NavbarProps = {
   logo: string;
   title: string;
+  children: ReactNode;
 };
 
-const Navbar = ({logo, title}: NavbarProps): JSX.Element => (
+type MenuProps = {
+  url: string;
+  label: string;
+  target?: HTMLAttributeAnchorTarget;
+};
+
+const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
   <nav className='border-b-2 bg-white'>
     <div className='mx-4 flex items-center justify-between py-4'>
       <Brand
         logo={logo}
         label={title}
       />
-      <button className='flex' type='button'>
-        <FontAwesomeIcon
-          className='w-6 text-2xl text-gray-500'
-          icon={faEllipsisVertical}
-        />
-      </button>
+      <Nav>{children}</Nav>
     </div>
   </nav>
 );
 
+const Menu = ({url, label, target}: MenuProps) => (
+  <Link
+    className='w-0 text-lg font-bold text-gray-600 hover:text-blue-500'
+    href={url}
+    target={target}
+  >
+    {label}
+  </Link>
+);
+
+Navbar.Menu = Menu;
+
+export type {NavbarProps, MenuProps};
 export default Navbar;
