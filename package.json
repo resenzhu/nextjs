@@ -20,6 +20,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@vercel/analytics": "^1.0.1",
+    "framer-motion": "^10.12.17",
     "luxon": "^3.3.0",
     "next": "^13.4.6",
     "next-compose-plugins": "^2.2.1",
