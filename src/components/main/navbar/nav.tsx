@@ -1,5 +1,6 @@
 'use client';
 
+import {AnimatePresence, motion} from 'framer-motion';
 import {type ReactNode, useState} from 'react';
 import {faEllipsisVertical, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -29,27 +30,41 @@ const Nav = ({children}: NavProps): JSX.Element => {
           icon={faEllipsisVertical}
         />
       </button>
-      {showSidenav && (
-        <>
-          <div className='fixed left-0 top-0 h-screen w-screen bg-black opacity-40'></div>
-          <div className='fixed right-0 top-0 h-screen w-7/12 bg-white'>
-            <div className='mx-6 flex h-full py-6'>
-              <div className='flex flex-1 flex-col space-y-5'>{children}</div>
-              <div className='pt-1'>
-                <button
-                  type='button'
-                  onClick={(): void => handleToggleSidenav(!showSidenav)}
-                >
-                  <FontAwesomeIcon
-                    className='text-2xl text-gray-500 hover:text-red-500'
-                    icon={faXmark}
-                  />
-                </button>
+      <AnimatePresence>
+        {showSidenav && (
+          <>
+            <motion.div
+              className='fixed left-0 top-0 h-screen w-screen bg-black'
+              key='backdrop'
+              initial={{opacity: 0}}
+              animate={{opacity: 0.4, transition: {duration: 0.15}}}
+              exit={{opacity: 0, transition: {duration: 0.15}}}
+            ></motion.div>
+            <motion.div
+              className='fixed right-0 top-0 h-screen bg-white'
+              key='sidenav'
+              initial={{width: 0}}
+              animate={{width: '58%', transition: {duration: 0.15}}}
+              exit={{width: 0, transition: {duration: 0.15}}}
+            >
+              <div className='mx-6 flex h-full py-6'>
+                <div className='flex flex-1 flex-col space-y-5'>{children}</div>
+                <div className='pt-1'>
+                  <button
+                    type='button'
+                    onClick={(): void => handleToggleSidenav(!showSidenav)}
+                  >
+                    <FontAwesomeIcon
+                      className='text-2xl text-gray-500 hover:text-red-500'
+                      icon={faXmark}
+                    />
+                  </button>
+                </div>
               </div>
-            </div>
-          </div>
-        </>
-      )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };
