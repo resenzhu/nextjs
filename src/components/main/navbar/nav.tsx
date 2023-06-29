@@ -1,7 +1,7 @@
 'use client';
 
 import {AnimatePresence, motion} from 'framer-motion';
-import {type ReactNode, useState} from 'react';
+import {type ReactNode, useEffect, useRef, useState} from 'react';
 import {faEllipsisVertical, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
@@ -10,6 +10,8 @@ type NavProps = {
 };
 
 const Nav = ({children}: NavProps): JSX.Element => {
+  const sidenav = useRef<HTMLDivElement>(null);
+  const [rendered, setRendered] = useState<boolean>(false);
   const [showSidenav, setShowSidenav] = useState<boolean>(false);
 
   const handleToggleSidenav = (show: boolean): void => {
@@ -17,6 +19,28 @@ const Nav = ({children}: NavProps): JSX.Element => {
       setShowSidenav(show);
     }
   };
+
+  const handleHideSidenav = (event: MouseEvent): void => {
+    if (sidenav.current && !sidenav.current.contains(event.target as Node)) {
+      setShowSidenav(false);
+    }
+  };
+
+  useEffect((): (() => void) => {
+    if (!rendered) {
+      setRendered(true);
+    }
+
+    return (): void => {
+      window.removeEventListener('mousedown', handleHideSidenav);
+    };
+  }, []);
+
+  useEffect((): void => {
+    if (rendered) {
+      window.addEventListener('mousedown', handleHideSidenav);
+    }
+  }, [rendered]);
 
   return (
     <>
@@ -42,6 +66,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
             ></motion.div>
             <motion.div
               className='fixed right-0 top-0 h-screen bg-white'
+              ref={sidenav}
               key='sidenav'
               initial={{width: 0}}
               animate={{width: '58%', transition: {duration: 0.15}}}
