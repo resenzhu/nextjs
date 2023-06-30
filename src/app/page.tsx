@@ -7,7 +7,7 @@ const metadata = createMetadata({
   url: '/'
 });
 
-const Page = (): JSX.Element => <></>;
+const Page = (): JSX.Element => <section>HELLO WORLD!</section>;
 
 export {metadata};
 export default Page;
