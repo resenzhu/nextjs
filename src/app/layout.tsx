@@ -45,7 +45,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
             target='_blank'
           />
         </Navbar>
-        {children}
+        <div className='mt-16'>{children}</div>
         <Analytics />
       </body>
     </html>
