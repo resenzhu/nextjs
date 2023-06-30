@@ -1,7 +1,7 @@
 import type {HTMLAttributeAnchorTarget, ReactNode} from 'react';
-import Brand from '@components/main/navbar/brand';
+import Brand from '@components/navbar/brand';
 import Link from 'next/link';
-import Nav from '@components/main/navbar/nav';
+import Nav from '@components/navbar/nav';
 
 type NavbarProps = {
   logo: string;
