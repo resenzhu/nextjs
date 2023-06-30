@@ -29,7 +29,7 @@ const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
 
 const Menu = ({url, label, target}: MenuProps) => (
   <Link
-    className='w-0 text-lg font-bold text-gray-600 hover:text-blue-500'
+    className='w-0 text-lg font-bold text-gray-600 duration-150 hover:text-blue-500'
     href={url}
     target={target}
   >

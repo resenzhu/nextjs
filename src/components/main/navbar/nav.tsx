@@ -80,7 +80,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
                     onClick={(): void => handleToggleSidenav(!showSidenav)}
                   >
                     <FontAwesomeIcon
-                      className='text-2xl text-gray-500 hover:text-red-500'
+                      className='text-2xl text-gray-500 duration-150 hover:text-red-500'
                       icon={faXmark}
                     />
                   </button>
