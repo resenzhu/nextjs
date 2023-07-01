@@ -16,7 +16,7 @@ type MenuProps = {
 };
 
 const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
-  <nav className='fixed left-0 top-0 w-screen border-b-2 bg-white'>
+  <nav className='fixed left-0 top-0 z-10 w-screen border-b-2 bg-white'>
     <div className='mx-4 flex items-center justify-between py-4'>
       <Brand
         logo={logo}
