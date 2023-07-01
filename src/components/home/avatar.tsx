@@ -54,8 +54,8 @@ const Avatar = ({src, easter}: AvatarProps): JSX.Element => {
       className='rounded-full border-8 border-white contrast-125'
       ref={avatar}
       src={easter && showEaster ? easter : src}
-      width={160}
-      height={160}
+      width={150}
+      height={150}
       alt='the author photo'
       onMouseDown={(): void => handleToggleEaster(true)}
       onMouseUp={(): void => handleToggleEaster(false)}
