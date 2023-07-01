@@ -10,7 +10,7 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <section className='h-[calc(100vh-4rem)]'>
-    <div className='absolute h-[calc(100vh-4rem)] w-full bg-[url("/main/home/jumbotron.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
+    <div className='absolute h-[calc(100vh-4rem)] w-full bg-[url("/main/home/jumbotron.webp")] bg-cover bg-center bg-no-repeat brightness-50 contrast-125'></div>
     <div className='relative mx-4 flex h-full justify-center'>
       <div className='flex flex-col items-center justify-center text-white'>
         <div className='pb-8'>
@@ -27,7 +27,7 @@ const Page = (): JSX.Element => (
           <div className='font-semibold tracking-wide text-gray-200'>
             I AM A
           </div>
-          <div className='text-xl font-bold text-yellow-400'>
+          <div className='text-xl font-bold text-yellow-300'>
             <Specialty
               titles={[
                 'FULL STACK DEVELOPER',
