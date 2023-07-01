@@ -12,7 +12,7 @@ const Specialty = ({titles}: SpecialtyProps): JSX.Element => (
       strings: titles,
       autoStart: true,
       loop: true,
-      devMode: process.env.NODE_ENV === 'development'
+      devMode: process.env.NODE_ENV !== 'production'
     }}
   />
 );
