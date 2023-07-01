@@ -1,7 +1,7 @@
 import '@app/layout.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import {Analytics} from '@vercel/analytics/react';
-import Navbar from '@components/navbar';
+import Navbar from '@components/main/navbar';
 import type {ReactNode} from 'react';
 import {config} from '@fortawesome/fontawesome-svg-core';
 import {rootMetadata as metadata} from '@utils/metadata';
@@ -20,7 +20,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
     >
       <body>
         <Navbar
-          logo='/navbar/logo.webp'
+          logo='/main/navbar/logo.webp'
           title='RESEN'
         >
           <Navbar.Menu
