@@ -19,10 +19,11 @@ const Page = (): JSX.Element => (
             easter='/main/home/avatar-easter.webp'
           />
         </div>
-        <div className='flex flex-col items-center space-y-1 text-white'>
-          <div className='text-lg font-semibold'>Hello, I am</div>
+        <div className='flex flex-col items-center text-white'>
+          <div className='text-sm font-semibold'>HELLO, I AM</div>
           <div className='text-3xl font-extrabold'>RESEN</div>
-          <div className='text-xl font-bold italic text-yellow-400'>
+          <div className='text-sm font-semibold'>I AM A</div>
+          <div className='text-xl font-bold text-yellow-400'>
             <Specialty
               titles={[
                 'FULL STACK DEVELOPER',
