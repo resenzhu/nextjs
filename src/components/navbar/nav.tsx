@@ -47,7 +47,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
       <button
         className='flex'
         type='button'
-        onClick={(): void => handleToggleSidenav(!showSidenav)}
+        onClick={(): void => handleToggleSidenav(true)}
       >
         <FontAwesomeIcon
           className='w-6 text-2xl text-gray-500'
@@ -77,7 +77,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
                 <div className='pt-1'>
                   <button
                     type='button'
-                    onClick={(): void => handleToggleSidenav(!showSidenav)}
+                    onClick={(): void => handleToggleSidenav(false)}
                   >
                     <FontAwesomeIcon
                       className='text-2xl text-gray-500 duration-150 hover:text-red-500'
