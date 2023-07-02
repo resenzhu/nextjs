@@ -11,8 +11,7 @@ const Specialty = ({titles}: SpecialtyProps): JSX.Element => (
     options={{
       strings: titles,
       autoStart: true,
-      loop: true,
-      devMode: process.env.NODE_ENV !== 'production'
+      loop: true
     }}
   />
 );
