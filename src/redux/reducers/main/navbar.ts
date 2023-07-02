@@ -1,25 +1,25 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
-type ShowSidenav = boolean;
+type Sidenav = boolean;
 
 type State = {
-  showSidenav: ShowSidenav;
+  sidenav: Sidenav;
 };
 
 type Reducers = {
-  setShowSidenav: (state: State, action: PayloadAction<ShowSidenav>) => void;
+  setSidenav: (state: State, action: PayloadAction<Sidenav>) => void;
 };
 
 const name: string = 'navbar';
 
 const initialState: State = {
-  showSidenav: false
+  sidenav: false
 };
 
 const reducers: Reducers = {
-  setShowSidenav: (state, action) => {
-    if (action.payload !== state.showSidenav) {
-      state.showSidenav = action.payload;
+  setSidenav: (state, action) => {
+    if (action.payload !== state.sidenav) {
+      state.sidenav = action.payload;
     }
   }
 };
@@ -30,6 +30,6 @@ const slice = createSlice({
   reducers: reducers
 });
 
-export type {ShowSidenav};
-export const {setShowSidenav} = slice.actions;
+export type {Sidenav};
+export const {setSidenav} = slice.actions;
 export default slice.reducer;
