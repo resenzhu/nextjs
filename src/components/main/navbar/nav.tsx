@@ -22,7 +22,11 @@ const Nav = ({children}: NavProps): JSX.Element => {
   };
 
   const handleHideSidenav = (event: MouseEvent): void => {
-    if (sidenav.current && !sidenav.current.contains(event.target as Node)) {
+    if (
+      sidenav.current &&
+      !sidenav.current.contains(event.target as Node) &&
+      showSidenav !== false
+    ) {
       setShowSidenav(false);
     }
   };

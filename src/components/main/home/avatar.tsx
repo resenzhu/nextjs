@@ -23,7 +23,8 @@ const Avatar = ({src, easter}: AvatarProps): JSX.Element => {
     if (
       easter &&
       avatar.current &&
-      !avatar.current.contains(event.target as Node)
+      !avatar.current.contains(event.target as Node) &&
+      showEaster !== false
     ) {
       setShowEaster(false);
     }
