@@ -1,7 +1,7 @@
 import '@app/layout.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import {NavMenu, Navbar} from '@components/main/navbar';
 import {Analytics} from '@vercel/analytics/react';
-import Navbar from '@components/main/navbar';
 import type {ReactNode} from 'react';
 import Redux from '@redux/redux';
 import {config} from '@fortawesome/fontawesome-svg-core';
@@ -25,23 +25,23 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
             logo='/images/main/navbar/logo.webp'
             title='RESEN'
           >
-            <Navbar.Menu
+            <NavMenu
               url='/'
               label='Home'
             />
-            <Navbar.Menu
+            <NavMenu
               url='/about'
               label='About'
             />
-            <Navbar.Menu
+            <NavMenu
               url='/portfolio'
               label='Portfolio'
             />
-            <Navbar.Menu
+            <NavMenu
               url='/contact'
               label='Contact'
             />
-            <Navbar.Menu
+            <NavMenu
               url='https://github.com/resenzhu/nextjs'
               label='GitHub'
               target='_blank'
