@@ -1,4 +1,4 @@
-import {Avatar, Specialty} from '@components/main/home';
+import {Avatar, Explore, Hello, Specialty} from '@components/main/home';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -39,18 +39,8 @@ const Page = (): JSX.Element => (
           </div>
         </div>
         <div className='flex w-36 flex-col space-y-3'>
-          <button
-            className='bg-blue-500 py-2 font-bold tracking-wider'
-            type='button'
-          >
-            HELLO
-          </button>
-          <button
-            className='border-2 border-white py-2 font-bold tracking-wider duration-150 hover:border-blue-500 hover:bg-blue-500'
-            type='button'
-          >
-            EXPLORE
-          </button>
+          <Hello />
+          <Explore />
         </div>
       </div>
     </div>
