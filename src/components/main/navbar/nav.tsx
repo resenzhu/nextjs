@@ -4,6 +4,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import {type ReactNode, useEffect, useRef, useState} from 'react';
 import {faEllipsisVertical, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import useNavbar from '@hooks/main/use-navbar';
 
 type NavProps = {
   children: ReactNode;
@@ -12,7 +13,7 @@ type NavProps = {
 const Nav = ({children}: NavProps): JSX.Element => {
   const sidenav = useRef<HTMLDivElement>(null);
   const [rendered, setRendered] = useState<boolean>(false);
-  const [showSidenav, setShowSidenav] = useState<boolean>(false);
+  const {showSidenav, setShowSidenav} = useNavbar();
 
   const handleToggleSidenav = (show: boolean): void => {
     if (show !== showSidenav) {
