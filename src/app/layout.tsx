@@ -22,7 +22,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
       <body>
         <Redux>
           <Navbar
-            logo='/main/navbar/logo.webp'
+            logo='/images/main/navbar/logo.webp'
             title='RESEN'
           >
             <Navbar.Menu
