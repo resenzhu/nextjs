@@ -11,6 +11,7 @@ const metadata = createMetadata({
 const Page = (): JSX.Element => (
   <section className='h-[calc(100vh-4rem)]'>
     <div className='absolute h-[calc(100vh-4rem)] w-full bg-[url("/images/main/shared/background.webp")] bg-cover bg-center bg-no-repeat brightness-50 contrast-125'></div>
+    <div className='absolute h-[calc(100vh-4rem)] w-full bg-gray-700 opacity-70'></div>
     <div className='relative mx-4 flex h-full justify-center'>
       <div className='flex flex-col items-center justify-center text-white'>
         <div className='pb-8'>
