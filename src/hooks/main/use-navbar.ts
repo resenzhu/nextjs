@@ -1,5 +1,5 @@
 import {
-  ShowSidenav,
+  type ShowSidenav,
   setShowSidenav as setNavbarShowSidenav
 } from '@redux/reducers/main/navbar';
 import {useDispatch, useSelector} from '@redux/hooks';
