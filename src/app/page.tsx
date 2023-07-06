@@ -1,4 +1,10 @@
-import {Avatar, Explore, Hello, Specialty} from '@components/main/home';
+import {
+  Avatar,
+  Chatbox,
+  Explore,
+  Hello,
+  Specialty
+} from '@components/main/home';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -44,6 +50,7 @@ const Page = (): JSX.Element => (
           <Explore />
         </div>
       </div>
+      <Chatbox />
     </div>
   </section>
 );
