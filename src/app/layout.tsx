@@ -15,10 +15,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
   config.autoAddCss = false;
 
   return (
-    <html
-      className='scroll-smooth'
-      lang='en'
-    >
+    <html lang='en'>
       <body>
         <Redux>
           <Navbar
