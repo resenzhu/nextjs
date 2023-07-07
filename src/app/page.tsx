@@ -16,8 +16,8 @@ const Page = (): JSX.Element => (
       <div className='flex flex-col items-center justify-center text-white'>
         <div className='pb-8'>
           <Avatar
-            src='/images/main/home/avatar-original.webp'
-            easter='/images/main/home/avatar-easter.webp'
+            src='/images/main/home-avatar-original.webp'
+            easter='/images/main/home-avatar-easter.webp'
           />
         </div>
         <div className='flex flex-col items-center pb-16'>
