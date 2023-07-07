@@ -57,38 +57,29 @@ const Nav = ({children}: NavProps): JSX.Element => {
       </button>
       <AnimatePresence>
         {showSidenav && (
-          <>
-            <motion.div
-              className='fixed left-0 top-0 h-screen w-screen bg-black'
-              key='backdrop'
-              initial={{opacity: 0}}
-              animate={{opacity: 0.4, transition: {duration: 0.15}}}
-              exit={{opacity: 0, transition: {duration: 0.15}}}
-            ></motion.div>
-            <motion.div
-              className='fixed right-0 top-0 h-screen bg-white'
-              ref={sidenav}
-              key='sidenav'
-              initial={{width: 0}}
-              animate={{width: '58%', transition: {duration: 0.15}}}
-              exit={{width: 0, transition: {duration: 0.15}}}
-            >
-              <div className='mx-6 flex h-full py-6'>
-                <div className='flex flex-1 flex-col space-y-5'>{children}</div>
-                <div className='pt-1'>
-                  <button
-                    type='button'
-                    onClick={(): void => handleToggleSidenav(false)}
-                  >
-                    <FontAwesomeIcon
-                      className='text-2xl text-gray-500 duration-150 hover:text-red-500'
-                      icon={faXmark}
-                    />
-                  </button>
-                </div>
+          <motion.div
+            className='fixed right-0 top-0 h-screen bg-white'
+            ref={sidenav}
+            key='sidenav'
+            initial={{width: 0}}
+            animate={{width: '58%', transition: {duration: 0.15}}}
+            exit={{width: 0, transition: {duration: 0.15}}}
+          >
+            <div className='mx-6 flex h-full py-6'>
+              <div className='flex flex-1 flex-col space-y-5'>{children}</div>
+              <div className='pt-1'>
+                <button
+                  type='button'
+                  onClick={(): void => handleToggleSidenav(false)}
+                >
+                  <FontAwesomeIcon
+                    className='text-2xl text-gray-500 duration-150 hover:text-red-500'
+                    icon={faXmark}
+                  />
+                </button>
               </div>
-            </motion.div>
-          </>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

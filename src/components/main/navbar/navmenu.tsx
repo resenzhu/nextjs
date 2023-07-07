@@ -7,7 +7,7 @@ import useNavbar from '@hooks/main/use-navbar';
 type NavMenuProps = {
   url: string;
   label: string;
-  target?: HTMLAttributeAnchorTarget;
+  target?: HTMLAttributeAnchorTarget | undefined;
 };
 
 const NavMenu = ({url, label, target}: NavMenuProps) => {
