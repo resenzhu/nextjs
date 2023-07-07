@@ -34,7 +34,9 @@ const Page = (): JSX.Element => (
                 'FULL STACK DEVELOPER',
                 'FRONT END DEVELOPER',
                 'BACK END DEVELOPER',
-                'MIDDLEWARE DEVELOPER'
+                'MIDDLEWARE DEVELOPER',
+                'MOBILE LEGENDS PLAYER',
+                'HORROR ENTHUSIAST'
               ]}
             />
           </div>
