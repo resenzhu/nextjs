@@ -1,9 +1,9 @@
 import '@app/layout.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import {NavMenu, Navbar} from '@components/main/navbar';
+import {Backdrop, Redux} from '@components/main/app';
 import {Analytics} from '@vercel/analytics/react';
+import Navbar from '@components/main/navbar';
 import type {ReactNode} from 'react';
-import Redux from '@redux/redux';
 import {config} from '@fortawesome/fontawesome-svg-core';
 import {rootMetadata as metadata} from '@utils/metadata';
 
@@ -16,35 +16,36 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
 
   return (
     <html lang='en'>
-      <body>
+      <body className='pt-16'>
         <Redux>
+          <Backdrop />
           <Navbar
-            logo='/images/main/navbar/logo.webp'
+            logo='/images/main/navbar-brand-logo.webp'
             title='RESEN'
           >
-            <NavMenu
-              url='/'
+            <Navbar.Menu
               label='Home'
+              url='/'
             />
-            <NavMenu
-              url='/about'
+            <Navbar.Menu
               label='About'
+              url='/about'
             />
-            <NavMenu
-              url='/portfolio'
+            <Navbar.Menu
               label='Portfolio'
+              url='/portfolio'
             />
-            <NavMenu
-              url='/contact'
+            <Navbar.Menu
               label='Contact'
+              url='/contact'
             />
-            <NavMenu
-              url='https://github.com/resenzhu/nextjs'
+            <Navbar.Menu
               label='GitHub'
+              url='https://github.com/resenzhu/nextjs'
               target='_blank'
             />
           </Navbar>
-          <div className='pt-16'>{children}</div>
+          {children}
         </Redux>
         <Analytics />
       </body>
