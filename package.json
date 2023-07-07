@@ -10,8 +10,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "lint": "next lint",
     "prettier": "prettier --write . !.next",
+    "lint": "next lint",
     "build": "next build",
     "start": "next start"
   },
