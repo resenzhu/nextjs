@@ -1,9 +1,4 @@
-import {
-  Avatar,
-  Explore,
-  Hello,
-  Specialty
-} from '@components/main/home';
+import {Avatar, Explore, Hello, Specialty} from '@components/main/home';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -13,8 +8,7 @@ const metadata = createMetadata({
   url: '/'
 });
 
-const Page = (): JSX.Element =>
-(
+const Page = (): JSX.Element => (
   <section className='h-[calc(100vh-4rem)]'>
     <div className='absolute h-[calc(100vh-4rem)] w-full bg-[url("/images/main/shared-jumbotron.webp")] bg-cover bg-center bg-no-repeat brightness-50 contrast-125'></div>
     <div className='absolute h-[calc(100vh-4rem)] w-full bg-gray-700 opacity-70'></div>

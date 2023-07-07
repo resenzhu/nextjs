@@ -21,7 +21,7 @@ const Jumbotron = ({
           {subtitle}
         </div>
       </div>
-      <div className='text-lg font-light text-white'>{description}</div>
+      <div className='flex-1 text-lg font-light text-white'>{description}</div>
     </div>
   </section>
 );
