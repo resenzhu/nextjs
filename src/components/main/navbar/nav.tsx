@@ -13,7 +13,7 @@ type NavProps = {
 const Nav = ({children}: NavProps): JSX.Element => {
   const sidebar = useRef<HTMLDivElement>(null);
   const [rendered, setRendered] = useState<boolean>(false);
-  const {sidenav, setSidenav} = useApp();
+  const {viewport, sidenav, setSidenav} = useApp();
 
   const handleToggleSidenav = (show: boolean): void => {
     if (show !== sidenav) {
@@ -45,18 +45,20 @@ const Nav = ({children}: NavProps): JSX.Element => {
 
   return (
     <>
-      <button
-        className='flex'
-        type='button'
-        onClick={(): void => handleToggleSidenav(true)}
-      >
-        <FontAwesomeIcon
-          className='w-6 text-2xl text-gray-500'
-          icon={faEllipsisVertical}
-        />
-      </button>
+      {viewport.width < 640 && (
+        <button
+          className='flex'
+          type='button'
+          onClick={(): void => handleToggleSidenav(true)}
+        >
+          <FontAwesomeIcon
+            className='w-6 text-2xl text-gray-500'
+            icon={faEllipsisVertical}
+          />
+        </button>
+      )}
       <AnimatePresence>
-        {sidenav && (
+        {sidenav && viewport.width < 640 && (
           <>
             <motion.div
               className='fixed left-0 top-0 h-screen w-screen bg-black'
@@ -89,6 +91,9 @@ const Nav = ({children}: NavProps): JSX.Element => {
               </div>
             </motion.div>
           </>
+        )}
+        {viewport.width >= 640 && (
+          <div className='space-x-6 md:space-x-7 lg:space-x-8'>{children}</div>
         )}
       </AnimatePresence>
     </>

@@ -18,7 +18,7 @@ type MenuProps = {
 
 const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
   <nav className='fixed left-0 top-0 z-10 w-screen border-b-2 bg-white'>
-    <div className='mx-4 flex items-center justify-between py-4'>
+    <div className='mx-4 flex items-center justify-between py-4 sm:mx-12 sm:py-3 md:mx-16 lg:mx-20'>
       <Link
         className='flex items-center justify-center'
         href='/'
@@ -30,7 +30,9 @@ const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
           height={30}
           alt='web brand logo'
         />
-        <span className='mb-auto text-xl font-bold text-gray-700'>{title}</span>
+        <span className='mb-auto text-xl font-bold text-gray-700 sm:text-base sm:mb-0'>
+          {title}
+        </span>
       </Link>
       <Nav>{children}</Nav>
     </div>
