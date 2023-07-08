@@ -11,7 +11,7 @@ type ViewportProps = {
 
 const Viewport = ({children}: ViewportProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
-  const {setViewport} = useApp();
+  const {viewport, setViewport} = useApp();
 
   const handleResizeViewport = debounce((): void => {
     const newViewport: AppViewport = {
@@ -34,6 +34,18 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered) {
+      if (
+        viewport.width !== window.innerWidth ||
+        viewport.height !== window.innerHeight
+      ) {
+        const newViewport: AppViewport = {
+          width: window.innerWidth,
+          height: window.innerHeight
+        };
+
+        setViewport(newViewport);
+      }
+
       window.addEventListener('resize', handleResizeViewport);
     }
   }, [rendered]);
