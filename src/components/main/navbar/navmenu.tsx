@@ -2,7 +2,7 @@
 
 import type {HTMLAttributeAnchorTarget} from 'react';
 import Link from 'next/link';
-import useNavbar from '@hooks/main/use-navbar';
+import useApp from '@hooks/main/use-app';
 
 type NavMenuProps = {
   url: string;
@@ -11,11 +11,11 @@ type NavMenuProps = {
 };
 
 const NavMenu = ({url, label, target}: NavMenuProps) => {
-  const {showSidenav, setShowSidenav} = useNavbar();
+  const {sidenav, setSidenav} = useApp();
 
   const handleToggleSidenav = (show: boolean) => {
-    if (show !== showSidenav) {
-      setShowSidenav(show);
+    if (show !== sidenav) {
+      setSidenav(show);
     }
   };
 

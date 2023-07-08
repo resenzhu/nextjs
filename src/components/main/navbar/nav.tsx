@@ -4,26 +4,26 @@ import {AnimatePresence, motion} from 'framer-motion';
 import {type ReactNode, useEffect, useRef, useState} from 'react';
 import {faEllipsisVertical, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import useNavbar from '@hooks/main/use-navbar';
+import useApp from '@hooks/main/use-app';
 
 type NavProps = {
   children: ReactNode;
 };
 
 const Nav = ({children}: NavProps): JSX.Element => {
-  const sidenav = useRef<HTMLDivElement>(null);
+  const sidebar = useRef<HTMLDivElement>(null);
   const [rendered, setRendered] = useState<boolean>(false);
-  const {showSidenav, setShowSidenav} = useNavbar();
+  const {sidenav, setSidenav} = useApp();
 
   const handleToggleSidenav = (show: boolean): void => {
-    if (show !== showSidenav) {
-      setShowSidenav(show);
+    if (show !== sidenav) {
+      setSidenav(show);
     }
   };
 
   const handleHideSidenav = (event: MouseEvent): void => {
-    if (sidenav.current && !sidenav.current.contains(event.target as Node)) {
-      setShowSidenav(false);
+    if (sidebar.current && !sidebar.current.contains(event.target as Node)) {
+      setSidenav(false);
     }
   };
 
@@ -56,7 +56,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
         />
       </button>
       <AnimatePresence>
-        {showSidenav && (
+        {sidenav && (
           <>
             <motion.div
               className='fixed left-0 top-0 h-screen w-screen bg-black'
@@ -67,8 +67,8 @@ const Nav = ({children}: NavProps): JSX.Element => {
             ></motion.div>
             <motion.div
               className='fixed right-0 top-0 h-screen bg-white'
-              ref={sidenav}
-              key='sidenav'
+              ref={sidebar}
+              key='sidebar'
               initial={{width: 0}}
               animate={{width: '58%', transition: {duration: 0.15}}}
               exit={{width: 0, transition: {duration: 0.15}}}
