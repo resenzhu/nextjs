@@ -1,9 +1,9 @@
 import '@app/layout.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import {Redux, Viewport} from '@components/main/app';
 import {Analytics} from '@vercel/analytics/react';
 import Navbar from '@components/main/navbar';
 import type {ReactNode} from 'react';
-import Redux from '@components/main/app/redux';
 import {config} from '@fortawesome/fontawesome-svg-core';
 import {rootMetadata as metadata} from '@utils/metadata';
 
@@ -18,33 +18,35 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
     <html lang='en'>
       <body className='pt-16'>
         <Redux>
-          <Navbar
-            logo='/images/main/navbar-brand-logo.webp'
-            title='RESEN'
-          >
-            <Navbar.Menu
-              label='Home'
-              url='/'
-            />
-            <Navbar.Menu
-              label='About'
-              url='/about'
-            />
-            <Navbar.Menu
-              label='Portfolio'
-              url='/portfolio'
-            />
-            <Navbar.Menu
-              label='Contact'
-              url='/contact'
-            />
-            <Navbar.Menu
-              label='GitHub'
-              url='https://github.com/resenzhu/nextjs'
-              target='_blank'
-            />
-          </Navbar>
-          {children}
+          <Viewport>
+            <Navbar
+              logo='/images/main/navbar-brand-logo.webp'
+              title='RESEN'
+            >
+              <Navbar.Menu
+                label='Home'
+                url='/'
+              />
+              <Navbar.Menu
+                label='About'
+                url='/about'
+              />
+              <Navbar.Menu
+                label='Portfolio'
+                url='/portfolio'
+              />
+              <Navbar.Menu
+                label='Contact'
+                url='/contact'
+              />
+              <Navbar.Menu
+                label='GitHub'
+                url='https://github.com/resenzhu/nextjs'
+                target='_blank'
+              />
+            </Navbar>
+            {children}
+          </Viewport>
         </Redux>
         <Analytics />
       </body>
