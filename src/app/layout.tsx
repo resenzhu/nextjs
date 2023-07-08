@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import {Analytics} from '@vercel/analytics/react';
 import Navbar from '@components/main/navbar';
 import type {ReactNode} from 'react';
-import Redux from '@redux/redux';
+import Redux from '@components/main/shared/redux';
 import {config} from '@fortawesome/fontawesome-svg-core';
 import {rootMetadata as metadata} from '@utils/metadata';
 
