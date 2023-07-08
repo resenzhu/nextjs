@@ -92,10 +92,10 @@ const Nav = ({children}: NavProps): JSX.Element => {
             </motion.div>
           </>
         )}
-        {viewport.width >= 640 && (
-          <div className='space-x-6 md:space-x-7 lg:space-x-8'>{children}</div>
-        )}
       </AnimatePresence>
+      {viewport.width >= 640 && (
+        <div className='space-x-6 md:space-x-7 lg:space-x-8'>{children}</div>
+      )}
     </>
   );
 };
