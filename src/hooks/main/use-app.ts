@@ -1,16 +1,16 @@
 import {
-  type Sidebar,
+  type Sidenav,
   type Viewport,
-  setSidebar as setAppSidebar,
+  setSidenav as setAppSidenav,
   setViewport as setAppViewport
 } from '@redux/reducers/main/app';
 import {useDispatch, useSelector} from '@redux/hooks';
 
 type UseApp = {
   viewport: Viewport;
-  sidebar: Sidebar;
+  sidenav: Sidenav;
   setViewport: (viewport: Viewport) => void;
-  setSidebar: (sidebar: Sidebar) => void;
+  setSidenav: (sidenav: Sidenav) => void;
 };
 
 const useApp = (): UseApp => {
@@ -20,15 +20,15 @@ const useApp = (): UseApp => {
     dispatch(setAppViewport(viewport));
   };
 
-  const setSidebar = (sidebar: Sidebar): void => {
-    dispatch(setAppSidebar(sidebar));
+  const setSidenav = (sidenav: Sidenav): void => {
+    dispatch(setAppSidenav(sidenav));
   };
 
   return {
     viewport: useSelector((state) => state.main.app.viewport),
-    sidebar: useSelector((state) => state.main.app.sidebar),
+    sidenav: useSelector((state) => state.main.app.sidenav),
     setViewport: setViewport,
-    setSidebar: setSidebar
+    setSidenav: setSidenav
   };
 };
 
