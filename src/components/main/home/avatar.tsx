@@ -5,27 +5,27 @@ import Image from 'next/image';
 
 type AvatarProps = {
   src: string;
-  easter?: string;
+  easterSrc?: string;
 };
 
-const Avatar = ({src, easter}: AvatarProps): JSX.Element => {
+const Avatar = ({src, easterSrc}: AvatarProps): JSX.Element => {
   const avatar = useRef<HTMLImageElement>(null);
   const [rendered, setRendered] = useState<boolean>(false);
-  const [showEaster, setShowEaster] = useState<boolean>(false);
+  const [easter, setEaster] = useState<boolean>(false);
 
-  const handleToggleEaster = (show: boolean): void => {
-    if (easter && show !== showEaster) {
-      setShowEaster(show);
+  const handleSetEaster = (show: boolean): void => {
+    if (easterSrc && show !== easter) {
+      setEaster(show);
     }
   };
 
   const handleHideEaster = (event: MouseEvent): void => {
     if (
-      easter &&
+      easterSrc &&
       avatar.current &&
       !avatar.current.contains(event.target as Node)
     ) {
-      setShowEaster(false);
+      setEaster(false);
     }
   };
 
@@ -53,13 +53,13 @@ const Avatar = ({src, easter}: AvatarProps): JSX.Element => {
     <Image
       className='rounded-full border-8 border-white contrast-125'
       ref={avatar}
-      src={easter && showEaster ? easter : src}
+      src={easterSrc && easter ? easterSrc : src}
       width={150}
       height={150}
       alt='the author photo'
-      onMouseDown={(): void => handleToggleEaster(true)}
-      onMouseUp={(): void => handleToggleEaster(false)}
-      onMouseLeave={(): void => handleToggleEaster(false)}
+      onMouseDown={(): void => handleSetEaster(true)}
+      onMouseUp={(): void => handleSetEaster(false)}
+      onMouseLeave={(): void => handleSetEaster(false)}
       onDragStart={handleDisableDrag}
     />
   );

@@ -15,7 +15,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {viewport, sidenav, setSidenav} = useApp();
 
-  const handleToggleSidenav = (show: boolean): void => {
+  const handleSetSidenav = (show: boolean): void => {
     if (show !== sidenav) {
       setSidenav(show);
     }
@@ -49,7 +49,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
         <button
           className='flex'
           type='button'
-          onClick={(): void => handleToggleSidenav(true)}
+          onClick={(): void => handleSetSidenav(true)}
         >
           <FontAwesomeIcon
             className='w-6 text-2xl text-gray-500'
@@ -80,7 +80,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
                 <div className='pt-1'>
                   <button
                     type='button'
-                    onClick={(): void => handleToggleSidenav(false)}
+                    onClick={(): void => handleSetSidenav(false)}
                   >
                     <FontAwesomeIcon
                       className='text-2xl text-gray-500 duration-150 hover:text-red-500'
