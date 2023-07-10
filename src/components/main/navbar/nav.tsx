@@ -1,9 +1,9 @@
 'use client';
 
-import {AnimatePresence, motion} from 'framer-motion';
 import {type ReactNode, useEffect, useRef, useState} from 'react';
 import {faEllipsisVertical, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Transition} from '@headlessui/react';
 import useApp from '@hooks/main/use-app';
 
 type NavProps = {
@@ -46,34 +46,36 @@ const Nav = ({children}: NavProps): JSX.Element => {
   return (
     <>
       {viewport.width < 640 && (
-        <button
-          className='flex'
-          type='button'
-          onClick={(): void => handleSetSidenav(true)}
-        >
-          <FontAwesomeIcon
-            className='w-6 text-2xl text-gray-500'
-            icon={faEllipsisVertical}
-          />
-        </button>
-      )}
-      <AnimatePresence>
-        {sidenav && viewport.width < 640 && (
-          <>
-            <motion.div
+        <>
+          <button
+            className='flex'
+            type='button'
+            onClick={(): void => handleSetSidenav(true)}
+          >
+            <FontAwesomeIcon
+              className='w-6 text-2xl text-gray-500'
+              icon={faEllipsisVertical}
+            />
+          </button>
+          <Transition className='fixed' show={sidenav}>
+            <Transition.Child
               className='fixed left-0 top-0 h-screen w-screen bg-black'
-              key='backdrop'
-              initial={{opacity: 0}}
-              animate={{opacity: 0.4, transition: {duration: 0.15}}}
-              exit={{opacity: 0, transition: {duration: 0.15}}}
-            ></motion.div>
-            <motion.div
-              className='fixed right-0 top-0 h-screen bg-white'
+              enter='transition-opacity duration-150'
+              enterFrom='opacity-0'
+              enterTo='opacity-40'
+              leave='transition-opacity duration-150'
+              leaveFrom='opacity-40'
+              leaveTo='opacity-0'
+            ></Transition.Child>
+            <Transition.Child
+              className='fixed right-0 top-0 h-screen w-3/5 bg-white'
+              enter='transition-transform ease-out duration-150'
+              enterFrom='translate-x-full'
+              enterTo='-translate-x-0'
+              leave='transition-transform ease-in duration-150'
+              leaveFrom='-translate-x-0'
+              leaveTo='translate-x-full'
               ref={sidebar}
-              key='sidebar'
-              initial={{width: 0}}
-              animate={{width: '58%', transition: {duration: 0.15}}}
-              exit={{width: 0, transition: {duration: 0.15}}}
             >
               <div className='mx-6 flex h-full py-6'>
                 <div className='flex flex-1 flex-col space-y-5'>{children}</div>
@@ -89,10 +91,10 @@ const Nav = ({children}: NavProps): JSX.Element => {
                   </button>
                 </div>
               </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </Transition.Child>
+          </Transition>
+        </>
+      )}
       {viewport.width >= 640 && (
         <div className='space-x-6 md:space-x-7 lg:space-x-8'>{children}</div>
       )}
