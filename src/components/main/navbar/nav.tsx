@@ -63,19 +63,19 @@ const Nav = ({children}: NavProps): JSX.Element => {
           >
             <Transition.Child
               className='fixed left-0 top-0 h-screen w-screen bg-black'
-              enter='transition-opacity duration-150'
+              enter='duration-150 ease-out'
               enterFrom='opacity-0'
               enterTo='opacity-40'
-              leave='transition-opacity duration-150'
+              leave='duration-150 ease-in'
               leaveFrom='opacity-40'
               leaveTo='opacity-0'
             ></Transition.Child>
             <Transition.Child
               className='fixed right-0 top-0 h-screen w-3/5 bg-white'
-              enter='transition-transform ease-out duration-150'
+              enter='duration-150 ease-out'
               enterFrom='translate-x-full'
               enterTo='-translate-x-0'
-              leave='transition-transform ease-in duration-150'
+              leave='duration-150 ease-in'
               leaveFrom='-translate-x-0'
               leaveTo='translate-x-full'
               ref={sidebar}
