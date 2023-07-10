@@ -11,8 +11,8 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <section className='h-[calc(100vh-4rem)] sm:h-[calc(100vh-3.5rem)]'>
-    <div className='absolute h-[calc(100vh-4rem)] sm:h-[calc(100vh-3.5rem)] w-full bg-[url("/images/main/shared-jumbotron.webp")] bg-cover bg-center bg-no-repeat brightness-50 contrast-125'></div>
-    <div className='absolute h-[calc(100vh-4rem)] sm:h-[calc(100vh-3.5rem)] w-full bg-gray-700 opacity-70'></div>
+    <div className='absolute h-[calc(100vh-4rem)] w-full bg-[url("/images/main/shared-jumbotron.webp")] bg-cover bg-center bg-no-repeat brightness-50 contrast-125 sm:h-[calc(100vh-3.5rem)]'></div>
+    <div className='absolute h-[calc(100vh-4rem)] w-full bg-gray-700 opacity-70 sm:h-[calc(100vh-3.5rem)]'></div>
     <AnimateLandingPage>
       <div className='relative mx-4 flex h-full justify-center'>
         <div className='flex flex-col items-center justify-center text-white'>

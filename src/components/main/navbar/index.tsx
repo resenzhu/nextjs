@@ -30,7 +30,7 @@ const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
           height={30}
           alt='web brand logo'
         />
-        <span className='mb-auto text-xl font-bold text-gray-700 sm:text-base sm:mb-0'>
+        <span className='mb-auto text-xl font-bold text-gray-700 sm:mb-0 sm:text-base'>
           {title}
         </span>
       </Link>
