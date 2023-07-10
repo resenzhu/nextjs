@@ -2,6 +2,7 @@
 
 import {ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
+import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
 type ExploreProps = {
@@ -9,12 +10,13 @@ type ExploreProps = {
 };
 
 const Explore = ({children}: ExploreProps): JSX.Element => {
+  const {viewport} = useApp();
   const {explore} = useHome();
 
   return (
     <Transition
       className='flex justify-center'
-      show={explore}
+      show={(viewport.width < 640 && explore) || viewport.width >= 640}
       enter='duration-150 ease-out'
       enterFrom='translate-y-full opacity-0'
       enterTo='translate-y-0 opacity-100'
