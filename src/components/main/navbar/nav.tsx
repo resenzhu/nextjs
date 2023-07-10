@@ -57,7 +57,10 @@ const Nav = ({children}: NavProps): JSX.Element => {
               icon={faEllipsisVertical}
             />
           </button>
-          <Transition className='fixed' show={sidenav}>
+          <Transition
+            className='fixed'
+            show={sidenav}
+          >
             <Transition.Child
               className='fixed left-0 top-0 h-screen w-screen bg-black'
               enter='transition-opacity duration-150'
