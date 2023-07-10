@@ -8,7 +8,7 @@ const tailwindConfig = {
   theme: {
     extend: {}
   },
-  plugins: []
+  plugins: [require('tailwindcss-animated')]
 };
 
 module.exports = tailwindConfig;
