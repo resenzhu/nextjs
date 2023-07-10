@@ -17,7 +17,9 @@ const LandingPage = ({children}: LandingPageProps): JSX.Element => {
         <motion.div
           className='h-full'
           key='landingPage'
-          exit={{opacity: 0, transition: {duration: 0.15}}}
+          initial={{opacity: 0, height: 0}}
+          animate={{opacity: 1, height: '100%', transition: {duration: 0.5}}}
+          exit={{opacity: 0, height: 0, transition: {duration: 0.5}}}
         >
           {children}
         </motion.div>
