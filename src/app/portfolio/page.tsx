@@ -1,4 +1,3 @@
-import {Jumbotron} from '@components/main/shared';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -8,15 +7,7 @@ const metadata = createMetadata({
   url: '/portfolio'
 });
 
-const Page = (): JSX.Element => (
-  <>
-    <Jumbotron
-      title='portfolio'
-      subtitle='A Showcase of Innovative Projects and Personal Endeavors'
-      description='Discover a captivating collection of my projects, where innovation meets design. Immerse yourself in an inspiring showcase of creativity and explore the limitless possibilities of my work.'
-    />
-  </>
-);
+const Page = (): JSX.Element => <>PORTFOLIO</>;
 
 export {metadata};
 export default Page;
