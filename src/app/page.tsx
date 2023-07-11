@@ -1,4 +1,4 @@
-import {TExplore, TLandingPage} from '@components/main/home/transitions';
+import {TLandingPage} from '@components/main/home/transitions';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -15,7 +15,6 @@ const Page = (): JSX.Element => (
     <div className='relative mx-4 flex h-full justify-center items-center sm:mx-12 md:mx-16 lg:mx-20'>
       <div className='flex flex-col sm:flex-row'>
         <TLandingPage>LANDINGPAGE</TLandingPage>
-        <TExplore>EXPLORE</TExplore>
       </div>
     </div>
   </section>
