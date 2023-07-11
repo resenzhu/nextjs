@@ -1,4 +1,3 @@
-import {TLandingPage} from '@components/main/home/transitions';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -10,12 +9,20 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <section className='h-[calc(100vh-4rem)] sm:h-[calc(100vh-3.5rem)]'>
-    <div className='absolute h-[calc(100vh-4rem)] w-full bg-[url("/images/main/shared-jumbotron.webp")] bg-cover bg-center bg-no-repeat brightness-50 contrast-125 sm:h-[calc(100vh-3.5rem)]'></div>
-    <div className='absolute h-[calc(100vh-4rem)] w-full bg-gray-700 opacity-70 sm:h-[calc(100vh-3.5rem)]'></div>
-    <div className='relative mx-4 flex h-full justify-center items-center sm:mx-12 md:mx-16 lg:mx-20'>
-      <div className='flex flex-col sm:flex-row'>
-        <TLandingPage>LANDINGPAGE</TLandingPage>
+    <div className='flex h-full flex-col items-center'>
+      <div className='absolute h-1/3 w-full'>
+        <div className='absolute h-full w-full bg-[url("/images/main/home-card-background.webp")] bg-cover bg-center bg-no-repeat brightness-50 contrast-125'></div>
+        <div className='absolute h-full w-full bg-blue-500 opacity-20'></div>
+        <div className='relative flex h-full items-center justify-center'>
+          <img
+            className='rounded-full border-8 contrast-125'
+            src='/images/main/home-card-avatar-original.webp'
+            width={140}
+            height={140}
+          />
+        </div>
       </div>
+      <div className='relative pt-56'>ABC</div>
     </div>
   </section>
 );
