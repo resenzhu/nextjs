@@ -65,9 +65,9 @@ const Nav = ({children}: NavProps): JSX.Element => {
               className='fixed left-0 top-0 h-screen w-screen bg-black'
               enter='duration-150 ease-out'
               enterFrom='opacity-0'
-              enterTo='opacity-40'
+              enterTo='opacity-60'
               leave='duration-150 ease-in'
-              leaveFrom='opacity-40'
+              leaveFrom='opacity-60'
               leaveTo='opacity-0'
             ></Transition.Child>
             <Transition.Child
