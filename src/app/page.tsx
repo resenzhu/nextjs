@@ -58,25 +58,25 @@ const Page = (): JSX.Element => (
         </div>
         <div className='flex w-1/2 items-center justify-between pb-6 pt-4'>
           <a
-            className='text-2xl text-cyan-600 active:text-cyan-700'
+            className='text-2xl text-cyan-600 duration-150 active:text-cyan-700'
             href='#'
           >
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
           <a
-            className='text-2xl text-cyan-600 active:text-cyan-700'
+            className='text-2xl text-cyan-600 duration-150 active:text-cyan-700'
             href='#'
           >
             <FontAwesomeIcon icon={faGithub} />
           </a>
           <a
-            className='text-2xl text-cyan-600 active:text-cyan-700'
+            className='text-2xl text-cyan-600 duration-150 active:text-cyan-700'
             href='#'
           >
             <FontAwesomeIcon icon={faInstagram} />
           </a>
           <a
-            className='text-2xl text-cyan-600 active:text-cyan-700'
+            className='text-2xl text-cyan-600 duration-150 active:text-cyan-700'
             href='#'
           >
             <FontAwesomeIcon icon={faEnvelope} />
