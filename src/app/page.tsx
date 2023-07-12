@@ -37,36 +37,48 @@ const Page = (): JSX.Element => (
           <div className='text-md font-extrabold text-cyan-600'>
             FULL STACK DEVELOPER
           </div>
-          <div className='w-4/5 pt-6 text-center text-gray-500'>
+          <div className='w-4/5 py-4 text-center text-gray-500'>
             Analytical programmer with a strong problem-solving mindset, adept
             at optimizing code for performance and efficiency.
           </div>
           <div className='flex w-36 flex-1 flex-col justify-center space-y-2'>
             <button
-              className='border-2 border-cyan-600 bg-cyan-600 py-2 font-bold tracking-wider text-white active:bg-cyan-700 duration-150'
+              className='border-2 border-cyan-600 bg-cyan-600 py-2 font-bold tracking-wider text-white duration-150 active:bg-cyan-700'
               type='button'
             >
               HELLO
             </button>
             <button
-              className='border-2 border-cyan-600 py-2 font-bold tracking-wider text-cyan-600 hover:bg-cyan-600 hover:text-white active:bg-cyan-700 duration-150'
+              className='border-2 border-cyan-600 py-2 font-bold tracking-wider text-cyan-600 duration-150 hover:bg-cyan-600 hover:text-white active:bg-cyan-700'
               type='button'
             >
               EXPLORE
             </button>
           </div>
         </div>
-        <div className='flex w-1/2 items-center justify-between pb-6'>
-          <a className='text-2xl text-cyan-600' href='#'>
+        <div className='flex w-1/2 items-center justify-between pb-6 pt-4'>
+          <a
+            className='text-2xl text-cyan-600'
+            href='#'
+          >
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
-          <a className='text-2xl text-cyan-600' href='#'>
+          <a
+            className='text-2xl text-cyan-600'
+            href='#'
+          >
             <FontAwesomeIcon icon={faGithub} />
           </a>
-          <a className='text-2xl text-cyan-600' href='#'>
+          <a
+            className='text-2xl text-cyan-600'
+            href='#'
+          >
             <FontAwesomeIcon icon={faInstagram} />
           </a>
-          <a className='text-2xl text-cyan-600' href='#'>
+          <a
+            className='text-2xl text-cyan-600'
+            href='#'
+          >
             <FontAwesomeIcon icon={faEnvelope} />
           </a>
         </div>
