@@ -41,7 +41,7 @@ const Page = (): JSX.Element => (
             Analytical programmer with a strong problem-solving mindset, adept
             at optimizing code for performance and efficiency.
           </div>
-          <div className='flex w-36 flex-col space-y-2 pt-8'>
+          <div className='flex w-36 flex-1 flex-col justify-center space-y-2'>
             <button
               className='border-2 border-cyan-600 bg-cyan-600 py-2 font-bold tracking-wider text-white active:bg-cyan-700'
               type='button'
