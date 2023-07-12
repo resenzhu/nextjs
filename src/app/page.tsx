@@ -43,13 +43,13 @@ const Page = (): JSX.Element => (
           </div>
           <div className='flex w-36 flex-1 flex-col justify-center space-y-2'>
             <button
-              className='border-2 border-cyan-600 bg-cyan-600 py-2 font-bold tracking-wider text-white active:bg-cyan-700'
+              className='border-2 border-cyan-600 bg-cyan-600 py-2 font-bold tracking-wider text-white active:bg-cyan-700 duration-150'
               type='button'
             >
               HELLO
             </button>
             <button
-              className='border-2 border-cyan-600 py-2 font-bold tracking-wider text-cyan-600 hover:bg-cyan-600 hover:text-white active:bg-cyan-700'
+              className='border-2 border-cyan-600 py-2 font-bold tracking-wider text-cyan-600 hover:bg-cyan-600 hover:text-white active:bg-cyan-700 duration-150'
               type='button'
             >
               EXPLORE
