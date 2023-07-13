@@ -36,6 +36,10 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
                 url='/portfolio'
               />
               <Navbar.Menu
+                label='Resources'
+                url='/resources'
+              />
+              <Navbar.Menu
                 label='Contact'
                 url='/contact'
               />
