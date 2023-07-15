@@ -13,7 +13,7 @@ type NavMenuProps = {
 const NavMenu = ({url, label, target}: NavMenuProps) => {
   const {sidenav, setSidenav} = useApp();
 
-  const handleSetSidenav = (show: boolean) => {
+  const handleToggleSidenav = (show: boolean) => {
     if (show !== sidenav) {
       setSidenav(show);
     }
@@ -24,7 +24,7 @@ const NavMenu = ({url, label, target}: NavMenuProps) => {
       className='w-0 text-lg font-bold text-gray-600 duration-150 hover:text-cyan-600 sm:text-sm'
       href={url}
       target={target}
-      onClick={(): void => handleSetSidenav(false)}
+      onClick={(): void => handleToggleSidenav(false)}
     >
       {label}
     </Link>
