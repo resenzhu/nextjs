@@ -41,7 +41,7 @@ const Picture = ({src}: PictureProps): JSX.Element => {
       onMouseDown={(): void => handleShowEaster(3000)}
       onMouseUp={(): void => handleHideEaster()}
       onMouseLeave={(): void => handleHideEaster()}
-      onDrag={handleDisableDrag}
+      onDragStart={handleDisableDrag}
     />
   );
 };
