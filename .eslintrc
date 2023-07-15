@@ -68,7 +68,7 @@
     "no-multi-assign": "warn",
     "no-multi-str": "warn",
     "no-negated-condition": "warn",
-    "no-nested-ternary": "warn",
+    "no-nested-ternary": "off",
     "no-new": "warn",
     "no-new-func": "warn",
     "no-new-object": "warn",
