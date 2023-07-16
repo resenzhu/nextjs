@@ -38,7 +38,7 @@ export const TName = ({className, children}: TProps): JSX.Element => (
     className={className}
     leave='duration-500 ease-in'
     leaveFrom='translate-x-0'
-    leaveTo='-translate-x-[100vw]'
+    leaveTo='-translate-x-[80vw]'
   >
     {children}
   </Transition.Child>
@@ -49,7 +49,7 @@ export const TSpecialty = ({className, children}: TProps): JSX.Element => (
     className={className}
     leave='duration-500 ease-in'
     leaveFrom='translate-x-0'
-    leaveTo='-translate-x-[100vw]'
+    leaveTo='-translate-x-[80vw]'
   >
     {children}
   </Transition.Child>
@@ -60,7 +60,7 @@ export const TBio = ({className, children}: TProps): JSX.Element => (
     className={className}
     leave='duration-500 ease-in'
     leaveFrom='translate-x-0'
-    leaveTo='-translate-x-[100vw]'
+    leaveTo='-translate-x-[80vw]'
   >
     {children}
   </Transition.Child>
@@ -71,7 +71,7 @@ export const TButtons = ({className, children}: TProps): JSX.Element => (
     className={className}
     leave='duration-500 ease-in'
     leaveFrom='translate-x-0'
-    leaveTo='translate-x-[100vw]'
+    leaveTo='translate-x-[80vw]'
   >
     {children}
   </Transition.Child>
