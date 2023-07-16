@@ -1,9 +1,9 @@
+import {Explore, Profile} from '@components/main/home';
 import {
   faGithub,
   faInstagram,
   faLinkedin
 } from '@fortawesome/free-brands-svg-icons';
-import {Profile} from '@components/main/home';
 import {createMetadata} from '@utils/metadata';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
@@ -46,6 +46,7 @@ const Page = (): JSX.Element => (
         {name: 'email', icon: faEnvelope, url: 'mailto:resen.zhu@gmail.com'}
       ]}
     />
+    <Explore />
   </section>
 );
 
