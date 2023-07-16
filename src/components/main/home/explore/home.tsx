@@ -9,11 +9,14 @@ type HomeProps = {
 };
 
 const Home = ({className, children}: HomeProps): JSX.Element => {
-  const {explore, setExplore} = useHome();
+  const {section, setSection} = useHome();
 
   const handleToggleExplore = (show: boolean): void => {
-    if (show !== explore) {
-      setExplore(show);
+    if (show !== section.explore) {
+      setSection({
+        ...section,
+        explore: show
+      });
     }
   };
 
