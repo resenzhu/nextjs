@@ -1,15 +1,14 @@
 'use client';
 
-import {ReactNode} from 'react';
+import {Fragment, ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
 import useHome from '@hooks/main/use-home';
 
 export type TProps = {
-  className?: string;
   children: ReactNode;
 };
 
-export const T = ({className, children}: TProps): JSX.Element => {
+export const T = ({children}: TProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleExplore = (show: boolean): void => {
@@ -23,8 +22,8 @@ export const T = ({className, children}: TProps): JSX.Element => {
 
   return (
     <Transition
-      className={className}
       show={section.profile}
+      as={Fragment}
       afterLeave={(): void => handleToggleExplore(true)}
     >
       {children}
@@ -32,9 +31,9 @@ export const T = ({className, children}: TProps): JSX.Element => {
   );
 };
 
-export const TPicture = ({className, children}: TProps): JSX.Element => (
+export const TPicture = ({children}: TProps): JSX.Element => (
   <Transition.Child
-    className={className}
+    as={Fragment}
     enter='duration-700 ease-out'
     enterFrom='-translate-y-[30vh] opacity-0'
     enterTo='translate-y-0 opacity-100'
@@ -46,9 +45,9 @@ export const TPicture = ({className, children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TName = ({className, children}: TProps): JSX.Element => (
+export const TName = ({children}: TProps): JSX.Element => (
   <Transition.Child
-    className={className}
+    as={Fragment}
     enter='duration-700 ease-out'
     enterFrom='translate-x-[80vw] opacity-0'
     enterTo='translate-x-0 opacity-100'
@@ -60,9 +59,9 @@ export const TName = ({className, children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TSpecialty = ({className, children}: TProps): JSX.Element => (
+export const TSpecialty = ({children}: TProps): JSX.Element => (
   <Transition.Child
-    className={className}
+    as={Fragment}
     enter='duration-700 ease-out'
     enterFrom='translate-x-[80vw] opacity-0'
     enterTo='translate-x-0 opacity-100'
@@ -74,9 +73,9 @@ export const TSpecialty = ({className, children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TBio = ({className, children}: TProps): JSX.Element => (
+export const TBio = ({children}: TProps): JSX.Element => (
   <Transition.Child
-    className={className}
+    as={Fragment}
     enter='duration-700 ease-out'
     enterFrom='translate-x-[80vw] opacity-0'
     enterTo='translate-x-0 opacity-100'
@@ -88,9 +87,9 @@ export const TBio = ({className, children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TButtons = ({className, children}: TProps): JSX.Element => (
+export const TButtons = ({children}: TProps): JSX.Element => (
   <Transition.Child
-    className={className}
+    as={Fragment}
     enter='duration-700 ease-out'
     enterFrom='-translate-x-[80vw] opacity-0'
     enterTo='translate-x-0 opacity-100'
@@ -102,9 +101,9 @@ export const TButtons = ({className, children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TSocials = ({className, children}: TProps): JSX.Element => (
+export const TSocials = ({children}: TProps): JSX.Element => (
   <Transition.Child
-    className={className}
+    as={Fragment}
     enter='duration-700 ease-out'
     enterFrom='translate-y-full opacity-0'
     enterTo='translate-y-0 opacity-100'
