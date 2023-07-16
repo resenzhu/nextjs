@@ -10,12 +10,22 @@ export type TProps = {
 };
 
 export const T = ({className, children}: TProps): JSX.Element => {
-  const {explore} = useHome();
+  const {section, setSection} = useHome();
+
+  const handleToggleExplore = (show: boolean): void => {
+    if (show !== section.explore) {
+      setSection({
+        ...section,
+        explore: show
+      });
+    }
+  };
 
   return (
     <Transition
       className={className}
-      show={!explore}
+      show={section.profile}
+      afterLeave={(): void => handleToggleExplore(true)}
     >
       {children}
     </Transition>
