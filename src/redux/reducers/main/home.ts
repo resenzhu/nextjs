@@ -1,25 +1,33 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
-type Explore = boolean;
+type Section = {
+  profile: boolean;
+  explore: boolean;
+  chatbot: boolean;
+};
 
 type State = {
-  explore: Explore;
+  section: Section;
 };
 
 type Reducers = {
-  setExplore: (state: State, action: PayloadAction<Explore>) => void;
+  setSection: (state: State, action: PayloadAction<Section>) => void;
 };
 
 const name: string = 'home';
 
 const initialState: State = {
-  explore: false
+  section: {
+    profile: true,
+    explore: false,
+    chatbot: false
+  }
 };
 
 const reducers: Reducers = {
-  setExplore: (state, action) => {
-    if (action.payload !== state.explore) {
-      state.explore = action.payload;
+  setSection: (state, action) => {
+    if (action.payload !== state.section) {
+      state.section = action.payload;
     }
   }
 };
@@ -30,6 +38,6 @@ const slice = createSlice({
   reducers: reducers
 });
 
-export type {Explore};
-export const {setExplore} = slice.actions;
+export type {Section};
+export const {setSection} = slice.actions;
 export default slice.reducer;
