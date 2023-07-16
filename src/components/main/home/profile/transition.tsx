@@ -13,10 +13,12 @@ export const T = ({children}: TProps): JSX.Element => {
 
   const handleToggleExplore = (show: boolean): void => {
     if (show !== section.explore) {
-      setSection({
-        ...section,
-        explore: show
-      });
+      setTimeout((): void => {
+        setSection({
+          ...section,
+          explore: show
+        });
+      }, 50);
     }
   };
 
