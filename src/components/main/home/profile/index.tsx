@@ -1,3 +1,12 @@
+import {
+  T,
+  TBio,
+  TButtons,
+  TName,
+  TPicture,
+  TSocials,
+  TSpecialty
+} from '@components/main/home/profile/transition';
 import Explore from '@components/main/home/profile/explore';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Hello from '@components/main/home/profile/hello';
@@ -21,29 +30,29 @@ const Profile = ({
   bio,
   socials
 }: ProfileProps): JSX.Element => (
-  <div className='flex h-full flex-col items-center'>
-    <div className='relative h-1/5 w-full'>
+  <T className='flex h-full flex-col items-center overflow-hidden'>
+    <TPicture className='relative h-1/5 w-full'>
       <div className='absolute h-full w-full bg-[url("/images/main/home-profile-background.webp")] bg-cover bg-top bg-no-repeat brightness-50 contrast-125'></div>
       <div className='absolute h-full w-full bg-cyan-600 opacity-40'></div>
       <div className='relative z-10 flex h-full translate-y-1/2 items-center justify-center'>
         <Picture src={picture} />
       </div>
-    </div>
+    </TPicture>
     <div className='relative flex h-full flex-col items-center justify-between pt-20'>
       <div className='flex flex-1 flex-col items-center'>
-        <div className='text-2xl font-extrabold tracking-wide text-gray-600'>
+        <TName className='text-2xl font-extrabold tracking-wide text-gray-600'>
           {name}
-        </div>
-        <div className='text-lg font-extrabold text-cyan-600'>
+        </TName>
+        <TSpecialty className='text-lg font-extrabold text-cyan-600'>
           <Specialty title={specialty} />
-        </div>
-        <div className='w-4/5 py-4 text-center text-gray-500'>{bio}</div>
-        <div className='flex w-36 flex-1 flex-col justify-center space-y-2'>
+        </TSpecialty>
+        <TBio className='w-4/5 py-4 text-center text-gray-500'>{bio}</TBio>
+        <TButtons className='flex w-36 flex-1 flex-col justify-center space-y-2'>
           <Hello />
           <Explore />
-        </div>
+        </TButtons>
       </div>
-      <div className='flex w-1/2 items-center justify-between pb-6 pt-4'>
+      <TSocials className='flex w-1/2 items-center justify-between pb-6 pt-4'>
         {socials.map(
           (social): JSX.Element => (
             <Link
@@ -56,9 +65,9 @@ const Profile = ({
             </Link>
           )
         )}
-      </div>
+      </TSocials>
     </div>
-  </div>
+  </T>
 );
 
 export type {ProfileProps};
