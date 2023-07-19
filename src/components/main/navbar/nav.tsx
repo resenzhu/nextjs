@@ -1,9 +1,9 @@
 'use client';
 
 import {type ReactNode, useEffect, useRef, useState} from 'react';
+import {T, TBackdrop, TSidenav} from '@components/main/navbar/transition';
 import {faEllipsisVertical, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {Transition} from '@headlessui/react';
 import useApp from '@hooks/main/use-app';
 
 type NavProps = {
@@ -57,45 +57,36 @@ const Nav = ({children}: NavProps): JSX.Element => {
               icon={faEllipsisVertical}
             />
           </button>
-          <Transition
-            className='fixed'
-            show={sidenav}
-          >
-            <Transition.Child
-              className='fixed left-0 top-0 h-screen w-screen bg-black'
-              enter='duration-150 ease-out'
-              enterFrom='opacity-0'
-              enterTo='opacity-60'
-              leave='duration-150 ease-in'
-              leaveFrom='opacity-60'
-              leaveTo='opacity-0'
-            ></Transition.Child>
-            <Transition.Child
-              className='fixed right-0 top-0 h-screen w-3/5 bg-white'
-              enter='duration-150 ease-out'
-              enterFrom='translate-x-full'
-              enterTo='-translate-x-0'
-              leave='duration-150 ease-in'
-              leaveFrom='-translate-x-0'
-              leaveTo='translate-x-full'
-              ref={sidebar}
-            >
-              <div className='mx-6 flex h-full py-6'>
-                <div className='flex flex-1 flex-col space-y-5'>{children}</div>
-                <div className='pt-1'>
-                  <button
-                    type='button'
-                    onClick={(): void => handleToggleSidenav(false)}
-                  >
-                    <FontAwesomeIcon
-                      className='text-2xl text-gray-500 duration-150 hover:text-red-500'
-                      icon={faXmark}
-                    />
-                  </button>
+          <T>
+            <div className='fixed'>
+              <TBackdrop>
+                <div className='fixed left-0 top-0 h-screen w-screen bg-black'></div>
+              </TBackdrop>
+              <TSidenav>
+                <div
+                  className='fixed right-0 top-0 h-screen w-3/5 bg-white'
+                  ref={sidebar}
+                >
+                  <div className='mx-6 flex h-full py-6'>
+                    <div className='flex flex-1 flex-col space-y-5'>
+                      {children}
+                    </div>
+                    <div className='pt-1'>
+                      <button
+                        type='button'
+                        onClick={(): void => handleToggleSidenav(false)}
+                      >
+                        <FontAwesomeIcon
+                          className='text-2xl text-gray-500 duration-150 hover:text-red-500'
+                          icon={faXmark}
+                        />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Transition.Child>
-          </Transition>
+              </TSidenav>
+            </div>
+          </T>
         </>
       )}
       {viewport.width >= 640 && (
