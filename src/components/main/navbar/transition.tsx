@@ -40,9 +40,9 @@ export const TSidenav = ({children}: TProps): JSX.Element => (
     as={Fragment}
     enter='duration-150 ease-out'
     enterFrom='translate-x-full'
-    enterTo='-translate-x-0'
+    enterTo='translate-x-0'
     leave='duration-150 ease-in'
-    leaveFrom='-translate-x-0'
+    leaveFrom='translate-x-0'
     leaveTo='translate-x-full'
   >
     {children}
