@@ -46,7 +46,16 @@ const Page = (): JSX.Element => (
         {name: 'email', icon: faEnvelope, url: 'mailto:resen.zhu@gmail.com'}
       ]}
     />
-    <Explore />
+    <Explore
+      background={{
+        home: 'bg-[url("/images/main/home-explore-home.webp")]',
+        about: 'bg-[url("/images/main/home-explore-about.webp")]',
+        portfolio: 'bg-[url("/images/main/home-explore-portfolio.webp")]',
+        resources: 'bg-[url("/images/main/home-explore-resources.webp")]',
+        contact: 'bg-[url("/images/main/home-explore-contact.webp")]',
+        github: 'bg-[url("/images/main/home-explore-github.webp")]'
+      }}
+    />
   </section>
 );
 
