@@ -1,4 +1,4 @@
-import {Explore, Profile} from '@components/main/home';
+import {Chatbot, Explore, Profile} from '@components/main/home';
 import {
   faGithub,
   faInstagram,
@@ -56,6 +56,7 @@ const Page = (): JSX.Element => (
         github: 'bg-[url("/images/main/home-explore-github.webp")]'
       }}
     />
+    <Chatbot name='RESEN' />
   </section>
 );
 
