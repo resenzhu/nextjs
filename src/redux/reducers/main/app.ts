@@ -24,7 +24,7 @@ type Reducers = {
 const name: string = 'app';
 
 const initialState: State = {
-  online: true,
+  online: false,
   viewport: {
     width: 0,
     height: 0
