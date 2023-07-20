@@ -1,6 +1,7 @@
 import {T, TBackdrop, TChatbot} from '@components/main/home/chatbot/transition';
 import Close from '@components/main/home/chatbot/close';
 import {faClose} from '@fortawesome/free-solid-svg-icons';
+import Online from '@components/main/home/chatbot/online';
 
 type ChatbotProps = {
   name: string;
@@ -18,7 +19,10 @@ const Chatbot = ({name}: ChatbotProps): JSX.Element => (
             <div className='mx-4 flex justify-between py-3 align-middle text-white'>
               <div className='space-x-4'>
                 <span className='font-bold'>{name}</span>
-                <span className='bg-green-600 px-2 py-1'>online</span>
+                <Online
+                  onlineLabel='online'
+                  offlineLabel='offline'
+                />
               </div>
               <Close icon={faClose} />
             </div>
