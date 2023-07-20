@@ -1,6 +1,6 @@
 import '@app/layout.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import {Redux, Viewport} from '@components/main/app';
+import {Online, Redux, Viewport} from '@components/main/app';
 import {Analytics} from '@vercel/analytics/react';
 import Navbar from '@components/main/navbar';
 import type {ReactNode} from 'react';
@@ -19,39 +19,41 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
       <body className='pt-16 sm:pt-14'>
         <Redux>
           <Viewport>
-            <Navbar
-              logo='/images/main/navbar-brand-logo.webp'
-              title='RESEN'
-            >
-              <Navbar.Menu
-                label='Home'
-                url='/'
-              />
-              <Navbar.Menu
-                label='About'
-                url='/about'
-              />
-              <Navbar.Menu
-                label='Portfolio'
-                url='/portfolio'
-              />
-              <Navbar.Menu
-                label='Resources'
-                url='/resources'
-              />
-              <Navbar.Menu
-                label='Contact'
-                url='/contact'
-              />
-              <Navbar.Menu
-                label='GitHub'
-                url='https://github.com/resenzhu/nextjs'
-                target='_blank'
-              />
-            </Navbar>
-            <div className='h-[calc(100vh-4rem)] sm:h-[calc(100vh-3.5rem)]'>
-              {children}
-            </div>
+            <Online>
+              <Navbar
+                logo='/images/main/navbar-brand-logo.webp'
+                title='RESEN'
+              >
+                <Navbar.Menu
+                  label='Home'
+                  url='/'
+                />
+                <Navbar.Menu
+                  label='About'
+                  url='/about'
+                />
+                <Navbar.Menu
+                  label='Portfolio'
+                  url='/portfolio'
+                />
+                <Navbar.Menu
+                  label='Resources'
+                  url='/resources'
+                />
+                <Navbar.Menu
+                  label='Contact'
+                  url='/contact'
+                />
+                <Navbar.Menu
+                  label='GitHub'
+                  url='https://github.com/resenzhu/nextjs'
+                  target='_blank'
+                />
+              </Navbar>
+              <div className='h-[calc(100vh-4rem)] sm:h-[calc(100vh-3.5rem)]'>
+                {children}
+              </div>
+            </Online>
           </Viewport>
         </Redux>
         <Analytics />
