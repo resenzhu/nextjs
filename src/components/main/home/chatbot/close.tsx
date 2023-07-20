@@ -1,10 +1,14 @@
 'use client';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faClose} from '@fortawesome/free-solid-svg-icons';
+import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import useHome from '@hooks/main/use-home';
 
-const Close = (): JSX.Element => {
+type CloseProps = {
+  icon: IconDefinition;
+};
+
+const Close = ({icon}: CloseProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleChatbot = (show: boolean): void => {
@@ -24,10 +28,11 @@ const Close = (): JSX.Element => {
     >
       <FontAwesomeIcon
         className='w-6 text-2xl'
-        icon={faClose}
+        icon={icon}
       />
     </button>
   );
 };
 
+export type {CloseProps};
 export default Close;
