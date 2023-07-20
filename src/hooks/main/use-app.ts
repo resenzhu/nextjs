@@ -9,7 +9,7 @@ import {
 import {useDispatch, useSelector} from '@redux/hooks';
 
 type UseApp = {
-  online: Online,
+  online: Online;
   viewport: Viewport;
   sidenav: Sidenav;
   setOnline: (online: Online) => void;
