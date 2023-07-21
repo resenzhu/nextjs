@@ -51,7 +51,7 @@ const Chatbot = ({name}: ChatbotProps): JSX.Element => (
               </div>
             </div>
           </div>
-          <div className='border-t-2'>
+          <div className='border-t-2 border-gray-300'>
             <div className='mx-4 space-y-2 py-4 text-white'>
               <div className='w-fit bg-cyan-600 px-3 py-1 duration-150 hover:bg-cyan-700'>
                 I want to know about you.
