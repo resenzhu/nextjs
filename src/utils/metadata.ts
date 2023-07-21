@@ -1,7 +1,7 @@
 import type {Metadata} from 'next';
 
 export const rootMetadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
   authors: [
     {
       name: 'Resen',
