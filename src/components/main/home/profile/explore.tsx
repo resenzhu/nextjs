@@ -2,7 +2,11 @@
 
 import useHome from '@hooks/main/use-home';
 
-const Explore = (): JSX.Element => {
+type ExploreProps = {
+  label: string;
+};
+
+const Explore = ({label}: ExploreProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleProfile = (show: boolean): void => {
@@ -20,9 +24,10 @@ const Explore = (): JSX.Element => {
       type='button'
       onClick={(): void => handleToggleProfile(false)}
     >
-      EXPLORE
+      {label}
     </button>
   );
 };
 
+export type {ExploreProps};
 export default Explore;
