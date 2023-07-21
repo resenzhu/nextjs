@@ -47,14 +47,12 @@ const Page = (): JSX.Element => (
       ]}
     />
     <Explore
-      background={{
-        home: 'bg-[url("/images/main/home-explore-home.webp")]',
-        about: 'bg-[url("/images/main/home-explore-about.webp")]',
-        portfolio: 'bg-[url("/images/main/home-explore-portfolio.webp")]',
-        resources: 'bg-[url("/images/main/home-explore-resources.webp")]',
-        contact: 'bg-[url("/images/main/home-explore-contact.webp")]',
-        github: 'bg-[url("/images/main/home-explore-github.webp")]'
-      }}
+      homeBg='bg-[url("/images/main/home-explore-home.webp")]'
+      aboutBg='bg-[url("/images/main/home-explore-about.webp")]'
+      portfolioBg='bg-[url("/images/main/home-explore-portfolio.webp")]'
+      resourcesBg='bg-[url("/images/main/home-explore-resources.webp")]'
+      contactBg='bg-[url("/images/main/home-explore-contact.webp")]'
+      githubBg='bg-[url("/images/main/home-explore-github.webp")]'
     />
     <Chatbot name='RESEN' />
   </section>

@@ -11,23 +11,28 @@ import Home from '@components/main/home/explore/home';
 import Link from 'next/link';
 
 type ExploreProps = {
-  background: {
-    home: string;
-    about: string;
-    portfolio: string;
-    resources: string;
-    contact: string;
-    github: string;
-  };
+  homeBg: string;
+  aboutBg: string;
+  portfolioBg: string;
+  resourcesBg: string;
+  contactBg: string;
+  githubBg: string;
 };
 
-const Explore = ({background}: ExploreProps): JSX.Element => (
+const Explore = ({
+  homeBg,
+  aboutBg,
+  portfolioBg,
+  resourcesBg,
+  contactBg,
+  githubBg
+}: ExploreProps): JSX.Element => (
   <T>
     <div className='grid h-full grid-cols-2 gap-2 px-4 py-6'>
       <THome>
         <Home className='group/home relative h-full w-full hover:shadow-lg'>
           <div
-            className={`absolute h-full w-full ${background.home} bg-cover bg-center bg-no-repeat brightness-50`}
+            className={`absolute h-full w-full ${homeBg} bg-cover bg-center bg-no-repeat brightness-50`}
           ></div>
           <div className='relative h-full'>
             <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/home:bg-white group-hover/home:text-gray-700 group-hover/home:shadow-md'>
@@ -42,7 +47,7 @@ const Explore = ({background}: ExploreProps): JSX.Element => (
           href='/about'
         >
           <div
-            className={`absolute h-full w-full ${background.about} bg-cover bg-center bg-no-repeat brightness-50`}
+            className={`absolute h-full w-full ${aboutBg} bg-cover bg-center bg-no-repeat brightness-50`}
           ></div>
           <div className='relative h-full'>
             <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/about:bg-white group-hover/about:text-gray-700 group-hover/about:shadow-md'>
@@ -57,7 +62,7 @@ const Explore = ({background}: ExploreProps): JSX.Element => (
           href='/portfolio'
         >
           <div
-            className={`absolute h-full w-full ${background.portfolio} bg-cover bg-center bg-no-repeat brightness-50`}
+            className={`absolute h-full w-full ${portfolioBg} bg-cover bg-center bg-no-repeat brightness-50`}
           ></div>
           <div className='relative h-full'>
             <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/portfolio:bg-white group-hover/portfolio:text-gray-700 group-hover/portfolio:shadow-md'>
@@ -72,7 +77,7 @@ const Explore = ({background}: ExploreProps): JSX.Element => (
           href='/resources'
         >
           <div
-            className={`absolute h-full w-full ${background.resources} bg-cover bg-center bg-no-repeat brightness-50`}
+            className={`absolute h-full w-full ${resourcesBg} bg-cover bg-center bg-no-repeat brightness-50`}
           ></div>
           <div className='relative h-full'>
             <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/resources:bg-white group-hover/resources:text-gray-700 group-hover/resources:shadow-md'>
@@ -87,7 +92,7 @@ const Explore = ({background}: ExploreProps): JSX.Element => (
           href='/contact'
         >
           <div
-            className={`absolute h-full w-full ${background.contact} bg-cover bg-center bg-no-repeat brightness-50`}
+            className={`absolute h-full w-full ${contactBg} bg-cover bg-center bg-no-repeat brightness-50`}
           ></div>
           <div className='relative h-full'>
             <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/contact:bg-white group-hover/contact:text-gray-700 group-hover/contact:shadow-md'>
@@ -102,7 +107,7 @@ const Explore = ({background}: ExploreProps): JSX.Element => (
           href='https://github.com/resenzhu/nextjs'
         >
           <div
-            className={`absolute h-full w-full ${background.github} bg-cover bg-center bg-no-repeat brightness-50`}
+            className={`absolute h-full w-full ${githubBg} bg-cover bg-center bg-no-repeat brightness-50`}
           ></div>
           <div className='relative h-full'>
             <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/github:bg-white group-hover/github:text-gray-700 group-hover/github:shadow-md'>
