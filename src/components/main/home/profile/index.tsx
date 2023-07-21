@@ -58,7 +58,7 @@ const Profile = ({
           </TBio>
           <TButtons>
             <div className='flex w-36 flex-1 flex-col justify-center space-y-2'>
-              <Hello />
+              <Hello label='HELLO' />
               <Explore />
             </div>
           </TButtons>

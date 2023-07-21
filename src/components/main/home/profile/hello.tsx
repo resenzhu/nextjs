@@ -2,7 +2,11 @@
 
 import useHome from '@hooks/main/use-home';
 
-const Hello = (): JSX.Element => {
+type HelloProps = {
+  label: string;
+};
+
+const Hello = ({label}: HelloProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleChatbot = (show: boolean): void => {
@@ -20,9 +24,10 @@ const Hello = (): JSX.Element => {
       type='button'
       onClick={(): void => handleToggleChatbot(true)}
     >
-      HELLO
+      {label}
     </button>
   );
 };
 
+export type {HelloProps};
 export default Hello;
