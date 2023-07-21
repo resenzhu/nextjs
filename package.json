@@ -9,10 +9,10 @@
     "url": "https://linkedin.com/in/resen"
   },
   "scripts": {
-    "dev": "next dev",
+    "upgrade": "ncu -u",
     "prettier": "prettier --write . !.next",
     "lint": "next lint",
-    "upgrade": "ncu -u",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
