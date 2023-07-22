@@ -5,4 +5,4 @@ const socketManager = new Manager(process.env.NEXT_PUBLIC_APP_SOCKET, {
   rejectUnauthorized: process.env.NODE_ENV === 'production'
 });
 
-export const socket = socketManager.socket('/');
+export const mainSocket = socketManager.socket('/main');
