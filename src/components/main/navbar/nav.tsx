@@ -31,7 +31,6 @@ const Nav = ({children}: NavProps): JSX.Element => {
     if (!rendered) {
       setRendered(true);
     }
-
     return (): void => {
       window.removeEventListener('mousedown', handleHideSidenav);
     };

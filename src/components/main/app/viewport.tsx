@@ -18,7 +18,6 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
       width: window.innerWidth,
       height: window.innerHeight
     };
-
     setViewport(newViewport);
   }, 500);
 
@@ -26,7 +25,6 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
     if (!rendered) {
       setRendered(true);
     }
-
     return (): void => {
       window.removeEventListener('resize', handleResizeViewport);
     };
@@ -42,10 +40,8 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
           width: window.innerWidth,
           height: window.innerHeight
         };
-
         setViewport(newViewport);
       }
-
       window.addEventListener('resize', handleResizeViewport);
     }
   }, [rendered]);

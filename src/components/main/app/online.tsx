@@ -19,7 +19,6 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
     if (!rendered) {
       setRendered(true);
     }
-
     return (): void => {
       window.removeEventListener('offline', handleChangeConnectivity);
       window.removeEventListener('online', handleChangeConnectivity);
