@@ -1,10 +1,8 @@
 import {Manager} from 'socket.io-client';
 
-const socketManager = new Manager(process.env.APP_SERVER, {
+const socketManager = new Manager(process.env.NEXT_PUBLIC_APP_SOCKET, {
   transports: ['websocket', 'polling'],
-  rejectUnauthorized: process.env.NODE_ENV === 'production',
-  addTrailingSlash: false,
-  autoConnect: false
+  rejectUnauthorized: process.env.NODE_ENV === 'production'
 });
 
-export const mainSocket = socketManager.socket('/main');
+export const socket = socketManager.socket('/');
