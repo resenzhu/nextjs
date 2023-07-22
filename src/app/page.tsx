@@ -54,7 +54,7 @@ const Page = (): JSX.Element => (
       contactBg='bg-[url("/images/main/home-explore-contact.webp")]'
       githubBg='bg-[url("/images/main/home-explore-github.webp")]'
     />
-    <Chatbot name='RESEN' />
+    <Chatbot name='RESEN [BOT]' />
   </section>
 );
 
