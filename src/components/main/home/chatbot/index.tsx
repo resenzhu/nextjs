@@ -1,8 +1,8 @@
 import {T, TBackdrop, TChatbot} from '@components/main/home/chatbot/transition';
 import Chat from '@components/main/home/chatbot/chat';
-import Choices from '@components/main/home/chatbot/choices';
 import Close from '@components/main/home/chatbot/close';
 import Online from '@components/main/home/chatbot/online';
+import Options from '@components/main/home/chatbot/options';
 import {faClose} from '@fortawesome/free-solid-svg-icons';
 
 type ChatbotProps = {
@@ -36,7 +36,7 @@ const Chatbot = ({name}: ChatbotProps): JSX.Element => (
           </div>
           <div className='border-t-2 border-gray-300'>
             <div className='mx-4 space-y-2 py-4 text-white'>
-              <Choices />
+              <Options />
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-const Choices = (): JSX.Element => (
+const Options = (): JSX.Element => (
   <>
     <div className='w-fit bg-cyan-600 px-3 py-1 shadow-md duration-150 hover:bg-cyan-700'>
       I want to know about you.
@@ -15,4 +15,4 @@ const Choices = (): JSX.Element => (
   </>
 );
 
-export default Choices;
+export default Options;
