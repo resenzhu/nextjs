@@ -35,7 +35,11 @@ const nextHeaders = {
           directives: {
             baseURI: ["'self'"],
             childSrc: ["'self'"],
-            connectSrc: ["'self'", 'https://vitals.vercel-insights.com'],
+            connectSrc: [
+              "'self'",
+              'https://vitals.vercel-insights.com',
+              process.env.NEXT_PUBLIC_APP_SOCKET
+            ],
             defaultSrc: ["'self'"],
             fontSrc: ["'self'"],
             formAction: ["'self'"],
