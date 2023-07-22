@@ -6,12 +6,20 @@ type Section = {
   chatbot: boolean;
 };
 
+type Chatbot = {
+  typing: boolean;
+  chat: {type: 'question' | 'answer'; content: string}[];
+  options: {id: number; question: string}[];
+};
+
 type State = {
   section: Section;
+  chatbot: Chatbot;
 };
 
 type Reducers = {
   setSection: (state: State, action: PayloadAction<Section>) => void;
+  setChatbot: (state: State, action: PayloadAction<Chatbot>) => void;
 };
 
 const name: string = 'home';
@@ -21,6 +29,11 @@ const initialState: State = {
     profile: true,
     explore: false,
     chatbot: false
+  },
+  chatbot: {
+    typing: false,
+    chat: [],
+    options: []
   }
 };
 
@@ -28,6 +41,11 @@ const reducers: Reducers = {
   setSection: (state, action) => {
     if (action.payload !== state.section) {
       state.section = action.payload;
+    }
+  },
+  setChatbot: (state, action) => {
+    if (action.payload !== state.chatbot) {
+      state.chatbot = action.payload;
     }
   }
 };
@@ -38,6 +56,6 @@ const slice = createSlice({
   reducers: reducers
 });
 
-export type {Section};
-export const {setSection} = slice.actions;
+export type {Section, Chatbot};
+export const {setSection, setChatbot} = slice.actions;
 export default slice.reducer;
