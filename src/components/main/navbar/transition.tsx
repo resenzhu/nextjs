@@ -1,6 +1,6 @@
 'use client';
 
-import {Fragment, ReactNode} from 'react';
+import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
 import useApp from '@hooks/main/use-app';
 

@@ -10,7 +10,7 @@ import {
 import Explore from '@components/main/home/profile/explore';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Hello from '@components/main/home/profile/hello';
-import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import Picture from '@components/main/home/profile/picture';
 import Specialty from '@components/main/home/profile/specialty';

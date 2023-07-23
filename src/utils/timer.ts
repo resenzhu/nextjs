@@ -1,4 +1,4 @@
-import {EffectCallback} from 'react';
+import type {EffectCallback} from 'react';
 
 export const debounce = (
   callback: (...args: any[]) => any,

@@ -1,4 +1,4 @@
-import {type HTMLAttributeAnchorTarget, ReactNode} from 'react';
+import type {HTMLAttributeAnchorTarget, ReactNode} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Nav from '@components/main/navbar/nav';

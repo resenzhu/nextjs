@@ -1,6 +1,6 @@
 'use client';
 
-import {ReactNode, useEffect, useState} from 'react';
+import {type ReactNode, useEffect, useState} from 'react';
 import type {Viewport as AppViewport} from '@redux/reducers/main/app';
 import {debounce} from '@utils/timer';
 import useApp from '@hooks/main/use-app';
