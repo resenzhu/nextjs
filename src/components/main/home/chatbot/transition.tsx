@@ -68,3 +68,22 @@ export const TOffline = ({children}: TProps): JSX.Element => {
     </Transition>
   );
 };
+
+export const TTyping = ({children}: TProps): JSX.Element => {
+  const {chatbot} = useHome();
+
+  return (
+    <Transition
+      show={chatbot.typing}
+      as={Fragment}
+      enter='duration-150 ease-out'
+      enterFrom='-translate-x-full opacity-0'
+      enterTo='translate-x-0 opacity-100'
+      leave='duration-150 ease-in'
+      leaveFrom='translate-x-0 opacity-100'
+      leaveTo='-translate-x-full opacity-0'
+    >
+      {children}
+    </Transition>
+  );
+};
