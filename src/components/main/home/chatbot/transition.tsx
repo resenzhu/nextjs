@@ -70,11 +70,12 @@ export const TOffline = ({children}: TProps): JSX.Element => {
 };
 
 export const TTyping = ({children}: TProps): JSX.Element => {
+  const {online} = useApp();
   const {chatbot} = useHome();
 
   return (
     <Transition
-      show={chatbot.typing}
+      show={online && chatbot.typing}
       as={Fragment}
       enter='duration-150 ease-out'
       enterFrom='-translate-x-full opacity-0'
