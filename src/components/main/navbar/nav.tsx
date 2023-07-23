@@ -13,7 +13,7 @@ type NavProps = {
 const Nav = ({children}: NavProps): JSX.Element => {
   const sidebar = useRef<HTMLDivElement>(null);
   const [rendered, setRendered] = useState<boolean>(false);
-  const {viewport, sidenav, setSidenav} = useApp();
+  const {sidenav, viewport, setSidenav} = useApp();
 
   const handleToggleSidenav = (show: boolean): void => {
     if (show !== sidenav) {
