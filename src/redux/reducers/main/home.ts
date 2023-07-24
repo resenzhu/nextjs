@@ -7,9 +7,9 @@ type Section = {
 };
 
 type Chatbot = {
-  typing: boolean;
   chat: {sender: 'bot' | 'user'; message: string}[];
-  message: string;
+  typing: boolean;
+  input: string;
 };
 
 type State = {
@@ -31,9 +31,9 @@ const initialState: State = {
     chatbot: false
   },
   chatbot: {
-    typing: false,
     chat: [],
-    message: ''
+    typing: false,
+    input: ''
   }
 };
 
