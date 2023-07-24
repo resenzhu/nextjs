@@ -1,7 +1,6 @@
 'use client';
 
 import type {ChangeEvent, FormEvent} from 'react';
-import type {Chatbot} from '@redux/reducers/main/home';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
@@ -18,32 +17,51 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
   const {chatbot, setChatbot} = useHome();
 
   const handleUpdateInput = (event: ChangeEvent<HTMLInputElement>): void => {
-    const property = event.target.name as keyof Chatbot;
     const {value} = event.target;
-    if (chatbot[property] !== value) {
-      const updatedChatbot: Chatbot = {
+    if (chatbot.input !== value) {
+      setChatbot({
         ...chatbot,
-        [property]: value
-      };
-      setChatbot(updatedChatbot);
+        input: value
+      });
     }
   };
 
   const handleTrimInput = (event: ChangeEvent<HTMLInputElement>): void => {
-    const property = event.target.name as keyof Chatbot;
     const {value} = event.target;
-    if (chatbot[property] !== value.trim()) {
-      const updatedChatbot: Chatbot = {
+    if (chatbot.input !== value.trim()) {
+      setChatbot({
         ...chatbot,
-        [property]: value.trim()
-      };
-      setChatbot(updatedChatbot);
+        input: value.trim()
+      });
     }
   };
 
   const handleSendInput = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    mainSocket.emit('ask-chatbot');
+    if (online && chatbot.input.length > 0 && chatbot.input.length <= 160) {
+      setChatbot({
+        ...chatbot,
+        chat: [
+          ...chatbot.chat,
+          {
+            sender: 'user',
+            message: chatbot.input
+          }
+        ]
+      });
+      mainSocket.emit('ask-chatbot', chatbot.input, (answer: string): void => {
+        setChatbot({
+          ...chatbot,
+          chat: [
+            ...chatbot.chat,
+            {
+              sender: 'bot',
+              message: answer
+            }
+          ]
+        });
+      });
+    }
   };
 
   return (
@@ -57,6 +75,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
         type='text'
         placeholder={placeholder}
         value={chatbot.input}
+        maxLength={160}
         onChange={handleUpdateInput}
         onBlur={handleTrimInput}
       />
