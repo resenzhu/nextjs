@@ -39,17 +39,19 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
   const handleSendInput = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     if (online && chatbot.input.length > 0 && chatbot.input.length <= 160) {
+      const input = chatbot.input;
       setChatbot({
         ...chatbot,
         chat: [
           ...chatbot.chat,
           {
             sender: 'user',
-            message: chatbot.input
+            message: input
           }
-        ]
+        ],
+        input: ''
       });
-      mainSocket.emit('ask-chatbot', chatbot.input, (answer: string): void => {
+      mainSocket.emit('ask-chatbot', input, (answer: string): void => {
         setChatbot({
           ...chatbot,
           chat: [
