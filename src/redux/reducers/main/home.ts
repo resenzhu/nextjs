@@ -6,8 +6,13 @@ type Section = {
   chatbot: boolean;
 };
 
+type Chat = {
+  sender: 'bot' | 'user';
+  message: string;
+};
+
 type Chatbot = {
-  chat: {sender: 'bot' | 'user'; message: string}[];
+  chat: Chat[];
   typing: boolean;
   input: string;
 };
@@ -56,6 +61,6 @@ const slice = createSlice({
   reducers: reducers
 });
 
-export type {Section, Chatbot};
+export type {Section, Chat, Chatbot};
 export const {setSection, setChatbot} = slice.actions;
 export default slice.reducer;
