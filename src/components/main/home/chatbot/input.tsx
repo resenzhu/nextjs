@@ -8,16 +8,16 @@ import {mainSocket} from '@utils/socket';
 import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
-type MessageProps = {
+type InputProps = {
   placeholder: string;
   sendIcon: IconDefinition;
 };
 
-const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
+const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
   const {online} = useApp();
   const {chatbot, setChatbot} = useHome();
 
-  const handleUpdateMessage = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleUpdateInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const property = event.target.name as keyof Chatbot;
     const {value} = event.target;
     if (chatbot[property] !== value) {
@@ -29,7 +29,7 @@ const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
     }
   };
 
-  const handleTrimMessage = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleTrimInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const property = event.target.name as keyof Chatbot;
     const {value} = event.target;
     if (chatbot[property] !== value.trim()) {
@@ -41,7 +41,7 @@ const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
     }
   };
 
-  const handleSendMessage = (event: FormEvent<HTMLFormElement>): void => {
+  const handleSendInput = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     mainSocket.emit('ask-chatbot');
   };
@@ -49,7 +49,7 @@ const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
   return (
     <form
       className='mx-4 flex items-center justify-between space-x-3 py-3'
-      onSubmit={handleSendMessage}
+      onSubmit={handleSendInput}
     >
       <input
         className='flex-1 outline-0'
@@ -57,8 +57,8 @@ const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
         type='text'
         placeholder={placeholder}
         value={chatbot.input}
-        onChange={handleUpdateMessage}
-        onBlur={handleTrimMessage}
+        onChange={handleUpdateInput}
+        onBlur={handleTrimInput}
       />
       <button
         className='rounded-full bg-cyan-600 p-1 duration-150 hover:bg-cyan-700 disabled:bg-gray-300'
@@ -74,5 +74,5 @@ const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
   );
 };
 
-export type {MessageProps};
-export default Message;
+export type {InputProps};
+export default Input;

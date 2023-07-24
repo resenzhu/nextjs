@@ -2,7 +2,7 @@ import {T, TBackdrop, TChatbot} from '@components/main/home/chatbot/transition';
 import {faClose, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import Chat from '@components/main/home/chatbot/chat';
 import Close from '@components/main/home/chatbot/close';
-import Message from '@components/main/home/chatbot/message';
+import Input from '@components/main/home/chatbot/input';
 
 type ChatbotProps = {
   name: string;
@@ -26,7 +26,7 @@ const Chatbot = ({name}: ChatbotProps): JSX.Element => (
             <Chat />
           </div>
           <div className='border-t-2'>
-            <Message
+            <Input
               placeholder='Type a message'
               sendIcon={faPaperPlane}
             />
