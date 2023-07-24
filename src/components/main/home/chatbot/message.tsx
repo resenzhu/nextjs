@@ -3,6 +3,7 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {FormEvent} from 'react';
 import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {mainSocket} from '@utils/socket';
 
 type MessageProps = {
   placeholder: string;
@@ -12,6 +13,7 @@ type MessageProps = {
 const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
   const handleSendMessage = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    mainSocket.emit('ask-chatbot');
   };
 
   return (
