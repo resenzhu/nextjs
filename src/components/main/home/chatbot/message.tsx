@@ -32,7 +32,7 @@ const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
   const handleTrimMessage = (event: ChangeEvent<HTMLInputElement>): void => {
     const property = event.target.name as keyof Chatbot;
     const {value} = event.target;
-    if (chatbot[property] !== value) {
+    if (chatbot[property] !== value.trim()) {
       const updatedChatbot: Chatbot = {
         ...chatbot,
         [property]: value.trim()
@@ -53,10 +53,10 @@ const Message = ({placeholder, sendIcon}: MessageProps): JSX.Element => {
     >
       <input
         className='flex-1 outline-0'
-        name='message'
+        name='input'
         type='text'
         placeholder={placeholder}
-        value={chatbot.message}
+        value={chatbot.input}
         onChange={handleUpdateMessage}
         onBlur={handleTrimMessage}
       />
