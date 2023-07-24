@@ -22,7 +22,7 @@ const Chatbot = ({name}: ChatbotProps): JSX.Element => (
               <Close icon={faClose} />
             </div>
           </div>
-          <div className='mx-4 grid h-full flex-1 space-y-2 overflow-y-auto py-4'>
+          <div className='mx-4 block h-full flex-1 space-y-2 overflow-y-auto py-4'>
             <Chat />
           </div>
           <div className='border-t-2'>

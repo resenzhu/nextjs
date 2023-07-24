@@ -15,8 +15,8 @@ const Chat = (): JSX.Element => {
           <div
             className={
               chat.sender === 'bot'
-                ? 'max-w-5/6 w-fit place-self-start bg-cyan-600 px-3 py-1 text-white'
-                : 'max-w-5/6 w-fit place-self-end bg-gray-200 px-3 py-1'
+                ? 'max-w-5/6 float-left w-fit bg-cyan-600 px-3 py-1 text-white'
+                : 'max-w-5/6 float-right w-fit bg-gray-200 px-3 py-1'
             }
             key={index}
           >
