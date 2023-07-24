@@ -1,12 +1,12 @@
 'use client';
 
+import {TOffline, TTyping} from '@components/main/home/chatbot/transition';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {TTyping} from '@components/main/home/chatbot/transition';
 import {faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 
 const Chat = (): JSX.Element => (
   <>
-    <div className='max-w-5/6 w-fit place-self-end bg-gray-200 px-3 py-1'>
+    {/* <div className='max-w-5/6 w-fit place-self-end bg-gray-200 px-3 py-1'>
       Hello!
     </div>
     <div className='max-w-5/6 w-fit place-self-start bg-cyan-600 px-3 py-1 text-white'>
@@ -65,7 +65,13 @@ const Chat = (): JSX.Element => (
     <div className='max-w-5/6 w-fit place-self-end bg-gray-200 px-3 py-1'>
       The standard chunk of Lorem Ipsum used since the 1500s is reproduced below
       for those interested.
-    </div>
+    </div> */}
+    <TOffline>
+      <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
+        Oops! It appears that you're currently offline. Please ensure that
+        you're connected to the internet and try again later.
+      </div>
+    </TOffline>
     <TTyping>
       <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
         <FontAwesomeIcon
