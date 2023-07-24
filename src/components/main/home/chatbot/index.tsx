@@ -15,7 +15,7 @@ const Chatbot = ({name}: ChatbotProps): JSX.Element => (
         <div className='fixed h-full w-full bg-black'></div>
       </TBackdrop>
       <TChatbot>
-        <div className='fixed bottom-0 flex h-[85vh] w-full flex-col bg-white'>
+        <div className='fixed bottom-0 flex h-[80vh] w-full flex-col bg-white'>
           <div className='bg-cyan-600'>
             <div className='mx-4 flex justify-between py-3 align-middle text-white'>
               <span className='font-bold'>{name}</span>
