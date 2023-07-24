@@ -1,7 +1,6 @@
 'use client';
 
 import {type ReactNode, useEffect, useState} from 'react';
-import type {Viewport as AppViewport} from '@redux/reducers/main/app';
 import {debounce} from '@utils/timer';
 import useApp from '@hooks/main/use-app';
 
@@ -14,11 +13,10 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
   const {viewport, setViewport} = useApp();
 
   const handleResizeViewport = debounce((): void => {
-    const newViewport: AppViewport = {
+    setViewport({
       width: window.innerWidth,
       height: window.innerHeight
-    };
-    setViewport(newViewport);
+    });
   }, 500);
 
   useEffect((): (() => void) => {
@@ -36,11 +34,10 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
         viewport.width !== window.innerWidth ||
         viewport.height !== window.innerHeight
       ) {
-        const newViewport: AppViewport = {
+        setViewport({
           width: window.innerWidth,
           height: window.innerHeight
-        };
-        setViewport(newViewport);
+        });
       }
       window.addEventListener('resize', handleResizeViewport);
     }
