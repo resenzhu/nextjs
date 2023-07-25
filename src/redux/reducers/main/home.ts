@@ -12,7 +12,7 @@ type Chat = {
 };
 
 type Chatbot = {
-  typing: boolean;
+  replying: boolean;
   chat: Chat[];
 };
 
@@ -35,7 +35,7 @@ const initialState: State = {
     chatbot: false
   },
   chatbot: {
-    typing: false,
+    replying: false,
     chat: []
   }
 };
