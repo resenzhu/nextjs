@@ -3,7 +3,6 @@
 import type {ChangeEvent, FormEvent} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {mainSocket} from '@utils/socket';
 import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
@@ -39,29 +38,17 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
   const handleSendInput = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     if (online && chatbot.input.length > 0 && chatbot.input.length <= 160) {
-      const input = chatbot.input;
+      const tempInput = chatbot.input;
       setChatbot({
         ...chatbot,
         chat: [
           ...chatbot.chat,
           {
             sender: 'user',
-            message: input
+            message: tempInput
           }
         ],
         input: ''
-      });
-      mainSocket.emit('ask-chatbot', input, (answer: string): void => {
-        setChatbot({
-          ...chatbot,
-          chat: [
-            ...chatbot.chat,
-            {
-              sender: 'bot',
-              message: answer
-            }
-          ]
-        });
       });
     }
   };
@@ -72,7 +59,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
       onSubmit={handleSendInput}
     >
       <input
-        className='flex-1 outline-0'
+        className='flex-1 bg-gray-100 px-3 py-2 outline-0'
         name='input'
         type='text'
         placeholder={placeholder}
