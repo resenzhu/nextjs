@@ -26,8 +26,8 @@ const Chat = (): JSX.Element => {
       )}
       <TOffline>
         <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
-          Oops! It appears that you're currently offline. Please ensure that
-          you're connected to the internet and try again later.
+          Oops! It appears that you&#39;re currently offline. Please ensure that
+          you&#39;re connected to the internet and try again later.
         </div>
       </TOffline>
       <TTyping>
