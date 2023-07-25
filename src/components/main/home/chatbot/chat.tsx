@@ -1,12 +1,11 @@
 'use client';
 
-import {TOffline, TTyping} from '@components/main/home/chatbot/transition';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEllipsisH} from '@fortawesome/free-solid-svg-icons';
+import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
 const Chat = (): JSX.Element => {
   const {chatbot} = useHome();
+  const {online} = useApp();
 
   return (
     <>
@@ -24,20 +23,12 @@ const Chat = (): JSX.Element => {
           </div>
         )
       )}
-      <TOffline>
+      {!online && (
         <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
           Oops! It appears that you&#39;re currently offline. Please ensure that
           you&#39;re connected to the internet and try again later.
         </div>
-      </TOffline>
-      <TTyping>
-        <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
-          <FontAwesomeIcon
-            className='animate-pulse animate-duration-1000 animate-infinite animate-ease-linear'
-            icon={faEllipsisH}
-          />
-        </div>
-      </TTyping>
+      )}
     </>
   );
 };
