@@ -11,16 +11,20 @@ const Chat = (): JSX.Element => {
     <>
       {chatbot.chat.map(
         (chat, index): JSX.Element => (
-          <div
-            className={
-              chat.sender === 'bot'
-                ? 'max-w-5/6 w-fit place-self-start bg-cyan-600 px-3 py-1 text-white'
-                : 'max-w-5/6 w-fit place-self-end bg-gray-200 px-3 py-1'
-            }
-            key={index}
-          >
-            {chat.message}
-          </div>
+          <>
+            {chat.message.length !== 0 && (
+              <div
+                className={
+                  chat.sender === 'bot'
+                    ? 'max-w-5/6 w-fit place-self-start bg-cyan-600 px-3 py-1 text-white'
+                    : 'max-w-5/6 w-fit place-self-end bg-gray-200 px-3 py-1'
+                }
+                key={index}
+              >
+                {chat.message}
+              </div>
+            )}
+          </>
         )
       )}
       {!online && (
