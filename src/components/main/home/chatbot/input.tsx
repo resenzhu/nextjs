@@ -13,11 +13,11 @@ type InputProps = {
 };
 
 type AskChatbotReq = {
-  input: string
+  input: string;
 };
 
 type AskChatbotRes = {
-  reply: string
+  reply: string;
 };
 
 const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
@@ -63,23 +63,27 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
 
   useEffect(() => {
     if (chatbot.replying) {
-      const askChatbotReq: AskChatbotReq = {
+      const request: AskChatbotReq = {
         input: input
       };
       setInput('');
-      mainSocket.emit('ask-chatbot', askChatbotReq, (response: AskChatbotRes): void => {
-        setChatbot({
-          ...chatbot,
-          replying: false,
-          chat: [
-            ...chatbot.chat,
-            {
-              sender: 'bot',
-              message: response.reply
-            }
-          ]
-        });
-      });
+      mainSocket.emit(
+        'ask-chatbot',
+        request,
+        (response: AskChatbotRes): void => {
+          setChatbot({
+            ...chatbot,
+            replying: false,
+            chat: [
+              ...chatbot.chat,
+              {
+                sender: 'bot',
+                message: response.reply
+              }
+            ]
+          });
+        }
+      );
     }
   }, [chatbot.replying]);
 
