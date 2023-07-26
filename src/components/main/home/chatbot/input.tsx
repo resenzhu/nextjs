@@ -12,6 +12,14 @@ type InputProps = {
   sendIcon: IconDefinition;
 };
 
+type AskChatbotReq = {
+  input: string
+};
+
+type AskChatbotRes = {
+  reply: string
+};
+
 const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
   const {online} = useApp();
   const {chatbot, setChatbot} = useHome();
@@ -55,7 +63,11 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
 
   useEffect(() => {
     if (chatbot.replying) {
-      mainSocket.emit('ask-chatbot', input, (reply: string): void => {
+      const askChatbotReq: AskChatbotReq = {
+        input: input
+      };
+      setInput('');
+      mainSocket.emit('ask-chatbot', askChatbotReq, (response: AskChatbotRes): void => {
         setChatbot({
           ...chatbot,
           replying: false,
@@ -63,7 +75,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
             ...chatbot.chat,
             {
               sender: 'bot',
-              message: reply
+              message: response.reply
             }
           ]
         });
@@ -99,5 +111,5 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
   );
 };
 
-export type {InputProps};
+export type {InputProps, AskChatbotReq, AskChatbotRes};
 export default Input;
