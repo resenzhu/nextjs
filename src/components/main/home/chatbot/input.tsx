@@ -1,9 +1,11 @@
 'use client';
 
 import {type ChangeEvent, type FormEvent, useEffect, useState} from 'react';
+import {object, string} from 'yup';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
+import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
@@ -43,7 +45,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
     event.preventDefault();
     if (
       online &&
-      input.length > 0 &&
+      input.trim().length > 0 &&
       input.length <= 160 &&
       !chatbot.replying
     ) {
@@ -54,7 +56,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
           ...chatbot.chat,
           {
             sender: 'user',
-            message: input.trim()
+            message: sanitize(input).trim()
           }
         ]
       });
@@ -63,31 +65,36 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
 
   useEffect(() => {
     if (chatbot.replying) {
+      const requestSchema = object().shape({
+        input: string().ensure().required().min(1).max(160)
+      });
       const request: AskChatbotReq = {
-        input: input.trim()
+        input: sanitize(input).trim()
       };
-      setInput('');
-      mainSocket
-        .timeout(60000)
-        .emit(
-          'ask-chatbot',
-          request,
-          (error: Error, response: AskChatbotRes): void => {
-            setChatbot({
-              ...chatbot,
-              replying: false,
-              chat: [
-                ...chatbot.chat,
-                {
-                  sender: 'bot',
-                  message: error
-                    ? "I apologize for the inconvenience, I am currently experiencing some technical difficulties that prevent me from assisting you at the moment. However, you can reach me on my social media channels for further support. Don't hesitate to reach out to me there, and I'll be glad to assist you. Thank you for your patience!"
-                    : response.reply
-                }
-              ]
-            });
-          }
-        );
+      requestSchema.validate(request).then((): void => {
+        setInput('');
+        mainSocket
+          .timeout(60000)
+          .emit(
+            'ask-chatbot',
+            request,
+            (error: Error, response: AskChatbotRes): void => {
+              setChatbot({
+                ...chatbot,
+                replying: false,
+                chat: [
+                  ...chatbot.chat,
+                  {
+                    sender: 'bot',
+                    message: error
+                      ? "I apologize for the inconvenience, I am currently experiencing some technical difficulties that prevent me from assisting you at the moment. However, you can reach me on my social media channels for further support. Don't hesitate to reach out to me there, and I'll be glad to assist you. Thank you for your patience!"
+                      : response.reply
+                  }
+                ]
+              });
+            }
+          );
+      });
     }
   }, [chatbot.replying]);
 
