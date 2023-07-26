@@ -54,7 +54,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
           ...chatbot.chat,
           {
             sender: 'user',
-            message: input
+            message: input.trim()
           }
         ]
       });
@@ -64,7 +64,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
   useEffect(() => {
     if (chatbot.replying) {
       const request: AskChatbotReq = {
-        input: input
+        input: input.trim()
       };
       setInput('');
       mainSocket.emit(
