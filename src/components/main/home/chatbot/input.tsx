@@ -67,23 +67,27 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
         input: input.trim()
       };
       setInput('');
-      mainSocket.emit(
-        'ask-chatbot',
-        request,
-        (response: AskChatbotRes): void => {
-          setChatbot({
-            ...chatbot,
-            replying: false,
-            chat: [
-              ...chatbot.chat,
-              {
-                sender: 'bot',
-                message: response.reply
-              }
-            ]
-          });
-        }
-      );
+      mainSocket
+        .timeout(60000)
+        .emit(
+          'ask-chatbot',
+          request,
+          (error: Error, response: AskChatbotRes): void => {
+            setChatbot({
+              ...chatbot,
+              replying: false,
+              chat: [
+                ...chatbot.chat,
+                {
+                  sender: 'bot',
+                  message: error
+                    ? "I apologize for the inconvenience, I am currently experiencing some technical difficulties that prevent me from assisting you at the moment. However, you can reach me on my social media channels for further support. Don't hesitate to reach out to me there, and I'll be glad to assist you. Thank you for your patience!"
+                    : response.reply
+                }
+              ]
+            });
+          }
+        );
     }
   }, [chatbot.replying]);
 
@@ -104,7 +108,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
       <button
         className='rounded-full bg-cyan-600 p-1 duration-150 hover:bg-cyan-700 disabled:bg-gray-300'
         type='submit'
-        disabled={!online || chatbot.replying}
+        disabled={!online || input.length === 0 || chatbot.replying}
       >
         <FontAwesomeIcon
           className='w-6 text-white'
