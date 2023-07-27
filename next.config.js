@@ -31,10 +31,7 @@ const nextConfig = {
         }
       ];
     }
-    config.externals = [
-      ...config.externals,
-      'canvas'
-    ];
+    config.externals = [...config.externals, 'canvas'];
     return config;
   }
 };
