@@ -12,7 +12,7 @@ const Chat = (): JSX.Element => {
       {chatbot.chat.map(
         (chat, index): JSX.Element => (
           <>
-            {chat.message.length !== 0 && (
+            {chat.message && chat.message.length !== 0 && (
               <div
                 className={
                   chat.sender === 'bot'
