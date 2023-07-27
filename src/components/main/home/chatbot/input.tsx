@@ -20,7 +20,11 @@ type AskChatbotReq = {
 
 type AskChatbotRes = {
   success: boolean;
-  error: {status: number; subStatus: number; message: string};
+  error: {
+    status: number;
+    subStatus: number;
+    message: string;
+  };
   data: {
     reply: string;
   };
