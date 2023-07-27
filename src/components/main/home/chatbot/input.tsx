@@ -19,7 +19,11 @@ type AskChatbotReq = {
 };
 
 type AskChatbotRes = {
-  reply: string;
+  success: boolean;
+  error: {status: number; subStatus: number; message: string}[];
+  data: {
+    reply: string;
+  };
 };
 
 const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
@@ -71,30 +75,45 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
       const request: AskChatbotReq = {
         input: sanitize(input).trim()
       };
-      requestSchema.validate(request).then((): void => {
-        setInput('');
-        mainSocket
-          .timeout(60000)
-          .emit(
-            'ask-chatbot',
-            request,
-            (error: Error, response: AskChatbotRes): void => {
-              setChatbot({
-                ...chatbot,
-                replying: false,
-                chat: [
-                  ...chatbot.chat,
-                  {
-                    sender: 'bot',
-                    message: error
-                      ? "I apologize for the inconvenience, I am currently experiencing some technical difficulties that prevent me from assisting you at the moment. However, you can reach me on my social media channels for further support. Don't hesitate to reach out to me there, and I'll be glad to assist you. Thank you for your patience!"
-                      : response.reply
-                  }
-                ]
-              });
-            }
-          );
-      });
+      requestSchema
+        .validate(request)
+        .then((): void => {
+          setInput('');
+          mainSocket
+            .timeout(60000)
+            .emit(
+              'ask-chatbot',
+              request,
+              (error: Error, response: AskChatbotRes): void => {
+                if (error || (response && response.success)) {
+                  setChatbot({
+                    ...chatbot,
+                    replying: false,
+                    chat: [
+                      ...chatbot.chat,
+                      {
+                        sender: 'bot',
+                        message: error
+                          ? "Apologies for the inconvenience, but I'm currently unable to chat due to unexpected errors. Thank you for your understanding as I work to fix them promptly."
+                          : response.data.reply
+                      }
+                    ]
+                  });
+                } else {
+                  setChatbot({
+                    ...chatbot,
+                    replying: false
+                  });
+                }
+              }
+            );
+        })
+        .catch((): void => {
+          setChatbot({
+            ...chatbot,
+            replying: false
+          });
+        });
     }
   }, [chatbot.replying]);
 
