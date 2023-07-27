@@ -23,11 +23,18 @@ const nextConfig = {
   reactStrictMode: true,
   webpack: (config, {isServer}) => {
     if (isServer) {
-      config.externals.push({
-        bufferutil: 'bufferutil',
-        'utf-8-validate': 'utf-8-validate'
-      });
+      config.externals = [
+        ...config.externals,
+        {
+          bufferutil: 'bufferutil',
+          'utf-8-validate': 'utf-8-validate'
+        }
+      ];
     }
+    config.externals = [
+      ...config.externals,
+      'canvas'
+    ];
     return config;
   }
 };
