@@ -2,6 +2,7 @@
 
 import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
+import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
 export type TProps = {
@@ -9,10 +10,10 @@ export type TProps = {
 };
 
 export const T = ({children}: TProps): JSX.Element => {
+  const {viewport} = useApp();
   const {section, setSection} = useHome();
-
   const handleToggleProfile = (show: boolean): void => {
-    if (show !== section.profile) {
+    if (viewport.width <= 640 && show !== section.profile) {
       setTimeout((): void => {
         setSection({
           ...section,
@@ -24,7 +25,7 @@ export const T = ({children}: TProps): JSX.Element => {
 
   return (
     <Transition
-      show={section.explore}
+      show={(viewport.width <= 640 && section.explore) || viewport.width > 640}
       as={Fragment}
       afterLeave={(): void => handleToggleProfile(true)}
     >

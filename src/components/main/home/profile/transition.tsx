@@ -2,6 +2,7 @@
 
 import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
+import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
 export type TProps = {
@@ -9,10 +10,11 @@ export type TProps = {
 };
 
 export const T = ({children}: TProps): JSX.Element => {
+  const {viewport} = useApp();
   const {section, setSection} = useHome();
 
   const handleToggleExplore = (show: boolean): void => {
-    if (show !== section.explore) {
+    if (viewport.width <= 640 && show !== section.explore) {
       setTimeout((): void => {
         setSection({
           ...section,
@@ -24,7 +26,7 @@ export const T = ({children}: TProps): JSX.Element => {
 
   return (
     <Transition
-      show={section.profile}
+      show={(viewport.width <= 640 && section.profile) || viewport.width > 640}
       as={Fragment}
       afterLeave={(): void => handleToggleExplore(true)}
     >
@@ -89,19 +91,26 @@ export const TBio = ({children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TButtons = ({children}: TProps): JSX.Element => (
-  <Transition.Child
-    as={Fragment}
-    enter='duration-700 ease-out'
-    enterFrom='-translate-x-[80vw] opacity-0'
-    enterTo='translate-x-0 opacity-100'
-    leave='duration-700 ease-in'
-    leaveFrom='translate-x-0 opacity-100'
-    leaveTo='translate-x-[80vw] opacity-0'
-  >
-    {children}
-  </Transition.Child>
-);
+export const TButtons = ({children}: TProps): JSX.Element => {
+  const {viewport} = useApp();
+  return (
+    <>
+      {viewport.width <= 640 && (
+        <Transition.Child
+          as={Fragment}
+          enter='duration-700 ease-out'
+          enterFrom='-translate-x-[80vw] opacity-0'
+          enterTo='translate-x-0 opacity-100'
+          leave='duration-700 ease-in'
+          leaveFrom='translate-x-0 opacity-100'
+          leaveTo='translate-x-[80vw] opacity-0'
+        >
+          {children}
+        </Transition.Child>
+      )}
+    </>
+  );
+};
 
 export const TSocials = ({children}: TProps): JSX.Element => (
   <Transition.Child

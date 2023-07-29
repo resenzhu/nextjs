@@ -31,7 +31,7 @@ const Profile = ({
   socials
 }: ProfileProps): JSX.Element => (
   <T>
-    <div className='flex h-full flex-col items-center overflow-hidden'>
+    <div className='flex h-full flex-col items-center overflow-hidden sm:animate-fade-right sm:shadow-2xl sm:animate-duration-700'>
       <TPicture>
         <div className='relative h-1/5 w-full'>
           <div className='absolute h-full w-full bg-[url("/images/main/home-profile-background.webp")] bg-cover bg-top bg-no-repeat brightness-50 contrast-125'></div>
@@ -41,20 +41,22 @@ const Profile = ({
           </div>
         </div>
       </TPicture>
-      <div className='relative flex h-full flex-col items-center justify-between pt-20'>
+      <div className='relative flex h-full flex-col items-center justify-between pt-20 sm:pt-16'>
         <div className='flex flex-1 flex-col items-center'>
           <TName>
-            <span className='text-2xl font-extrabold tracking-wide text-gray-600'>
+            <span className='text-2xl font-extrabold tracking-wide text-gray-600 sm:text-center sm:text-xl'>
               {name}
             </span>
           </TName>
           <TSpecialty>
-            <span className='text-lg font-extrabold text-cyan-600'>
+            <span className='text-lg font-extrabold text-cyan-600 sm:text-center sm:text-sm'>
               <Specialty title={specialty} />
             </span>
           </TSpecialty>
           <TBio>
-            <span className='w-4/5 py-4 text-center text-gray-500'>{bio}</span>
+            <span className='w-4/5 py-4 text-center text-gray-500 sm:mx-auto sm:w-5/6 sm:text-sm'>
+              {bio}
+            </span>
           </TBio>
           <TButtons>
             <div className='flex w-36 flex-1 flex-col justify-center space-y-2'>
@@ -64,7 +66,7 @@ const Profile = ({
           </TButtons>
         </div>
         <TSocials>
-          <div className='flex w-1/2 items-center justify-between pb-6 pt-4'>
+          <div className='flex w-1/2 items-center justify-between pb-6 pt-4 sm:mx-auto'>
             {socials.map(
               (social): JSX.Element => (
                 <Link
