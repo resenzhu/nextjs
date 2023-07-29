@@ -10,7 +10,6 @@ export type TProps = {
 
 export const T = ({children}: TProps): JSX.Element => {
   const {sidenav} = useApp();
-
   return (
     <Transition
       show={sidenav}

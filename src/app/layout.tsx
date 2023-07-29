@@ -13,7 +13,6 @@ type RootLayoutProps = {
 
 const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
   config.autoAddCss = false;
-
   return (
     <html lang='en'>
       <body className='pt-16 sm:pt-14'>

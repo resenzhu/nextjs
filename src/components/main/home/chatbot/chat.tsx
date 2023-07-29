@@ -6,7 +6,6 @@ import useHome from '@hooks/main/use-home';
 const Chat = (): JSX.Element => {
   const {chatbot} = useHome();
   const {online} = useApp();
-
   return (
     <>
       {chatbot.chat.map(
