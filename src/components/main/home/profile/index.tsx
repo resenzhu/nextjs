@@ -54,7 +54,7 @@ const Profile = ({
             </span>
           </TSpecialty>
           <TBio>
-            <span className='w-4/5 py-4 text-center text-gray-500 sm:mx-auto sm:w-5/6 sm:text-sm'>
+            <span className='w-4/5 py-4 text-center text-gray-500 sm:mx-auto sm:w-5/6 sm:text-sm md:text-base'>
               {bio}
             </span>
           </TBio>
@@ -66,7 +66,7 @@ const Profile = ({
           </TButtons>
         </div>
         <TSocials>
-          <div className='flex w-1/2 items-center justify-between pb-6 pt-4 sm:mx-auto'>
+          <div className='flex w-1/2 items-center justify-between pb-3 sm:mx-auto sm:pb-6'>
             {socials.map(
               (social): JSX.Element => (
                 <Link
