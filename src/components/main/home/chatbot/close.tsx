@@ -14,7 +14,7 @@ const Close = ({icon}: CloseProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleChatbot = (show: boolean): void => {
-    if (viewport.width <= 640 && show !== section.chatbot) {
+    if (viewport.width <= 768 && show !== section.chatbot) {
       setSection({
         ...section,
         chatbot: show
@@ -24,7 +24,7 @@ const Close = ({icon}: CloseProps): JSX.Element => {
 
   return (
     <>
-      {viewport.width <= 640 && (
+      {viewport.width <= 768 && (
         <button
           className='flex'
           type='button'

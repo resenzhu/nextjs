@@ -31,7 +31,7 @@ const Profile = ({
   socials
 }: ProfileProps): JSX.Element => (
   <T>
-    <div className='flex h-full flex-col items-center overflow-hidden sm:animate-fade-right sm:shadow-2xl sm:animate-duration-700'>
+    <div className='flex h-full flex-col items-center overflow-hidden md:animate-fade-right md:shadow-2xl md:animate-duration-700'>
       <TPicture>
         <div className='relative h-1/5 w-full'>
           <div className='absolute h-full w-full bg-[url("/images/main/home-profile-background.webp")] bg-cover bg-top bg-no-repeat brightness-50 contrast-125'></div>
@@ -44,17 +44,17 @@ const Profile = ({
       <div className='relative flex h-full flex-col items-center justify-between pt-20 sm:pt-16'>
         <div className='flex flex-1 flex-col items-center'>
           <TName>
-            <span className='text-2xl font-extrabold tracking-wide text-gray-600 sm:text-center sm:text-xl'>
+            <span className='text-2xl font-extrabold tracking-wide text-gray-600 sm:text-xl landscape:text-2xl'>
               {name}
             </span>
           </TName>
           <TSpecialty>
-            <span className='text-lg font-extrabold text-cyan-600 sm:text-center sm:text-sm'>
+            <span className='text-lg font-extrabold text-cyan-600 sm:text-sm landscape:text-lg'>
               <Specialty title={specialty} />
             </span>
           </TSpecialty>
           <TBio>
-            <span className='w-4/5 py-4 text-center text-gray-500 sm:mx-auto sm:w-5/6 sm:text-sm md:text-base'>
+            <span className='w-4/5 py-4 text-center text-gray-500 sm:mx-auto sm:w-5/6 sm:text-sm lg:py-8 lg:text-base landscape:py-7 landscape:text-lg'>
               {bio}
             </span>
           </TBio>
@@ -66,11 +66,11 @@ const Profile = ({
           </TButtons>
         </div>
         <TSocials>
-          <div className='flex w-1/2 items-center justify-between pb-6 pt-4 sm:mx-auto sm:pb-6 sm:pt-1'>
+          <div className='flex w-1/2 items-center justify-between pb-6 pt-4 sm:mx-auto sm:pb-6 sm:pt-1 landscape:w-1/3 landscape:pb-8 landscape:pt-10'>
             {socials.map(
               (social): JSX.Element => (
                 <Link
-                  className='text-2xl text-cyan-600 duration-150 active:text-cyan-700'
+                  className='text-2xl text-cyan-600 duration-150 active:text-cyan-700 sm:text-xl landscape:text-2xl'
                   key={social.name}
                   href={social.url}
                   target='_blank'

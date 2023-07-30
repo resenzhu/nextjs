@@ -44,7 +44,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
 
   return (
     <>
-      {viewport.width < 640 && (
+      {viewport.width < 768 && (
         <>
           <button
             className='flex'
@@ -63,7 +63,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
               </TBackdrop>
               <TSidenav>
                 <div
-                  className='fixed right-0 top-0 h-screen w-3/5 bg-white'
+                  className='fixed right-0 top-0 h-screen w-3/5 bg-white landscape:w-1/4'
                   ref={sidebar}
                 >
                   <div className='mx-6 flex h-full py-6'>
@@ -88,7 +88,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
           </T>
         </>
       )}
-      {viewport.width >= 640 && (
+      {viewport.width >= 768 && (
         <div className='space-x-6 md:space-x-7 lg:space-x-8'>{children}</div>
       )}
     </>

@@ -18,8 +18,10 @@ const Picture = ({src}: PictureProps): JSX.Element => {
     let size: number = 0;
     if (viewport.width <= 640) {
       size = 140;
-    } else {
+    } else if (viewport.width > 640 && viewport.width <= 1024) {
       size = 110;
+    } else {
+      size = 120;
     }
     if (size !== pictureSize) {
       setPictureSize(size);

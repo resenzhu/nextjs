@@ -15,8 +15,8 @@ const metadata = createMetadata({
 });
 
 const Page = (): JSX.Element => (
-  <section className='h-full sm:mx-12 sm:grid sm:items-center md:mx-16 lg:mx-20'>
-    <div className='h-[calc(100vh-4rem)] max-h-[calc(100vh-4rem)] sm:grid sm:h-5/6 sm:grid-cols-[2fr_3fr] sm:grid-rows-2 sm:gap-2'>
+  <section className='h-[calc(100vh-4rem)] sm:mx-12 sm:h-[calc(100vh-3.5rem)] md:mx-16 md:grid md:items-center lg:mx-auto lg:w-3/4 landscape:h-full landscape:mx-0'>
+    <div className='h-full md:grid md:h-5/6 md:max-h-[calc(100vh-3.5rem)] md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:grid-rows-[minmax(0,1fr)_minmax(0,1fr)] md:gap-2 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)_minmax(0,2fr)] lg:grid-rows-1'>
       <Profile
         picture={[
           '/images/main/home-profile-picture-original.webp',

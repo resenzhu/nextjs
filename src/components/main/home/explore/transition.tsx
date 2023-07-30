@@ -13,7 +13,7 @@ export const T = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   const {section, setSection} = useHome();
   const handleToggleProfile = (show: boolean): void => {
-    if (viewport.width <= 640 && show !== section.profile) {
+    if (show !== section.profile) {
       setTimeout((): void => {
         setSection({
           ...section,
@@ -25,7 +25,7 @@ export const T = ({children}: TProps): JSX.Element => {
 
   return (
     <Transition
-      show={(viewport.width <= 640 && section.explore) || viewport.width > 640}
+      show={(viewport.width <= 768 && section.explore) || viewport.width > 768}
       as={Fragment}
       afterLeave={(): void => handleToggleProfile(true)}
     >
