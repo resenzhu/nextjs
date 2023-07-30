@@ -66,7 +66,7 @@ const Profile = ({
           </TButtons>
         </div>
         <TSocials>
-          <div className='flex w-1/2 items-center justify-between pb-3 sm:mx-auto sm:pb-6'>
+          <div className='flex w-1/2 items-center justify-between pb-6 pt-4 sm:mx-auto sm:pb-6 sm:pt-1'>
             {socials.map(
               (social): JSX.Element => (
                 <Link
