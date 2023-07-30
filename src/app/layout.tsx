@@ -49,9 +49,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
                   target='_blank'
                 />
               </Navbar>
-              <div className='h-[calc(100vh-4rem)] sm:h-[calc(100vh-3.5rem)]'>
-                {children}
-              </div>
+              {children}
             </Online>
           </Viewport>
         </Redux>
