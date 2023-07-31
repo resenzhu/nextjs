@@ -1,8 +1,8 @@
 {
   "git": {
     "deploymentEnabled": {
-      "main": true,
-      "development": false
+      "development": false,
+      "main": true
     },
     "silent": true
   }
