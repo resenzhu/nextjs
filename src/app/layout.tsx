@@ -15,7 +15,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
   config.autoAddCss = false;
   return (
     <html lang='en'>
-      <body className='pt-16 sm:pt-14'>
+      <body className='pt-16 md:pt-14 landscape:pt-14'>
         <Redux>
           <Viewport>
             <Online>

@@ -57,39 +57,39 @@ const Nav = ({children}: NavProps): JSX.Element => {
             />
           </button>
           <T>
-            <div className='fixed'>
-              <TBackdrop>
-                <div className='fixed left-0 top-0 h-screen w-screen bg-black'></div>
-              </TBackdrop>
-              <TSidenav>
-                <div
-                  className='fixed right-0 top-0 h-screen w-3/5 bg-white landscape:w-1/4'
-                  ref={sidebar}
-                >
-                  <div className='mx-6 flex h-full py-6'>
-                    <div className='flex flex-1 flex-col space-y-5'>
-                      {children}
-                    </div>
-                    <div className='pt-1'>
-                      <button
-                        type='button'
-                        onClick={(): void => handleToggleSidenav(false)}
-                      >
-                        <FontAwesomeIcon
-                          className='text-2xl text-gray-500 duration-150 hover:text-red-500'
-                          icon={faXmark}
-                        />
-                      </button>
-                    </div>
+            <TBackdrop>
+              <div className='fixed left-0 top-0 h-screen w-screen bg-black'></div>
+            </TBackdrop>
+            <TSidenav>
+              <div
+                className='fixed right-0 top-0 h-screen w-3/5 bg-white landscape:w-1/4'
+                ref={sidebar}
+              >
+                <div className='mx-6 flex h-full py-6'>
+                  <div className='flex flex-1 flex-col space-y-5'>
+                    {children}
+                  </div>
+                  <div className='pt-1'>
+                    <button
+                      type='button'
+                      onClick={(): void => handleToggleSidenav(false)}
+                    >
+                      <FontAwesomeIcon
+                        className='text-2xl text-gray-500 duration-150 hover:text-red-500'
+                        icon={faXmark}
+                      />
+                    </button>
                   </div>
                 </div>
-              </TSidenav>
-            </div>
+              </div>
+            </TSidenav>
           </T>
         </>
       )}
       {viewport.width >= 768 && (
-        <div className='space-x-6 md:space-x-7 lg:space-x-8'>{children}</div>
+        <div className='space-x-6 md:space-x-7 lg:space-x-8 landscape:space-x-7'>
+          {children}
+        </div>
       )}
     </>
   );

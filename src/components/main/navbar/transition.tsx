@@ -10,14 +10,7 @@ export type TProps = {
 
 export const T = ({children}: TProps): JSX.Element => {
   const {sidenav} = useApp();
-  return (
-    <Transition
-      show={sidenav}
-      as={Fragment}
-    >
-      {children}
-    </Transition>
-  );
+  return <Transition show={sidenav}>{children}</Transition>;
 };
 
 export const TBackdrop = ({children}: TProps): JSX.Element => (
