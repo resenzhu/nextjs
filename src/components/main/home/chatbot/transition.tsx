@@ -14,18 +14,15 @@ export const T = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {
-        viewport.width <= 768 &&
+      {viewport.width < 768 && (
         <Transition
           show={section.chatbot}
           as={Fragment}
         >
           {children}
         </Transition>
-      }
-      {
-        viewport.width > 768 && <>{children}</>
-      }
+      )}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };
@@ -34,7 +31,7 @@ export const TBackdrop = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <Transition.Child
           as={Fragment}
           enter='duration-150 ease-out'
@@ -47,7 +44,6 @@ export const TBackdrop = ({children}: TProps): JSX.Element => {
           {children}
         </Transition.Child>
       )}
-      {viewport.width > 768 && <>{children}</>}
     </>
   );
 };
@@ -56,7 +52,7 @@ export const TChatbot = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <Transition.Child
           as={Fragment}
           enter='duration-150 ease-out'
@@ -69,7 +65,7 @@ export const TChatbot = ({children}: TProps): JSX.Element => {
           {children}
         </Transition.Child>
       )}
-      {viewport.width > 768 && <>{children}</>}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };

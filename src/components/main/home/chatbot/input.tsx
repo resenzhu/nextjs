@@ -123,11 +123,11 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
 
   return (
     <form
-      className='mx-4 flex items-center justify-between space-x-3 py-3 sm:py-2'
+      className='mx-4 flex items-center justify-between space-x-3 py-3 md:py-2'
       onSubmit={handleSendInput}
     >
       <input
-        className='w-full flex-1 bg-gray-100 px-3 py-2 outline-0 sm:text-sm landscape:text-base'
+        className='w-full flex-1 bg-gray-100 px-3 py-2 outline-0 md:text-sm'
         type='text'
         placeholder={placeholder}
         value={input}
