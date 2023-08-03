@@ -26,7 +26,7 @@ export const T = ({children}: TProps): JSX.Element => {
 
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <Transition
           show={section.profile}
           as={Fragment}
@@ -35,7 +35,7 @@ export const T = ({children}: TProps): JSX.Element => {
           {children}
         </Transition>
       )}
-      {viewport.width > 768 && <>{children}</>}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };
@@ -44,8 +44,8 @@ export const TPicture = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {viewport.width <= 768 && (
-          <Transition.Child
+      {viewport.width < 768 && (
+        <Transition.Child
           as={Fragment}
           enter='duration-700 ease-out'
           enterFrom='-translate-y-[30vh] opacity-0'
@@ -57,7 +57,7 @@ export const TPicture = ({children}: TProps): JSX.Element => {
           {children}
         </Transition.Child>
       )}
-      {viewport.width > 768 && <>{children}</>}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };
@@ -66,7 +66,7 @@ export const TName = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <Transition.Child
           as={Fragment}
           enter='duration-700 ease-out'
@@ -79,7 +79,7 @@ export const TName = ({children}: TProps): JSX.Element => {
           {children}
         </Transition.Child>
       )}
-      {viewport.width > 768 && <>{children}</>}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };
@@ -88,7 +88,7 @@ export const TSpecialty = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <Transition.Child
           as={Fragment}
           enter='duration-700 ease-out'
@@ -101,7 +101,7 @@ export const TSpecialty = ({children}: TProps): JSX.Element => {
           {children}
         </Transition.Child>
       )}
-      {viewport.width > 768 && <>{children}</>}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };
@@ -110,7 +110,7 @@ export const TBio = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <Transition.Child
           as={Fragment}
           enter='duration-700 ease-out'
@@ -123,7 +123,7 @@ export const TBio = ({children}: TProps): JSX.Element => {
           {children}
         </Transition.Child>
       )}
-      {viewport.width > 768 && <>{children}</>}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };
@@ -132,7 +132,7 @@ export const TButtons = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <Transition.Child
           as={Fragment}
           enter='duration-700 ease-out'
@@ -145,7 +145,7 @@ export const TButtons = ({children}: TProps): JSX.Element => {
           {children}
         </Transition.Child>
       )}
-      {viewport.width > 768 && <>{children}</>}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };
@@ -154,7 +154,7 @@ export const TSocials = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <Transition.Child
           as={Fragment}
           enter='duration-700 ease-out'
@@ -167,7 +167,7 @@ export const TSocials = ({children}: TProps): JSX.Element => {
           {children}
         </Transition.Child>
       )}
-      {viewport.width > 768 && <>{children}</>}
+      {viewport.width >= 768 && <>{children}</>}
     </>
   );
 };
