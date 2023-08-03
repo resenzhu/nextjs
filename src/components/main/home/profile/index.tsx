@@ -44,17 +44,17 @@ const Profile = ({
       <div className='relative flex h-full flex-col items-center justify-between pt-20 md:pt-16'>
         <div className='flex flex-1 flex-col items-center'>
           <TName>
-            <span className='text-2xl font-extrabold tracking-wide text-gray-600 md:text-xl'>
+            <span className='text-2xl font-extrabold tracking-wide text-gray-600 md:text-xl landscape:text-2xl'>
               {name}
             </span>
           </TName>
           <TSpecialty>
-            <span className='text-lg font-extrabold text-cyan-600 md:text-sm'>
+            <span className='text-lg font-extrabold text-cyan-600 md:text-sm landscape:text-lg'>
               <Specialty title={specialty} />
             </span>
           </TSpecialty>
           <TBio>
-            <span className='w-4/5 py-4 text-center text-gray-500 md:mx-auto md:w-5/6 md:text-sm lg:py-8 lg:text-base'>
+            <span className='w-4/5 py-4 text-center text-gray-500 md:mx-auto md:w-5/6 md:text-sm lg:py-8 lg:text-base landscape:py-7 landscape:text-lg'>
               {bio}
             </span>
           </TBio>
@@ -66,11 +66,11 @@ const Profile = ({
           </TButtons>
         </div>
         <TSocials>
-          <div className='flex w-1/2 items-center justify-between pb-6 pt-4 md:mx-auto md:pb-6 md:pt-1'>
+          <div className='flex w-1/2 items-center justify-between pb-6 pt-4 md:mx-auto md:pb-6 md:pt-1 landscape:w-1/3 landscape:pb-8 landscape:pt-10'>
             {socials.map(
               (social): JSX.Element => (
                 <Link
-                  className='text-2xl text-cyan-600 duration-150 active:text-cyan-700 md:text-xl'
+                  className='text-2xl text-cyan-600 duration-150 active:text-cyan-700 md:text-xl landscape:text-2xl'
                   key={social.name}
                   href={social.url}
                   target='_blank'
