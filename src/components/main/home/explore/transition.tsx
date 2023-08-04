@@ -26,7 +26,7 @@ export const T = ({children}: TProps): JSX.Element => {
 
   return (
     <Transition
-      show={(viewport.width <= 768 && section.explore) || viewport.width > 768}
+      show={(viewport.width < 768 && section.explore) || viewport.width >= 768}
       as={Fragment}
       afterLeave={(): void => handleToggleProfile(true)}
     >
