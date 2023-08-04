@@ -21,7 +21,7 @@ const NavMenu = ({url, label, target}: NavMenuProps) => {
 
   return (
     <Link
-      className='w-fit text-lg font-bold text-gray-600 duration-150 hover:text-cyan-600 md:text-sm landscape:text-base'
+      className='w-fit text-lg font-bold text-gray-600 duration-150 hover:text-cyan-600 md:text-sm'
       href={url}
       target={target}
       onClick={(): void => handleToggleSidenav(false)}
