@@ -87,9 +87,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
         </>
       )}
       {viewport.width >= 768 && (
-        <div className='space-x-6 md:space-x-7 lg:space-x-8'>
-          {children}
-        </div>
+        <div className='space-x-6 md:space-x-7 lg:space-x-8'>{children}</div>
       )}
     </>
   );
