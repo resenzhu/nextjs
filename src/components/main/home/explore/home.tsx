@@ -1,6 +1,7 @@
 'use client';
 
 import type {ReactNode} from 'react';
+import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
 type HomeProps = {
@@ -9,6 +10,7 @@ type HomeProps = {
 };
 
 const Home = ({className, children}: HomeProps): JSX.Element => {
+  const {viewport} = useApp();
   const {section, setSection} = useHome();
 
   const handleToggleExplore = (show: boolean): void => {
@@ -21,13 +23,17 @@ const Home = ({className, children}: HomeProps): JSX.Element => {
   };
 
   return (
-    <button
-      className={className}
-      type='button'
-      onClick={(): void => handleToggleExplore(false)}
-    >
-      {children}
-    </button>
+    <>
+      {viewport.width < 768 && (
+        <button
+          className={className}
+          type='button'
+          onClick={(): void => handleToggleExplore(false)}
+        >
+          {children}
+        </button>
+      )}
+    </>
   );
 };
 

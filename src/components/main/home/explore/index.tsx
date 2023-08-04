@@ -58,7 +58,7 @@ const Explore = ({
       </TAbout>
       <TPortfolio>
         <Link
-          className='group/portfolio relative col-span-2'
+          className='group/portfolio relative col-span-2 md:col-span-1 md:row-span-2'
           href='/portfolio'
         >
           <div
@@ -73,7 +73,7 @@ const Explore = ({
       </TPortfolio>
       <TResources>
         <Link
-          className='group/resources relative col-span-2'
+          className='group/resources relative col-span-2 md:col-span-1 md:row-span-2'
           href='/resources'
         >
           <div
@@ -103,7 +103,7 @@ const Explore = ({
       </TContact>
       <TGitHub>
         <Link
-          className='group/github relative'
+          className='group/github relative md:col-span-2'
           href='https://github.com/resenzhu/nextjs'
         >
           <div
