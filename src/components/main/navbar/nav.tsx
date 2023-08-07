@@ -56,34 +56,36 @@ const Nav = ({children}: NavProps): JSX.Element => {
               icon={faEllipsisVertical}
             />
           </button>
-          <T>
-            <TBackdrop>
-              <div className='fixed left-0 top-0 h-screen w-screen bg-black'></div>
-            </TBackdrop>
-            <TSidenav>
-              <div
-                className='fixed right-0 top-0 h-screen w-3/5 bg-white'
-                ref={sidebar}
-              >
-                <div className='mx-6 flex h-full py-6'>
-                  <div className='flex flex-1 flex-col space-y-5'>
-                    {children}
-                  </div>
-                  <div className='pt-1'>
-                    <button
-                      type='button'
-                      onClick={(): void => handleToggleSidenav(false)}
-                    >
-                      <FontAwesomeIcon
-                        className='text-2xl text-gray-500 duration-150 hover:text-red-500'
-                        icon={faXmark}
-                      />
-                    </button>
+          <div className='fixed'>
+            <T>
+              <TBackdrop>
+                <div className='fixed left-0 top-0 h-screen w-screen bg-black'></div>
+              </TBackdrop>
+              <TSidenav>
+                <div
+                  className='fixed right-0 top-0 h-screen w-3/5 bg-white'
+                  ref={sidebar}
+                >
+                  <div className='mx-6 flex h-full py-6'>
+                    <div className='flex flex-1 flex-col space-y-5'>
+                      {children}
+                    </div>
+                    <div className='pt-1'>
+                      <button
+                        type='button'
+                        onClick={(): void => handleToggleSidenav(false)}
+                      >
+                        <FontAwesomeIcon
+                          className='text-2xl text-gray-500 duration-150 hover:text-red-500'
+                          icon={faXmark}
+                        />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </TSidenav>
-          </T>
+              </TSidenav>
+            </T>
+          </div>
         </>
       )}
       {viewport.width >= 768 && (
