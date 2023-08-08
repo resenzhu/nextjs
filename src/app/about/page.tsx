@@ -20,7 +20,7 @@ const Page = (): JSX.Element => (
     <section className='h-[calc(100vh-4rem)] min-h-[calc(100vh-4rem)] md:h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-3.5rem)]'>
       <div className='mx-4 flex flex-col items-center space-y-6 py-8'>
         <div className='text-2xl font-extrabold text-cyan-600'>ABOUT ME</div>
-        <div className='flex-1 space-y-6 text-center text-gray-600'>
+        <div className='flex-1 animate-fade-up space-y-6 text-center text-gray-600 animate-duration-700'>
           <p>
             Welcome to my personal portfolio website! My name is Resen and I am
             a web developer based in Jakarta. With a strong focus on both
@@ -42,9 +42,9 @@ const Page = (): JSX.Element => (
           </p>
           <p>
             Feel free to explore my portfolio and discover some of the projects
-            I have worked on. If you have any questions, please don&#39;t hesitate
-            to reach out. I am always open to connecting with anyone who shares
-            a passion for web development and innovation.
+            I have worked on. If you have any questions, please don&#39;t
+            hesitate to reach out. I am always open to connecting with anyone
+            who shares a passion for web development and innovation.
           </p>
         </div>
       </div>
