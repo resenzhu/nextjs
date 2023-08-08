@@ -54,9 +54,9 @@ const Profile = ({
             </span>
           </TSpecialty>
           <TBio>
-            <span className='w-4/5 py-4 text-center text-gray-500 md:mx-auto md:w-5/6 md:text-sm lg:py-8 lg:text-base'>
+            <p className='w-4/5 py-4 text-center text-gray-500 md:mx-auto md:w-5/6 md:text-sm lg:py-8 lg:text-base'>
               {bio}
-            </span>
+            </p>
           </TBio>
           <TButtons>
             <div className='flex w-36 flex-1 flex-col justify-center space-y-2'>
