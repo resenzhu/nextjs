@@ -1,3 +1,4 @@
+import {DateTime} from 'luxon';
 import {Header} from '@components/main/shared';
 import {createMetadata} from '@utils/metadata';
 
@@ -20,13 +21,20 @@ const Page = (): JSX.Element => (
     <section className='h-[calc(100vh-4rem)] min-h-[calc(100vh-4rem)] md:h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-3.5rem)]'>
       <div className='mx-4 flex flex-col items-center space-y-6 py-8'>
         <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
-          ABOUT ME
+          MEET RESEN
         </div>
-        <div className='flex-1 animate-fade-up space-y-6 text-center text-gray-600 animate-duration-700'>
+        <div className='flex-1 animate-fade-up space-y-6 text-center text-gray-700 animate-duration-700'>
           <p>
-            Welcome to my personal portfolio website! My name is Resen, and I&#39;m
-            a Full Stack developer based in Jakarta with over five years of
-            experience in the field.
+            Welcome to my personal portfolio website! My name is Resen, and
+            I&#39;m a Full Stack developer based in Jakarta with over{' '}
+            {Math.floor(
+              DateTime.utc()
+                .diff(DateTime.fromISO('2017-03-01').toUTC(), ['years'])
+                .toObject().years ??
+                new Date().getUTCFullYear() -
+                  new Date('2017-03-01').getUTCFullYear()
+            )}{' '}
+            years of experience in the field.
           </p>
           <p>
             I specialize in both Front End and Back End development, bringing a
