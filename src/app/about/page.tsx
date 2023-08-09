@@ -19,7 +19,7 @@ const Page = (): JSX.Element => (
         description='Step behind the curtain and delve into the mind of a digital enthusiast, as I divulge the story of my adventures in design and development.'
       />
     </section>
-    <section className='h-[calc(100vh-4rem)] min-h-[calc(100vh-4rem)] md:h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-3.5rem)]'>
+    <section className='h-full min-h-[calc(100vh-4rem)] md:h-full md:min-h-[calc(100vh-3.5rem)]'>
       <Me
         title='MEET RESEN'
         yoe={Math.floor(
