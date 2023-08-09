@@ -18,7 +18,7 @@ import Specialty from '@components/main/home/profile/specialty';
 type ProfileProps = {
   picture: string | [string, string];
   name: string;
-  specialty: string | string[];
+  specialties: string[];
   bio: string;
   socials: {name: string; icon: IconDefinition; url: string}[];
 };
@@ -26,7 +26,7 @@ type ProfileProps = {
 const Profile = ({
   picture,
   name,
-  specialty,
+  specialties,
   bio,
   socials
 }: ProfileProps): JSX.Element => (
@@ -50,7 +50,7 @@ const Profile = ({
           </TName>
           <TSpecialty>
             <span className='text-lg font-extrabold text-cyan-600 md:text-sm'>
-              <Specialty title={specialty} />
+              <Specialty titles={specialties} />
             </span>
           </TSpecialty>
           <TBio>

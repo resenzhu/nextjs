@@ -3,13 +3,13 @@
 import Typewriter from 'typewriter-effect';
 
 type SpecialtyProps = {
-  title: string | string[];
+  titles: string[];
 };
 
-const Specialty = ({title}: SpecialtyProps): JSX.Element => (
+const Specialty = ({titles}: SpecialtyProps): JSX.Element => (
   <Typewriter
     options={{
-      strings: title,
+      strings: titles,
       autoStart: true,
       loop: true
     }}

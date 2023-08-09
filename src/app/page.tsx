@@ -23,7 +23,7 @@ const Page = (): JSX.Element => (
           '/images/main/home-profile-picture-easter.webp'
         ]}
         name='RESEN'
-        specialty={[
+        specialties={[
           'FULL STACK DEVELOPER',
           'FRONT END DEVELOPER',
           'BACK END DEVELOPER',
