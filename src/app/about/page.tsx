@@ -1,6 +1,6 @@
+import {Footer, Header} from '@components/main/shared';
 import {Me, Skill} from '@components/main/about';
 import {DateTime} from 'luxon';
-import {Header} from '@components/main/shared';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -33,6 +33,9 @@ const Page = (): JSX.Element => (
     </section>
     <section className='h-full min-h-[calc(100vh-4rem)] md:h-full md:min-h-[calc(100vh-3.5rem)]'>
       <Skill title='SKILL SET' />
+    </section>
+    <section>
+      <Footer />
     </section>
   </>
 );
