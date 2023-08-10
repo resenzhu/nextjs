@@ -10,7 +10,7 @@ const Header = ({title, subtitle, description}: HeaderProps): JSX.Element => (
     <div className='absolute h-full w-full bg-cyan-600 opacity-40'></div>
     <div className='relative mx-4 flex flex-col space-y-6 self-center text-center'>
       <div className='space-y-1'>
-        <div className='text-3xl font-extrabold tracking-widest text-yellow-400'>
+        <div className='text-3xl font-extrabold tracking-widest text-amber-400'>
           {title}
         </div>
         <div className='mx-auto w-5/6 text-lg font-bold italic text-gray-100 lg:w-1/2'>
