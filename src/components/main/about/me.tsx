@@ -12,7 +12,7 @@ const Me = ({title, yoe}: MeProps): JSX.Element => (
         {title}
       </div>
     </LazyLoad>
-    <div className='flex-1 space-y-6 text-center text-gray-700'>
+    <div className='flex-1 space-y-6 text-center text-gray-600'>
       <LazyLoad>
         <p className='animate-fade-right animate-duration-700'>
           Welcome to my personal portfolio website! My name is Resen, and
