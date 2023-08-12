@@ -37,7 +37,7 @@ const Footer = (): JSX.Element => {
 
   return (
     <LazyLoad offset={0}>
-      <footer className='animate-fade bg-gradient-to-b from-cyan-600 to-cyan-800 animate-duration-700'>
+      <footer className='animate-fade bg-gradient-to-b from-cyan-700 to-cyan-900 animate-duration-700'>
         <div className='mx-4 flex flex-col items-center py-4 text-white'>
           <Scroll icon={faArrowCircleUp} />
           <div className='flex flex-col items-center space-y-5 pt-8'>
