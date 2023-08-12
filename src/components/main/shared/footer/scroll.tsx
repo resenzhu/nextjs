@@ -17,7 +17,7 @@ const Scroll = ({icon}: ScrollProps): JSX.Element => {
 
   return (
     <button
-      className='text-4xl'
+      className='absolute -translate-y-[80%] rounded-full border-4 border-white bg-white text-5xl text-cyan-700'
       type='button'
       onClick={(): void => handleScrollToTop()}
     >
