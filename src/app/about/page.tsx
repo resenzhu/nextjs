@@ -1,4 +1,4 @@
-import {Experience, Me} from '@components/main/about';
+import {Experience, Me, Skill} from '@components/main/about';
 import {Footer, Header} from '@components/main/shared';
 import {DateTime} from 'luxon';
 import {createMetadata} from '@utils/metadata';
@@ -65,6 +65,9 @@ const Page = (): JSX.Element => (
           }
         ]}
       />
+    </section>
+    <section>
+      <Skill title='SKILL SET' />
     </section>
     <section className='pt-12'>
       <Footer />
