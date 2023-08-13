@@ -15,7 +15,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
   config.autoAddCss = false;
   return (
     <html lang='en'>
-      <body className='pt-16 md:pt-14'>
+      <body className='overflow-x-hidden pt-16 md:pt-14'>
         <Redux>
           <Viewport>
             <Online>
