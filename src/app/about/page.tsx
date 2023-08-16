@@ -19,7 +19,7 @@ const Page = (): JSX.Element => (
         description='Step behind the curtain and delve into the mind of a digital enthusiast, as I divulge the story of my adventures in design and development.'
       />
     </section>
-    <section className='h-full min-h-[calc(100vh-4rem)] md:h-full md:min-h-[calc(100vh-3.5rem)]'>
+    <section>
       <Me
         title='MEET RESEN'
         yoe={Math.floor(
@@ -31,7 +31,7 @@ const Page = (): JSX.Element => (
         )}
       />
     </section>
-    <section className='h-full min-h-[calc(100vh-4rem)] md:h-full md:min-h-[calc(100vh-3.5rem)]'>
+    <section>
       <Experience
         title='WORK HISTORY'
         experience={[
@@ -61,7 +61,7 @@ const Page = (): JSX.Element => (
             cardTitle: 'PT Bank CIMB Niaga Tbk',
             cardSubtitle: 'Middleware Developer | Full Time',
             cardDetailedText:
-              'PT Bank CIMB Niaga Tbk is the sixth largest bank in Indonesia based on assets and was established in 1955. In my role as a middleware developer in the Enterprise Service Bus (ESB) division, I am responsible for developing APIs used for various application integration purposes.'
+              'PT Bank CIMB Niaga Tbk is the sixth largest bank in Indonesia based on assets, established in 1955. As a middleware developer in the Enterprise Service Bus (ESB) division, my role focuses on developing APIs for various application integration purposes, utilizing tools such as IBM MQ, IBM App Connect, and others.'
           }
         ]}
       />
