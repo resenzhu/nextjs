@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+div[class^='TimelineMainWrapper'],
+div[class^='TimelineVerticalWrapper'] {
+  padding: 0;
+}
+
+div[class^='TimelinePointWrapper'],
+div[class^='Shape'] {
+  cursor: default;
+}
+
+div[class^='VerticalItemWrapper']:last-of-type {
+  margin-bottom: 0;
+}
+
 ::-webkit-scrollbar {
   width: 0.5rem;
 }
@@ -22,14 +36,4 @@
 
 ::-webkit-scrollbar-thumb:active {
   background-color: #787878;
-}
-
-div[class^='TimelineMainWrapper'],
-div[class^='TimelineVerticalWrapper'] {
-  padding: 0;
-}
-
-div[class^='TimelinePointWrapper'],
-div[class^='Shape'] {
-  cursor: default;
 }
