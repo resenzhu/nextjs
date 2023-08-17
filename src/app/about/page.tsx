@@ -54,14 +54,14 @@ const Page = (): JSX.Element => (
             cardTitle: 'PT Bintang Aplikasi Perkasa',
             cardSubtitle: 'Web Developer | Full Time',
             cardDetailedText:
-              'PT Bintang Aplikasi Perkasa is an IT consulting company specializing in the field of networking. In this company, my position was a full-stack web developer responsible for handling several web client projects, whether it was developing new products or managing existing applications. The majority of these projects utilized CodeIgniter and React.'
+              'PT Bintang Aplikasi Perkasa is an IT consulting company specializing in networking. In this start-up company, I worked as a full-stack developer, handling various web client projects. My responsibilities included developing new products and managing existing applications, with a majority of them utilizing CodeIgniter, React.js, and Node.js.'
           },
           {
             title: 'Jul 2022',
             cardTitle: 'PT Bank CIMB Niaga Tbk',
             cardSubtitle: 'Middleware Developer | Full Time',
             cardDetailedText:
-              'PT Bank CIMB Niaga Tbk is the sixth largest bank in Indonesia based on assets, established in 1955. As a middleware developer in the Enterprise Service Bus (ESB) division, my role focuses on developing APIs for various application integration purposes, utilizing tools such as IBM MQ, IBM App Connect, and others.'
+              'PT Bank CIMB Niaga Tbk is the sixth largest bank in Indonesia based on assets, established in 1955. In my role as a middleware developer in the Enterprise Service Bus (ESB) division, which is relatively new to me, I am responsible for developing APIs used for various application integration purposes using tools such as IBM MQ, IBM App Connect, and others.'
           }
         ]}
       />
