@@ -28,7 +28,7 @@ const Explore = ({
   githubBg
 }: ExploreProps): JSX.Element => (
   <T>
-    <div className='grid h-full grid-cols-2 gap-2 overflow-hidden px-4 py-6 md:row-span-2 md:p-0 lg:row-span-1'>
+    <div className='grid h-full grid-cols-2 gap-2 overflow-hidden px-4 py-6 md:row-span-2 md:p-0 lg:row-span-1 lg:animate-fade lg:duration-700'>
       <THome>
         <Home className='group/home relative h-full w-full hover:shadow-lg md:hover:shadow-none'>
           <div
