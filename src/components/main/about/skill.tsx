@@ -1,5 +1,5 @@
+import {LazyLoad, Tooltip} from '@components/main/shared';
 import Image from 'next/image';
-import {LazyLoad} from '@components/main/shared';
 
 type SkillProps = {
   title: string;
@@ -17,14 +17,19 @@ const Skill = ({title, skills}: SkillProps): JSX.Element => (
       <div className='mx-auto flex w-5/6 animate-fade-up flex-wrap items-start justify-center gap-6 text-gray-600 animate-duration-700'>
         {skills.map(
           (skill): JSX.Element => (
-            <Image
-              className='place-self-center'
-              key={skill.toLowerCase()}
-              src={`/images/main/about-skill-${skill.toLowerCase()}.webp`}
-              width={50}
-              height={50}
-              alt={`${skill} icon`}
-            />
+            <Tooltip id={skill.toLowerCase()}>
+              <Image
+                className='place-self-center'
+                key={skill.toLowerCase()}
+                src={`/images/main/about-skill-${skill.toLowerCase()}.webp`}
+                width={50}
+                height={50}
+                alt={`${skill} icon`}
+                data-tooltip-id={skill.toLowerCase()}
+                data-tooltip-content={skill}
+                data-tooltip-place='top'
+              />
+            </Tooltip>
           )
         )}
       </div>
