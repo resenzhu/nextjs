@@ -19,7 +19,9 @@ const Experience = ({title, experience}: ExperienceProps): JSX.Element => (
       </div>
     </LazyLoad>
     <LazyLoad>
-      <Timeline experience={experience} />
+      <div className='animate-fade-left animate-duration-700'>
+        <Timeline experience={experience} />
+      </div>
     </LazyLoad>
   </div>
 );
