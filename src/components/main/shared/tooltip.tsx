@@ -12,7 +12,7 @@ const Tooltip = ({id, children}: TooltipProps): JSX.Element => (
   <>
     {children}
     <ReactTooltip
-      className='rounded-lg bg-cyan-700 px-3 py-1 text-white'
+      className='rounded-lg bg-cyan-600 px-3 py-1 text-white'
       id={id}
       opacity={1}
       disableStyleInjection={true}
