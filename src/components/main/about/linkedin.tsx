@@ -33,7 +33,7 @@ const LinkedIn = ({title, description}: LinkedInProps): JSX.Element => (
                 className='text-2xl'
                 icon={faLinkedin}
               />
-              <span>Let's connect!</span>
+              <span>Let&#39;s connect!</span>
             </button>
           </Link>
         </div>

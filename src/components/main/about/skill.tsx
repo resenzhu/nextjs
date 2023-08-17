@@ -17,10 +17,12 @@ const Skill = ({title, skills}: SkillProps): JSX.Element => (
       <div className='mx-auto flex w-5/6 animate-fade-left flex-wrap items-start justify-center gap-6 text-gray-600 animate-duration-700'>
         {skills.map(
           (skill): JSX.Element => (
-            <Tooltip id={skill.toLowerCase()}>
+            <Tooltip
+              key={skill.toLowerCase()}
+              id={skill.toLowerCase()}
+            >
               <Image
                 className='place-self-center'
-                key={skill.toLowerCase()}
                 src={`/images/main/about-skill-${skill.toLowerCase()}.webp`}
                 width={50}
                 height={50}
