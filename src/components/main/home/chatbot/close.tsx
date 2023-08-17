@@ -24,7 +24,7 @@ const Close = ({icon}: CloseProps): JSX.Element => {
 
   return (
     <>
-      {viewport.width <= 768 && (
+      {viewport.width < 768 && (
         <button
           className='flex'
           type='button'
