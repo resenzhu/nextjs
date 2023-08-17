@@ -14,12 +14,13 @@ const Skill = ({title, skills}: SkillProps): JSX.Element => (
       </div>
     </LazyLoad>
     <LazyLoad>
-      <div className='flex animate-fade-down flex-wrap items-start justify-center gap-4 text-gray-600 animate-duration-700'>
+      <div className='mx-auto flex w-5/6 animate-fade-up flex-wrap items-start justify-center gap-6 text-gray-600 animate-duration-700'>
         {skills.map(
           (skill): JSX.Element => (
             <Image
-              key={skill}
-              src={`/images/main/about-skill-${skill}.webp`}
+              className='place-self-center'
+              key={skill.toLowerCase()}
+              src={`/images/main/about-skill-${skill.toLowerCase()}.webp`}
               width={50}
               height={50}
               alt={`${skill} icon`}

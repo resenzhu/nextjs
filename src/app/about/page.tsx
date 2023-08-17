@@ -69,7 +69,34 @@ const Page = (): JSX.Element => (
     <section className='h-full min-h-[calc(100vh-4rem)] md:h-full md:min-h-[calc(100vh-3.5rem)]'>
       <Skill
         title='SKILL SET'
-        skills={['html', 'css', 'javascript', 'jquery', 'bootstrap']}
+        skills={[
+          'HTML',
+          'CSS',
+          'Bootstrap',
+          'SASS',
+          'TailwindCSS',
+          'JavaScript',
+          'jQuery',
+          'ReactJS',
+          'NextJS',
+          'Redux',
+          'NodeJS',
+          'ExpressJS',
+          'SocketIO',
+          'CSharp',
+          'DotNet',
+          'PHP',
+          'CodeIgniter',
+          'MySQL',
+          'SQLServer',
+          'GraphQL',
+          'YAML',
+          'Postman',
+          'Heroku',
+          'GitHub',
+          'Trello',
+          'VSCode'
+        ]}
       />
     </section>
     <section className='pt-14'>
