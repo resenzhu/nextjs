@@ -1,4 +1,4 @@
-import {Experience, Me, Skill} from '@components/main/about';
+import {Experience, LinkedIn, Me, Skill} from '@components/main/about';
 import {Footer, Header} from '@components/main/shared';
 import {DateTime} from 'luxon';
 import {createMetadata} from '@utils/metadata';
@@ -97,6 +97,12 @@ const Page = (): JSX.Element => (
           'Trello',
           'VSCode'
         ]}
+      />
+    </section>
+    <section>
+      <LinkedIn
+        title='GET CONNECTED'
+        description="Looking to learn more about my professional background? Visit my LinkedIn profile to uncover my extensive experience, industry insights, and professional achievements. Let's connect and forge valuable professional connections."
       />
     </section>
     <section className='h-full min-h-[12rem] pt-20'>
