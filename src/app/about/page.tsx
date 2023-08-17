@@ -19,7 +19,7 @@ const Page = (): JSX.Element => (
         description='Step behind the curtain and delve into the mind of a digital enthusiast, as I divulge the story of my adventures in design and development.'
       />
     </section>
-    <section className='h-full min-h-[calc(100vh-4rem)] md:h-full md:min-h-[calc(100vh-3.5rem)]'>
+    <section className='h-full min-h-[40vh]'>
       <Me
         title='MEET RESEN'
         yoe={Math.floor(
@@ -31,7 +31,7 @@ const Page = (): JSX.Element => (
         )}
       />
     </section>
-    <section className='h-full min-h-[calc(100vh-4rem)] md:h-full md:min-h-[calc(100vh-3.5rem)]'>
+    <section className='h-full min-h-[40vh]'>
       <Experience
         title='WORK HISTORY'
         experience={[
@@ -66,7 +66,7 @@ const Page = (): JSX.Element => (
         ]}
       />
     </section>
-    <section className='h-full min-h-[calc(100vh-4rem)] md:h-full md:min-h-[calc(100vh-3.5rem)]'>
+    <section className='h-full min-h-[40vh]'>
       <Skill
         title='SKILL SET'
         skills={[
@@ -99,7 +99,7 @@ const Page = (): JSX.Element => (
         ]}
       />
     </section>
-    <section className='pt-14'>
+    <section className='h-full min-h-[12rem] pt-20'>
       <Footer />
     </section>
   </>
