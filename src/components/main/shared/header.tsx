@@ -13,11 +13,11 @@ const Header = ({title, subtitle, description}: HeaderProps): JSX.Element => (
         <div className='text-3xl font-extrabold tracking-widest text-amber-400'>
           {title}
         </div>
-        <div className='mx-auto w-5/6 text-lg font-bold text-white lg:w-1/2'>
+        <div className='mx-auto w-5/6 text-lg font-bold text-white md:w-2/3 lg:w-1/2'>
           {subtitle}
         </div>
       </div>
-      <div className='text-md mx-auto w-5/6 flex-1 font-light text-white lg:w-1/2'>
+      <div className='text-md mx-auto w-5/6 flex-1 font-light text-white md:w-2/3 lg:w-1/2'>
         {description}
       </div>
     </div>
