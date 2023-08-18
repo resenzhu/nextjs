@@ -5,10 +5,9 @@ import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
 type LinkedInProps = {
   title: string;
-  description: string;
 };
 
-const LinkedIn = ({title, description}: LinkedInProps): JSX.Element => (
+const LinkedIn = ({title}: LinkedInProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-10'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -17,7 +16,12 @@ const LinkedIn = ({title, description}: LinkedInProps): JSX.Element => (
     </LazyLoad>
     <div className='space-y-6 text-center text-gray-600'>
       <LazyLoad>
-        <p className='animate-fade-left animate-duration-700'>{description}</p>
+        <p className='animate-fade-left animate-duration-700'>
+          Looking to learn more about my professional background? Visit my
+          LinkedIn profile to uncover my extensive experience, industry
+          insights, and professional achievements. Let's connect and forge
+          valuable professional connections.
+        </p>
       </LazyLoad>
       <LazyLoad>
         <div className='mx-auto w-fit animate-fade-right animate-duration-700'>
