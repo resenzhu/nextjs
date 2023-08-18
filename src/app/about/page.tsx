@@ -1,4 +1,4 @@
-import {Experience, LinkedIn, Me, Skill} from '@components/main/about';
+import {Experience, LinkedIn, Me, Skill, Web} from '@components/main/about';
 import {Footer, Header} from '@components/main/shared';
 import {DateTime} from 'luxon';
 import {createMetadata} from '@utils/metadata';
@@ -99,8 +99,17 @@ const Page = (): JSX.Element => (
         ]}
       />
     </section>
+    <section className='h-full min-h-[40vh]'>
+      <Web
+        title='UNDER THE HOOD'
+        repository='https://github.com/resenzhu/nextjs'
+      />
+    </section>
     <section>
-      <LinkedIn title='GET CONNECTED' />
+      <LinkedIn
+        title='GET CONNECTED'
+        profile='https://www.linkedin.com/in/resen'
+      />
     </section>
     <section className='h-full min-h-[12rem] pt-20'>
       <Footer />
