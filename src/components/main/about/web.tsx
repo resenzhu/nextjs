@@ -9,13 +9,13 @@ type WebProps = {
 };
 
 const Web = ({title, repository}: WebProps): JSX.Element => (
-  <div className='mx-4 flex flex-col items-center space-y-6 pt-10'>
+  <div className='mx-4 flex flex-col items-center space-y-6 pt-10 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
         {title}
       </div>
     </LazyLoad>
-    <div className='space-y-6 text-center text-gray-600'>
+    <div className='space-y-6 text-center text-gray-600 md:mx-auto md:w-2/3 lg:w-1/2'>
       <LazyLoad>
         <p className='animate-fade-left animate-duration-700'>
           Here, I&#39;ll provide you with some insights into the technologies

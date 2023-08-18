@@ -6,13 +6,13 @@ type MeProps = {
 };
 
 const Me = ({title, yoe}: MeProps): JSX.Element => (
-  <div className='mx-4 flex flex-col items-center space-y-6 pt-8'>
+  <div className='mx-4 flex flex-col items-center space-y-6 pt-8 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
         {title}
       </div>
     </LazyLoad>
-    <div className='space-y-6 text-center text-gray-600'>
+    <div className='space-y-6 text-center text-gray-600 md:mx-auto md:w-2/3 lg:w-1/2'>
       <LazyLoad>
         <p className='animate-fade-left animate-duration-700'>
           Welcome to my personal portfolio website! My name is Resen, and

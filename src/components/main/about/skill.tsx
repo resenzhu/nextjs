@@ -7,14 +7,14 @@ type SkillProps = {
 };
 
 const Skill = ({title, skills}: SkillProps): JSX.Element => (
-  <div className='mx-4 flex flex-col items-center space-y-8 pt-8'>
+  <div className='mx-4 flex flex-col items-center space-y-8 pt-8 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
         {title}
       </div>
     </LazyLoad>
     <LazyLoad>
-      <div className='mx-auto flex w-5/6 animate-fade-left flex-wrap items-start justify-center gap-6 text-gray-600 animate-duration-700'>
+      <div className='mx-auto flex w-5/6 animate-fade-left flex-wrap items-start justify-center gap-6 text-gray-600 animate-duration-700 md:w-1/2'>
         {skills.map(
           (skill): JSX.Element => (
             <Tooltip
