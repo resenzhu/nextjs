@@ -1,14 +1,23 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {LazyLoad} from '@components/main/shared';
 import Link from 'next/link';
-import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
 type LinkedInProps = {
   title: string;
-  profile: string;
+  description: string;
+  linkedin: {
+    icon: IconDefinition;
+    label: string;
+    url: string;
+  };
 };
 
-const LinkedIn = ({title, profile}: LinkedInProps): JSX.Element => (
+const LinkedIn = ({
+  title,
+  description,
+  linkedin
+}: LinkedInProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-10 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -17,17 +26,12 @@ const LinkedIn = ({title, profile}: LinkedInProps): JSX.Element => (
     </LazyLoad>
     <div className='space-y-6 text-center text-gray-600 md:mx-auto md:w-2/3 lg:w-1/2'>
       <LazyLoad>
-        <p className='animate-fade-left animate-duration-700'>
-          Looking to learn more about my professional background? Visit my
-          LinkedIn profile to uncover my extensive experience, industry
-          insights, and professional achievements. Let&#39;s connect and forge
-          valuable professional connections.
-        </p>
+        <p className='animate-fade-left animate-duration-700'>{description}</p>
       </LazyLoad>
       <LazyLoad>
         <div className='mx-auto w-fit animate-fade-right animate-duration-700'>
           <Link
-            href={profile}
+            href={linkedin.url}
             target='_blank'
           >
             <button
@@ -36,9 +40,9 @@ const LinkedIn = ({title, profile}: LinkedInProps): JSX.Element => (
             >
               <FontAwesomeIcon
                 className='text-2xl'
-                icon={faLinkedin}
+                icon={linkedin.icon}
               />
-              <span>Let&#39;s connect!</span>
+              <span>{linkedin.label}</span>
             </button>
           </Link>
         </div>

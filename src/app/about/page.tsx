@@ -1,8 +1,8 @@
 import {Experience, LinkedIn, Me, Skill, Web} from '@components/main/about';
 import {Footer, Header} from '@components/main/shared';
+import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import {DateTime} from 'luxon';
 import {createMetadata} from '@utils/metadata';
-import {faGithub} from '@fortawesome/free-brands-svg-icons';
 
 const metadata = createMetadata({
   title: 'About | Resen',
@@ -127,7 +127,12 @@ const Page = (): JSX.Element => (
     <section>
       <LinkedIn
         title='GET CONNECTED'
-        profile='https://www.linkedin.com/in/resen'
+        description="Looking to learn more about my professional background? Visit my LinkedIn profile to uncover my extensive experience, industry insights, and professional achievements. Let's connect and forge valuable professional connections."
+        linkedin={{
+          icon: faLinkedin,
+          label: "Let's connect!",
+          url: 'https://www.linkedin.com/in/resen'
+        }}
       />
     </section>
     <section className='h-full min-h-[12rem] pt-20'>
