@@ -22,13 +22,18 @@ const Page = (): JSX.Element => (
     <section className='h-full min-h-[40vh]'>
       <Me
         title='MEET RESEN'
-        yoe={Math.floor(
-          DateTime.utc()
-            .diff(DateTime.fromISO('2017-03-01').toUTC(), ['years'])
-            .toObject().years ??
-            new Date().getUTCFullYear() -
-              new Date('2017-03-01').getUTCFullYear()
-        )}
+        content={[
+          `Welcome to my personal portfolio website! My name is Resen, and I'm a Full Stack developer based in Jakarta with over ${Math.floor(
+            DateTime.utc()
+              .diff(DateTime.fromISO('2017-03-01').toUTC(), ['years'])
+              .toObject().years ??
+              new Date().getUTCFullYear() -
+                new Date('2017-03-01').getUTCFullYear()
+          )} years of experience in the field.`,
+          'I specialize in both Front End and Back End development, bringing a comprehensive skill set to the table. With a strong focus on creating visually appealing and user-friendly web applications, I utilize technologies such as ReactJS, NextJS, and NodeJS to deliver exceptional results.',
+          'From crafting captivating user interfaces to implementing robust functionality, I strive to create seamless and efficient websites. My passion for development drives me to continuously refine my skills, ensuring that I deliver high-quality solutions that meet the unique requirements of each project.',
+          "Feel free to explore my portfolio and discover some of the projects I have worked on. If you have any questions, please don't hesitate to reach out. I am always open to connecting with anyone who shares a passion for web development and innovation."
+        ]}
       />
     </section>
     <section className='h-full min-h-[40vh]'>
