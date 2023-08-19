@@ -1,14 +1,16 @@
+import {type IconDefinition, faClose} from '@fortawesome/free-solid-svg-icons';
 import {T, TBackdrop, TChatbot} from '@components/main/home/chatbot/transition';
-import {faClose, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import Chat from '@components/main/home/chatbot/chat';
 import Close from '@components/main/home/chatbot/close';
 import Input from '@components/main/home/chatbot/input';
 
 type ChatbotProps = {
   name: string;
+  placeholder: string;
+  sendIcon: IconDefinition;
 };
 
-const Chatbot = ({name}: ChatbotProps): JSX.Element => (
+const Chatbot = ({name, placeholder, sendIcon}: ChatbotProps): JSX.Element => (
   <T>
     <div className='fixed bottom-0 z-10 h-full md:relative md:z-0 md:animate-fade-right md:shadow-2xl md:animate-duration-700 lg:animate-fade-left'>
       <TBackdrop>
@@ -27,8 +29,8 @@ const Chatbot = ({name}: ChatbotProps): JSX.Element => (
           </div>
           <div className='border-t-2'>
             <Input
-              placeholder='Type a message'
-              sendIcon={faPaperPlane}
+              placeholder={placeholder}
+              sendIcon={sendIcon}
             />
           </div>
         </div>

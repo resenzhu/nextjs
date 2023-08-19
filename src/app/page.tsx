@@ -1,11 +1,11 @@
 import {Chatbot, Explore, Profile} from '@components/main/home';
+import {faEnvelope, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
   faInstagram,
   faLinkedin
 } from '@fortawesome/free-brands-svg-icons';
 import {createMetadata} from '@utils/metadata';
-import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
 const metadata = createMetadata({
   title: 'Resen | Full Stack Developer',
@@ -73,7 +73,11 @@ const Page = (): JSX.Element => (
           background: 'bg-[url("/images/main/home-explore-github.webp")]'
         }}
       />
-      <Chatbot name='RESEN [BOT]' />
+      <Chatbot
+        name='RESEN [BOT]'
+        placeholder='Type a message'
+        sendIcon={faPaperPlane}
+      />
     </div>
   </section>
 );
