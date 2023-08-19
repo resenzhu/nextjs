@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {LazyLoad} from '@components/main/shared';
 import Link from 'next/link';
 
