@@ -2,6 +2,7 @@ import {Experience, LinkedIn, Me, Skill, Web} from '@components/main/about';
 import {Footer, Header} from '@components/main/shared';
 import {DateTime} from 'luxon';
 import {createMetadata} from '@utils/metadata';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
 
 const metadata = createMetadata({
   title: 'About | Resen',
@@ -107,7 +108,20 @@ const Page = (): JSX.Element => (
     <section className='h-full min-h-[40vh]'>
       <Web
         title='UNDER THE HOOD'
-        repository='https://github.com/resenzhu/nextjs'
+        content={[
+          "Here, I'll provide you with some insights into the technologies and frameworks that power my personal portfolio website.",
+          'This website is built using Next.js, a powerful React framework for server-side rendering. Next.js enables me to create both static and dynamic pages, resulting in a fast and efficient user experience.',
+          "To style the website, I've utilized Tailwind CSS, a versatile utility-first CSS framework. Tailwind CSS offers a comprehensive set of pre-built components and utility classes, making it easy to create visually appealing and responsive designs.",
+          "For managing the application state, I've integrated Redux. Redux is a reliable state management library that centralizes the data flow in my application. With Redux, I can effectively handle complex data interactions and ensure a smooth user experience.",
+          "On the backend, I've implemented Node.js, a JavaScript runtime environment. Node.js allows me to handle server-side logic and API requests, providing a scalable and efficient foundation for my web application.",
+          "To enable real-time communication between the frontend and backend, I've incorporated Socket.io. Socket.io is a powerful library that facilitates bidirectional and event-based communication. It empowers my website with instant updates and live interactions, enhancing the overall user experience.",
+          "If you're interested in exploring the source code of my website, you can find it on my GitHub repository. Feel free to reach out if you have any questions or want to know more about my work."
+        ]}
+        github={{
+          icon: faGithub,
+          label: 'Source code',
+          url: 'https://github.com/resenzhu/nextjs'
+        }}
       />
     </section>
     <section>

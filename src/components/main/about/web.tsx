@@ -1,14 +1,19 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {LazyLoad} from '@components/main/shared';
 import Link from 'next/link';
-import {faGithub} from '@fortawesome/free-brands-svg-icons';
 
 type WebProps = {
   title: string;
-  repository: string;
+  content: string[];
+  github: {
+    icon: IconDefinition;
+    label: string;
+    url: string;
+  };
 };
 
-const Web = ({title, repository}: WebProps): JSX.Element => (
+const Web = ({title, content, github}: WebProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-10 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -16,63 +21,23 @@ const Web = ({title, repository}: WebProps): JSX.Element => (
       </div>
     </LazyLoad>
     <div className='space-y-6 text-center text-gray-600 md:mx-auto md:w-2/3 lg:w-1/2'>
-      <LazyLoad>
-        <p className='animate-fade-left animate-duration-700'>
-          Here, I&#39;ll provide you with some insights into the technologies
-          and frameworks that power my personal portfolio website.
-        </p>
-      </LazyLoad>
-      <LazyLoad>
-        <p className='animate-fade-right animate-duration-700'>
-          This website is built using Next.js, a powerful React framework for
-          server-side rendering. Next.js enables me to create both static and
-          dynamic pages, resulting in a fast and efficient user experience.
-        </p>
-      </LazyLoad>
-      <LazyLoad>
-        <p className='animate-fade-left animate-duration-700'>
-          To style the website, I&#39;ve utilized Tailwind CSS, a versatile
-          utility-first CSS framework. Tailwind CSS offers a comprehensive set
-          of pre-built components and utility classes, making it easy to create
-          visually appealing and responsive designs.
-        </p>
-      </LazyLoad>
-      <LazyLoad>
-        <p className='animate-fade-right animate-duration-700'>
-          For managing the application state, I&#39;ve integrated Redux. Redux
-          is a reliable state management library that centralizes the data flow
-          in my application. With Redux, I can effectively handle complex data
-          interactions and ensure a smooth user experience.
-        </p>
-      </LazyLoad>
-      <LazyLoad>
-        <p className='animate-fade-left animate-duration-700'>
-          On the backend, I&#39;ve implemented Node.js, a JavaScript runtime
-          environment. Node.js allows me to handle server-side logic and API
-          requests, providing a scalable and efficient foundation for my web
-          application.
-        </p>
-      </LazyLoad>
-      <LazyLoad>
-        <p className='animate-fade-right animate-duration-700'>
-          To enable real-time communication between the frontend and backend,
-          I&#39;ve incorporated Socket.io. Socket.io is a powerful library that
-          facilitates bidirectional and event-based communication. It empowers
-          my website with instant updates and live interactions, enhancing the
-          overall user experience.
-        </p>
-      </LazyLoad>
-      <LazyLoad>
-        <p className='animate-fade-left animate-duration-700'>
-          If you&#39;re interested in exploring the source code of my website,
-          you can find it on my GitHub repository. Feel free to reach out if you
-          have any questions or want to know more about my work.
-        </p>
-      </LazyLoad>
+      {content.map(
+        (paragraph, index): JSX.Element => (
+          <LazyLoad key={index}>
+            <p
+              className={`${
+                index % 2 === 0 ? 'animate-fade-left' : 'animate-fade-right'
+              } animate-duration-700`}
+            >
+              {paragraph}
+            </p>
+          </LazyLoad>
+        )
+      )}
       <LazyLoad>
         <div className='mx-auto w-fit animate-fade-right animate-duration-700'>
           <Link
-            href={repository}
+            href={github.url}
             target='_blank'
           >
             <button
@@ -81,9 +46,9 @@ const Web = ({title, repository}: WebProps): JSX.Element => (
             >
               <FontAwesomeIcon
                 className='text-2xl'
-                icon={faGithub}
+                icon={github.icon}
               />
-              <span>Source code</span>
+              <span>{github.label}</span>
             </button>
           </Link>
         </div>
