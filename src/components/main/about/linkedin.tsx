@@ -35,7 +35,7 @@ const LinkedIn = ({
             target='_blank'
           >
             <button
-              className='flex space-x-3 border-cyan-600 bg-cyan-600 px-5 py-3 tracking-wider text-white duration-150 active:bg-cyan-700'
+              className='flex space-x-3 bg-cyan-600 px-5 py-3 tracking-wider text-white duration-150 active:bg-cyan-700'
               type='button'
             >
               <FontAwesomeIcon
