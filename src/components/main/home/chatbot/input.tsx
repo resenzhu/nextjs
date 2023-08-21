@@ -132,7 +132,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
         placeholder={placeholder}
         value={input}
         maxLength={160}
-        onChange={handleUpdateInput}
+        onChange={(event): void => handleUpdateInput(event)}
         onBlur={handleTrimInput}
       />
       <button
