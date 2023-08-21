@@ -23,14 +23,16 @@ const Form = ({title, description, label}: FormProps): JSX.Element => (
       <LazyLoad>
         <p className='animate-fade-left animate-duration-700'>{description}</p>
       </LazyLoad>
-      <Input
-        label={{
-          name: label.name,
-          email: label.email,
-          message: label.message,
-          submit: label.submit
-        }}
-      />
+      <LazyLoad>
+        <Input
+          label={{
+            name: label.name,
+            email: label.email,
+            message: label.message,
+            submit: label.submit
+          }}
+        />
+      </LazyLoad>
     </div>
   </div>
 );
