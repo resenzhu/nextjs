@@ -70,6 +70,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           type='text'
           placeholder={label.name}
           value={form.name}
+          maxLength={120}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
         />
@@ -92,6 +93,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           type='text'
           placeholder={label.email}
           value={form.email}
+          maxLength={320}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
         />
@@ -113,6 +115,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           id='message'
           placeholder={label.message}
           value={form.message}
+          maxLength={2000}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
         />
