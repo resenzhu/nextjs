@@ -12,8 +12,9 @@ type Chat = {
 };
 
 type Chatbot = {
-  replying: boolean;
-  chat: Chat[];
+  input: string;
+  sending: boolean;
+  chats: Chat[];
 };
 
 type State = {
@@ -35,8 +36,9 @@ const initialState: State = {
     chatbot: false
   },
   chatbot: {
-    replying: false,
-    chat: []
+    input: '',
+    sending: false,
+    chats: []
   }
 };
 

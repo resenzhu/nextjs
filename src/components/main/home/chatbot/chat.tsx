@@ -8,7 +8,7 @@ const Chat = (): JSX.Element => {
   const {online} = useApp();
   return (
     <>
-      {chatbot.chat.map(
+      {chatbot.chats.map(
         (chat, index): JSX.Element => (
           <>
             {chat.message && chat.message.length !== 0 && (
