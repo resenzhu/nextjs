@@ -17,7 +17,7 @@ const useContact = (): UseContact => {
   };
 
   return {
-    form: useSelector((state) => state.main.contact.section),
+    form: useSelector((state) => state.main.contact.form),
     setForm: setForm
   };
 };
