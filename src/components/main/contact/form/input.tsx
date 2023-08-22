@@ -1,7 +1,9 @@
 'use client';
 
-import {type ChangeEvent, type FormEvent, Fragment, useState} from 'react';
+import {type ChangeEvent, type FormEvent, Fragment} from 'react';
+import type {Form} from '@redux/reducers/main/contact';
 import {Transition} from '@headlessui/react';
+import useContact from '@hooks/main/use-contact';
 
 type InputProps = {
   label: {
@@ -12,20 +14,8 @@ type InputProps = {
   };
 };
 
-type Form = {
-  name: string;
-  email: string;
-  message: string;
-  error: string;
-};
-
 const Input = ({label}: InputProps): JSX.Element => {
-  const [form, setForm] = useState<Form>({
-    name: '',
-    email: '',
-    message: '',
-    error: ''
-  });
+  const {form, setForm} = useContact();
 
   const handleUpdateForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -134,8 +124,14 @@ const Input = ({label}: InputProps): JSX.Element => {
         {form.error}
       </Transition>
       <button
-        className='animate-fade-left place-self-center bg-cyan-600 px-5 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 active:bg-cyan-700'
+        className='animate-fade-left place-self-center bg-cyan-600 px-5 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 active:bg-cyan-700 disabled:bg-gray-300'
         type='submit'
+        disabled={
+          form.name.trim().length === 0 ||
+          form.email.trim().length === 0 ||
+          form.message.trim().length === 0 ||
+          form.submitting
+        }
       >
         {label.submit}
       </button>
