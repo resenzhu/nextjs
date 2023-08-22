@@ -55,7 +55,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       className='flex flex-col justify-center space-y-5'
       onSubmit={(event): void => handleSubmitForm(event)}
     >
-      <div className='flex flex-col text-start'>
+      <div className='flex animate-fade-right flex-col text-start animate-duration-700'>
         {form.name.length !== 0 && (
           <label
             className='font-semibold'
@@ -74,7 +74,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           onBlur={(event): void => handleTrimForm(event)}
         />
       </div>
-      <div className='flex flex-col text-start'>
+      <div className='flex animate-fade-left flex-col text-start animate-duration-700'>
         {form.email.length !== 0 && (
           <label
             className='font-semibold'
@@ -93,7 +93,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           onBlur={(event): void => handleTrimForm(event)}
         />
       </div>
-      <div className='flex flex-col text-start'>
+      <div className='flex animate-fade-right flex-col text-start animate-duration-700'>
         {form.message.length !== 0 && (
           <label
             className='font-semibold'
@@ -112,7 +112,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         />
       </div>
       <button
-        className='place-self-center bg-cyan-600 px-5 py-3 font-bold tracking-wider text-white duration-150 active:bg-cyan-700'
+        className='animate-fade-left place-self-center bg-cyan-600 px-5 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 active:bg-cyan-700'
         type='submit'
       >
         {label.submit}
