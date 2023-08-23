@@ -29,8 +29,7 @@ type SubmitContactFormReq = {
 type SubmitContactFormRes = {
   success: boolean;
   error: {
-    status: number;
-    subStatus: number;
+    code: number;
     message: string;
   };
   data: {};
