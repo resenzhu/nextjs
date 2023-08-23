@@ -19,14 +19,14 @@ type InputProps = {
   };
 };
 
-type SubmitContactReq = {
+type SubmitContactFormReq = {
   name: string;
   email: string;
   message: string;
   honeypot: string;
 };
 
-type SubmitContactRes = {
+type SubmitContactFormRes = {
   success: boolean;
   error: {
     status: number;
@@ -129,7 +129,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           ),
         honeypot: string().ensure()
       });
-      const request: SubmitContactReq = {
+      const request: SubmitContactFormReq = {
         name: sanitize(form.name).trim(),
         email: sanitize(form.email).trim(),
         message: sanitize(form.message).trim(),
@@ -149,9 +149,9 @@ const Input = ({label}: InputProps): JSX.Element => {
           mainSocket
             .timeout(60000)
             .emit(
-              'submit-contact',
+              'submit-contact-form',
               request,
-              (error: Error, response: SubmitContactRes): void => {
+              (error: Error, response: SubmitContactFormRes): void => {
                 if (error) {
                   setForm({
                     ...form,
