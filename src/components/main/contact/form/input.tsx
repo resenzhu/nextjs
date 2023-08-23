@@ -1,9 +1,14 @@
 'use client';
 
-import {type ChangeEvent, type FormEvent, Fragment} from 'react';
+import {type ChangeEvent, type FormEvent, Fragment, useEffect} from 'react';
+import {ValidationError, object, string} from 'yup';
 import type {Form} from '@redux/reducers/main/contact';
 import {Transition} from '@headlessui/react';
+import {mainSocket} from '@utils/socket';
+import {sanitize} from 'isomorphic-dompurify';
+import useApp from '@hooks/main/use-app';
 import useContact from '@hooks/main/use-contact';
+import validator from 'validator';
 
 type InputProps = {
   label: {
@@ -14,7 +19,25 @@ type InputProps = {
   };
 };
 
+type SubmitContactReq = {
+  name: string;
+  email: string;
+  message: string;
+  honeypot: string;
+};
+
+type SubmitContactRes = {
+  success: boolean;
+  error: {
+    status: number;
+    subStatus: number;
+    message: string;
+  };
+  data: {};
+};
+
 const Input = ({label}: InputProps): JSX.Element => {
+  const {online} = useApp();
   const {form, setForm} = useContact();
 
   const handleUpdateForm = (
@@ -28,7 +51,9 @@ const Input = ({label}: InputProps): JSX.Element => {
     if (form[property] !== value) {
       setForm({
         ...form,
-        [property]: value
+        [property]: value,
+        error: '',
+        success: ''
       });
     }
   };
@@ -44,14 +69,126 @@ const Input = ({label}: InputProps): JSX.Element => {
     if (form[property] !== value.trim()) {
       setForm({
         ...form,
-        [property]: value.trim()
+        [property]: value.trim(),
+        error: '',
+        success: ''
       });
     }
   };
 
   const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    if (!form.submitting) {
+      if (online) {
+        setForm({
+          ...form,
+          submitting: true
+        });
+      } else {
+        setForm({
+          ...form,
+          error:
+            'You are currently offline. Please check your internet connection and try again later.'
+        });
+      }
+    }
   };
+
+  useEffect((): void => {
+    if (form.submitting) {
+      const requestSchema = object().shape({
+        name: string()
+          .ensure()
+          .required('Please enter your name.')
+          .min(2, 'Your name is too short. Please enter at least 2 characters.')
+          .max(
+            120,
+            'Your name is too long. Please enter a maximum of 120 characters.'
+          ),
+        email: string()
+          .ensure()
+          .required('Please enter your email address.')
+          .min(
+            3,
+            'Your email is too short. Please enter at least 3 characters.'
+          )
+          .max(
+            320,
+            'Your email is too long. Please enter a maximum of 320 characters.'
+          ),
+        message: string()
+          .ensure()
+          .required('Please enter a message.')
+          .min(
+            15,
+            'Your message is too short. Please enter at least 15 characters.'
+          )
+          .max(
+            2000,
+            'Your message is too long. Please enter a maximum of 2000 characters.'
+          ),
+        honeypot: string().ensure()
+      });
+      const request: SubmitContactReq = {
+        name: sanitize(form.name).trim(),
+        email: sanitize(form.email).trim(),
+        message: sanitize(form.message).trim(),
+        honeypot: sanitize(form.honeypot).trim()
+      };
+      requestSchema
+        .validate(request, {abortEarly: false})
+        .then((): void => {
+          if (!validator.isAlpha(request.name, 'en-US', {ignore: ' '})) {
+            throw new ValidationError(
+              'Please enter a valid name using only letters.'
+            );
+          }
+          if (!validator.isEmail(request.email)) {
+            throw new ValidationError('Please enter a valid email address.');
+          }
+          mainSocket
+            .timeout(60000)
+            .emit(
+              'submit-contact',
+              request,
+              (error: Error, response: SubmitContactRes): void => {
+                if (error) {
+                  setForm({
+                    ...form,
+                    submitting: false,
+                    error:
+                      'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.'
+                  });
+                } else if (response) {
+                  if (response.success) {
+                    setForm({
+                      ...form,
+                      submitting: false,
+                      success:
+                        'Thank you! Your form has been successfully submitted.'
+                    });
+                  } else {
+                    setForm({
+                      ...form,
+                      submitting: false,
+                      error: response.error.message
+                    });
+                  }
+                }
+              }
+            );
+        })
+        .catch((error: ValidationError): void => {
+          setForm({
+            ...form,
+            submitting: false,
+            error:
+              error.errors[0] ??
+              'Oops! There was an error processing your form submission. Please review your information and try again.'
+          });
+        });
+    }
+  }, [form.submitting]);
 
   return (
     <form
@@ -132,14 +269,21 @@ const Input = ({label}: InputProps): JSX.Element => {
           id='phone'
           type='text'
           placeholder='Phone'
+          value={form.honeypot}
           onChange={(event): void => handleUpdateForm(event)}
         />
       </div>
       <Transition
-        className='bg-red-500 py-2 text-white'
+        className='bg-red-500 p-2 text-white'
         show={form.error.length !== 0}
       >
         {form.error}
+      </Transition>
+      <Transition
+        className='bg-green-500 p-2 text-white'
+        show={form.success.length !== 0}
+      >
+        {form.success}
       </Transition>
       <button
         className='w-36 animate-fade-left place-self-center bg-cyan-600 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 active:bg-cyan-700 disabled:bg-gray-300'
