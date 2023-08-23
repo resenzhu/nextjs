@@ -20,7 +20,10 @@ const Input = ({label}: InputProps): JSX.Element => {
   const handleUpdateForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
-    const property = event.target.id as keyof Form;
+    const property =
+      event.target.id === 'phone'
+        ? 'honeypot'
+        : (event.target.id as keyof Form);
     const {value} = event.target;
     if (form[property] !== value) {
       setForm({
@@ -33,7 +36,10 @@ const Input = ({label}: InputProps): JSX.Element => {
   const handleTrimForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
-    const property = event.target.id as keyof Form;
+    const property =
+      event.target.id === 'phone'
+        ? 'honeypot'
+        : (event.target.id as keyof Form);
     const {value} = event.target;
     if (form[property] !== value.trim()) {
       setForm({
@@ -120,6 +126,15 @@ const Input = ({label}: InputProps): JSX.Element => {
           onBlur={(event): void => handleTrimForm(event)}
         />
       </div>
+      <div className='hidden'>
+        <input
+          className='w-full border-b-2 pb-2 pt-1 outline-0'
+          id='phone'
+          type='text'
+          placeholder='Phone'
+          onChange={(event): void => handleUpdateForm(event)}
+        />
+      </div>
       <Transition
         className='bg-red-500 py-2 text-white'
         show={form.error.length !== 0}
@@ -127,7 +142,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         {form.error}
       </Transition>
       <button
-        className='animate-fade-left place-self-center bg-cyan-600 px-5 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 active:bg-cyan-700 disabled:bg-gray-300'
+        className='w-36 animate-fade-left place-self-center bg-cyan-600 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 active:bg-cyan-700 disabled:bg-gray-300'
         type='submit'
         disabled={
           form.name.trim().length === 0 ||
