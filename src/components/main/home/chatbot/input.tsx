@@ -113,7 +113,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                   errorMessage =
                     "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience.";
                 }
-                if (!response.success) {
+                if (response && !response.success) {
                   switch (response.error.code) {
                     case 40001:
                     case 4220101:
@@ -144,7 +144,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                     {
                       sender: 'bot',
                       message:
-                        errorMessage.length === 0
+                        response && response.success
                           ? response.data.reply
                           : errorMessage
                     }

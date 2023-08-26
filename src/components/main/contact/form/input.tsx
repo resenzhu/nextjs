@@ -161,7 +161,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                   errorMessage =
                     'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.';
                 }
-                if (!response.success) {
+                if (response && !response.success) {
                   switch (response.error.code) {
                     case 40001:
                     case 4220101:
@@ -226,7 +226,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                   submitting: false,
                   error: errorMessage,
                   success:
-                    errorMessage.length === 0
+                    response && response.success
                       ? 'Thank you! Your form has been successfully submitted.'
                       : ''
                 });
