@@ -15,9 +15,12 @@ const Chat = (): JSX.Element => {
               <div
                 className={
                   chat.sender === 'bot'
-                    ? 'max-w-5/6 w-fit place-self-start break-words bg-cyan-600 px-3 py-1 text-white md:text-sm'
-                    : 'max-w-5/6 w-fit place-self-end break-words bg-gray-200 px-3 py-1 md:text-sm'
+                    ? 'max-w-5/6 w-fit place-self-start bg-cyan-600 px-3 py-1 text-white md:text-sm'
+                    : 'max-w-5/6 w-fit place-self-end bg-gray-200 px-3 py-1 md:text-sm'
                 }
+                style={{
+                  wordBreak: 'break-word'
+                }}
                 key={index}
               >
                 {chat.message}
