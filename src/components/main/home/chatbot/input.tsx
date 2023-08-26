@@ -143,7 +143,10 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                     ...chatbot.chats,
                     {
                       sender: 'bot',
-                      message: errorMessage ?? response.data.reply
+                      message:
+                        errorMessage.length === 0
+                          ? response.data.reply
+                          : errorMessage
                     }
                   ]
                 });

@@ -225,9 +225,10 @@ const Input = ({label}: InputProps): JSX.Element => {
                   ...form,
                   submitting: false,
                   error: errorMessage,
-                  success: errorMessage
-                    ? ''
-                    : 'Thank you! Your form has been successfully submitted.'
+                  success:
+                    errorMessage.length === 0
+                      ? 'Thank you! Your form has been successfully submitted.'
+                      : ''
                 });
               }
             );
