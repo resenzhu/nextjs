@@ -1,7 +1,7 @@
 'use client';
 
 import {type ChangeEvent, type FormEvent, useEffect} from 'react';
-import {object, string} from 'yup';
+import {ValidationError, object, string} from 'yup';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
@@ -78,7 +78,19 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
   useEffect(() => {
     if (chatbot.sending) {
       const requestSchema = object().shape({
-        input: string().ensure().required().min(1).max(160)
+        input: string()
+          .ensure()
+          .required(
+            'Uh-oh! It looks like you forgot to write a message. Please enter your message before sending it my way.'
+          )
+          .min(
+            1,
+            'Oops! Your message must be at least 1 character long. Please enter a message with at least 1 character before sending it.'
+          )
+          .max(
+            160,
+            'Oops! Your message exceeds the maximum limit of 160 characters. Please shorten your message and try again.'
+          )
       });
       const request: AskChatbotReq = {
         input: sanitize(chatbot.input).trim()
@@ -96,7 +108,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
               'ask-chatbot',
               request,
               (error: Error, response: AskChatbotRes): void => {
-                if (error || (response && response.success)) {
+                if (error) {
                   setChatbot({
                     ...chatbot,
                     input: '',
@@ -105,27 +117,65 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                       ...chatbot.chats,
                       {
                         sender: 'bot',
-                        message: error
-                          ? "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience."
-                          : response.data.reply
+                        message:
+                          "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience."
                       }
                     ]
                   });
                 } else {
+                  let errorMessage: string = '';
+                  switch (response.error.code) {
+                    case 40001:
+                    case 4220101:
+                    case 4220102:
+                      errorMessage =
+                        'Uh-oh! It looks like you forgot to write a message. Please enter your message before sending it my way.';
+                      break;
+                    case 4220103:
+                      errorMessage =
+                        'Oops! Your message must be at least 1 character long. Please enter a message with at least 1 character before sending it.';
+                      break;
+                    case 4220104:
+                      errorMessage =
+                        'Oops! Your message exceeds the maximum limit of 160 characters. Please shorten your message and try again.';
+                      break;
+                    default:
+                      errorMessage =
+                        "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again.";
+                      break;
+                  }
                   setChatbot({
                     ...chatbot,
                     input: '',
-                    sending: false
+                    sending: false,
+                    chats: [
+                      ...chatbot.chats,
+                      {
+                        sender: 'bot',
+                        message: response.success
+                          ? response.data.reply
+                          : errorMessage
+                      }
+                    ]
                   });
                 }
               }
             );
         })
-        .catch((): void => {
+        .catch((error: ValidationError): void => {
           setChatbot({
             ...chatbot,
             input: '',
-            sending: false
+            sending: false,
+            chats: [
+              ...chatbot.chats,
+              {
+                sender: 'bot',
+                message:
+                  error.errors[0] ??
+                  "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again."
+              }
+            ]
           });
         });
     }
