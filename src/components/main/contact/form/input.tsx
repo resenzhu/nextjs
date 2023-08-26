@@ -335,7 +335,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         {form.error}
       </Transition>
       <Transition
-        className='bg-green-500 p-2 text-white'
+        className='bg-green-600 p-2 text-white'
         show={form.success.length !== 0}
       >
         {form.success}
