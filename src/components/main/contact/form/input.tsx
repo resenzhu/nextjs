@@ -126,7 +126,12 @@ const Input = ({label}: InputProps): JSX.Element => {
             2000,
             'Your message is too long. Please enter a maximum of 2000 characters.'
           ),
-        honeypot: string().ensure()
+        honeypot: string()
+          .ensure()
+          .length(
+            0,
+            'Bot detection system triggered. Please ensure you are a human and not a bot.'
+          )
       });
       const request: SubmitContactFormReq = {
         name: sanitize(form.name).trim(),
@@ -151,29 +156,79 @@ const Input = ({label}: InputProps): JSX.Element => {
               'submit-contact-form',
               request,
               (error: Error, response: SubmitContactFormRes): void => {
+                let errorMessage: string = '';
                 if (error) {
-                  setForm({
-                    ...form,
-                    submitting: false,
-                    error:
-                      'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.'
-                  });
-                } else if (response) {
-                  if (response.success) {
-                    setForm({
-                      ...form,
-                      submitting: false,
-                      success:
-                        'Thank you! Your form has been successfully submitted.'
-                    });
-                  } else {
-                    setForm({
-                      ...form,
-                      submitting: false,
-                      error: response.error.message
-                    });
+                  errorMessage =
+                    'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.';
+                }
+                if (!response.success) {
+                  switch (response.error.code) {
+                    case 40001:
+                    case 4220101:
+                    case 4220102:
+                      errorMessage = 'Please enter your name.';
+                      break;
+                    case 4220103:
+                      errorMessage =
+                        'Your name is too short. Please enter at least 2 characters.';
+                      break;
+                    case 4220104:
+                      errorMessage =
+                        'Your name is too long. Please enter a maximum of 120 characters.';
+                      break;
+                    case 4220105:
+                      errorMessage =
+                        'Please enter a valid name using only letters.';
+                      break;
+                    case 40002:
+                    case 4220201:
+                    case 4220202:
+                      errorMessage = 'Please enter your email address.';
+                      break;
+                    case 4220203:
+                      errorMessage =
+                        'Your email is too short. Please enter at least 3 characters.';
+                      break;
+                    case 4220204:
+                      errorMessage =
+                        'Your email is too long. Please enter a maximum of 320 characters.';
+                      break;
+                    case 4220205:
+                      errorMessage = 'Please enter a valid email address.';
+                      break;
+                    case 40003:
+                    case 4220301:
+                    case 4220302:
+                      errorMessage = 'Please enter a message.';
+                      break;
+                    case 4220303:
+                      errorMessage =
+                        'Your message is too short. Please enter at least 15 characters.';
+                      break;
+                    case 4220304:
+                      errorMessage =
+                        'Your message is too long. Please enter a maximum of 2000 characters.';
+                      break;
+                    case 40004:
+                    case 4220401:
+                    case 4220402:
+                      errorMessage =
+                        'Bot detection system triggered. Please ensure you are a human and not a bot.';
+                      break;
+                    default:
+                      errorMessage =
+                        'Oops! There was an error processing your form submission. Please review your information and try again.';
+                      break;
                   }
                 }
+                setForm({
+                  ...form,
+                  submitting: false,
+                  error: errorMessage,
+                  success: errorMessage
+                    ? ''
+                    : 'Thank you! Your form has been successfully submitted.'
+                });
               }
             );
         })

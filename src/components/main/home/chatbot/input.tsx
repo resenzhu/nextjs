@@ -108,22 +108,12 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
               'ask-chatbot',
               request,
               (error: Error, response: AskChatbotRes): void => {
+                let errorMessage: string = '';
                 if (error) {
-                  setChatbot({
-                    ...chatbot,
-                    input: '',
-                    sending: false,
-                    chats: [
-                      ...chatbot.chats,
-                      {
-                        sender: 'bot',
-                        message:
-                          "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience."
-                      }
-                    ]
-                  });
-                } else {
-                  let errorMessage: string = '';
+                  errorMessage =
+                    "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience.";
+                }
+                if (!response.success) {
                   switch (response.error.code) {
                     case 40001:
                     case 4220101:
@@ -144,21 +134,19 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                         "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again.";
                       break;
                   }
-                  setChatbot({
-                    ...chatbot,
-                    input: '',
-                    sending: false,
-                    chats: [
-                      ...chatbot.chats,
-                      {
-                        sender: 'bot',
-                        message: response.success
-                          ? response.data.reply
-                          : errorMessage
-                      }
-                    ]
-                  });
                 }
+                setChatbot({
+                  ...chatbot,
+                  input: '',
+                  sending: false,
+                  chats: [
+                    ...chatbot.chats,
+                    {
+                      sender: 'bot',
+                      message: errorMessage ?? response.data.reply
+                    }
+                  ]
+                });
               }
             );
         })
