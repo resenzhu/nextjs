@@ -45,7 +45,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
                 />
                 <Navbar.Menu
                   label='GitHub'
-                  url='https://github.com/resenzhu/nextjs'
+                  url='https://github.com/resenzhu'
                   target='_blank'
                 />
               </Navbar>
