@@ -6,10 +6,14 @@ import {
   TLabelEmail,
   TLabelMessage,
   TLabelName,
+  TSubmit,
+  TSubmitting,
   TSuccess
 } from '@components/main/contact/form/transition';
 import {ValidationError, object, string} from 'yup';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {Form} from '@redux/reducers/main/contact';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
@@ -87,7 +91,9 @@ const Input = ({label}: InputProps): JSX.Element => {
       if (online) {
         setForm({
           ...form,
-          submitting: true
+          submitting: true,
+          error: '',
+          success: ''
         });
       } else {
         setForm({
@@ -266,7 +272,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           </label>
         </TLabelName>
         <input
-          className='border-b-2 pb-2 pt-1 outline-0'
+          className='border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           id='name'
           type='text'
           placeholder={label.name}
@@ -274,6 +280,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           maxLength={120}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
+          disabled={form.submitting}
         />
       </div>
       <div className='flex animate-fade-left flex-col text-start animate-duration-700'>
@@ -286,7 +293,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           </label>
         </TLabelEmail>
         <input
-          className='border-b-2 pb-2 pt-1 outline-0'
+          className='border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           id='email'
           type='text'
           placeholder={label.email}
@@ -294,6 +301,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           maxLength={320}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
+          disabled={form.submitting}
         />
       </div>
       <div className='flex animate-fade-right flex-col text-start animate-duration-700'>
@@ -306,23 +314,25 @@ const Input = ({label}: InputProps): JSX.Element => {
           </label>
         </TLabelMessage>
         <textarea
-          className='min-h-[20vh] resize-none border-b-2 pb-2 pt-1 outline-0'
+          className='min-h-[20vh] resize-none border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           id='message'
           placeholder={label.message}
           value={form.message}
           maxLength={2000}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
+          disabled={form.submitting}
         />
       </div>
       <div className='hidden'>
         <input
-          className='w-full border-b-2 pb-2 pt-1 outline-0'
+          className='w-full border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           id='phone'
           type='text'
           placeholder='Phone'
           value={form.honeypot}
           onChange={(event): void => handleUpdateForm(event)}
+          disabled={form.submitting}
         />
       </div>
       <TError>
@@ -337,11 +347,18 @@ const Input = ({label}: InputProps): JSX.Element => {
         disabled={
           form.name.trim().length === 0 ||
           form.email.trim().length === 0 ||
-          form.message.trim().length === 0 ||
-          form.submitting
+          form.message.trim().length === 0
         }
       >
-        {label.submit}
+        <TSubmit>
+          <span>{label.submit}</span>
+        </TSubmit>
+        <TSubmitting>
+          <FontAwesomeIcon
+            className='animate-spin text-xl animate-infinite'
+            icon={faSpinner}
+          />
+        </TSubmitting>
       </button>
     </form>
   );
