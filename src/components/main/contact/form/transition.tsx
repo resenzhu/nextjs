@@ -67,3 +67,27 @@ export const TSuccess = ({children}: TProps): JSX.Element => {
     </Transition>
   );
 };
+
+export const TSubmit = ({children}: TProps): JSX.Element => {
+  const {form} = useContact();
+  return (
+    <Transition
+      show={!form.submitting}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
+
+export const TSubmitting = ({children}: TProps): JSX.Element => {
+  const {form} = useContact();
+  return (
+    <Transition
+      show={form.submitting}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
