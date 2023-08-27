@@ -1,9 +1,15 @@
 'use client';
 
-import {type ChangeEvent, type FormEvent, Fragment, useEffect} from 'react';
+import {type ChangeEvent, type FormEvent, useEffect} from 'react';
+import {
+  TError,
+  TLabelEmail,
+  TLabelMessage,
+  TLabelName,
+  TSuccess
+} from '@components/main/contact/form/transition';
 import {ValidationError, object, string} from 'yup';
 import type {Form} from '@redux/reducers/main/contact';
-import {Transition} from '@headlessui/react';
 import {mainSocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
@@ -251,17 +257,14 @@ const Input = ({label}: InputProps): JSX.Element => {
       onSubmit={(event): void => handleSubmitForm(event)}
     >
       <div className='flex animate-fade-right flex-col text-start animate-duration-700'>
-        <Transition
-          show={form.name.length !== 0}
-          as={Fragment}
-        >
+        <TLabelName>
           <label
             className='font-semibold'
             htmlFor='name'
           >
             {label.name}
           </label>
-        </Transition>
+        </TLabelName>
         <input
           className='border-b-2 pb-2 pt-1 outline-0'
           id='name'
@@ -274,17 +277,14 @@ const Input = ({label}: InputProps): JSX.Element => {
         />
       </div>
       <div className='flex animate-fade-left flex-col text-start animate-duration-700'>
-        <Transition
-          show={form.email.length !== 0}
-          as={Fragment}
-        >
+        <TLabelEmail>
           <label
             className='font-semibold'
             htmlFor='email'
           >
             {label.email}
           </label>
-        </Transition>
+        </TLabelEmail>
         <input
           className='border-b-2 pb-2 pt-1 outline-0'
           id='email'
@@ -297,17 +297,14 @@ const Input = ({label}: InputProps): JSX.Element => {
         />
       </div>
       <div className='flex animate-fade-right flex-col text-start animate-duration-700'>
-        <Transition
-          show={form.message.length !== 0}
-          as={Fragment}
-        >
+        <TLabelMessage>
           <label
             className='font-semibold'
             htmlFor='message'
           >
             {label.message}
           </label>
-        </Transition>
+        </TLabelMessage>
         <textarea
           className='min-h-[20vh] resize-none border-b-2 pb-2 pt-1 outline-0'
           id='message'
@@ -328,18 +325,12 @@ const Input = ({label}: InputProps): JSX.Element => {
           onChange={(event): void => handleUpdateForm(event)}
         />
       </div>
-      <Transition
-        className='bg-red-500 p-2 text-white'
-        show={form.error.length !== 0}
-      >
-        {form.error}
-      </Transition>
-      <Transition
-        className='bg-green-600 p-2 text-white'
-        show={form.success.length !== 0}
-      >
-        {form.success}
-      </Transition>
+      <TError>
+        <div className='bg-red-500 p-2 text-white'>{form.error}</div>
+      </TError>
+      <TSuccess>
+        <div className='bg-green-600 p-2 text-white'>{form.success}</div>
+      </TSuccess>
       <button
         className='w-36 animate-fade-left place-self-center bg-cyan-600 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 active:bg-cyan-700 disabled:bg-gray-300'
         type='submit'
