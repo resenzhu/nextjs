@@ -10,7 +10,7 @@ type WebProps = {
     icon: IconDefinition;
     label: string;
     url: string;
-  };
+  }[];
 };
 
 const Web = ({title, content, github}: WebProps): JSX.Element => (
@@ -35,22 +35,31 @@ const Web = ({title, content, github}: WebProps): JSX.Element => (
         )
       )}
       <LazyLoad>
-        <div className='mx-auto w-fit animate-fade-right animate-duration-700'>
-          <Link
-            href={github.url}
-            target='_blank'
-          >
-            <button
-              className='flex space-x-3 bg-cyan-600 px-5 py-3 tracking-wider text-white duration-150 active:bg-cyan-700'
-              type='button'
-            >
-              <FontAwesomeIcon
-                className='text-2xl'
-                icon={github.icon}
-              />
-              <span>{github.label}</span>
-            </button>
-          </Link>
+        <div className='space-y-4'>
+          {github.map(
+            (gh): JSX.Element => (
+              <div
+                className='mx-auto w-fit animate-fade animate-duration-700'
+                key={gh.label}
+              >
+                <Link
+                  href={gh.url}
+                  target='_blank'
+                >
+                  <button
+                    className='flex space-x-3 bg-cyan-600 px-5 py-3 tracking-wider text-white duration-150 active:bg-cyan-700'
+                    type='button'
+                  >
+                    <FontAwesomeIcon
+                      className='text-2xl'
+                      icon={gh.icon}
+                    />
+                    <span>{gh.label}</span>
+                  </button>
+                </Link>
+              </div>
+            )
+          )}
         </div>
       </LazyLoad>
     </div>

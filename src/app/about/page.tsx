@@ -117,11 +117,18 @@ const Page = (): JSX.Element => (
           "To enable real-time communication between the frontend and backend, I've incorporated Socket.io. Socket.io is a powerful library that facilitates bidirectional and event-based communication. It empowers my website with instant updates and live interactions, enhancing the overall user experience.",
           "If you're interested in exploring the source code of my website, you can find it on my GitHub repository. Feel free to reach out if you have any questions or want to know more about my work."
         ]}
-        github={{
-          icon: faGithub,
-          label: 'Source code',
-          url: 'https://github.com/resenzhu/nextjs'
-        }}
+        github={[
+          {
+            icon: faGithub,
+            label: 'Source code (frontend)',
+            url: 'https://github.com/resenzhu/nextjs'
+          },
+          {
+            icon: faGithub,
+            label: 'Source code (backend)',
+            url: 'https://github.com/resenzhu/nextjs-api'
+          }
+        ]}
       />
     </section>
     <section>
