@@ -24,7 +24,6 @@ const Page = (): JSX.Element => (
         projects={[
           {
             name: 'Breezy',
-            slogan: 'Breeze Into Conversations',
             description:
               'Effortless communication is just a tap away with Breezy. Designed to simplify your conversations, Breezy offers a clean and intuitive platform where you can effortlessly chat with friends and build meaningful connections. Enjoy the freedom of breezy conversations that let you focus on what truly matters.',
             url: '/project/breezy'
