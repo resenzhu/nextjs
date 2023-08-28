@@ -17,13 +17,11 @@ const Project = ({title, projects}: ProjectProps): JSX.Element => (
         {title}
       </div>
     </LazyLoad>
-    <div className='space-y-6 text-center text-gray-600 md:mx-auto md:w-2/3 lg:w-1/2'>
+    <div className='flex animate-fade flex-col space-y-6 text-center text-gray-600 animate-duration-700 md:flex-row md:flex-wrap md:justify-center md:gap-4 md:space-y-0'>
       {projects.map(
         (project, index): JSX.Element => (
           <div
-            className={`${
-              index % 2 === 0 ? 'animate-fade-left' : 'animate-fade-right'
-            } animate-duration-700`}
+            className='md:w-2/5 lg:w-1/5'
             key={index}
           >
             <Card

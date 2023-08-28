@@ -18,7 +18,7 @@ const Card = ({name, description, url}: CardProps): JSX.Element => (
     />
     <div className='mx-4 space-y-6 py-6'>
       <div className='space-y-3'>
-        <div className='text-2xl font-bold'>{name}</div>
+        <div className='text-xl font-bold'>{name.toUpperCase()}</div>
         <p>{description}</p>
       </div>
       <div>
