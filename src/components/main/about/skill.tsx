@@ -26,7 +26,7 @@ const Skill = ({title, skills}: SkillProps): JSX.Element => (
                 src={`/images/main/about-skill-${skill.toLowerCase()}.webp`}
                 width={50}
                 height={50}
-                alt={`${skill} icon`}
+                alt={`${skill.toLowerCase()} icon`}
                 data-tooltip-id={skill.toLowerCase()}
                 data-tooltip-content={skill}
                 data-tooltip-place='top'
