@@ -1,4 +1,4 @@
-import '@app/layout.css';
+import '@app/(main)/layout.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import {Online, Redux, Viewport} from '@components/main/app';
 import {Analytics} from '@vercel/analytics/react';
