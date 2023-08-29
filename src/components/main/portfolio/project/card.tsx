@@ -8,7 +8,7 @@ type CardProps = {
 };
 
 const Card = ({name, description, url}: CardProps): JSX.Element => (
-  <div className='border-2 border-b-0 shadow-lg'>
+  <div className='border-2 border-b-0 shadow-lg md:border-[.0625rem]'>
     <Image
       className='w-full'
       src={`/images/main/portfolio-project-${name.toLowerCase()}.webp`}
