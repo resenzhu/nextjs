@@ -7,9 +7,7 @@ type RootLayoutProps = {
 };
 
 const RootLayout = ({children}: RootLayoutProps): JSX.Element => (
-  <html lang='en'>
-    <body>{children}</body>
-  </html>
+  <>{children}</>
 );
 
 export {metadata};
