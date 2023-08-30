@@ -52,6 +52,10 @@ const Picture = ({src}: PictureProps): JSX.Element => {
     <Image
       className='rounded-full border-8 contrast-125'
       src={src instanceof Array ? (easter ? src[1] : src[0]) : src.toString()}
+      placeholder='blur'
+      blurDataURL={
+        src instanceof Array ? (easter ? src[1] : src[0]) : src.toString()
+      }
       width={pictureSize}
       height={pictureSize}
       alt='author profile picture'
