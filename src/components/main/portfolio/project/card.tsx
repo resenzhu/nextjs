@@ -16,7 +16,7 @@ const Card = ({name, description, url}: CardProps): JSX.Element => (
       height={356}
       alt={`${name.toLowerCase()} thumbnail`}
     />
-    <div className='mx-4 space-y-6 py-4 md:mx-6 md:space-y-5'>
+    <div className='mx-4 space-y-6 py-6 md:mx-6 md:space-y-5 md:py-4'>
       <div className='space-y-3'>
         <div className='text-xl font-bold'>{name.toUpperCase()}</div>
         <p className='tracking-wide md:text-xs'>{description}</p>
