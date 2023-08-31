@@ -11,9 +11,9 @@ const Card = ({name, description, url}: CardProps): JSX.Element => (
   <div className='border-2 border-b-0 shadow-lg md:border-[.0625rem]'>
     <Image
       className='w-full'
-      src={`/images/main/portfolio-project-${name.toLowerCase()}.webp`}
-      width={356}
-      height={356}
+      src={`/images/main/portfolio-project-placeholder.webp`}
+      width={325}
+      height={325}
       alt={`${name.toLowerCase()} thumbnail`}
     />
     <div className='mx-4 space-y-6 py-6 md:mx-6 md:space-y-5 md:py-4'>
