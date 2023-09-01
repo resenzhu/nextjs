@@ -56,7 +56,11 @@ const nextHeaders = {
             defaultSrc: ["'self'"],
             fontSrc: ["'self'"],
             formAction: ["'self'"],
-            frameSrc: ["'self'"],
+            frameSrc: [
+              "'self'",
+              'https://www.google.com/recaptcha/',
+              'https://recaptcha.google.com/recaptcha/'
+            ],
             imgSrc: ["'self'", 'data:'],
             manifestSrc: ["'self'"],
             mediaSrc: ["'self'"],
@@ -64,6 +68,8 @@ const nextHeaders = {
             scriptSrc: [
               "'self'",
               'https://va.vercel-scripts.com',
+              'https://www.google.com/recaptcha/',
+              'https://www.gstatic.com/recaptcha/',
               ...(development ? ["'unsafe-inline'", "'unsafe-eval'"] : [])
             ],
             styleSrc: ["'self'", ...(development ? ["'unsafe-inline'"] : [])],
