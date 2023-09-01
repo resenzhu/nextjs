@@ -25,8 +25,14 @@ const Page = (): JSX.Element => (
           </div>
           <div className='bg-white'>
             <form className='mx-4 flex flex-col'>
-              <input type='text' placeholder='Username' />
-              <input type='password' placeholder='Password' />
+              <input
+                type='text'
+                placeholder='Username'
+              />
+              <input
+                type='password'
+                placeholder='Password'
+              />
               <button type='submit'>Login</button>
               <div>Don't have an account? Sign up here!</div>
             </form>
