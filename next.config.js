@@ -70,10 +70,10 @@ const nextHeaders = {
               'https://va.vercel-scripts.com',
               'https://www.google.com/recaptcha/',
               'https://www.gstatic.com/recaptcha/',
-              'unsafe-inline',
-              'unsafe-eval'
+              "'unsafe-inline'",
+              "'unsafe-eval'"
             ],
-            styleSrc: ["'self'", 'unsafe-inline'],
+            styleSrc: ["'self'", "'unsafe-inline'"],
             workerSrc: ["'self'"]
           }
         },
