@@ -18,6 +18,7 @@ import {mainSocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
 import useContact from '@hooks/main/use-contact';
+import {useGoogleReCaptcha} from 'react-google-recaptcha-v3';
 import validator from 'validator';
 
 type InputProps = {
@@ -48,6 +49,7 @@ type SubmitContactFormRes = {
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
   const {form, setForm} = useContact();
+  const {executeRecaptcha} = useGoogleReCaptcha();
 
   const handleUpdateForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -87,22 +89,22 @@ const Input = ({label}: InputProps): JSX.Element => {
 
   const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    if (!form.submitting) {
-      if (online) {
-        setForm({
-          ...form,
-          submitting: true,
-          error: '',
-          success: ''
-        });
-      } else {
-        setForm({
-          ...form,
-          error:
-            'You are currently offline. Please check your internet connection and try again later.'
-        });
-      }
+    let errorMessage: string = '';
+    if (!online) {
+      errorMessage = 'You are currently offline. Please check your internet connection and try again later.';
     }
+    if (form.submitting) {
+      errorMessage = 'The form is currently being submitted. Please wait for the process to complete before submitting again.';
+    }
+    if (!executeRecaptcha) {
+      errorMessage = 'Apologies, but the CAPTCHA verification is not ready yet. Please wait a moment and try again.';
+    }
+    setForm({
+      ...form,
+      submitting: online && !form.submitting && executeRecaptcha !== undefined,
+      error: errorMessage,
+      success: ''
+    });
   };
 
   useEffect((): void => {
