@@ -97,7 +97,7 @@ const Input = ({label}: InputProps): JSX.Element => {
     }
     if (form.throttle) {
       errorMessage =
-        'Your submission appears to be automated. Please ensure you are not a bot and try again.';
+        'You are submitting too quickly. Please take a moment and try again.';
     }
     if (form.submitting) {
       errorMessage =
@@ -134,10 +134,6 @@ const Input = ({label}: InputProps): JSX.Element => {
         let newToken: string = '';
         if (executeRecaptcha && form.token.length === 0) {
           newToken = await executeRecaptcha();
-          setForm({
-            ...form,
-            token: newToken
-          });
         }
         resolve(newToken);
       }).then((newToken: string): void => {
@@ -192,7 +188,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           email: sanitize(form.email).trim(),
           message: sanitize(form.message).trim(),
           honeypot: sanitize(form.honeypot).trim(),
-          token: newToken.length === 0 ? form.token : newToken
+          token: form.token.length === 0 ? newToken : form.token
         };
         requestSchema
           .validate(request, {abortEarly: false})
@@ -278,7 +274,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                   }
                   setForm({
                     ...form,
-                    token: '',
+                    token: response && response.success ? '' : request.token,
                     submitting: false,
                     error: errorMessage,
                     success:
@@ -292,6 +288,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           .catch((error: ValidationError): void => {
             setForm({
               ...form,
+              token: request.token,
               submitting: false,
               error:
                 error.errors[0] ??
