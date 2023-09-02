@@ -2,6 +2,7 @@
   "extends": ["eslint:recommended", "next/core-web-vitals"],
   "rules": {
     "array-callback-return": ["error", {"checkForEach": true}],
+    "no-async-promise-executor": "off",
     "no-await-in-loop": "error",
     "no-constant-binary-expression": "error",
     "no-constructor-return": "error",
