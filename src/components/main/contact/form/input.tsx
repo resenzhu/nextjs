@@ -95,17 +95,38 @@ const Input = ({label}: InputProps): JSX.Element => {
       errorMessage =
         'You are currently offline. Please check your internet connection and try again later.';
     }
+    if (form.throttle) {
+      errorMessage =
+        'Your submission appears to be automated. Please ensure you are not a bot and try again.';
+    }
     if (form.submitting) {
       errorMessage =
         'The form is currently being submitted. Please wait for the process to complete before submitting again.';
     }
     setForm({
       ...form,
-      submitting: online && !form.submitting,
+      submitting: online && !form.throttle && !form.submitting,
       error: errorMessage,
       success: ''
     });
   };
+
+  useEffect((): (() => void) => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    if (form.throttle) {
+      timer = setTimeout((): void => {
+        setForm({
+          ...form,
+          throttle: false
+        });
+      }, 3000);
+    }
+    return (): void => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [form.throttle, form.error]);
 
   useEffect((): void => {
     if (form.submitting) {
