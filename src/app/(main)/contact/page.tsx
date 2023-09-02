@@ -15,7 +15,7 @@ const Page = (): JSX.Element => (
       <Header
         title='contact'
         subtitle='Explore Your Options by Getting in Touch'
-        description='Contact me to explore partnership opportunities or simply to drop a friendly message. Feel free to reach out via the contact form or connect with me on social media for updates and insights into my work.'
+        description="Have a friendly message to share, feedback to provide, insights to offer, or want to stay updated? Feel free to reach out to me directly, and I'll be happy to provide the answers and support you're looking for."
       />
     </section>
     <section className='h-full min-h-[40vh]'>
