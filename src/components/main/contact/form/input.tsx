@@ -1,6 +1,6 @@
 'use client';
 
-import {type ChangeEvent, type FormEvent, useEffect, useState} from 'react';
+import {type ChangeEvent, type FormEvent, useEffect} from 'react';
 import {
   TError,
   TLabelEmail,
@@ -50,7 +50,6 @@ type SubmitContactFormRes = {
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
   const {form, setForm} = useContact();
-  const [token, setToken] = useState<string>('');
   const {executeRecaptcha} = useGoogleReCaptcha();
 
   const handleUpdateForm = (
@@ -112,9 +111,12 @@ const Input = ({label}: InputProps): JSX.Element => {
     if (form.submitting) {
       new Promise<string>(async (resolve): Promise<void> => {
         let newToken: string = '';
-        if (executeRecaptcha && token.length === 0) {
+        if (executeRecaptcha && form.token.length === 0) {
           newToken = await executeRecaptcha();
-          setToken(newToken);
+          setForm({
+            ...form,
+            token: newToken
+          });
         }
         resolve(newToken);
       }).then((newToken: string): void => {
@@ -169,7 +171,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           email: sanitize(form.email).trim(),
           message: sanitize(form.message).trim(),
           honeypot: sanitize(form.honeypot).trim(),
-          token: newToken.length === 0 ? token : newToken
+          token: newToken.length === 0 ? form.token : newToken
         };
         requestSchema
           .validate(request, {abortEarly: false})
@@ -255,6 +257,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                   }
                   setForm({
                     ...form,
+                    token: '',
                     submitting: false,
                     error: errorMessage,
                     success:
@@ -262,7 +265,6 @@ const Input = ({label}: InputProps): JSX.Element => {
                         ? 'Thank you! Your form has been successfully submitted.'
                         : ''
                   });
-                  setToken('');
                 }
               );
           })
@@ -281,9 +283,12 @@ const Input = ({label}: InputProps): JSX.Element => {
 
   useEffect((): (() => void) => {
     let timer: ReturnType<typeof setTimeout> | null = null;
-    if (token.length !== 0) {
+    if (form.token.length !== 0) {
       timer = setTimeout((): void => {
-        setToken('');
+        setForm({
+          ...form,
+          token: ''
+        });
       }, 90000);
     }
     return (): void => {
@@ -291,7 +296,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         clearTimeout(timer);
       }
     };
-  }, [token]);
+  }, [form.token]);
 
   return (
     <form

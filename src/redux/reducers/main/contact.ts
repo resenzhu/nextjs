@@ -5,6 +5,7 @@ type Form = {
   email: string;
   message: string;
   honeypot: string;
+  token: string;
   submitting: boolean;
   error: string;
   success: string;
@@ -26,6 +27,7 @@ const initialState: State = {
     email: '',
     message: '',
     honeypot: '',
+    token: '',
     submitting: false,
     error: '',
     success: ''
