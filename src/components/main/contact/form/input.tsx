@@ -1,6 +1,6 @@
 'use client';
 
-import {type ChangeEvent, type FormEvent, useEffect} from 'react';
+import {type ChangeEvent, type FormEvent, useEffect, useRef} from 'react';
 import {
   TError,
   TLabelEmail,
@@ -51,6 +51,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
   const {form, setForm} = useContact();
   const {executeRecaptcha} = useGoogleReCaptcha();
+  let throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleUpdateForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -96,6 +97,15 @@ const Input = ({label}: InputProps): JSX.Element => {
         'You are currently offline. Please check your internet connection and try again later.';
     }
     if (form.throttle) {
+      if (throttleTimer.current) {
+        clearTimeout(throttleTimer.current);
+      }
+      throttleTimer.current = setTimeout((): void => {
+        setForm({
+          ...form,
+          throttle: false
+        });
+      }, 3000);
       errorMessage =
         'You are submitting too quickly. Please take a moment and try again.';
     }
@@ -112,9 +122,8 @@ const Input = ({label}: InputProps): JSX.Element => {
   };
 
   useEffect((): (() => void) => {
-    let timer: ReturnType<typeof setTimeout> | null = null;
     if (form.throttle) {
-      timer = setTimeout((): void => {
+      throttleTimer.current = setTimeout((): void => {
         setForm({
           ...form,
           throttle: false
@@ -122,8 +131,8 @@ const Input = ({label}: InputProps): JSX.Element => {
       }, 3000);
     }
     return (): void => {
-      if (timer) {
-        clearTimeout(timer);
+      if (throttleTimer.current) {
+        clearTimeout(throttleTimer.current);
       }
     };
   }, [form.throttle, form.error]);
