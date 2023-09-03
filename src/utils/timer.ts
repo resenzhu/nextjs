@@ -1,18 +1,18 @@
-import {type EffectCallback, useRef} from 'react';
+import type {EffectCallback} from 'react';
 
 export const debounce = (
   callback: (...args: any[]) => any,
   delay: number
 ): EffectCallback => {
-  let timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  let timer: ReturnType<typeof setTimeout> | null = null;
 
   return (): void => {
-    if (timer.current) {
-      clearTimeout(timer.current);
+    if (timer) {
+      clearTimeout(timer);
     }
-    timer.current = setTimeout((): void => {
-      if (timer.current) {
-        clearTimeout(timer.current);
+    timer = setTimeout((): void => {
+      if (timer) {
+        clearTimeout(timer);
       }
       callback.apply(null);
     }, delay);

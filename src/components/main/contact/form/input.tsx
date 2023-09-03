@@ -49,9 +49,9 @@ type SubmitContactFormRes = {
 
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
+  const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useContact();
   const {executeRecaptcha} = useGoogleReCaptcha();
-  let throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleUpdateForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

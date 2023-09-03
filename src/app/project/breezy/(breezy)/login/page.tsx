@@ -34,7 +34,7 @@ const Page = (): JSX.Element => (
                 placeholder='Password'
               />
               <button type='submit'>Login</button>
-              <div>Don't have an account? Sign up here!</div>
+              <div>Don&#39;t have an account? Sign up here!</div>
             </form>
           </div>
         </div>

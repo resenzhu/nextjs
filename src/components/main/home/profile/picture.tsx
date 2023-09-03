@@ -10,10 +10,9 @@ type PictureProps = {
 
 const Picture = ({src}: PictureProps): JSX.Element => {
   const {viewport} = useApp();
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [easter, setEaster] = useState<boolean>(false);
   const [pictureSize, setPictureSize] = useState<number>(0);
-  let timer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
   useEffect((): void => {
     let size: number = 0;
     if (viewport.width <= 640) {
