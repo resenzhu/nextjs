@@ -1,6 +1,6 @@
 'use client';
 
-import {type DragEvent, useEffect, useState} from 'react';
+import {type DragEvent, useEffect, useRef, useState} from 'react';
 import Image from 'next/image';
 import useApp from '@hooks/main/use-app';
 
@@ -12,7 +12,7 @@ const Picture = ({src}: PictureProps): JSX.Element => {
   const {viewport} = useApp();
   const [easter, setEaster] = useState<boolean>(false);
   const [pictureSize, setPictureSize] = useState<number>(0);
-  let timer: ReturnType<typeof setTimeout> | number = 0;
+  let timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect((): void => {
     let size: number = 0;
@@ -29,19 +29,21 @@ const Picture = ({src}: PictureProps): JSX.Element => {
   }, [viewport]);
 
   const handleShowEaster = (delay: number): void => {
-    if (src instanceof Array && !easter && timer === 0) {
-      timer = setTimeout((): void => {
+    if (src instanceof Array && !easter && !timer.current) {
+      timer.current = setTimeout((): void => {
         setEaster(true);
-        clearTimeout(timer);
-        timer = 0;
+        if (timer.current) {
+          clearTimeout(timer.current);
+        }
       }, delay);
     }
   };
 
   const handleHideEaster = (): void => {
     setEaster(false);
-    clearTimeout(timer);
-    timer = 0;
+    if (timer.current) {
+      clearTimeout(timer.current);
+    }
   };
 
   const handleDisableDrag = (event: DragEvent<HTMLImageElement>): void => {
