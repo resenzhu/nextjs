@@ -12,7 +12,7 @@ const Picture = ({src}: PictureProps): JSX.Element => {
   const {viewport} = useApp();
   const [easter, setEaster] = useState<boolean>(false);
   const [pictureSize, setPictureSize] = useState<number>(0);
-  let timer: number | ReturnType<typeof setTimeout> = 0;
+  let timer: ReturnType<typeof setTimeout> | number = 0;
 
   useEffect((): void => {
     let size: number = 0;
