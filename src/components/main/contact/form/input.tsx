@@ -272,6 +272,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                       case 40004:
                       case 4220401:
                       case 4220402:
+                      case 403:
                         errorMessage =
                           'Bot detection system triggered. Please ensure you are a human and not a bot.';
                         break;
