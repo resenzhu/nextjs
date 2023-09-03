@@ -135,7 +135,14 @@ const Input = ({label}: InputProps): JSX.Element => {
         clearTimeout(throttleTimer.current);
       }
     };
-  }, [form.throttle, form.error]);
+  }, [
+    form.throttle,
+    form.error,
+    form.name,
+    form.email,
+    form.message,
+    form.honeypot
+  ]);
 
   useEffect((): void => {
     if (form.submitting) {
