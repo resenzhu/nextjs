@@ -4,7 +4,7 @@ export const debounce = (
   callback: (...args: any[]) => any,
   delay: number
 ): EffectCallback => {
-  let timer = useRef<ReturnType<typeof setTimeout> |null>(null);
+  let timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   return (): void => {
     if (timer.current) {
