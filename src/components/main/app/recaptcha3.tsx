@@ -10,6 +10,7 @@ type RecaptchaProps = {
 const Recaptcha = ({children}: RecaptchaProps): JSX.Element => (
   <GoogleReCaptchaProvider
     reCaptchaKey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY_V3}
+    useRecaptchaNet={true}
   >
     {children}
   </GoogleReCaptchaProvider>
