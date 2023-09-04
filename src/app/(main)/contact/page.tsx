@@ -1,4 +1,4 @@
-import {Footer, Header} from '@components/main/shared';
+import {Footer, Header, RecaptchaV3} from '@components/main/shared';
 import {Form} from '@components/main/contact';
 import {createMetadata} from '@utils/metadata';
 
@@ -10,7 +10,7 @@ const metadata = createMetadata({
 });
 
 const Page = (): JSX.Element => (
-  <>
+  <RecaptchaV3 key={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY_V3}>
     <section>
       <Header
         title='contact'
@@ -33,7 +33,7 @@ const Page = (): JSX.Element => (
     <section className='h-full min-h-[12rem] pt-20'>
       <Footer />
     </section>
-  </>
+  </RecaptchaV3>
 );
 
 export {metadata};

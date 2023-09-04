@@ -1,5 +1,5 @@
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import {Online, RecaptchaV3, Redux, Viewport} from '@components/main/app';
+import {Online, Redux, Viewport} from '@components/main/app';
 import {Analytics} from '@vercel/analytics/react';
 import type {ReactNode} from 'react';
 import {config} from '@fortawesome/fontawesome-svg-core';
@@ -15,11 +15,9 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
     <html lang='en'>
       <body>
         <Redux>
-          <RecaptchaV3>
-            <Viewport>
-              <Online>{children}</Online>
-            </Viewport>
-          </RecaptchaV3>
+          <Viewport>
+            <Online>{children}</Online>
+          </Viewport>
         </Redux>
         <Analytics />
       </body>
