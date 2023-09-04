@@ -42,7 +42,6 @@
   "include": [
     "next-env.d.ts",
     "environment.d.ts",
-    "window.d.ts",
     ".next/types/**/*.ts",
     "src/**/*"
   ],
