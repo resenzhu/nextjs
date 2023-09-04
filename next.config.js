@@ -65,9 +65,7 @@ const nextHeaders = {
               "'self'",
               "'unsafe-inline'",
               "'unsafe-eval'",
-              'https://va.vercel-scripts.com',
-              'https://www.recaptcha.net/recaptcha/',
-              'https://www.gstatic.com/recaptcha/'
+              'https://va.vercel-scripts.com'
             ],
             styleSrc: ["'self'", "'unsafe-inline'"],
             workerSrc: ["'self'"]
