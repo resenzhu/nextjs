@@ -22,7 +22,7 @@ const Page = (): JSX.Element => (
         Welcome to Breezy
       </div>
       <div className='fixed bottom-0 w-full'>
-        <div className='relative space-y-8'>
+        <div className='relative space-y-9'>
           <div className='mx-4 space-y-4 text-white'>
             <div className='text-4xl font-semibold'>Sign Up</div>
             <div className='tracking-wide text-gray-400'>
