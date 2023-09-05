@@ -3,11 +3,11 @@
 import {GoogleReCaptchaProvider} from 'react-google-recaptcha-v3';
 import type {ReactNode} from 'react';
 
-type RecaptchaProps = {
+type RecaptchaV3Props = {
   children: ReactNode;
 };
 
-const Recaptcha = ({children}: RecaptchaProps): JSX.Element => (
+const RecaptchaV3 = ({children}: RecaptchaV3Props): JSX.Element => (
   <GoogleReCaptchaProvider
     reCaptchaKey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY_V3}
   >
@@ -15,5 +15,5 @@ const Recaptcha = ({children}: RecaptchaProps): JSX.Element => (
   </GoogleReCaptchaProvider>
 );
 
-export type {RecaptchaProps};
-export default Recaptcha;
+export type {RecaptchaV3Props};
+export default RecaptchaV3;
