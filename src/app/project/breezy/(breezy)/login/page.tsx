@@ -24,7 +24,7 @@ const Page = (): JSX.Element => (
       <div className='fixed bottom-0 w-full'>
         <div className='relative space-y-8'>
           <div className='mx-4 space-y-4 text-white'>
-            <div className='text-5xl font-semibold'>Login</div>
+            <div className='text-4xl font-semibold'>Login</div>
             <div className='tracking-wide text-gray-400'>
               Instantly access your account and start chatting in seconds.
             </div>
