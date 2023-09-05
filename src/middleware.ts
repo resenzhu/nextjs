@@ -1,12 +1,5 @@
-import {type NextRequest, NextResponse} from 'next/server';
+import {NextResponse} from 'next/server';
 
-const middleware = (request: NextRequest): NextResponse => {
-  if (request.nextUrl.pathname === '/project/breezy') {
-    return NextResponse.redirect(
-      new URL('/project/breezy/login', process.env.NEXT_PUBLIC_APP_URL)
-    );
-  }
-  return NextResponse.next();
-};
+const middleware = (): NextResponse => NextResponse.next();
 
 export default middleware;
