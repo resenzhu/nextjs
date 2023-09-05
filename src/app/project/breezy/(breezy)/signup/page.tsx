@@ -36,6 +36,11 @@ const Page = (): JSX.Element => (
                 type='text'
                 placeholder='Username'
               />
+              <input
+                className='border-2 px-3 py-2 outline-0 disabled:bg-gray-100'
+                type='text'
+                placeholder='Display Name'
+              />
               <div className='flex'>
                 <input
                   className='flex-1 border-2 px-3 py-2 outline-0 disabled:bg-gray-100'
