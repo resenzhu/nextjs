@@ -16,7 +16,7 @@ const metadata = createMetadata({
 const Page = (): JSX.Element => (
   <>
     <div className='absolute h-full w-full bg-[url("/images/project/breezy/login-background.webp")] bg-cover bg-center bg-no-repeat'></div>
-    <div className='absolute h-full w-full bg-black opacity-50'></div>
+    <div className='absolute h-full w-full bg-black opacity-60'></div>
     <div>
       <div className='fixed top-0 w-full py-5 text-center font-semibold text-gray-100'>
         Welcome to Breezy
