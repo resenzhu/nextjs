@@ -28,7 +28,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -54,7 +54,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -81,7 +81,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -106,7 +106,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -132,7 +132,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -158,7 +158,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -185,7 +185,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -212,7 +212,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -233,7 +233,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -254,7 +254,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -275,7 +275,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -296,7 +296,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -317,7 +317,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -338,7 +338,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
@@ -359,7 +359,7 @@ const Page = (): JSX.Element => (
         <div className='mr-4'>
           <Image
             className='rounded-full'
-            src='/images/project/breezy/chat-profile-picture.webp'
+            src='/images/project/breezy/home-chats-profile-picture.webp'
             width={70}
             height={70}
             alt='profile picture'
