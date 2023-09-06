@@ -207,6 +207,176 @@ const Page = (): JSX.Element => (
         </div>
       </div>
     </div>
+    {/* <div className='pt-14'>
+      <div className='flex items-center px-5 py-3'>
+        <div className='mr-4'>
+          <Image
+            className='rounded-full'
+            src='/images/project/breezy/chat-profile-picture.webp'
+            width={70}
+            height={70}
+            alt='profile picture'
+          />
+        </div>
+        <div className='flex flex-1 justify-between'>
+          <div className='flex flex-col leading-5'>
+            <div className='font-bold text-gray-700'>Resen</div>
+            <div className='text-gray-600'>@resenzhu</div>
+            <div className='text-green-500 font-semibold'>online</div>
+          </div>
+          <div className='grid place-content-center'>
+            <button className='bg-purple-500 text-white font-semibold rounded-lg px-4 py-2 hover:bg-purple-600 duration-150' type='button'>CHAT</button>
+          </div>
+        </div>
+      </div>
+      <div className='flex items-center px-5 py-3'>
+        <div className='mr-4'>
+          <Image
+            className='rounded-full'
+            src='/images/project/breezy/chat-profile-picture.webp'
+            width={70}
+            height={70}
+            alt='profile picture'
+          />
+        </div>
+        <div className='flex flex-1 justify-between'>
+          <div className='flex flex-col leading-5'>
+            <div className='font-bold text-gray-700'>Batman</div>
+            <div className='text-gray-600'>@batman</div>
+            <div className='text-red-500 font-semibold'>offline</div>
+          </div>
+          <div className='grid place-content-center'>
+            <button className='bg-purple-500 text-white font-semibold rounded-lg px-4 py-2 hover:bg-purple-600 duration-150' type='button'>CHAT</button>
+          </div>
+        </div>
+      </div>
+      <div className='flex items-center px-5 py-3'>
+        <div className='mr-4'>
+          <Image
+            className='rounded-full'
+            src='/images/project/breezy/chat-profile-picture.webp'
+            width={70}
+            height={70}
+            alt='profile picture'
+          />
+        </div>
+        <div className='flex flex-1 justify-between'>
+          <div className='flex flex-col leading-5'>
+            <div className='font-bold text-gray-700'>Resen</div>
+            <div className='text-gray-600'>@resenzhu</div>
+            <div className='text-green-500 font-semibold'>online</div>
+          </div>
+          <div className='grid place-content-center'>
+            <button className='bg-purple-500 text-white font-semibold rounded-lg px-4 py-2 hover:bg-purple-600 duration-150' type='button'>CHAT</button>
+          </div>
+        </div>
+      </div>
+      <div className='flex items-center px-5 py-3'>
+        <div className='mr-4'>
+          <Image
+            className='rounded-full'
+            src='/images/project/breezy/chat-profile-picture.webp'
+            width={70}
+            height={70}
+            alt='profile picture'
+          />
+        </div>
+        <div className='flex flex-1 justify-between'>
+          <div className='flex flex-col leading-5'>
+            <div className='font-bold text-gray-700'>Batman</div>
+            <div className='text-gray-600'>@batman</div>
+            <div className='text-red-500 font-semibold'>offline</div>
+          </div>
+          <div className='grid place-content-center'>
+            <button className='bg-purple-500 text-white font-semibold rounded-lg px-4 py-2 hover:bg-purple-600 duration-150' type='button'>CHAT</button>
+          </div>
+        </div>
+      </div>
+      <div className='flex items-center px-5 py-3'>
+        <div className='mr-4'>
+          <Image
+            className='rounded-full'
+            src='/images/project/breezy/chat-profile-picture.webp'
+            width={70}
+            height={70}
+            alt='profile picture'
+          />
+        </div>
+        <div className='flex flex-1 justify-between'>
+          <div className='flex flex-col leading-5'>
+            <div className='font-bold text-gray-700'>Resen</div>
+            <div className='text-gray-600'>@resenzhu</div>
+            <div className='text-green-500 font-semibold'>online</div>
+          </div>
+          <div className='grid place-content-center'>
+            <button className='bg-purple-500 text-white font-semibold rounded-lg px-4 py-2 hover:bg-purple-600 duration-150' type='button'>CHAT</button>
+          </div>
+        </div>
+      </div>
+      <div className='flex items-center px-5 py-3'>
+        <div className='mr-4'>
+          <Image
+            className='rounded-full'
+            src='/images/project/breezy/chat-profile-picture.webp'
+            width={70}
+            height={70}
+            alt='profile picture'
+          />
+        </div>
+        <div className='flex flex-1 justify-between'>
+          <div className='flex flex-col leading-5'>
+            <div className='font-bold text-gray-700'>Batman</div>
+            <div className='text-gray-600'>@batman</div>
+            <div className='text-red-500 font-semibold'>offline</div>
+          </div>
+          <div className='grid place-content-center'>
+            <button className='bg-purple-500 text-white font-semibold rounded-lg px-4 py-2 hover:bg-purple-600 duration-150' type='button'>CHAT</button>
+          </div>
+        </div>
+      </div>
+      <div className='flex items-center px-5 py-3'>
+        <div className='mr-4'>
+          <Image
+            className='rounded-full'
+            src='/images/project/breezy/chat-profile-picture.webp'
+            width={70}
+            height={70}
+            alt='profile picture'
+          />
+        </div>
+        <div className='flex flex-1 justify-between'>
+          <div className='flex flex-col leading-5'>
+            <div className='font-bold text-gray-700'>Resen</div>
+            <div className='text-gray-600'>@resenzhu</div>
+            <div className='text-green-500 font-semibold'>online</div>
+          </div>
+          <div className='grid place-content-center'>
+            <button className='bg-purple-500 text-white font-semibold rounded-lg px-4 py-2 hover:bg-purple-600 duration-150' type='button'>CHAT</button>
+          </div>
+        </div>
+      </div>
+      <div className='flex items-center px-5 py-3'>
+        <div className='mr-4'>
+          <Image
+            className='rounded-full'
+            src='/images/project/breezy/chat-profile-picture.webp'
+            width={70}
+            height={70}
+            alt='profile picture'
+          />
+        </div>
+        <div className='flex flex-1 justify-between'>
+          <div className='flex flex-col leading-5'>
+            <div className='font-bold text-gray-700'>Batman</div>
+            <div className='text-gray-600'>@batman</div>
+            <div className='text-red-500 font-semibold'>offline</div>
+          </div>
+          <div className='grid place-content-center'>
+            <button className='bg-purple-500 text-white font-semibold rounded-lg px-4 py-2 hover:bg-purple-600 duration-150' type='button'>CHAT</button>
+          </div>
+        </div>
+      </div>
+    </div> */}
   </>
 );
 
