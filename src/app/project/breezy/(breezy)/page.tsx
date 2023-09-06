@@ -9,7 +9,14 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <>
-    <div className='bottom-0'>NAVBAR</div>
+    <div className='fixed top-0 flex w-screen border-b-2 text-lg font-bold shadow-sm'>
+      <div className='flex-1 border-b-4 border-b-purple-500 py-3 text-center tracking-wide text-purple-500'>
+        CHATS
+      </div>
+      <div className='flex-1 py-3 text-center tracking-wide text-gray-500'>
+        USERS
+      </div>
+    </div>
   </>
 );
 
