@@ -19,6 +19,9 @@ const Page = (): JSX.Element => (
       <div className='flex-1 cursor-pointer py-3 text-center tracking-wide text-gray-500 hover:text-purple-500'>
         USERS
       </div>
+      <div className='flex-1 cursor-pointer py-3 text-center tracking-wide text-gray-500 hover:text-purple-500'>
+        SETTINGS
+      </div>
     </div>
     <div className='pt-14'>
       <div className='flex cursor-pointer items-center px-5 py-3 hover:bg-gray-100'>
