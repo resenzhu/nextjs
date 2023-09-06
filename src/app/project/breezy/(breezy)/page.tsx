@@ -1,6 +1,6 @@
-import {faCheck, faCheckDouble} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faCheckDouble, faCog, faMessage, faUserFriends} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
+// import Image from 'next/image';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -13,17 +13,17 @@ const metadata = createMetadata({
 const Page = (): JSX.Element => (
   <>
     <div className='fixed flex w-screen border-b-2 bg-white text-lg font-bold shadow-sm'>
-      <div className='flex-1 cursor-pointer border-b-4 border-b-purple-500 py-3 text-center tracking-wide text-purple-500'>
-        CHATS
+      <div className='flex-1 cursor-pointer border-b-4 border-b-purple-500 grid place-content-center py-3 text-purple-500'>
+        <FontAwesomeIcon className='text-xl' icon={faMessage} />
       </div>
       <div className='flex-1 cursor-pointer py-3 text-center tracking-wide text-gray-500 hover:text-purple-500'>
-        USERS
+        <FontAwesomeIcon className='text-xl' icon={faUserFriends} />
       </div>
       <div className='flex-1 cursor-pointer py-3 text-center tracking-wide text-gray-500 hover:text-purple-500'>
-        SETTINGS
+        <FontAwesomeIcon className='text-xl' icon={faCog} />
       </div>
     </div>
-    <div className='pt-14'>
+    {/* <div className='pt-14'>
       <div className='flex cursor-pointer items-center px-5 py-3 hover:bg-gray-100'>
         <div className='mr-4'>
           <Image
@@ -206,7 +206,7 @@ const Page = (): JSX.Element => (
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
     {/* <div className='pt-14'>
       <div className='flex items-center px-5 py-3'>
         <div className='mr-4'>
