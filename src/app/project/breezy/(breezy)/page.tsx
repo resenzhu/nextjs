@@ -1,8 +1,8 @@
 import {
   faCheck,
   faCheckDouble,
-  faCog,
   faMessage,
+  faUserCircle,
   faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -18,7 +18,7 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <>
-    <div className='pb-14'>
+    {/* <div className='pb-14'>
       <div className='mx-4 py-4'>
         <input
           className='w-full bg-gray-100 px-3 py-2 outline-0'
@@ -390,7 +390,7 @@ const Page = (): JSX.Element => (
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
     {/* <div className='pb-14'>
       <div className='mx-4 py-4'>
         <input
@@ -623,8 +623,8 @@ const Page = (): JSX.Element => (
       </div>
       <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150'>
         <FontAwesomeIcon
-          className='cursor-pointer text-xl hover:text-purple-500'
-          icon={faCog}
+          className='cursor-pointer text-2xl hover:text-purple-500'
+          icon={faUserCircle}
         />
       </div>
     </div>
