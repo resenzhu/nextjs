@@ -1,20 +1,20 @@
 'use client';
 
 import {
-  faBell,
-  faCheck,
-  faCheckDouble,
-  faLock,
-  faSignOutAlt,
+  // faBell,
+  // faCheck,
+  // faCheckDouble,
+  // faLock,
+  // faSignOutAlt,
   faMessage,
-  faShield,
-  faUser,
+  // faShield,
+  // faUser,
   faUserCircle,
   faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
-import {Listbox} from '@headlessui/react';
+// import Image from 'next/image';
+// import {Listbox} from '@headlessui/react';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
