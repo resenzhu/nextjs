@@ -637,7 +637,7 @@ const Page = (): JSX.Element => (
         </div>
       </div>
     </div> */}
-    <div className='flex h-[calc(100vh-3.5rem)] flex-col'>
+    {/* <div className='flex h-[calc(100vh-3.5rem)] flex-col'>
       <section className='flex-1 bg-gradient-to-b from-fuchsia-700 to-purple-600'>
         <div className='flex h-full items-center justify-center'>
           <div className='flex flex-col items-center justify-center space-y-5'>
@@ -738,7 +738,7 @@ const Page = (): JSX.Element => (
           <span className='text-lg'>Logout</span>
         </button>
       </section>
-    </div>
+    </div> */}
     <div className='fixed bottom-0 flex w-screen justify-evenly border-t-2 bg-white shadow-sm'>
       <div className='grid flex-1 place-content-center border-t-4 border-t-purple-500 py-4 text-purple-500 duration-150'>
         <FontAwesomeIcon
