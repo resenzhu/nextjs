@@ -1,8 +1,13 @@
 import {
+  faBell,
   faCheck,
   faCheckDouble,
+  faCog,
+  faLock,
+  faSignOutAlt,
   faMessage,
-  faUserCircle,
+  faShield,
+  faUser,
   faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -18,6 +23,20 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <>
+    {/* <div className='flex h-[calc(100vh-3.5rem)] items-center justify-center'>
+      <div className='w-2/3 space-y-8 text-center'>
+        <p className='text-gray-500'>
+          Welcome to Breezy! Connect with online users and experience the breezy
+          conversations.
+        </p>
+        <button
+          className='rounded-lg bg-purple-500 px-5 py-2 font-semibold text-white duration-150 hover:bg-purple-600'
+          type='button'
+        >
+          Browse Users
+        </button>
+      </div>
+    </div> */}
     {/* <div className='pb-14'>
       <div className='mx-4 py-4'>
         <input
@@ -399,6 +418,13 @@ const Page = (): JSX.Element => (
           placeholder='Search user'
         />
       </div>
+      <p className='mx-4 rounded-lg bg-purple-500 px-4 py-3 text-center text-sm text-white'>
+        Currently, there are no users online for chat. To utilize the chat
+        feature, kindly create a new account on a different browser or device
+        while staying logged in to your current session. This will allow you to
+        experience the chat functionality with the newly created account. Thank
+        you for your understanding and cooperation.
+      </p>
       <div className='flex items-center px-5 py-3'>
         <div className='mr-4'>
           <Image
@@ -608,6 +634,67 @@ const Page = (): JSX.Element => (
         </div>
       </div>
     </div> */}
+    <div className='flex h-[calc(100vh-3.5rem)] flex-col'>
+      <section className='flex-1 bg-gradient-to-b from-fuchsia-700 to-purple-500'>
+        PROFILE
+      </section>
+      <section className='mx-4 flex flex-col space-y-5 py-5'>
+        <button
+          className='flex w-fit items-baseline justify-center space-x-4 text-xl text-gray-600 duration-150 hover:text-purple-500'
+          type='button'
+        >
+          <div className='w-6 text-center'>
+            <FontAwesomeIcon icon={faUser} />
+          </div>{' '}
+          <span className='text-lg'>Profile</span>
+        </button>
+        <button
+          className='flex w-fit items-baseline justify-center space-x-4 text-xl text-gray-600 duration-150 hover:text-purple-500'
+          type='button'
+        >
+          <div className='w-6 text-center'>
+            <FontAwesomeIcon icon={faShield} />
+          </div>{' '}
+          <span className='text-lg'>Privacy</span>
+        </button>
+        <button
+          className='flex w-fit items-baseline justify-center space-x-4 text-xl text-gray-600 duration-150 hover:text-purple-500'
+          type='button'
+        >
+          <div className='w-6 text-center'>
+            <FontAwesomeIcon icon={faLock} />
+          </div>{' '}
+          <span className='text-lg'>Security</span>
+        </button>
+        <button
+          className='flex w-fit items-baseline justify-center space-x-4 text-xl text-gray-600 duration-150 hover:text-purple-500'
+          type='button'
+        >
+          <div className='w-6 text-center'>
+            <FontAwesomeIcon icon={faBell} />
+          </div>{' '}
+          <span className='text-lg'>Notifications</span>
+        </button>
+        <button
+          className='flex w-fit items-baseline justify-center space-x-4 text-xl text-gray-600 duration-150 hover:text-purple-500'
+          type='button'
+        >
+          <div className='w-6 text-center'>
+            <FontAwesomeIcon icon={faMessage} />
+          </div>{' '}
+          <span className='text-lg'>Chat</span>
+        </button>
+        <button
+          className='flex w-fit items-baseline justify-center space-x-4 text-xl text-gray-600 duration-150 hover:text-red-500'
+          type='button'
+        >
+          <div className='w-6 text-center'>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </div>{' '}
+          <span className='text-lg'>Logout</span>
+        </button>
+      </section>
+    </div>
     <div className='fixed bottom-0 flex w-screen justify-evenly border-t-2 bg-white shadow-sm'>
       <div className='grid flex-1 place-content-center border-t-4 border-t-purple-500 py-4 text-purple-500 duration-150'>
         <FontAwesomeIcon
@@ -624,7 +711,7 @@ const Page = (): JSX.Element => (
       <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150'>
         <FontAwesomeIcon
           className='cursor-pointer text-2xl hover:text-purple-500'
-          icon={faUserCircle}
+          icon={faCog}
         />
       </div>
     </div>
