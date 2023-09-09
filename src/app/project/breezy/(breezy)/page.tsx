@@ -2,12 +2,12 @@ import {
   faBell,
   faCheck,
   faCheckDouble,
-  faCog,
   faLock,
   faSignOutAlt,
   faMessage,
   faShield,
   faUser,
+  faUserCircle,
   faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -711,7 +711,7 @@ const Page = (): JSX.Element => (
       <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150'>
         <FontAwesomeIcon
           className='cursor-pointer text-2xl hover:text-purple-500'
-          icon={faCog}
+          icon={faUserCircle}
         />
       </div>
     </div>
