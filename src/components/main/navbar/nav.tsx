@@ -2,7 +2,7 @@
 
 import {type ReactNode, useEffect, useRef, useState} from 'react';
 import {T, TBackdrop, TSidenav} from '@components/main/navbar/transition';
-import {faEllipsisVertical, faXmark} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisV, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import useApp from '@hooks/main/use-app';
 
@@ -53,7 +53,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
           >
             <FontAwesomeIcon
               className='w-6 text-2xl text-gray-500'
-              icon={faEllipsisVertical}
+              icon={faEllipsisV}
             />
           </button>
           <div className='fixed'>
