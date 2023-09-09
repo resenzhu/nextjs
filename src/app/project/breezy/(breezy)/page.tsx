@@ -1,3 +1,5 @@
+'use client';
+
 import {
   faBell,
   faCheck,
@@ -12,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
+import {Listbox} from '@headlessui/react';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -635,8 +638,49 @@ const Page = (): JSX.Element => (
       </div>
     </div> */}
     <div className='flex h-[calc(100vh-3.5rem)] flex-col'>
-      <section className='flex-1 bg-gradient-to-b from-fuchsia-700 to-purple-500'>
-        PROFILE
+      <section className='flex-1 bg-gradient-to-b from-fuchsia-700 to-purple-600'>
+        <div className='flex h-full items-center justify-center'>
+          <div className='flex flex-col items-center justify-center space-y-5'>
+            <div className='flex flex-col items-center justify-center space-y-2'>
+              <Image
+                className='rounded-full border-8'
+                src='/images/project/breezy/home-chats-profile-picture.webp'
+                width={100}
+                height={100}
+                alt='profile picture'
+              />
+              <div className='text-center text-white'>
+                <div className='text-lg font-bold'>RESEN</div>
+                <div className='font-light'>@resenzhu</div>
+              </div>
+            </div>
+            <Listbox>
+              <Listbox.Button className='w-40 rounded-lg bg-white py-1 text-lg font-semibold text-green-500'>
+                online
+              </Listbox.Button>
+              <Listbox.Options className='absolute w-40 translate-y-40 rounded-lg bg-white text-center shadow-md'>
+                <Listbox.Option
+                  className='cursor-pointer py-2 font-semibold text-green-500 hover:bg-purple-500 hover:text-white'
+                  value='online'
+                >
+                  online
+                </Listbox.Option>
+                <Listbox.Option
+                  className='cursor-pointer py-2 font-semibold text-yellow-500 hover:bg-purple-500 hover:text-white'
+                  value='away'
+                >
+                  away
+                </Listbox.Option>
+                <Listbox.Option
+                  className='cursor-pointer py-2 font-semibold text-gray-500 hover:bg-purple-500 hover:text-white'
+                  value='invisible'
+                >
+                  invisible
+                </Listbox.Option>
+              </Listbox.Options>
+            </Listbox>
+          </div>
+        </div>
       </section>
       <section className='mx-4 flex flex-col space-y-5 py-5'>
         <button
