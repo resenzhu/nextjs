@@ -1,24 +1,25 @@
 'use client';
 
-import {
-  faArrowLeftLong,
+// import {
+  // faAngleRight,
+  // faArrowLeftLong,
   // faBell,
   // faCheck,
-  faCheckDouble,
-  faEllipsisH,
+  // faCheckDouble,
+  // faEllipsisH,
   // faLock,
   // faMessage,
-  faPaperPlane
+  // faPaperPlane
   // faShield,
   // faSignOutAlt,
   // faUser,
   // faUserCircle,
   // faUserFriends
-} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
+// } from '@fortawesome/free-solid-svg-icons';
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import Image from 'next/image';
 // import {Listbox} from '@headlessui/react';
-import {Tooltip} from 'react-tooltip';
+// import {Tooltip} from 'react-tooltip';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -765,12 +766,12 @@ const Page = (): JSX.Element => (
         </div>
       </div> */}
     </>
-    <div className='flex h-screen flex-col'>
+    {/* <div className='flex h-screen flex-col'>
       <div className='border-b-2'>
-        <div className='mx-4 flex justify-between space-x-5 py-2'>
+        <div className='mx-4 flex space-x-5 py-2'>
           <button type='button'>
             <FontAwesomeIcon
-              className='text-2xl text-gray-500 duration-150 hover:text-purple-500'
+              className='flex text-2xl text-gray-500 duration-150 hover:text-purple-500'
               icon={faArrowLeftLong}
             />
           </button>
@@ -956,7 +957,34 @@ const Page = (): JSX.Element => (
           </button>
         </form>
       </div>
-    </div>
+    </div> */}
+    {/* <div className='flex h-screen flex-col'>
+      <div className='border-b-2'>
+        <div className='mx-4 flex space-x-5 py-3'>
+          <button type='button'>
+            <FontAwesomeIcon
+              className='flex text-2xl text-gray-500 duration-150 hover:text-purple-500'
+              icon={faArrowLeftLong}
+            />
+          </button>
+          <div className='flex-1 text-xl font-semibold text-gray-600'>
+            Profile
+          </div>
+        </div>
+      </div>
+      <div className='flex flex-col py-4'>
+        <button
+          className='mx-4 flex items-center rounded-lg border-2 px-4 py-3 text-gray-500 duration-150 hover:border-purple-500 hover:bg-purple-500 hover:text-white'
+          type='button'
+        >
+          <div className='flex-1 text-start font-semibold'>Edit Profile</div>
+          <FontAwesomeIcon
+            className='flex text-xl'
+            icon={faAngleRight}
+          />
+        </button>
+      </div>
+    </div> */}
   </>
 );
 
