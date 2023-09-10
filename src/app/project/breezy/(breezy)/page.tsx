@@ -1,6 +1,6 @@
 'use client';
 
-// import {
+import {
   // faAngleRight,
   // faArrowLeftLong,
   // faBell,
@@ -8,15 +8,15 @@
   // faCheckDouble,
   // faEllipsisH,
   // faLock,
-  // faMessage,
+  faMessage,
   // faPaperPlane
   // faShield,
   // faSignOutAlt,
   // faUser,
-  // faUserCircle,
-  // faUserFriends
-// } from '@fortawesome/free-solid-svg-icons';
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+  faUserCircle,
+  faUserFriends
+} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 // import Image from 'next/image';
 // import {Listbox} from '@headlessui/react';
 // import {Tooltip} from 'react-tooltip';
@@ -31,9 +31,9 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <>
-    <>
-      {/* <div className='flex h-[calc(100vh-3.5rem)] items-center justify-center'>
-        <div className='w-2/3 space-y-8 text-center'>
+    <div className='md:flex md:flex-row-reverse md:h-screen'>
+      <div className='flex h-[calc(100vh-3.5rem)] items-center justify-center mx-4 md:mx-0 md:flex-1 md:h-full'>
+        <div className='w-2/3 space-y-8 text-center md:w-1/3 lg:w-1/6 md:text-sm'>
           <p className='text-gray-500'>
             Welcome to Breezy! Connect with online users and experience the breezy
             conversations.
@@ -45,7 +45,7 @@ const Page = (): JSX.Element => (
             Browse Users
           </button>
         </div>
-      </div> */}
+      </div>
       {/* <div className='pb-14'>
         <div className='mx-4 py-4'>
           <input
@@ -745,27 +745,27 @@ const Page = (): JSX.Element => (
           </button>
         </section>
       </div> */}
-      {/* <div className='fixed bottom-0 flex w-screen justify-evenly border-t-2 bg-white shadow-sm'>
-        <div className='grid flex-1 place-content-center border-t-4 border-t-purple-500 py-4 text-purple-500 duration-150'>
+      <div className='fixed bottom-0 md:relative flex w-screen justify-evenly border-t-2 md:border-t-0 md:border-r-2 bg-white shadow-sm md:left-0 md:top-0 md:justify-normal md:w-14 md:flex-col md:bottom-auto'>
+        <div className='grid flex-1 place-content-center border-t-4 md:flex-none border-t-purple-500 md:border-t-0 md:border-r-purple-500 md:border-r-4 py-4 md:py-3 text-purple-500 duration-150'>
           <FontAwesomeIcon
-            className='cursor-pointer text-xl'
+            className='cursor-pointer text-xl md:text-lg'
             icon={faMessage}
           />
         </div>
-        <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150'>
+        <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150 md:flex-none'>
           <FontAwesomeIcon
-            className='cursor-pointer text-xl hover:text-purple-500'
+            className='cursor-pointer text-xl hover:text-purple-500 md:text-lg'
             icon={faUserFriends}
           />
         </div>
-        <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150'>
+        <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150 md:flex-none'>
           <FontAwesomeIcon
-            className='cursor-pointer text-2xl hover:text-purple-500'
+            className='cursor-pointer text-2xl hover:text-purple-500 md:text-xl'
             icon={faUserCircle}
           />
         </div>
-      </div> */}
-    </>
+      </div>
+    </div>
     {/* <div className='flex h-screen flex-col'>
       <div className='border-b-2'>
         <div className='mx-4 flex space-x-5 py-2'>
