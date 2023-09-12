@@ -13,6 +13,7 @@ const Picture = ({src}: PictureProps): JSX.Element => {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [easter, setEaster] = useState<boolean>(false);
   const [pictureSize, setPictureSize] = useState<number>(0);
+
   useEffect((): void => {
     let size: number = 0;
     if (viewport.width <= 640) {
