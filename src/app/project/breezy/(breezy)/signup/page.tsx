@@ -12,7 +12,6 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <Auth
-    background='bg-[url("/images/project/breezy/login-background.webp")]'
     welcome='Welcome to Breezy'
     title='Sign Up'
     subtitle='Join Breezy and start connecting with others in no time.'
@@ -20,15 +19,22 @@ const Page = (): JSX.Element => (
       <div className='mx-4 pb-4 text-center'>
         Already have an account?{' '}
         <Link
-        className='font-bold text-purple-500 hover:underline hover:underline-offset-4'
-        href='/project/breezy/signup'
-      >
-        Login here!
-      </Link>
+          className='font-bold text-purple-500 hover:underline hover:underline-offset-4'
+          href='/project/breezy/signup'
+        >
+          Login here!
+        </Link>
       </div>
     }
   >
-    <Form label={{username: 'Username', displayName: 'Display Name', password: 'Password', submit: 'Login'}} />
+    <Form
+      label={{
+        username: 'Username',
+        displayName: 'Display Name',
+        password: 'Password',
+        submit: 'Login'
+      }}
+    />
   </Auth>
 );
 
