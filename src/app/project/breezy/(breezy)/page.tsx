@@ -31,12 +31,12 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <>
-    <div className='md:flex md:flex-row-reverse md:h-screen'>
-      <div className='flex h-[calc(100vh-3.5rem)] items-center justify-center mx-4 md:mx-0 md:flex-1 md:h-full'>
-        <div className='w-2/3 space-y-8 text-center md:w-1/3 lg:w-1/6 md:text-sm'>
+    <div className='md:flex md:h-screen md:flex-row-reverse'>
+      <div className='mx-4 flex h-[calc(100vh-3.5rem)] items-center justify-center md:mx-0 md:h-full md:flex-1'>
+        <div className='w-2/3 space-y-8 text-center md:w-1/3 md:text-sm lg:w-1/6'>
           <p className='text-gray-500'>
-            Welcome to Breezy! Connect with online users and experience the breezy
-            conversations.
+            Welcome to Breezy! Connect with online users and experience the
+            breezy conversations.
           </p>
           <button
             className='rounded-lg bg-purple-500 px-5 py-2 font-semibold text-white duration-150 hover:bg-purple-600'
@@ -745,8 +745,8 @@ const Page = (): JSX.Element => (
           </button>
         </section>
       </div> */}
-      <div className='fixed bottom-0 md:relative flex w-screen justify-evenly border-t-2 md:border-t-0 md:border-r-2 bg-white shadow-sm md:left-0 md:top-0 md:justify-normal md:w-14 md:flex-col md:bottom-auto'>
-        <div className='grid flex-1 place-content-center border-t-4 md:flex-none border-t-purple-500 md:border-t-0 md:border-r-purple-500 md:border-r-4 py-4 md:py-3 text-purple-500 duration-150'>
+      <div className='fixed bottom-0 flex w-screen justify-evenly border-t-2 bg-white shadow-sm md:relative md:bottom-auto md:left-0 md:top-0 md:w-14 md:flex-col md:justify-normal md:border-r-2 md:border-t-0'>
+        <div className='grid flex-1 place-content-center border-t-4 border-t-purple-500 py-4 text-purple-500 duration-150 md:flex-none md:border-r-4 md:border-t-0 md:border-r-purple-500 md:py-3'>
           <FontAwesomeIcon
             className='cursor-pointer text-xl md:text-lg'
             icon={faMessage}
