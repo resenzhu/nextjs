@@ -1,5 +1,3 @@
-'use client';
-
 import {
   // faAngleRight,
   // faArrowLeftLong,
@@ -17,6 +15,7 @@ import {
   faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Navbar} from '@components/project/breezy/home';
 // import Image from 'next/image';
 // import {Listbox} from '@headlessui/react';
 // import {Tooltip} from 'react-tooltip';
@@ -745,26 +744,9 @@ const Page = (): JSX.Element => (
           </button>
         </section>
       </div> */}
-      <div className='fixed bottom-0 flex w-screen justify-evenly border-t-2 bg-white shadow-sm md:relative md:bottom-auto md:left-0 md:top-0 md:w-14 md:flex-col md:justify-normal md:border-r-2 md:border-t-0'>
-        <div className='grid flex-1 place-content-center border-t-4 border-t-purple-500 py-4 text-purple-500 duration-150 md:flex-none md:border-r-4 md:border-t-0 md:border-r-purple-500 md:py-3'>
-          <FontAwesomeIcon
-            className='cursor-pointer text-xl md:text-lg'
-            icon={faMessage}
-          />
-        </div>
-        <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150 md:flex-none'>
-          <FontAwesomeIcon
-            className='cursor-pointer text-xl hover:text-purple-500 md:text-lg'
-            icon={faUserFriends}
-          />
-        </div>
-        <div className='grid flex-1 place-content-center py-4 text-gray-500 duration-150 md:flex-none'>
-          <FontAwesomeIcon
-            className='cursor-pointer text-2xl hover:text-purple-500 md:text-xl'
-            icon={faUserCircle}
-          />
-        </div>
-      </div>
+      <Navbar>
+        <Navbar.Menu></Navbar.Menu>
+      </Navbar>
     </div>
     {/* <div className='flex h-screen flex-col'>
       <div className='border-b-2'>
