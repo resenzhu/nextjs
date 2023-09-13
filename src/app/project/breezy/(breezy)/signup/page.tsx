@@ -1,6 +1,5 @@
 import {Auth} from '@components/project/breezy/shared';
 import {Form} from '@components/project/breezy/signup';
-import Link from 'next/link';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -15,24 +14,18 @@ const Page = (): JSX.Element => (
     welcome='Welcome to Breezy'
     title='Sign Up'
     subtitle='Join Breezy and start connecting with others in no time.'
-    footer={
-      <div className='mx-4 pb-4 text-center'>
-        Already have an account?{' '}
-        <Link
-          className='font-bold text-purple-500 hover:underline hover:underline-offset-4'
-          href='/project/breezy/signup'
-        >
-          Login here!
-        </Link>
-      </div>
-    }
   >
     <Form
       label={{
         username: 'Username',
         displayName: 'Display Name',
         password: 'Password',
-        submit: 'Login'
+        submit: 'Sign Up'
+      }}
+      login={{
+        description: 'Already have an account?',
+        label: 'Login here!',
+        url: '/project/breezy/login'
       }}
     />
   </Auth>
