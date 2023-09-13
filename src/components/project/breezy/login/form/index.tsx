@@ -11,14 +11,20 @@ type FormProps = {
     description: string;
     label: string;
     url: string;
-  }
+  };
 };
 
 const Form = ({label, signup}: FormProps): JSX.Element => (
   <>
-    <Input />
+    <Input
+      label={{
+        username: label.username,
+        password: label.password,
+        submit: label.submit
+      }}
+    />
     <div className='mx-4 pb-4 text-center'>
-      {signup.description}
+      {signup.description}{' '}
       <Link
         className='font-bold text-purple-500 hover:underline hover:underline-offset-4'
         href={signup.url}
