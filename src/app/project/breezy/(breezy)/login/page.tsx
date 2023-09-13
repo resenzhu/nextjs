@@ -17,7 +17,11 @@ const Page = (): JSX.Element => (
   >
     <Form
       label={{username: 'Username', password: 'Password', submit: 'Login'}}
-      signup={{description: "Don't have an account?", label: 'Sign up here!', url: '/project/breezy/signup'}}
+      signup={{
+        description: "Don't have an account?",
+        label: 'Sign up here!',
+        url: '/project/breezy/signup'
+      }}
     />
   </Auth>
 );
