@@ -17,7 +17,7 @@ const useHome = (): UseHome => {
   };
 
   return {
-    menu: useSelector((state) => state.project.breezy.menu),
+    menu: useSelector((state) => state.project.breezy.home.menu),
     setMenu: setMenu
   };
 };
