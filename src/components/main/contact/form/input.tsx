@@ -56,15 +56,15 @@ const Input = ({label}: InputProps): JSX.Element => {
   const handleUpdateForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
-    const property =
-      event.target.id === 'phone'
+    const fieldName =
+      event.target.name === 'phone'
         ? 'honeypot'
-        : (event.target.id as keyof Form);
+        : (event.target.name as keyof Form);
     const {value} = event.target;
-    if (form[property] !== value) {
+    if (form[fieldName] !== value) {
       setForm({
         ...form,
-        [property]: value,
+        [fieldName]: value,
         error: '',
         success: ''
       });
@@ -74,15 +74,15 @@ const Input = ({label}: InputProps): JSX.Element => {
   const handleTrimForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
-    const property =
-      event.target.id === 'phone'
+    const fieldName =
+      event.target.name === 'phone'
         ? 'honeypot'
-        : (event.target.id as keyof Form);
+        : (event.target.name as keyof Form);
     const {value} = event.target;
-    if (form[property] !== value.trim()) {
+    if (form[fieldName] !== value.trim()) {
       setForm({
         ...form,
-        [property]: value.trim(),
+        [fieldName]: value.trim(),
         error: '',
         success: ''
       });
@@ -355,7 +355,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         </TLabelName>
         <input
           className='border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
-          id='name'
+          name='name'
           type='text'
           placeholder={label.name}
           value={form.name}
@@ -376,7 +376,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         </TLabelEmail>
         <input
           className='border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
-          id='email'
+          name='email'
           type='text'
           placeholder={label.email}
           value={form.email}
@@ -397,7 +397,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         </TLabelMessage>
         <textarea
           className='min-h-[20vh] resize-none border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
-          id='message'
+          name='message'
           placeholder={label.message}
           value={form.message}
           maxLength={2000}
@@ -409,7 +409,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       <div className='hidden'>
         <input
           className='w-full border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
-          id='phone'
+          name='phone'
           type='text'
           placeholder='Phone'
           value={form.honeypot}
