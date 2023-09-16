@@ -1,15 +1,14 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
 type Menu = {
-  chats: boolean;
+  messages: boolean;
   users: boolean;
   profile: boolean;
 };
 
 type Chat = {
   id: string;
-  username: string;
-  displayName: string;
+  sender: string;
   message: string;
   status: 'failed' | 'sending' | 'sent' | 'delivered' | 'read';
   timestamp: {
@@ -19,32 +18,37 @@ type Chat = {
   };
 };
 
-type Chats = {
-  search: string;
-  list: Chat[];
+type Message = {
+  id: string;
+  username: string;
+  displayName: string;
+  status: 'failed' | 'sending' | 'sent' | 'delivered' | 'read';
+  latestTimestamp: string;
+  unreadCount: number;
+};
+
+type User = {
+  id: string;
+  username: string;
+  displayName: string;
+  status: 'online' | 'away' | 'offline';
 };
 
 type State = {
   menu: Menu;
-  chats: Chats;
 };
 
 type Reducers = {
   setMenu: (state: State, action: PayloadAction<Menu>) => void;
-  setChats: (state: State, action: PayloadAction<Chats>) => void;
 };
 
 const name: string = 'home';
 
 const initialState: State = {
   menu: {
-    chats: true,
+    messages: true,
     users: false,
     profile: false
-  },
-  chats: {
-    search: '',
-    list: []
   }
 };
 
@@ -52,11 +56,6 @@ const reducers: Reducers = {
   setMenu: (state, action) => {
     if (action.payload !== state.menu) {
       state.menu = action.payload;
-    }
-  },
-  setChats: (state, action) => {
-    if (action.payload !== state.chats) {
-      state.chats = action.payload;
     }
   }
 };
@@ -67,6 +66,6 @@ const slice = createSlice({
   reducers: reducers
 });
 
-export type {Menu, Chat, Chats};
-export const {setMenu, setChats} = slice.actions;
+export type {Menu, Chat};
+export const {setMenu} = slice.actions;
 export default slice.reducer;

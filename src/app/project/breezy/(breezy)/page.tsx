@@ -3,7 +3,7 @@ import {
   faUser,
   faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
-import {Navbar} from '@components/project/breezy/home';
+import {Messages, Navbar} from '@components/project/breezy/home';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -17,7 +17,7 @@ const Page = (): JSX.Element => (
   <div className='md:flex md:h-screen'>
     <Navbar>
       <Navbar.Menu
-        name='chats'
+        name='messages'
         icon={faMessage}
       ></Navbar.Menu>
       <Navbar.Menu
@@ -29,6 +29,13 @@ const Page = (): JSX.Element => (
         icon={faUser}
       ></Navbar.Menu>
     </Navbar>
+    <Messages
+      empty={{
+        message:
+          'Welcome to Breezy! Connect with online users and experience the breezy conversations.',
+        action: 'Browse Users'
+      }}
+    />
   </div>
 );
 
