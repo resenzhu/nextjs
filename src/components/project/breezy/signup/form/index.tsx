@@ -25,7 +25,7 @@ const Form = ({label, login}: FormProps): JSX.Element => (
         submit: label.submit
       }}
     />
-    <div className='mx-4 pb-4 text-center'>
+    <div className='mx-4 pb-4 text-center md:pb-5 md:text-xs'>
       {login.description}{' '}
       <Link
         className='font-bold text-purple-500 hover:underline hover:underline-offset-4'
