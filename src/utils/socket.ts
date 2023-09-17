@@ -6,3 +6,4 @@ const socketManager = new Manager(process.env.NEXT_PUBLIC_APP_SOCKET, {
 });
 
 export const mainSocket = socketManager.socket('/main');
+export const breezySocket = socketManager.socket('/project/breezy');
