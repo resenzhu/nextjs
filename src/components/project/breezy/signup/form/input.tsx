@@ -1,11 +1,12 @@
 'use client';
 
+import {type ChangeEvent, type FormEvent, useEffect, useRef} from 'react';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
-import type {ChangeEvent} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {Form} from '@redux/reducers/project/breezy/signup';
 import {RecaptchaV2} from '@components/project/breezy/shared';
 import {TError} from '@components/project/breezy/signup/form/transition';
+import useApp from '@hooks/main/use-app';
 import useSignUp from '@hooks/project/breezy/use-signup';
 
 type InputProps = {
@@ -18,6 +19,8 @@ type InputProps = {
 };
 
 const Input = ({label}: InputProps): JSX.Element => {
+  const {online} = useApp();
+  const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useSignUp();
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -66,8 +69,66 @@ const Input = ({label}: InputProps): JSX.Element => {
     }
   };
 
+  const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    let errorMessage: string = '';
+    if (!online) {
+      errorMessage =
+        'You are currently offline. Please check your internet connection and try again later.';
+    }
+    if (form.throttle) {
+      if (throttleTimer.current) {
+        clearTimeout(throttleTimer.current);
+      }
+      throttleTimer.current = setTimeout((): void => {
+        setForm({
+          ...form,
+          throttle: false
+        });
+      }, 3000);
+      errorMessage =
+        'You are submitting too quickly. Please take a moment and try again.';
+    }
+    if (form.submitting) {
+      errorMessage =
+        'Your signup request is being processed. Please wait a moment.';
+    }
+    setForm({
+      ...form,
+      submitting: online && !form.throttle && !form.submitting,
+      error: errorMessage,
+      success: ''
+    });
+  };
+
+  useEffect((): (() => void) => {
+    if (form.throttle) {
+      throttleTimer.current = setTimeout((): void => {
+        setForm({
+          ...form,
+          throttle: false
+        });
+      }, 3000);
+    }
+    return (): void => {
+      if (throttleTimer.current) {
+        clearTimeout(throttleTimer.current);
+      }
+    };
+  }, [
+    form.throttle,
+    form.error,
+    form.username,
+    form.displayName,
+    form.password,
+    form.honeypot
+  ]);
+
   return (
-    <form className='mx-4 flex flex-col space-y-3 py-6 md:py-5'>
+    <form
+      className='mx-4 flex flex-col space-y-3 py-6 md:py-5'
+      onSubmit={(event): void => handleSubmitForm(event)}
+    >
       <input
         className='rounded-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs'
         name='username'
@@ -122,7 +183,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         {label.submit}
       </button>
       <TError>
-        <div className='rounded-lg bg-red-500 py-2 text-center text-white md:text-xs'>
+        <div className='rounded-lg bg-red-500 py-2 text-center text-sm text-white md:text-xs'>
           {form.error}
         </div>
       </TError>
