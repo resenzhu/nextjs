@@ -4,6 +4,7 @@ type Form = {
   username: string;
   displayName: string;
   password: string;
+  reveal: boolean;
   honeypot: string;
   token: string;
   throttle: boolean;
@@ -27,6 +28,7 @@ const initialState: State = {
     username: '',
     displayName: '',
     password: '',
+    reveal: false,
     honeypot: '',
     token: '',
     throttle: true,
