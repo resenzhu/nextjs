@@ -140,7 +140,7 @@ const Input = ({label}: InputProps): JSX.Element => {
             'Your username is too long. Please enter a maximum of 15 characters.'
           )
           .matches(
-            /^[a-zA-Z0-9_-]+$/,
+            /^[a-zA-Z0-9_-]+$/u,
             'Please enter a username containing only letters, numbers, hyphen, and underscore.'
           ),
         displayName: string()
