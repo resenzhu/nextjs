@@ -1,13 +1,16 @@
 'use client';
 
 import {type ChangeEvent, type FormEvent, useEffect, useRef} from 'react';
+import {ValidationError, object, string} from 'yup';
 import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {Form} from '@redux/reducers/project/breezy/signup';
 import {RecaptchaV2} from '@components/project/breezy/shared';
 import {TError} from '@components/project/breezy/signup/form/transition';
+import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
 import useSignUp from '@hooks/project/breezy/use-signup';
+import validator from 'validator';
 
 type InputProps = {
   label: {
@@ -16,6 +19,14 @@ type InputProps = {
     password: string;
     submit: string;
   };
+};
+
+type SignUpReq = {
+  username: string;
+  displayName: string;
+  password: string;
+  honeypot: string;
+  token: string;
 };
 
 const Input = ({label}: InputProps): JSX.Element => {
@@ -100,6 +111,84 @@ const Input = ({label}: InputProps): JSX.Element => {
       success: ''
     });
   };
+
+  useEffect((): void => {
+    if (form.submitting) {
+      const requestSchema = object().shape({
+        username: string()
+          .ensure()
+          .required('Please enter your username.')
+          .min(
+            2,
+            'Your username is too short. Please enter at least 2 characters.'
+          )
+          .max(
+            15,
+            'Your username is too long. Please enter a maximum of 15 characters.'
+          )
+          .matches(
+            /^[a-zA-Z0-9_-]+$/,
+            'Please enter a username containing only letters, numbers, hyphen, and underscore.'
+          ),
+        displayName: string()
+          .ensure()
+          .required('Please enter your display name.')
+          .min(
+            2,
+            'Your display name is too short. Please enter at least 2 characters.'
+          )
+          .max(
+            120,
+            'Your display name is too long. Please enter a maximum of 120 characters.'
+          ),
+        password: string()
+          .ensure()
+          .required('Please enter your password.')
+          .min(
+            8,
+            'Your password is too short. Please enter at least 8 characters.'
+          )
+          .max(
+            64,
+            'Your message is too long. Please enter a maximum of 64 characters.'
+          ),
+        honeypot: string()
+          .ensure()
+          .length(
+            0,
+            'Bot detection system triggered. Please ensure you are a human and not a bot.'
+          ),
+        token: string()
+          .ensure()
+          .required('Please complete the reCAPTCHA verification.')
+      });
+      const request: SignUpReq = {
+        username: sanitize(form.username).trim(),
+        displayName: sanitize(form.displayName).trim(),
+        password: sanitize(form.password).trim(),
+        honeypot: sanitize(form.honeypot).trim(),
+        token: form.token
+      };
+      requestSchema
+        .validate(request, {abortEarly: false})
+        .then((): void => {
+          if (!validator.isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
+            throw new ValidationError(
+              'Please enter a valid display name using only letters.'
+            );
+          }
+        })
+        .catch((error: ValidationError): void => {
+          setForm({
+            ...form,
+            submitting: false,
+            error:
+              error.errors[0] ??
+              'Oops! There was an error with your signup. Please review your information and try again.'
+          });
+        });
+    }
+  }, [form.submitting]);
 
   useEffect((): (() => void) => {
     if (form.throttle) {
