@@ -422,7 +422,9 @@ const Input = ({label}: InputProps): JSX.Element => {
         <div className='bg-green-600 p-2 text-white'>{form.success}</div>
       </TSuccess>
       <button
-        className='w-36 animate-fade-left place-self-center bg-cyan-600 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 active:bg-cyan-700 disabled:bg-gray-300'
+        className={`w-36 animate-fade-left place-self-center bg-cyan-600 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 disabled:bg-gray-300 ${
+          form.submitting ? 'cursor-default' : 'active:bg-cyan-700'
+        }`}
         type='submit'
         disabled={
           form.name.trim().length === 0 ||

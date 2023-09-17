@@ -317,7 +317,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       <RecaptchaV2 onChange={(token): void => handleUpdateToken(token)} />
       <button
         className={`rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 disabled:bg-gray-300 md:text-sm ${
-          form.submitting ? 'cursor-default' : 'hover:bg-purple-600'
+          form.submitting ? 'cursor-default' : 'active:bg-purple-600'
         }`}
         type='submit'
         disabled={
