@@ -35,7 +35,7 @@ const Input = ({label}: InputProps): JSX.Element => (
     >
       {label.submit}
     </button>
-    <div className='break-words rounded-lg bg-red-500 py-2 text-center text-sm text-white md:text-xs'>
+    <div className='break-words rounded-lg bg-red-500 p-2 text-center text-sm text-white md:text-xs'>
       Username is already taken.
     </div>
   </form>
