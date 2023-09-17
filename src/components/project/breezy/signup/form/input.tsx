@@ -206,7 +206,8 @@ const Input = ({label}: InputProps): JSX.Element => {
     form.username,
     form.displayName,
     form.password,
-    form.honeypot
+    form.honeypot,
+    form.token
   ]);
 
   return (
@@ -268,7 +269,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         {label.submit}
       </button>
       <TError>
-        <div className='rounded-lg bg-red-500 py-2 text-center text-sm text-white md:text-xs'>
+        <div className='rounded-lg bg-red-500 p-2 text-center text-sm text-white md:text-xs'>
           {form.error}
         </div>
       </TError>
