@@ -1,15 +1,21 @@
 'use client';
 
 import {type ChangeEvent, type FormEvent, useEffect, useRef} from 'react';
+import {
+  TError,
+  TSubmit,
+  TSubmitting
+} from '@components/project/breezy/signup/form/transition';
 import {ValidationError, object, string} from 'yup';
-import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import {faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {Form} from '@redux/reducers/project/breezy/signup';
 import {RecaptchaV2} from '@components/project/breezy/shared';
-import {TError} from '@components/project/breezy/signup/form/transition';
 import {breezySocket} from '@utils/socket';
+import cookie from 'js-cookie';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
+import {useRouter} from 'next/navigation';
 import useSignUp from '@hooks/project/breezy/use-signup';
 import validator from 'validator';
 
@@ -43,6 +49,7 @@ type SignUpRes = {
 
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
+  const router = useRouter();
   const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useSignUp();
 
@@ -91,33 +98,31 @@ const Input = ({label}: InputProps): JSX.Element => {
 
   const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    let errorMessage: string = '';
-    if (!online) {
-      errorMessage =
-        'You are currently offline. Please check your internet connection and try again later.';
-    }
-    if (form.throttle) {
-      if (throttleTimer.current) {
-        clearTimeout(throttleTimer.current);
+    if (!form.submitting) {
+      let errorMessage: string = '';
+      if (!online) {
+        errorMessage =
+          'You are currently offline. Please check your internet connection and try again later.';
       }
-      throttleTimer.current = setTimeout((): void => {
-        setForm({
-          ...form,
-          throttle: false
-        });
-      }, 3000);
-      errorMessage =
-        'You are submitting too quickly. Please take a moment and try again.';
+      if (form.throttle) {
+        if (throttleTimer.current) {
+          clearTimeout(throttleTimer.current);
+        }
+        throttleTimer.current = setTimeout((): void => {
+          setForm({
+            ...form,
+            throttle: false
+          });
+        }, 3000);
+        errorMessage =
+          'You are submitting too quickly. Please take a moment and try again.';
+      }
+      setForm({
+        ...form,
+        submitting: online && !form.throttle,
+        error: errorMessage
+      });
     }
-    if (form.submitting) {
-      errorMessage =
-        'Your signup request is being processed. Please wait a moment.';
-    }
-    setForm({
-      ...form,
-      submitting: online && !form.throttle && !form.submitting,
-      error: errorMessage
-    });
   };
 
   useEffect((): void => {
@@ -196,8 +201,35 @@ const Input = ({label}: InputProps): JSX.Element => {
                   errorMessage =
                     'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
                 }
-                console.log(errorMessage);
-                console.log(response);
+                if (response) {
+                  if (!response.success) {
+                    switch (response.error.code) {
+                      default:
+                        errorMessage =
+                          'Oops! There was an error with your signup. Please review your information and try again.';
+                        break;
+                    }
+                  } else {
+                    cookie.set(
+                      process.env.NODE_ENV === 'production'
+                        ? '__Secure-BZ'
+                        : 'BZ',
+                      response.data.token,
+                      {
+                        path: '/project/breezy',
+                        sameSite: 'strict',
+                        secure: true,
+                        expires: 30
+                      }
+                    );
+                    router.push('/project/breezy');
+                  }
+                }
+                setForm({
+                  ...form,
+                  submitting: false,
+                  error: errorMessage
+                });
               }
             );
         })
@@ -284,7 +316,9 @@ const Input = ({label}: InputProps): JSX.Element => {
       </div>
       <RecaptchaV2 onChange={(token): void => handleUpdateToken(token)} />
       <button
-        className='rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 hover:bg-purple-600 disabled:bg-gray-300 md:text-sm'
+        className={`rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 disabled:bg-gray-300 md:text-sm ${
+          form.submitting ? 'cursor-default' : 'hover:bg-purple-600'
+        }`}
         type='submit'
         disabled={
           form.username.trim().length === 0 ||
@@ -293,7 +327,15 @@ const Input = ({label}: InputProps): JSX.Element => {
           form.token.trim().length === 0
         }
       >
-        {label.submit}
+        <TSubmit>
+          <span>{label.submit}</span>
+        </TSubmit>
+        <TSubmitting>
+          <FontAwesomeIcon
+            className='animate-spin text-xl animate-infinite'
+            icon={faSpinner}
+          />
+        </TSubmitting>
       </button>
       <TError>
         <div className='rounded-lg bg-red-500 p-2 text-center text-sm text-white md:text-xs'>
