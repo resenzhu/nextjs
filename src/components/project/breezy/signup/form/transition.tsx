@@ -19,3 +19,27 @@ export const TError = ({children}: TProps): JSX.Element => {
     </Transition>
   );
 };
+
+export const TSubmit = ({children}: TProps): JSX.Element => {
+  const {form} = useSignUp();
+  return (
+    <Transition
+      show={!form.submitting}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
+
+export const TSubmitting = ({children}: TProps): JSX.Element => {
+  const {form} = useSignUp();
+  return (
+    <Transition
+      show={form.submitting}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
