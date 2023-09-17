@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {Form} from '@redux/reducers/project/breezy/signup';
 import {RecaptchaV2} from '@components/project/breezy/shared';
 import {TError} from '@components/project/breezy/signup/form/transition';
+import {breezySocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
 import useSignUp from '@hooks/project/breezy/use-signup';
@@ -27,6 +28,17 @@ type SignUpReq = {
   password: string;
   honeypot: string;
   token: string;
+};
+
+type SignUpRes = {
+  success: boolean;
+  error: {
+    code: number;
+    message: string;
+  };
+  data: {
+    token: string;
+  };
 };
 
 const Input = ({label}: InputProps): JSX.Element => {
@@ -146,7 +158,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           )
           .max(
             64,
-            'Your message is too long. Please enter a maximum of 64 characters.'
+            'Your password is too long. Please enter a maximum of 64 characters.'
           ),
         honeypot: string()
           .ensure()
@@ -173,6 +185,21 @@ const Input = ({label}: InputProps): JSX.Element => {
               'Please enter a valid display name using only letters.'
             );
           }
+          breezySocket
+            .timeout(60000)
+            .emit(
+              'signup',
+              request,
+              (error: Error, response: SignUpRes): void => {
+                let errorMessage: string = '';
+                if (error) {
+                  errorMessage =
+                    'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
+                }
+                console.log(errorMessage);
+                console.log(response);
+              }
+            );
         })
         .catch((error: ValidationError): void => {
           setForm({
