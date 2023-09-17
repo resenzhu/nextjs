@@ -91,34 +91,32 @@ const Input = ({label}: InputProps): JSX.Element => {
 
   const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    let errorMessage: string = '';
-    if (!online) {
-      errorMessage =
-        'You are currently offline. Please check your internet connection and try again later.';
-    }
-    if (form.throttle) {
-      if (throttleTimer.current) {
-        clearTimeout(throttleTimer.current);
+    if (!form.submitting) {
+      let errorMessage: string = '';
+      if (!online) {
+        errorMessage =
+          'You are currently offline. Please check your internet connection and try again later.';
       }
-      throttleTimer.current = setTimeout((): void => {
-        setForm({
-          ...form,
-          throttle: false
-        });
-      }, 3000);
-      errorMessage =
-        'You are submitting too quickly. Please take a moment and try again.';
+      if (form.throttle) {
+        if (throttleTimer.current) {
+          clearTimeout(throttleTimer.current);
+        }
+        throttleTimer.current = setTimeout((): void => {
+          setForm({
+            ...form,
+            throttle: false
+          });
+        }, 3000);
+        errorMessage =
+          'You are submitting too quickly. Please take a moment and try again.';
+      }
+      setForm({
+        ...form,
+        submitting: online && !form.throttle,
+        error: errorMessage,
+        success: ''
+      });
     }
-    if (form.submitting) {
-      errorMessage =
-        'The form is currently being submitted. Please wait for the process to complete before submitting again.';
-    }
-    setForm({
-      ...form,
-      submitting: online && !form.throttle && !form.submitting,
-      error: errorMessage,
-      success: ''
-    });
   };
 
   useEffect((): (() => void) => {
