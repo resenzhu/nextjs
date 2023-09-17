@@ -41,8 +41,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       setForm({
         ...form,
         [fieldName]: value,
-        error: '',
-        success: ''
+        error: ''
       });
     }
   };
@@ -54,8 +53,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       setForm({
         ...form,
         [fieldName]: value.trim(),
-        error: '',
-        success: ''
+        error: ''
       });
     }
   };
@@ -74,8 +72,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       setForm({
         ...form,
         token: token ?? '',
-        error: '',
-        success: ''
+        error: ''
       });
     }
   };
@@ -107,8 +104,7 @@ const Input = ({label}: InputProps): JSX.Element => {
     setForm({
       ...form,
       submitting: online && !form.throttle && !form.submitting,
-      error: errorMessage,
-      success: ''
+      error: errorMessage
     });
   };
 
