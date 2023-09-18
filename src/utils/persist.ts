@@ -1,9 +1,8 @@
-import type {WebStorage} from 'redux-persist';
-import sessionStorage from 'redux-persist/lib/storage/session';
+import storage from '@redux/storage';
 
 export type PersistConfig = {
   key: string;
-  storage: WebStorage;
+  storage: typeof storage;
   version: number;
   whitelist: string[];
 };
@@ -16,7 +15,7 @@ export const createPersistConfig = ({
   whitelist?: string[];
 }): PersistConfig => ({
   key: key,
-  storage: sessionStorage,
+  storage: storage,
   version: 1,
   whitelist: whitelist
 });
