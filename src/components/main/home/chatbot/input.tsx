@@ -163,7 +163,8 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
               {
                 sender: 'bot',
                 message:
-                  error.errors[0] ??
+                  error.inner[0]?.message ??
+                  error.message ??
                   "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again."
               }
             ]

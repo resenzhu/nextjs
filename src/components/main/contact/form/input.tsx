@@ -209,11 +209,17 @@ const Input = ({label}: InputProps): JSX.Element => {
           .then((): void => {
             if (!validator.isAlpha(request.name, 'en-US', {ignore: ' '})) {
               throw new ValidationError(
-                'Please enter a valid name using only letters.'
+                'Please enter a valid name using only letters.',
+                request.name,
+                'name'
               );
             }
             if (!validator.isEmail(request.email)) {
-              throw new ValidationError('Please enter a valid email address.');
+              throw new ValidationError(
+                'Please enter a valid email address.',
+                request.email,
+                'email'
+              );
             }
             mainSocket
               .timeout(60000)
@@ -316,7 +322,8 @@ const Input = ({label}: InputProps): JSX.Element => {
               token: request.token,
               submitting: false,
               error:
-                error.errors[0] ??
+                error.inner[0]?.message ??
+                error.message ??
                 'Oops! There was an error processing your form submission. Please review your information and try again.'
             });
           });
