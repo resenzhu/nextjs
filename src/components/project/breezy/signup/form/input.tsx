@@ -163,8 +163,8 @@ const Input = ({label}: InputProps): JSX.Element => {
             'Your display name is too short. Please enter at least 2 characters.'
           )
           .max(
-            120,
-            'Your display name is too long. Please enter a maximum of 120 characters.'
+            25,
+            'Your display name is too long. Please enter a maximum of 25 characters.'
           ),
         password: string()
           .ensure()
@@ -254,7 +254,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                       case 4220204:
                         errorField = 'displayName';
                         errorMessage =
-                          'Your display name is too long. Please enter a maximum of 120 characters.';
+                          'Your display name is too long. Please enter a maximum of 25 characters.';
                         break;
                       case 4220205:
                         errorField = 'displayName';
@@ -392,7 +392,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         type='text'
         placeholder={label.displayName}
         value={form.displayName}
-        maxLength={120}
+        maxLength={25}
         onChange={(event): void => handleUpdateForm(event)}
         onBlur={(event): void => handleTrimForm(event)}
         disabled={form.submitting}
