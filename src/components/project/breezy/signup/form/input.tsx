@@ -204,6 +204,65 @@ const Input = ({label}: InputProps): JSX.Element => {
                 if (response) {
                   if (!response.success) {
                     switch (response.error.code) {
+                      case 40001:
+                      case 4220101:
+                      case 4220102:
+                        errorMessage = 'Please enter your username.';
+                        break;
+                      case 4220103:
+                        errorMessage =
+                          'Your username is too short. Please enter at least 2 characters.';
+                        break;
+                      case 4220104:
+                        errorMessage =
+                          'Your username is too long. Please enter a maximum of 15 characters.';
+                        break;
+                      case 4220105:
+                        errorMessage =
+                          'Please enter a username containing only letters, numbers, hyphen, and underscore.';
+                        break;
+                      case 40002:
+                      case 4220201:
+                      case 4220202:
+                        errorMessage = 'Please enter your display name.';
+                        break;
+                      case 4220203:
+                        errorMessage =
+                          'Your display name is too short. Please enter at least 2 characters.';
+                        break;
+                      case 4220204:
+                        errorMessage =
+                          'Your display name is too long. Please enter a maximum of 120 characters.';
+                        break;
+                      case 4220205:
+                        errorMessage = 'Please enter a valid display name using only letters.';
+                        break;
+                      case 40003:
+                      case 4220301:
+                      case 4220302:
+                        errorMessage = 'Please enter your password.';
+                        break;
+                      case 4220303:
+                        errorMessage =
+                          'Your password is too short. Please enter at least 8 characters.';
+                        break;
+                      case 4220304:
+                        errorMessage =
+                          'Your password is too long. Please enter a maximum of 64 characters.';
+                        break;
+                      case 40004:
+                      case 4220401:
+                      case 4220402:
+                      case 403:
+                        errorMessage =
+                          'Bot detection system triggered. Please ensure you are a human and not a bot.';
+                        break;
+                      case 40005:
+                      case 4220501:
+                      case 4220502:
+                        errorMessage =
+                          'Please complete the reCAPTCHA verification.';
+                        break;
                       default:
                         errorMessage =
                           'Oops! There was an error with your signup. Please review your information and try again.';
