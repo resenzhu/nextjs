@@ -51,7 +51,6 @@ const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
   const router = useRouter();
   const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const test = useRef(null);
   const {form, setForm} = useSignUp();
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
