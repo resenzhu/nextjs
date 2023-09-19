@@ -60,7 +60,10 @@ const Input = ({label}: InputProps): JSX.Element => {
       setForm({
         ...form,
         [fieldName]: value,
-        error: ''
+        error: {
+          field: '',
+          message: ''
+        }
       });
     }
   };
@@ -72,7 +75,10 @@ const Input = ({label}: InputProps): JSX.Element => {
       setForm({
         ...form,
         [fieldName]: value.trim(),
-        error: ''
+        error: {
+          field: '',
+          message: ''
+        }
       });
     }
   };
@@ -91,7 +97,10 @@ const Input = ({label}: InputProps): JSX.Element => {
       setForm({
         ...form,
         token: token ?? '',
-        error: ''
+        error: {
+          field: '',
+          message: ''
+        }
       });
     }
   };
@@ -120,7 +129,10 @@ const Input = ({label}: InputProps): JSX.Element => {
       setForm({
         ...form,
         submitting: online && !form.throttle,
-        error: errorMessage
+        error: {
+          field: '',
+          message: errorMessage
+        }
       });
     }
   };
@@ -187,7 +199,9 @@ const Input = ({label}: InputProps): JSX.Element => {
         .then((): void => {
           if (!validator.isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
             throw new ValidationError(
-              'Please enter a valid display name using only letters.'
+              'Please enter a valid display name using only letters.',
+              request.displayName,
+              'displayName'
             );
           }
           breezySocket
@@ -196,6 +210,7 @@ const Input = ({label}: InputProps): JSX.Element => {
               'signup',
               request,
               (error: Error, response: SignUpRes): void => {
+                let errorField: string = '';
                 let errorMessage: string = '';
                 if (error) {
                   errorMessage =
@@ -207,46 +222,58 @@ const Input = ({label}: InputProps): JSX.Element => {
                       case 40001:
                       case 4220101:
                       case 4220102:
+                        errorField = 'username';
                         errorMessage = 'Please enter your username.';
                         break;
                       case 4220103:
+                        errorField = 'username';
                         errorMessage =
                           'Your username is too short. Please enter at least 2 characters.';
                         break;
                       case 4220104:
+                        errorField = 'username';
                         errorMessage =
                           'Your username is too long. Please enter a maximum of 15 characters.';
                         break;
                       case 4220105:
+                        errorField = 'username';
                         errorMessage =
                           'Please enter a username containing only letters, numbers, hyphen, and underscore.';
                         break;
                       case 40002:
                       case 4220201:
                       case 4220202:
+                        errorField = 'displayName';
                         errorMessage = 'Please enter your display name.';
                         break;
                       case 4220203:
+                        errorField = 'displayName';
                         errorMessage =
                           'Your display name is too short. Please enter at least 2 characters.';
                         break;
                       case 4220204:
+                        errorField = 'displayName';
                         errorMessage =
                           'Your display name is too long. Please enter a maximum of 120 characters.';
                         break;
                       case 4220205:
-                        errorMessage = 'Please enter a valid display name using only letters.';
+                        errorField = 'displayName';
+                        errorMessage =
+                          'Please enter a valid display name using only letters.';
                         break;
                       case 40003:
                       case 4220301:
                       case 4220302:
+                        errorField = 'password';
                         errorMessage = 'Please enter your password.';
                         break;
                       case 4220303:
+                        errorField = 'password';
                         errorMessage =
                           'Your password is too short. Please enter at least 8 characters.';
                         break;
                       case 4220304:
+                        errorField = 'password';
                         errorMessage =
                           'Your password is too long. Please enter a maximum of 64 characters.';
                         break;
@@ -287,7 +314,10 @@ const Input = ({label}: InputProps): JSX.Element => {
                 setForm({
                   ...form,
                   submitting: false,
-                  error: errorMessage
+                  error: {
+                    field: errorField,
+                    message: errorMessage
+                  }
                 });
               }
             );
@@ -296,9 +326,13 @@ const Input = ({label}: InputProps): JSX.Element => {
           setForm({
             ...form,
             submitting: false,
-            error:
-              error.errors[0] ??
-              'Oops! There was an error with your signup. Please review your information and try again.'
+            error: {
+              field: error.inner[0]?.path ?? error.path ?? '',
+              message:
+                error.inner[0]?.message ??
+                error.message ??
+                'Oops! There was an error with your signup. Please review your information and try again.'
+            }
           });
         });
     }
@@ -334,7 +368,9 @@ const Input = ({label}: InputProps): JSX.Element => {
       onSubmit={(event): void => handleSubmitForm(event)}
     >
       <input
-        className='rounded-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs'
+        className={`rounded-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs ${
+          form.error.field === 'username' && 'border-red-500'
+        }`}
         name='username'
         type='text'
         placeholder={label.username}
@@ -345,7 +381,9 @@ const Input = ({label}: InputProps): JSX.Element => {
         disabled={form.submitting}
       />
       <input
-        className='rounded-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs'
+        className={`rounded-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs ${
+          form.error.field === 'displayName' && 'border-red-500'
+        }`}
         name='displayName'
         type='text'
         placeholder={label.displayName}
@@ -357,7 +395,9 @@ const Input = ({label}: InputProps): JSX.Element => {
       />
       <div className='flex'>
         <input
-          className='flex-1 rounded-l-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs'
+          className={`flex-1 rounded-l-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs ${
+            form.error.field === 'password' && 'border-red-500'
+          }`}
           name='password'
           type={form.reveal ? 'text' : 'password'}
           placeholder={label.password}
@@ -398,7 +438,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       </button>
       <TError>
         <div className='rounded-lg bg-red-500 p-2 text-center text-sm text-white md:text-xs'>
-          {form.error}
+          {form.error.message}
         </div>
       </TError>
     </form>
