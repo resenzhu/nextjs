@@ -9,7 +9,10 @@ type Form = {
   token: string;
   throttle: boolean;
   submitting: boolean;
-  error: string;
+  error: {
+    field: string;
+    message: string;
+  };
 };
 
 type State = {
@@ -32,7 +35,10 @@ const initialState: State = {
     token: '',
     throttle: true,
     submitting: false,
-    error: ''
+    error: {
+      field: '',
+      message: ''
+    }
   }
 };
 

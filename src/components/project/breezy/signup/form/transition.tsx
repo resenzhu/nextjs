@@ -12,7 +12,7 @@ export const TError = ({children}: TProps): JSX.Element => {
   const {form} = useSignUp();
   return (
     <Transition
-      show={form.error.length !== 0}
+      show={form.error.message.length !== 0}
       as={Fragment}
     >
       {children}
