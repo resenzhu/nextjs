@@ -287,6 +287,10 @@ const Input = ({label}: InputProps): JSX.Element => {
                         errorMessage =
                           'Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again.';
                         break;
+                      case 500:
+                        errorMessage =
+                          'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.';
+                        break;
                       default:
                         errorMessage =
                           'Oops! There was an error processing your form submission. Please review your information and try again.';
