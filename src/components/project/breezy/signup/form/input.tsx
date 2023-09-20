@@ -318,16 +318,16 @@ const Input = ({label}: InputProps): JSX.Element => {
                           'Oops! There was an error with your signup. Please review your information and try again.';
                         break;
                     }
+                    setForm({
+                      ...form,
+                      submitting: false,
+                      error: {
+                        field: errorField,
+                        message: errorMessage
+                      }
+                    });
                   }
                 }
-                setForm({
-                  ...form,
-                  submitting: false,
-                  error: {
-                    field: errorField,
-                    message: errorMessage
-                  }
-                });
               }
             );
         })
