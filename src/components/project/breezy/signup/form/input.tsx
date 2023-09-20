@@ -227,7 +227,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                         path: '/project/breezy',
                         sameSite: 'strict',
                         secure: true,
-                        expires: 30
+                        expires: 7
                       }
                     );
                     router.push('/project/breezy');
