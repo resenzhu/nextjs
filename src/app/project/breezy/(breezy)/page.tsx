@@ -1,9 +1,9 @@
+import {Messages, Navbar} from '@components/project/breezy/home';
 import {
   faMessage,
   faUser,
   faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
-import {Messages, Navbar} from '@components/project/breezy/home';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({

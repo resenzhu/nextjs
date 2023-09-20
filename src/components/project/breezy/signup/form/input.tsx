@@ -217,7 +217,21 @@ const Input = ({label}: InputProps): JSX.Element => {
                     'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
                 }
                 if (response) {
-                  if (!response.success) {
+                  if (response.success) {
+                    cookie.set(
+                      process.env.NODE_ENV === 'production'
+                        ? '__Secure-BZ'
+                        : 'BZ',
+                      response.data.token,
+                      {
+                        path: '/project/breezy',
+                        sameSite: 'strict',
+                        secure: true,
+                        expires: 30
+                      }
+                    );
+                    router.push('/project/breezy');
+                  } else {
                     switch (response.error.code) {
                       case 40001:
                       case 4220101:
@@ -304,20 +318,6 @@ const Input = ({label}: InputProps): JSX.Element => {
                           'Oops! There was an error with your signup. Please review your information and try again.';
                         break;
                     }
-                  } else {
-                    cookie.set(
-                      process.env.NODE_ENV === 'production'
-                        ? '__Secure-BZ'
-                        : 'BZ',
-                      response.data.token,
-                      {
-                        path: '/project/breezy',
-                        sameSite: 'strict',
-                        secure: true,
-                        expires: 30
-                      }
-                    );
-                    router.push('/project/breezy');
                   }
                 }
                 setForm({

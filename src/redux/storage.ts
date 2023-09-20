@@ -12,8 +12,8 @@ const createNoopStorage = (): {
 });
 
 const storage =
-  typeof window !== 'undefined'
-    ? createWebStorage('session')
-    : createNoopStorage();
+  typeof window === 'undefined'
+    ? createNoopStorage()
+    : createWebStorage('session');
 
 export default storage;
