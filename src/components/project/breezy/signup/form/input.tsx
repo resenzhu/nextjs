@@ -290,6 +290,11 @@ const Input = ({label}: InputProps): JSX.Element => {
                         errorMessage =
                           'Please complete the reCAPTCHA verification.';
                         break;
+                      case 409:
+                        errorField = 'username';
+                        errorMessage =
+                          'The username you entered is already taken. Please choose a different username.';
+                        break;
                       case 500:
                         errorMessage =
                           'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
