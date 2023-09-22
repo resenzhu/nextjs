@@ -454,5 +454,5 @@ const Input = ({label}: InputProps): JSX.Element => {
   );
 };
 
-export type {InputProps};
+export type {InputProps, SignUpReq, SignUpRes};
 export default Input;

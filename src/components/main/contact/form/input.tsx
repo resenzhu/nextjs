@@ -457,5 +457,5 @@ const Input = ({label}: InputProps): JSX.Element => {
   );
 };
 
-export type {InputProps, Form};
+export type {InputProps, SubmitContactFormReq, SubmitContactFormRes};
 export default Input;

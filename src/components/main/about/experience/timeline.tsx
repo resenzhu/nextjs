@@ -39,4 +39,5 @@ const Timeline = ({experience}: TimelineProps): JSX.Element => {
   );
 };
 
+export type {TimelineProps};
 export default Timeline;
