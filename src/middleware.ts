@@ -26,7 +26,9 @@ const middleware = (nextRequest: NextRequest): NextResponse => {
         process.env.NODE_ENV === 'production' ? '__Secure-BZ' : 'BZ'
       );
       if (!token && nextRequest.nextUrl.pathname === '/project/breezy') {
-        return NextResponse.redirect('/project/breezy/login');
+        return NextResponse.redirect(
+          new URL('/project/breezy/login', process.env.NEXT_PUBLIC_APP_URL)
+        );
       }
       if (token) {
         const request: VerifyTokenReq = {
@@ -44,15 +46,22 @@ const middleware = (nextRequest: NextRequest): NextResponse => {
               !response.data.valid &&
               nextRequest.nextUrl.pathname === '/project/breezy'
             ) {
-              return NextResponse.redirect('/project/breezy/login');
+              return NextResponse.redirect(
+                new URL(
+                  '/project/breezy/login',
+                  process.env.NEXT_PUBLIC_APP_URL
+                )
+              );
             }
             if (
               response.data.valid &&
               ['/project/breezy/signup', '/project/breezy/login'].some(
-                (auth): boolean => nextRequest.nextUrl.pathname.includes(auth)
+                (auth): boolean => nextRequest.nextUrl.pathname === auth
               )
             ) {
-              return NextResponse.redirect('/project/breezy');
+              return NextResponse.redirect(
+                new URL('/project/breezy', process.env.NEXT_PUBLIC_APP_URL)
+              );
             }
             return NextResponse.next();
           }
