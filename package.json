@@ -26,6 +26,7 @@
     "@vercel/analytics": "^1.0.1",
     "canvas": "^2.11.2",
     "isomorphic-dompurify": "^1.8.0",
+    "jose": "^4.14.6",
     "js-cookie": "^3.0.5",
     "luxon": "^3.3.0",
     "next": "^13.4.12",
