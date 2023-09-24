@@ -40,7 +40,7 @@ const Web = ({title, content, github}: WebProps): JSX.Element => (
             (gh): JSX.Element => (
               <div
                 className='mx-auto w-fit animate-fade animate-duration-700'
-                key={gh.label}
+                key={gh.url}
               >
                 <Link
                   href={gh.url}

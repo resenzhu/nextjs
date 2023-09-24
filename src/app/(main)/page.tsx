@@ -48,29 +48,13 @@ const Page = (): JSX.Element => (
         ]}
       />
       <Explore
-        home={{
-          label: 'HOME',
-          background: 'bg-[url("/images/main/home-explore-home.webp")]'
-        }}
-        about={{
-          label: 'ABOUT',
-          background: 'bg-[url("/images/main/home-explore-about.webp")]'
-        }}
-        portfolio={{
-          label: 'PORTFOLIO',
-          background: 'bg-[url("/images/main/home-explore-portfolio.webp")]'
-        }}
-        resources={{
-          label: 'RESOURCES',
-          background: 'bg-[url("/images/main/home-explore-resources.webp")]'
-        }}
-        contact={{
-          label: 'CONTACT',
-          background: 'bg-[url("/images/main/home-explore-contact.webp")]'
-        }}
-        github={{
-          label: 'GITHUB',
-          background: 'bg-[url("/images/main/home-explore-github.webp")]'
+        label={{
+          home: 'HOME',
+          about: 'ABOUT',
+          portfolio: 'PORTFOLIO',
+          resources: 'RESOURCES',
+          contact: 'CONTACT',
+          github: 'GITHUB'
         }}
       />
       <Chatbot

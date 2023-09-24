@@ -7,7 +7,7 @@ import useApp from '@hooks/main/use-app';
 type NavMenuProps = {
   url: string;
   label: string;
-  target?: HTMLAttributeAnchorTarget | undefined;
+  target?: HTMLAttributeAnchorTarget;
 };
 
 const NavMenu = ({url, label, target}: NavMenuProps) => {

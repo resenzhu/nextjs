@@ -12,10 +12,11 @@ type NavMenuProps = {
 
 const NavMenu = ({name, icon}: NavMenuProps): JSX.Element => {
   const {menu, setMenu} = useHome();
+  const {keys} = Object;
 
   const handleSelectMenu = (menuName: string): void => {
     const newSelectedMenu = menuName as keyof Menu;
-    const previousMenu = Object.keys(menu).filter(
+    const previousMenu = keys(menu).filter(
       (property): boolean => menu[property as keyof Menu]
     )[0] as keyof Menu;
     if (newSelectedMenu !== previousMenu) {
@@ -33,7 +34,7 @@ const NavMenu = ({name, icon}: NavMenuProps): JSX.Element => {
         menu[name as keyof Menu]
           ? 'border-t-purple-500 md:border-r-purple-500'
           : 'border-t-white md:border-r-white'
-      }`.trim()}
+      }`}
     >
       <FontAwesomeIcon
         className={`cursor-pointer text-xl md:text-base ${

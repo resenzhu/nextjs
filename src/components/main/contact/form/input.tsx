@@ -52,6 +52,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useContact();
   const {executeRecaptcha} = useGoogleReCaptcha();
+  const {isAlpha, isEmail} = validator;
 
   const handleUpdateForm = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -106,7 +107,7 @@ const Input = ({label}: InputProps): JSX.Element => {
             ...form,
             throttle: false
           });
-        }, 3000);
+        }, 2000);
         errorMessage =
           'You are submitting too quickly. Please take a moment and try again.';
       }
@@ -126,7 +127,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           ...form,
           throttle: false
         });
-      }, 3000);
+      }, 2000);
     }
     return (): void => {
       if (throttleTimer.current) {
@@ -134,12 +135,12 @@ const Input = ({label}: InputProps): JSX.Element => {
       }
     };
   }, [
-    form.throttle,
-    form.error,
     form.name,
     form.email,
     form.message,
-    form.honeypot
+    form.honeypot,
+    form.throttle,
+    form.error
   ]);
 
   useEffect((): void => {
@@ -150,7 +151,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           newToken = await executeRecaptcha();
         }
         resolve(newToken);
-      }).then((newToken: string): void => {
+      }).then((newToken): void => {
         const requestSchema = object().shape({
           name: string()
             .ensure()
@@ -207,14 +208,14 @@ const Input = ({label}: InputProps): JSX.Element => {
         requestSchema
           .validate(request, {abortEarly: false})
           .then((): void => {
-            if (!validator.isAlpha(request.name, 'en-US', {ignore: ' '})) {
+            if (!isAlpha(request.name, 'en-US', {ignore: ' '})) {
               throw new ValidationError(
                 'Please enter a valid name using only letters.',
                 request.name,
                 'name'
               );
             }
-            if (!validator.isEmail(request.email)) {
+            if (!isEmail(request.email)) {
               throw new ValidationError(
                 'Please enter a valid email address.',
                 request.email,

@@ -9,13 +9,14 @@ type ViewportProps = {
 };
 
 const Viewport = ({children}: ViewportProps): JSX.Element => {
+  const {innerWidth, innerHeight, addEventListener, removeEventListener} = window;
   const [rendered, setRendered] = useState<boolean>(false);
   const {viewport, setViewport} = useApp();
 
   const handleResizeViewport = debounce((): void => {
     setViewport({
-      width: window.innerWidth,
-      height: window.innerHeight
+      width: innerWidth,
+      height: innerHeight
     });
   }, 500);
 
@@ -24,22 +25,22 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
       setRendered(true);
     }
     return (): void => {
-      window.removeEventListener('resize', handleResizeViewport);
+      removeEventListener('resize', handleResizeViewport);
     };
   }, []);
 
   useEffect((): void => {
     if (rendered) {
       if (
-        viewport.width !== window.innerWidth ||
-        viewport.height !== window.innerHeight
+        viewport.width !== innerWidth ||
+        viewport.height !== innerHeight
       ) {
         setViewport({
-          width: window.innerWidth,
-          height: window.innerHeight
+          width: innerWidth,
+          height: innerHeight
         });
       }
-      window.addEventListener('resize', handleResizeViewport);
+      addEventListener('resize', handleResizeViewport);
     }
   }, [rendered]);
 

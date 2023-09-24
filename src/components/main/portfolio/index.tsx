@@ -1,1 +1,1 @@
-export {default as Project} from '@components/main/portfolio/project';
+export {default as Showcase} from '@components/main/portfolio/showcase';

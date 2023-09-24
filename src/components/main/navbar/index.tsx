@@ -13,7 +13,7 @@ type NavbarProps = {
 type MenuProps = {
   label: string;
   url: string;
-  target?: HTMLAttributeAnchorTarget | undefined;
+  target?: HTMLAttributeAnchorTarget;
 };
 
 const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (

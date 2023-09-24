@@ -8,11 +8,13 @@ type ViewportProps = {
 };
 
 const Viewport = ({children}: ViewportProps): JSX.Element => {
+  const {onLine} = navigator;
   const [rendered, setRendered] = useState<boolean>(false);
+  const {addEventListener, removeEventListener} = window;
   const {setOnline} = useApp();
 
   const handleChangeConnectivity = (): void => {
-    setOnline(navigator.onLine);
+    setOnline(onLine);
   };
 
   useEffect((): (() => void) => {
@@ -20,16 +22,16 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
       setRendered(true);
     }
     return (): void => {
-      window.removeEventListener('offline', handleChangeConnectivity);
-      window.removeEventListener('online', handleChangeConnectivity);
+      removeEventListener('offline', handleChangeConnectivity);
+      removeEventListener('online', handleChangeConnectivity);
     };
   }, []);
 
   useEffect((): void => {
     if (rendered) {
       setOnline(navigator.onLine);
-      window.addEventListener('offline', handleChangeConnectivity);
-      window.addEventListener('online', handleChangeConnectivity);
+      addEventListener('offline', handleChangeConnectivity);
+      addEventListener('online', handleChangeConnectivity);
     }
   }, [rendered]);
 

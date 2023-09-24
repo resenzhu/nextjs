@@ -20,7 +20,7 @@ const Page = (): JSX.Element => (
     </section>
     <section className='h-full min-h-[40vh]'>
       <Dev
-        info={[
+        content={[
           "Thank you for visiting the resource page of my personal portfolio website. I'm thrilled to share that the website is currently undergoing development and exciting updates are in progress.",
           "I'm actively working on bringing you a collection of valuable guides, tutorials, and other resources to enhance your experience. While there are no materials available for download at the moment, rest assured that I am dedicating my efforts to curating a comprehensive library of resources.",
           'I appreciate your patience and understanding during this development phase. Your support motivates me to deliver the best possible materials for you. Please check back soon as I continue to work diligently on expanding the resource page.',

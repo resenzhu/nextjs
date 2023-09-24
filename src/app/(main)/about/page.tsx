@@ -40,7 +40,7 @@ const Page = (): JSX.Element => (
     <section className='h-full min-h-[40vh]'>
       <Experience
         title='WORK HISTORY'
-        experience={[
+        experiences={[
           {
             title: 'Mar 2017',
             cardTitle: 'Bina Nusantara IT Division',

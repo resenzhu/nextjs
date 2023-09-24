@@ -15,4 +15,5 @@ const Browse = ({label}: BrowseProps): JSX.Element => {
   );
 };
 
+export type {BrowseProps};
 export default Browse;

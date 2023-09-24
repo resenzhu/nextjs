@@ -1,22 +1,24 @@
 'use client';
 
-import {Chrono as ReactChrono} from 'react-chrono';
+import {Chrono} from 'react-chrono';
 import useApp from '@hooks/main/use-app';
 
-type TimelineProps = {
-  experience: {
-    title: string;
-    cardTitle: string;
-    cardSubtitle: string;
-    cardDetailedText: string;
-  }[];
+type Experience = {
+  title: string;
+  cardTitle: string;
+  cardSubtitle: string;
+  cardDetailedText: string;
 };
 
-const Timeline = ({experience}: TimelineProps): JSX.Element => {
+type TimelineProps = {
+  experiences: Experience[];
+};
+
+const Timeline = ({experiences}: TimelineProps): JSX.Element => {
   const {viewport} = useApp();
   return (
-    <ReactChrono
-      items={experience}
+    <Chrono
+      items={experiences}
       mode={viewport.width < 768 ? 'VERTICAL' : 'VERTICAL_ALTERNATING'}
       timelinePointShape='diamond'
       theme={{
@@ -39,5 +41,5 @@ const Timeline = ({experience}: TimelineProps): JSX.Element => {
   );
 };
 
-export type {TimelineProps};
+export type {Experience, TimelineProps};
 export default Timeline;

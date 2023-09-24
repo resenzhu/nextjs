@@ -1,16 +1,18 @@
-import Card from '@components/main/portfolio/project/card';
+import Card from '@components/main/portfolio/showcase/card';
 import {LazyLoad} from '@components/main/shared';
 
-type ProjectProps = {
-  title: string;
-  projects: {
-    name: string;
-    description: string;
-    url: string;
-  }[];
+type Project = {
+  name: string;
+  description: string;
+  url: string;
 };
 
-const Project = ({title, projects}: ProjectProps): JSX.Element => (
+type ShowcaseProps = {
+  title: string;
+  projects: Project[];
+};
+
+const Showcase = ({title, projects}: ShowcaseProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-8 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -36,5 +38,5 @@ const Project = ({title, projects}: ProjectProps): JSX.Element => (
   </div>
 );
 
-export type {ProjectProps};
-export default Project;
+export type {Project, ShowcaseProps};
+export default Showcase;

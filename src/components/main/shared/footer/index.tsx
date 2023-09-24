@@ -11,8 +11,14 @@ import {LazyLoad} from '@components/main/shared';
 import Link from 'next/link';
 import Scroll from '@components/main/shared/footer/scroll';
 
+type Social = {
+  name: string;
+  icon: IconDefinition;
+  url: string
+};
+
 const Footer = (): JSX.Element => {
-  const socials: {name: string; icon: IconDefinition; url: string}[] = [
+  const socials: Social[] = [
     {
       name: 'linkedin',
       icon: faLinkedin,
@@ -71,4 +77,5 @@ const Footer = (): JSX.Element => {
   );
 };
 
+export type {Social};
 export default Footer;

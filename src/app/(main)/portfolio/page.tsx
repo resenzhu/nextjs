@@ -1,5 +1,5 @@
 import {Footer, Header} from '@components/main/shared';
-import {Project} from '@components/main/portfolio';
+import {Showcase} from '@components/main/portfolio';
 import {createMetadata} from '@utils/metadata';
 
 const metadata = createMetadata({
@@ -19,7 +19,7 @@ const Page = (): JSX.Element => (
       />
     </section>
     <section className='h-full min-h-[40vh]'>
-      <Project
+      <Showcase
         title='PROJECTS'
         projects={[
           {
