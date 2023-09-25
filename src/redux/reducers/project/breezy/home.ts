@@ -11,7 +11,7 @@ type User = {
   username: string;
   displayName: string;
   status: 'online' | 'away' | 'offline';
-  lastOnline: Date;
+  lastOnline: string;
 };
 
 type Chat = {
@@ -35,18 +35,24 @@ type Message = {
   chats: Chat[];
 };
 
+type Messages = Message[];
+
+type Users = User[];
+
+type Profile = User | null;
+
 type State = {
   menu: Menu;
-  messages: Message[];
-  users: User[];
-  profile: User | null;
+  messages: Messages;
+  users: Users;
+  profile: Profile;
 };
 
 type Reducers = {
   setMenu: (state: State, action: PayloadAction<Menu>) => void;
-  setMessages: (state: State, action: PayloadAction<Message[]>) => void;
-  setUsers: (state: State, action: PayloadAction<User[]>) => void;
-  setProfile: (state: State, action: PayloadAction<User>) => void;
+  setMessages: (state: State, action: PayloadAction<Messages>) => void;
+  setUsers: (state: State, action: PayloadAction<Users>) => void;
+  setProfile: (state: State, action: PayloadAction<Profile>) => void;
 };
 
 const name: string = 'home';
@@ -91,6 +97,6 @@ const slice = createSlice({
   reducers: reducers
 });
 
-export type {Menu, Message, User};
+export type {Menu, User, Chat, Message, Messages, Users, Profile};
 export const {setMenu, setMessages, setUsers, setProfile} = slice.actions;
 export default slice.reducer;
