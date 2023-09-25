@@ -3,17 +3,19 @@ import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {LazyLoad} from '@components/main/shared';
 import Link from 'next/link';
 
+type Repository = {
+  icon: IconDefinition;
+  label: string;
+  url: string;
+};
+
 type WebProps = {
   title: string;
   content: string[];
-  github: {
-    icon: IconDefinition;
-    label: string;
-    url: string;
-  }[];
+  repositories: Repository[];
 };
 
-const Web = ({title, content, github}: WebProps): JSX.Element => (
+const Web = ({title, content, repositories}: WebProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-10 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -36,14 +38,14 @@ const Web = ({title, content, github}: WebProps): JSX.Element => (
       )}
       <LazyLoad>
         <div className='space-y-4'>
-          {github.map(
-            (gh): JSX.Element => (
+          {repositories.map(
+            (repository): JSX.Element => (
               <div
                 className='mx-auto w-fit animate-fade animate-duration-700'
-                key={gh.url}
+                key={repository.url}
               >
                 <Link
-                  href={gh.url}
+                  href={repository.url}
                   target='_blank'
                 >
                   <button
@@ -52,9 +54,9 @@ const Web = ({title, content, github}: WebProps): JSX.Element => (
                   >
                     <FontAwesomeIcon
                       className='text-2xl'
-                      icon={gh.icon}
+                      icon={repository.icon}
                     />
-                    <span>{gh.label}</span>
+                    <span>{repository.label}</span>
                   </button>
                 </Link>
               </div>
@@ -66,5 +68,5 @@ const Web = ({title, content, github}: WebProps): JSX.Element => (
   </div>
 );
 
-export type {WebProps};
+export type {Repository, WebProps};
 export default Web;
