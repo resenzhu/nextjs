@@ -1,7 +1,8 @@
 import {
   type Menu,
-  type Message,
-  type User,
+  type Messages,
+  type Profile,
+  type Users,
   setMenu as setHomeMenu,
   setMessages as setHomeMessages,
   setProfile as setHomeProfile,
@@ -11,13 +12,13 @@ import {useDispatch, useSelector} from '@redux/hooks';
 
 type UseHome = {
   menu: Menu;
-  messages: Message[];
-  users: User[];
-  profile: User;
+  messages: Messages;
+  users: Users;
+  profile: Profile;
   setMenu: (menu: Menu) => void;
-  setMessages: (messages: Message[]) => void;
-  setUsers: (users: User[]) => void;
-  setProfile: (profile: User) => void;
+  setMessages: (messages: Messages) => void;
+  setUsers: (users: Users) => void;
+  setProfile: (profile: Profile) => void;
 };
 
 const useHome = (): UseHome => {
@@ -27,15 +28,15 @@ const useHome = (): UseHome => {
     dispatch(setHomeMenu(menu));
   };
 
-  const setMessages = (messages: Message[]): void => {
+  const setMessages = (messages: Messages): void => {
     dispatch(setHomeMessages(messages));
   };
 
-  const setUsers = (users: User[]): void => {
+  const setUsers = (users: Users): void => {
     dispatch(setHomeUsers(users));
   };
 
-  const setProfile = (profile: User): void => {
+  const setProfile = (profile: Profile): void => {
     dispatch(setHomeProfile(profile));
   };
 
