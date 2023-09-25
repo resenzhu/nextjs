@@ -1,13 +1,13 @@
 import {LazyLoad} from '@components/main/shared';
 
 type DevProps = {
-  info: string[];
+  content: string[];
 };
 
-const Dev = ({info}: DevProps): JSX.Element => (
+const Dev = ({content}: DevProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-8 md:mx-0'>
     <div className='space-y-6 text-center text-gray-600 md:mx-auto md:w-2/3 lg:w-1/2'>
-      {info.map(
+      {content.map(
         (paragraph, index): JSX.Element => (
           <LazyLoad key={index}>
             <p
