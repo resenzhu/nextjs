@@ -14,7 +14,7 @@ import Scroll from '@components/main/shared/footer/scroll';
 type Social = {
   name: string;
   icon: IconDefinition;
-  url: string
+  url: string;
 };
 
 const Footer = (): JSX.Element => {

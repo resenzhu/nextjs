@@ -390,6 +390,8 @@ const Chats = ({empty}: ChatsProps): JSX.Element => (
 export type {ChatsProps};
 export default Chats;
 
+/* eslint-disable */
+
 // 'use client';
 
 // import {
@@ -1382,3 +1384,5 @@ export default Chats;
 
 // export {metadata};
 // export default Page;
+
+/* eslint-enable */

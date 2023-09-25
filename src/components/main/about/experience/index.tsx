@@ -1,5 +1,7 @@
+import Timeline, {
+  type Experience as TimelineExperience
+} from '@components/main/about/experience/timeline';
 import {LazyLoad} from '@components/main/shared';
-import Timeline, {type Experience as TimelineExperience} from '@components/main/about/experience/timeline';
 
 type ExperienceProps = {
   title: string;

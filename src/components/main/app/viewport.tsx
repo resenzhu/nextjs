@@ -9,7 +9,8 @@ type ViewportProps = {
 };
 
 const Viewport = ({children}: ViewportProps): JSX.Element => {
-  const {innerWidth, innerHeight, addEventListener, removeEventListener} = window;
+  const {innerWidth, innerHeight, addEventListener, removeEventListener} =
+    window;
   const [rendered, setRendered] = useState<boolean>(false);
   const {viewport, setViewport} = useApp();
 
@@ -31,10 +32,7 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered) {
-      if (
-        viewport.width !== innerWidth ||
-        viewport.height !== innerHeight
-      ) {
+      if (viewport.width !== innerWidth || viewport.height !== innerHeight) {
         setViewport({
           width: innerWidth,
           height: innerHeight

@@ -28,7 +28,11 @@ const Input = ({label}: InputProps): JSX.Element => (
         icon={faEye}
       />
     </div>
-    <RecaptchaV2 onChange={(): void => {}} />
+    <RecaptchaV2
+      onChange={(token): void => {
+        console.log(token); // eslint-disable-line
+      }}
+    />
     <button
       className='rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 hover:bg-purple-600 disabled:bg-gray-300 md:text-sm'
       type='submit'
