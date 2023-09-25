@@ -52,6 +52,8 @@ const Input = ({label}: InputProps): JSX.Element => {
   const router = useRouter();
   const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useSignUp();
+  const {isAlpha} = validator;
+  const {set: setCookie} = cookie;
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
     const fieldName = event.target.name as keyof Form;
@@ -122,7 +124,7 @@ const Input = ({label}: InputProps): JSX.Element => {
             ...form,
             throttle: false
           });
-        }, 3000);
+        }, 2000);
         errorMessage =
           'You are submitting too quickly. Please take a moment and try again.';
       }
@@ -197,7 +199,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       requestSchema
         .validate(request, {abortEarly: false})
         .then((): void => {
-          if (!validator.isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
+          if (!isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
             throw new ValidationError(
               'Please enter a valid display name using only letters.',
               request.displayName,
@@ -218,7 +220,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                 }
                 if (response) {
                   if (response.success) {
-                    cookie.set(
+                    setCookie(
                       process.env.NODE_ENV === 'production'
                         ? '__Secure-BZ'
                         : 'BZ',
@@ -354,7 +356,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           ...form,
           throttle: false
         });
-      }, 3000);
+      }, 2000);
     }
     return (): void => {
       if (throttleTimer.current) {
@@ -362,13 +364,13 @@ const Input = ({label}: InputProps): JSX.Element => {
       }
     };
   }, [
-    form.throttle,
-    form.error,
     form.username,
     form.displayName,
     form.password,
     form.honeypot,
-    form.token
+    form.token,
+    form.throttle,
+    form.error
   ]);
 
   return (
