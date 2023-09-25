@@ -10,7 +10,7 @@ type Form = {
   throttle: boolean;
   submitting: boolean;
   error: {
-    field: string;
+    field: string | null;
     message: string;
   };
 };
@@ -36,7 +36,7 @@ const initialState: State = {
     throttle: true,
     submitting: false,
     error: {
-      field: '',
+      field: null,
       message: ''
     }
   }

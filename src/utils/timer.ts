@@ -5,7 +5,6 @@ export const debounce = (
   delay: number
 ): EffectCallback => {
   let timer: ReturnType<typeof setTimeout> | null = null;
-
   return (): void => {
     if (timer) {
       clearTimeout(timer);

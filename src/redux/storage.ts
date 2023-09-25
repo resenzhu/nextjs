@@ -1,14 +1,14 @@
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 
 const createNoopStorage = (): {
-  getItem: (_key: string) => Promise<null>;
-  setItem: (_key: string, value: string) => Promise<string>;
-  removeItem: (_key: string) => Promise<void>;
+  getItem: (key: string) => Promise<null>;
+  setItem: (key: string, value: string) => Promise<string>;
+  removeItem: (key: string) => Promise<void>;
 } => ({
-  getItem: (_key: string): Promise<null> => Promise.resolve(null),
-  setItem: (_key: string, value: string): Promise<string> =>
+  getItem: (_key): Promise<null> => Promise.resolve(null),
+  setItem: (_key, value): Promise<string> =>
     Promise.resolve(value),
-  removeItem: (_key: string): Promise<void> => Promise.resolve()
+  removeItem: (_key): Promise<void> => Promise.resolve()
 });
 
 const storage =
