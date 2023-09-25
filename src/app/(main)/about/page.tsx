@@ -135,7 +135,7 @@ const Page = (): JSX.Element => (
       <LinkedIn
         title='GET CONNECTED'
         description="Looking to learn more about my professional background? Visit my LinkedIn profile to uncover my extensive experience, industry insights, and professional achievements. Let's connect and forge valuable professional connections."
-        linkedin={{
+        action={{
           icon: faLinkedin,
           label: "Let's connect!",
           url: 'https://www.linkedin.com/in/resen'

@@ -6,18 +6,14 @@ import Link from 'next/link';
 type LinkedInProps = {
   title: string;
   description: string;
-  linkedin: {
+  action: {
     icon: IconDefinition;
     label: string;
     url: string;
   };
 };
 
-const LinkedIn = ({
-  title,
-  description,
-  linkedin
-}: LinkedInProps): JSX.Element => (
+const LinkedIn = ({title, description, action}: LinkedInProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-10 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -31,7 +27,7 @@ const LinkedIn = ({
       <LazyLoad>
         <div className='mx-auto w-fit animate-fade-right animate-duration-700'>
           <Link
-            href={linkedin.url}
+            href={action.url}
             target='_blank'
           >
             <button
@@ -40,9 +36,9 @@ const LinkedIn = ({
             >
               <FontAwesomeIcon
                 className='text-2xl'
-                icon={linkedin.icon}
+                icon={action.icon}
               />
-              <span>{linkedin.label}</span>
+              <span>{action.label}</span>
             </button>
           </Link>
         </div>
