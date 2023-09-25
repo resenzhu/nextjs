@@ -63,7 +63,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         ...form,
         [fieldName]: value,
         error: {
-          field: '',
+          field: null,
           message: ''
         }
       });
@@ -78,7 +78,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         ...form,
         [fieldName]: value.trim(),
         error: {
-          field: '',
+          field: null,
           message: ''
         }
       });
@@ -100,7 +100,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         ...form,
         token: token ?? '',
         error: {
-          field: '',
+          field: null,
           message: ''
         }
       });
@@ -132,7 +132,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         ...form,
         submitting: online && !form.throttle,
         error: {
-          field: '',
+          field: null,
           message: errorMessage
         }
       });
