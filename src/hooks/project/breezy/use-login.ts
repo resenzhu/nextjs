@@ -1,6 +1,6 @@
 import {
   type Form,
-  setForm as setSignUpForm
+  setForm as setLoginForm
 } from '@redux/reducers/project/breezy/login';
 import {useDispatch, useSelector} from '@redux/hooks';
 
@@ -13,7 +13,7 @@ const useLogin = (): UseLogin => {
   const dispatch = useDispatch();
 
   const setForm = (form: Form): void => {
-    dispatch(setSignUpForm(form));
+    dispatch(setLoginForm(form));
   };
 
   return {
