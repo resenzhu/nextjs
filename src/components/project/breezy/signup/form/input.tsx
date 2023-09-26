@@ -256,6 +256,11 @@ const Input = ({label}: InputProps): JSX.Element => {
                         errorMessage =
                           'Please enter a username containing only letters, numbers, hyphen, and underscore.';
                         break;
+                      case 40901:
+                        errorField = 'username';
+                        errorMessage =
+                          'The username you entered is already taken. Please choose a different username.';
+                        break;
                       case 40002:
                       case 4220201:
                       case 4220202:
@@ -305,11 +310,6 @@ const Input = ({label}: InputProps): JSX.Element => {
                       case 4220502:
                         errorMessage =
                           'Please complete the reCAPTCHA verification.';
-                        break;
-                      case 409:
-                        errorField = 'username';
-                        errorMessage =
-                          'The username you entered is already taken. Please choose a different username.';
                         break;
                       case 500:
                         errorMessage =
