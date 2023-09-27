@@ -15,8 +15,8 @@ import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
-import {useRouter} from 'next/navigation';
 import useLogin from '@hooks/project/breezy/use-login';
+import {useRouter} from 'next/navigation';
 
 type InputProps = {
   label: {
@@ -193,7 +193,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                 let errorMessage: string = '';
                 if (error) {
                   errorMessage =
-                    'Apologies, there was an unexpected error during the login process. Please retry your signup later.';
+                    'Apologies, there was an unexpected error during the login process. Please retry your login later.';
                 }
                 if (response) {
                   if (response.success) {
@@ -257,7 +257,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                       case 40003:
                       case 4220301:
                       case 4220302:
-                      case 403:
+                      case 40303:
                         errorMessage =
                           'Bot detection system triggered. Please ensure you are a human and not a bot.';
                         break;
@@ -269,11 +269,11 @@ const Input = ({label}: InputProps): JSX.Element => {
                         break;
                       case 500:
                         errorMessage =
-                          'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
+                          'Apologies, there was an unexpected error during the login process. Please retry your login later.';
                         break;
                       default:
                         errorMessage =
-                          'Oops! There was an error with your signup. Please review your information and try again.';
+                          'Oops! There was an error with your login. Please review your information and try again.';
                         break;
                     }
                     setForm({
@@ -298,7 +298,7 @@ const Input = ({label}: InputProps): JSX.Element => {
               message:
                 error.inner[0]?.message ??
                 error.message ??
-                'Oops! There was an error with your signup. Please review your information and try again.'
+                'Oops! There was an error with your login. Please review your information and try again.'
             }
           });
         });
