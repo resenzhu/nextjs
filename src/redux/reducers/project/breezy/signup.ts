@@ -7,7 +7,6 @@ type Form = {
   reveal: boolean;
   honeypot: string;
   token: string;
-  throttle: boolean;
   submitting: boolean;
   error: {
     field: string | null;
@@ -33,7 +32,6 @@ const initialState: State = {
     reveal: false,
     honeypot: '',
     token: '',
-    throttle: true,
     submitting: false,
     error: {
       field: null,

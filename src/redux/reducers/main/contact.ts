@@ -6,7 +6,6 @@ type Form = {
   message: string;
   honeypot: string;
   token: string;
-  throttle: boolean;
   submitting: boolean;
   error: string;
   success: string;
@@ -29,7 +28,6 @@ const initialState: State = {
     message: '',
     honeypot: '',
     token: '',
-    throttle: true,
     submitting: false,
     error: '',
     success: ''
