@@ -10,6 +10,7 @@ import {ValidationError, object, string} from 'yup';
 import {faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {Form} from '@redux/reducers/project/breezy/signup';
+import type Recaptcha from 'react-google-recaptcha';
 import {RecaptchaV2} from '@components/project/breezy/shared';
 import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
@@ -49,10 +50,11 @@ type SignUpRes = {
 
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
-  const router = useRouter();
+  const recaptcha = useRef<Recaptcha>(null);
   const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useSignUp();
   const {isAlpha} = validator;
+  const {push} = useRouter();
   const {set: setCookie} = cookie;
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -232,7 +234,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                         expires: 7
                       }
                     );
-                    router.push('/project/breezy');
+                    push('/project/breezy');
                   } else {
                     switch (response.error.code) {
                       case 40001:
@@ -424,7 +426,10 @@ const Input = ({label}: InputProps): JSX.Element => {
           onClick={(): void => handleToggleRevealPassword(!form.reveal)}
         />
       </div>
-      <RecaptchaV2 onChange={(token): void => handleUpdateToken(token)} />
+      <RecaptchaV2
+        ref={recaptcha}
+        onChange={(token): void => handleUpdateToken(token)}
+      />
       <button
         className={`rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 disabled:bg-gray-300 md:text-sm ${
           form.submitting ? 'cursor-default' : 'active:bg-purple-600'
