@@ -10,6 +10,7 @@ import {ValidationError, object, string} from 'yup';
 import {faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {Form} from '@redux/reducers/project/breezy/login';
+import type Recaptcha from 'react-google-recaptcha';
 import {RecaptchaV2} from '@components/project/breezy/shared';
 import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
@@ -46,10 +47,10 @@ type LoginRes = {
 
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
-  const router = useRouter();
+  const recaptcha = useRef<Recaptcha>(null);
   const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useLogin();
-  const {set: setCookie} = cookie;
+  const {push} = useRouter();
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
     const fieldName = event.target.name as keyof Form;
@@ -82,7 +83,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   };
 
   const handleToggleRevealPassword = (reveal: boolean): void => {
-    if (reveal !== form.reveal) {
+    if (form.reveal !== reveal) {
       setForm({
         ...form,
         reveal: reveal
@@ -112,15 +113,6 @@ const Input = ({label}: InputProps): JSX.Element => {
           'You are currently offline. Please check your internet connection and try again later.';
       }
       if (form.throttle) {
-        if (throttleTimer.current) {
-          clearTimeout(throttleTimer.current);
-        }
-        throttleTimer.current = setTimeout((): void => {
-          setForm({
-            ...form,
-            throttle: false
-          });
-        }, 2000);
         errorMessage =
           'You are submitting too quickly. Please take a moment and try again.';
       }
@@ -134,6 +126,30 @@ const Input = ({label}: InputProps): JSX.Element => {
       });
     }
   };
+
+  useEffect((): (() => void) => {
+    if (form.throttle && !throttleTimer.current) {
+      throttleTimer.current = setTimeout((): void => {
+        setForm({
+          ...form,
+          throttle: false
+        });
+      }, 3000);
+    }
+    return (): void => {
+      if (throttleTimer.current) {
+        clearTimeout(throttleTimer.current);
+      }
+    };
+  }, [
+    throttleTimer.current,
+    form.username,
+    form.password,
+    form.honeypot,
+    form.token,
+    form.throttle,
+    form.error
+  ]);
 
   useEffect((): void => {
     if (form.submitting) {
@@ -197,7 +213,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                 }
                 if (response) {
                   if (response.success) {
-                    setCookie(
+                    cookie.set(
                       process.env.NODE_ENV === 'production'
                         ? '__Secure-BZ'
                         : 'BZ',
@@ -209,7 +225,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                         expires: 7
                       }
                     );
-                    router.push('/project/breezy');
+                    push('/project/breezy');
                   } else {
                     switch (response.error.code) {
                       case 40001:
@@ -308,29 +324,6 @@ const Input = ({label}: InputProps): JSX.Element => {
     }
   }, [form.submitting]);
 
-  useEffect((): (() => void) => {
-    if (form.throttle) {
-      throttleTimer.current = setTimeout((): void => {
-        setForm({
-          ...form,
-          throttle: false
-        });
-      }, 2000);
-    }
-    return (): void => {
-      if (throttleTimer.current) {
-        clearTimeout(throttleTimer.current);
-      }
-    };
-  }, [
-    form.username,
-    form.password,
-    form.honeypot,
-    form.token,
-    form.throttle,
-    form.error
-  ]);
-
   return (
     <form
       className='mx-4 flex flex-col space-y-3 py-6 md:py-5'
@@ -369,7 +362,10 @@ const Input = ({label}: InputProps): JSX.Element => {
           onClick={(): void => handleToggleRevealPassword(!form.reveal)}
         />
       </div>
-      <RecaptchaV2 onChange={(token): void => handleUpdateToken(token)} />
+      <RecaptchaV2
+        ref={recaptcha}
+        onChange={(token): void => handleUpdateToken(token)}
+      />
       <button
         className={`rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 disabled:bg-gray-300 md:text-sm ${
           form.submitting ? 'cursor-default' : 'active:bg-purple-600'

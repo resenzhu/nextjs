@@ -53,9 +53,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   const recaptcha = useRef<Recaptcha>(null);
   const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useSignUp();
-  const {isAlpha} = validator;
   const {push} = useRouter();
-  const {set: setCookie} = cookie;
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
     const fieldName = event.target.name as keyof Form;
@@ -118,15 +116,6 @@ const Input = ({label}: InputProps): JSX.Element => {
           'You are currently offline. Please check your internet connection and try again later.';
       }
       if (form.throttle) {
-        if (throttleTimer.current) {
-          clearTimeout(throttleTimer.current);
-        }
-        throttleTimer.current = setTimeout((): void => {
-          setForm({
-            ...form,
-            throttle: false
-          });
-        }, 2000);
         errorMessage =
           'You are submitting too quickly. Please take a moment and try again.';
       }
@@ -140,6 +129,31 @@ const Input = ({label}: InputProps): JSX.Element => {
       });
     }
   };
+
+  useEffect((): (() => void) => {
+    if (form.throttle && !throttleTimer.current) {
+      throttleTimer.current = setTimeout((): void => {
+        setForm({
+          ...form,
+          throttle: false
+        });
+      }, 3000);
+    }
+    return (): void => {
+      if (throttleTimer.current) {
+        clearTimeout(throttleTimer.current);
+      }
+    };
+  }, [
+    throttleTimer.current,
+    form.username,
+    form.displayName,
+    form.password,
+    form.honeypot,
+    form.token,
+    form.throttle,
+    form.error
+  ]);
 
   useEffect((): void => {
     if (form.submitting) {
@@ -201,7 +215,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       requestSchema
         .validate(request, {abortEarly: false})
         .then((): void => {
-          if (!isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
+          if (!validator.isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
             throw new ValidationError(
               'Please enter a valid display name using only letters.',
               request.displayName,
@@ -222,7 +236,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                 }
                 if (response) {
                   if (response.success) {
-                    setCookie(
+                    cookie.set(
                       process.env.NODE_ENV === 'production'
                         ? '__Secure-BZ'
                         : 'BZ',
@@ -350,30 +364,6 @@ const Input = ({label}: InputProps): JSX.Element => {
         });
     }
   }, [form.submitting]);
-
-  useEffect((): (() => void) => {
-    if (form.throttle) {
-      throttleTimer.current = setTimeout((): void => {
-        setForm({
-          ...form,
-          throttle: false
-        });
-      }, 2000);
-    }
-    return (): void => {
-      if (throttleTimer.current) {
-        clearTimeout(throttleTimer.current);
-      }
-    };
-  }, [
-    form.username,
-    form.displayName,
-    form.password,
-    form.honeypot,
-    form.token,
-    form.throttle,
-    form.error
-  ]);
 
   return (
     <form
