@@ -10,7 +10,7 @@ type PictureProps = {
 
 const Picture = ({src}: PictureProps): JSX.Element => {
   const {viewport} = useApp();
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const easterTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [easter, setEaster] = useState<boolean>(false);
   const [pictureSize, setPictureSize] = useState<number>(0);
 
@@ -29,11 +29,11 @@ const Picture = ({src}: PictureProps): JSX.Element => {
   }, [viewport]);
 
   const handleShowEaster = (delay: number): void => {
-    if (src instanceof Array && !easter && !timer.current) {
-      timer.current = setTimeout((): void => {
+    if (src instanceof Array && !easter && !easterTimer.current) {
+      easterTimer.current = setTimeout((): void => {
         setEaster(true);
-        if (timer.current) {
-          clearTimeout(timer.current);
+        if (easterTimer.current) {
+          clearTimeout(easterTimer.current);
         }
       }, delay);
     }
@@ -41,8 +41,8 @@ const Picture = ({src}: PictureProps): JSX.Element => {
 
   const handleHideEaster = (): void => {
     setEaster(false);
-    if (timer.current) {
-      clearTimeout(timer.current);
+    if (easterTimer.current) {
+      clearTimeout(easterTimer.current);
     }
   };
 
