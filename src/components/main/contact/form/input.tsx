@@ -1,6 +1,6 @@
 'use client';
 
-import {type ChangeEvent, type FormEvent, useEffect, useRef} from 'react';
+import {type ChangeEvent, type FormEvent, useEffect, useState} from 'react';
 import {
   TError,
   TLabelEmail,
@@ -49,8 +49,9 @@ type SubmitContactFormRes = {
 
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
-  const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const {form, setForm} = useContact();
+  const [rendered, setRendered] = useState<boolean>(false);
+  const [throttle, setThrottle] = useState<boolean>(true);
   const {executeRecaptcha} = useGoogleReCaptcha();
 
   const handleUpdateForm = (
@@ -97,42 +98,32 @@ const Input = ({label}: InputProps): JSX.Element => {
         errorMessage =
           'You are currently offline. Please check your internet connection and try again later.';
       }
-      if (form.throttle) {
+      if (throttle) {
         errorMessage =
           'You are submitting too quickly. Please take a moment and try again.';
       }
       setForm({
         ...form,
-        submitting: online && !form.throttle,
+        submitting: online && !throttle,
         error: errorMessage,
         success: ''
       });
     }
   };
 
-  useEffect((): (() => void) => {
-    if (form.throttle && !throttleTimer.current) {
-      throttleTimer.current = setTimeout((): void => {
-        setForm({
-          ...form,
-          throttle: false
-        });
-      }, 3000);
+  useEffect((): void => {
+    if (!rendered) {
+      setRendered(true);
     }
-    return (): void => {
-      if (throttleTimer.current) {
-        clearTimeout(throttleTimer.current);
-      }
-    };
-  }, [
-    throttleTimer.current,
-    form.name,
-    form.email,
-    form.message,
-    form.honeypot,
-    form.throttle,
-    form.error
-  ]);
+  }, []);
+
+  useEffect((): void => {
+    if (rendered) {
+      setTimeout((): void => {
+        setThrottle(false);
+      }, 5000);
+    }
+  }, [rendered]);
 
   useEffect((): (() => void) => {
     let timer: ReturnType<typeof setTimeout> | null = null;
