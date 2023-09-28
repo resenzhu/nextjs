@@ -268,8 +268,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                           'Please complete the reCAPTCHA verification.';
                         break;
                       case 401:
-                        errorMessage =
-                          'Invalid username or password.';
+                        errorMessage = 'Invalid username or password.';
                         break;
                       case 500:
                         errorMessage =
