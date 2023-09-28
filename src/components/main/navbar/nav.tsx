@@ -14,7 +14,6 @@ const Nav = ({children}: NavProps): JSX.Element => {
   const sidebar = useRef<HTMLDivElement>(null);
   const [rendered, setRendered] = useState<boolean>(false);
   const {sidenav, viewport, setSidenav} = useApp();
-  const {removeEventListener} = window;
 
   const handleToggleSidenav = (show: boolean): void => {
     if (show !== sidenav) {

@@ -8,13 +8,11 @@ type ViewportProps = {
 };
 
 const Viewport = ({children}: ViewportProps): JSX.Element => {
-  const {onLine} = navigator;
   const [rendered, setRendered] = useState<boolean>(false);
-  const {addEventListener, removeEventListener} = window;
   const {setOnline} = useApp();
 
   const handleChangeConnectivity = (): void => {
-    setOnline(onLine);
+    setOnline(navigator.onLine);
   };
 
   useEffect((): (() => void) => {

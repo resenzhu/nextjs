@@ -9,7 +9,7 @@ type ScrollProps = {
 
 const Scroll = ({icon}: ScrollProps): JSX.Element => {
   const handleScrollToTop = (): void => {
-    window.scrollTo({
+    scrollTo({
       top: 0,
       behavior: 'smooth'
     });

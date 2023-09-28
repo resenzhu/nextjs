@@ -9,8 +9,6 @@ type ViewportProps = {
 };
 
 const Viewport = ({children}: ViewportProps): JSX.Element => {
-  const {innerWidth, innerHeight, addEventListener, removeEventListener} =
-    window;
   const [rendered, setRendered] = useState<boolean>(false);
   const {viewport, setViewport} = useApp();
 
