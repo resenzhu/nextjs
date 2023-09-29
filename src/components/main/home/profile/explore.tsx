@@ -12,7 +12,7 @@ const Explore = ({label}: ExploreProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleProfile = (show: boolean): void => {
-    if (show !== section.profile) {
+    if (section.profile !== show) {
       setSection({
         ...section,
         profile: show

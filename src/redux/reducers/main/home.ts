@@ -44,12 +44,12 @@ const initialState: State = {
 
 const reducers: Reducers = {
   setSection: (state, action) => {
-    if (action.payload !== state.section) {
+    if (state.section !== action.payload) {
       state.section = action.payload;
     }
   },
   setChatbot: (state, action) => {
-    if (action.payload !== state.chatbot) {
+    if (state.chatbot !== action.payload) {
       state.chatbot = action.payload;
     }
   }

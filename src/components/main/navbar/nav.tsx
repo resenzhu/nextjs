@@ -16,7 +16,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
   const {sidenav, viewport, setSidenav} = useApp();
 
   const handleToggleSidenav = (show: boolean): void => {
-    if (show !== sidenav) {
+    if (sidenav !== show) {
       setSidenav(show);
     }
   };

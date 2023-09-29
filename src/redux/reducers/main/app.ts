@@ -34,17 +34,17 @@ const initialState: State = {
 
 const reducers: Reducers = {
   setOnline: (state, action) => {
-    if (action.payload !== state.online) {
+    if (state.online !== action.payload) {
       state.online = action.payload;
     }
   },
   setViewport: (state, action) => {
-    if (action.payload !== state.viewport) {
+    if (state.viewport !== action.payload) {
       state.viewport = action.payload;
     }
   },
   setSidenav: (state, action) => {
-    if (action.payload !== state.sidenav) {
+    if (state.sidenav !== action.payload) {
       state.sidenav = action.payload;
     }
   }

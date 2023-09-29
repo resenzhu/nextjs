@@ -14,7 +14,7 @@ const Home = ({className, children}: HomeProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleExplore = (show: boolean): void => {
-    if (show !== section.explore) {
+    if (section.explore !== show) {
       setSection({
         ...section,
         explore: show

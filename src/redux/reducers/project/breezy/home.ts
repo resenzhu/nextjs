@@ -70,22 +70,22 @@ const initialState: State = {
 
 const reducers: Reducers = {
   setMenu: (state, action) => {
-    if (action.payload !== state.menu) {
+    if (state.menu !== action.payload) {
       state.menu = action.payload;
     }
   },
   setMessages: (state, action) => {
-    if (action.payload !== state.messages) {
+    if (state.messages !== action.payload) {
       state.messages = action.payload;
     }
   },
   setUsers: (state, action) => {
-    if (action.payload !== state.users) {
+    if (state.users !== action.payload) {
       state.users = action.payload;
     }
   },
   setProfile: (state, action) => {
-    if (action.payload !== state.profile) {
+    if (state.profile !== action.payload) {
       state.profile = action.payload;
     }
   }

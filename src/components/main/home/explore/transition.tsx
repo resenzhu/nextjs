@@ -14,7 +14,7 @@ export const T = ({children}: TProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleProfile = (show: boolean): void => {
-    if (show !== section.profile) {
+    if (section.profile !== show) {
       setTimeout((): void => {
         setSection({
           ...section,

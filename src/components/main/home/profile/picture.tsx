@@ -23,7 +23,7 @@ const Picture = ({src}: PictureProps): JSX.Element => {
     } else {
       size = 120;
     }
-    if (size !== pictureSize) {
+    if (pictureSize !== size) {
       setPictureSize(size);
     }
   }, [viewport]);

@@ -42,7 +42,7 @@ const initialState: State = {
 
 const reducers: Reducers = {
   setForm: (state, action) => {
-    if (action.payload !== state.form) {
+    if (state.form !== action.payload) {
       state.form = action.payload;
     }
   }

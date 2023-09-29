@@ -14,7 +14,7 @@ const NavMenu = ({url, label, target}: NavMenuProps) => {
   const {sidenav, setSidenav} = useApp();
 
   const handleToggleSidenav = (show: boolean) => {
-    if (show !== sidenav) {
+    if (sidenav !== show) {
       setSidenav(show);
     }
   };

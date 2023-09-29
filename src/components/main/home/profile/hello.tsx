@@ -12,7 +12,7 @@ const Hello = ({label}: HelloProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleChatbot = (show: boolean): void => {
-    if (show !== section.chatbot) {
+    if (section.chatbot !== show) {
       setSection({
         ...section,
         chatbot: show

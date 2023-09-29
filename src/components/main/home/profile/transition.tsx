@@ -14,7 +14,7 @@ export const T = ({children}: TProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleExplore = (show: boolean): void => {
-    if (show !== section.explore) {
+    if (section.explore !== show) {
       setTimeout((): void => {
         setSection({
           ...section,
