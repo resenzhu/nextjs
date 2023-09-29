@@ -1,6 +1,6 @@
 'use client';
 
-import {type ChangeEvent, type FormEvent, useEffect, useRef} from 'react';
+import {type ChangeEvent, type FormEvent, useEffect, useRef, useState} from 'react';
 import {
   TError,
   TSubmit,
@@ -51,7 +51,8 @@ type SignUpRes = {
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
   const recaptcha = useRef<Recaptcha>(null);
-  const throttleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [rendered, setRendered] = useState<boolean>(false);
+  const [throttle, setThrottle] = useState<boolean>(true);
   const {form, setForm} = useSignUp();
   const {push} = useRouter();
 
@@ -86,7 +87,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   };
 
   const handleToggleRevealPassword = (reveal: boolean): void => {
-    if (reveal !== form.reveal) {
+    if (form.reveal !== reveal) {
       setForm({
         ...form,
         reveal: reveal
@@ -115,13 +116,13 @@ const Input = ({label}: InputProps): JSX.Element => {
         errorMessage =
           'You are currently offline. Please check your internet connection and try again later.';
       }
-      if (form.throttle) {
+      if (throttle) {
         errorMessage =
           'You are submitting too quickly. Please take a moment and try again.';
       }
       setForm({
         ...form,
-        submitting: online && !form.throttle,
+        submitting: online && !throttle,
         error: {
           field: null,
           message: errorMessage
@@ -130,30 +131,19 @@ const Input = ({label}: InputProps): JSX.Element => {
     }
   };
 
-  useEffect((): (() => void) => {
-    if (form.throttle && !throttleTimer.current) {
-      throttleTimer.current = setTimeout((): void => {
-        setForm({
-          ...form,
-          throttle: false
-        });
-      }, 3000);
+  useEffect((): void => {
+    if (!rendered) {
+      setRendered(true);
     }
-    return (): void => {
-      if (throttleTimer.current) {
-        clearTimeout(throttleTimer.current);
-      }
-    };
-  }, [
-    throttleTimer.current,
-    form.username,
-    form.displayName,
-    form.password,
-    form.honeypot,
-    form.token,
-    form.throttle,
-    form.error
-  ]);
+  }, []);
+
+  useEffect((): void => {
+    if (rendered) {
+      setTimeout((): void => {
+        setThrottle(false);
+      }, 5000);
+    }
+  }, [rendered]);
 
   useEffect((): void => {
     if (form.submitting) {
