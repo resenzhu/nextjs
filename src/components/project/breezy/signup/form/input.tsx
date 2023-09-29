@@ -1,6 +1,12 @@
 'use client';
 
-import {type ChangeEvent, type FormEvent, useEffect, useRef, useState} from 'react';
+import {
+  type ChangeEvent,
+  type FormEvent,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import {
   TError,
   TSubmit,
