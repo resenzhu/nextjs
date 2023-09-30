@@ -25,11 +25,9 @@ const Page = (): JSX.Element => (
         title='MEET RESEN'
         content={[
           `Welcome to my personal portfolio website! My name is Resen, and I'm a Full Stack developer based in Jakarta with over ${Math.floor(
-            DateTime.utc()
-              .diff(DateTime.fromISO('2017-03-01').toUTC(), ['years'])
-              .toObject().years ??
-              new Date().getUTCFullYear() -
-                new Date('2017-03-01').getUTCFullYear()
+            DateTime.utc().diff(DateTime.fromISO('2017-03-01').toUTC(), [
+              'years'
+            ]).years
           )} years of experience in the field.`,
           'I specialize in both Front End and Back End development, bringing a comprehensive skill set to the table. With a strong focus on creating visually appealing and user-friendly web applications, I utilize technologies such as ReactJS, NextJS, and NodeJS to deliver exceptional results.',
           'From crafting captivating user interfaces to implementing robust functionality, I strive to create seamless and efficient websites. My passion for development drives me to continuously refine my skills, ensuring that I deliver high-quality solutions that meet the unique requirements of each project.',
