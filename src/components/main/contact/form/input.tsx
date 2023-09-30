@@ -309,7 +309,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                   }
                   setForm({
                     ...form,
-                    token: response && response.success ? '' : request.token,
+                    token: '',
                     submitting: false,
                     error: errorMessage,
                     success:
