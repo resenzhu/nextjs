@@ -224,7 +224,7 @@ const Input = ({label}: InputProps): JSX.Element => {
             mainSocket
               .timeout(60000)
               .emit(
-                'submit-contact-form',
+                'submit contact form',
                 request,
                 (error: Error, response: SubmitContactFormRes): void => {
                   let errorMessage: string = '';

@@ -105,7 +105,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
           mainSocket
             .timeout(60000)
             .emit(
-              'ask-chatbot',
+              'ask chatbot',
               request,
               (error: Error, response: AskChatbotRes): void => {
                 let errorMessage: string = '';
