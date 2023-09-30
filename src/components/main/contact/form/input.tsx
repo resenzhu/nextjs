@@ -293,6 +293,10 @@ const Input = ({label}: InputProps): JSX.Element => {
                         errorMessage =
                           'Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again.';
                         break;
+                      case 429:
+                        errorMessage =
+                          'Oops! You have exceeded the maximum number of contact form submissions for today. Please try again tomorrow.';
+                        break;
                       case 500:
                         errorMessage =
                           'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.';
