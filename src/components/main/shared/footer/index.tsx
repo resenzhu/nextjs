@@ -68,7 +68,7 @@ const Footer = (): JSX.Element => {
               )}
             </div>
             <div className='font-semibold'>
-              &#169; {DateTime.local().year} RESEN
+              &#169; {DateTime.utc().toLocal().year} RESEN
             </div>
           </div>
         </div>
