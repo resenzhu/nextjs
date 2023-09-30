@@ -294,12 +294,14 @@ const Input = ({label}: InputProps): JSX.Element => {
                     }
                     setForm({
                       ...form,
+                      token: '',
                       submitting: false,
                       error: {
                         field: errorField,
                         message: errorMessage
                       }
                     });
+                    recaptcha.current?.reset();
                   }
                 }
               }
@@ -360,7 +362,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         />
       </div>
       <RecaptchaV2
-        ref={recaptcha}
+        reference={recaptcha}
         onChange={(token): void => handleUpdateToken(token)}
       />
       <button
