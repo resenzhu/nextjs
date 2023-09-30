@@ -295,7 +295,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                         break;
                       case 429:
                         errorMessage =
-                          'Oops! You have exceeded the maximum number of contact form submissions for today. Please try again tomorrow.';
+                          'Oops! You have exceeded the maximum number of contact form submissions for today. Please try again tomorrow.';
                         break;
                       case 500:
                         errorMessage =
