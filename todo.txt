@@ -1,0 +1,1 @@
+// FIXME recaptcha token doesn't refresh after response from server.
