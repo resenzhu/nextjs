@@ -1,2 +1,0 @@
-// TODO show confirmation dialog when clicking sign up that the account will be deleted if inactive for one week.
-// TODO add back to home button in project.
