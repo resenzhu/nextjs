@@ -11,10 +11,10 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import {Listbox} from '@headlessui/react';
-import {T} from '@components/project/breezy/home/profile/transition';
+import {TProfile} from '@components/project/breezy/home/profile/transition';
 
 const Profile = (): JSX.Element => (
-  <T>
+  <TProfile>
     <div className='flex h-[calc(100vh-3.5rem)] flex-col'>
       <section className='flex-1 bg-gradient-to-b from-fuchsia-700 to-purple-600'>
         <div className='flex h-full items-center justify-center'>
@@ -117,7 +117,7 @@ const Profile = (): JSX.Element => (
         </button>
       </section>
     </div>
-  </T>
+  </TProfile>
 );
 
 export default Profile;

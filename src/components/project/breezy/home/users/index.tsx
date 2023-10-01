@@ -1,7 +1,7 @@
-import {T} from '@components/project/breezy/home/users/transition';
+import {TUsers} from '@components/project/breezy/home/users/transition';
 
 const Users = (): JSX.Element => (
-  <T>
+  <TUsers>
     <div className='pb-14'>
       <div className='mx-4 py-4'>
         <input
@@ -18,7 +18,7 @@ const Users = (): JSX.Element => (
         you for your understanding and cooperation.
       </p>
     </div>
-  </T>
+  </TUsers>
 );
 
 export default Users;

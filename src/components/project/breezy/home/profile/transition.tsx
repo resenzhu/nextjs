@@ -8,7 +8,7 @@ export type TProps = {
   children: ReactNode;
 };
 
-export const T = ({children}: TProps): JSX.Element => {
+export const TProfile = ({children}: TProps): JSX.Element => {
   const {menu} = useHome();
   return <Transition show={menu.profile}>{children}</Transition>;
 };
