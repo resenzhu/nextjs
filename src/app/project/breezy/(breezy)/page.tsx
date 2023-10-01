@@ -1,4 +1,4 @@
-import {Messages, Navbar} from '@components/project/breezy/home';
+import {Messages, Navbar, Users} from '@components/project/breezy/home';
 import {
   faMessage,
   faUser,
@@ -36,6 +36,7 @@ const Page = (): JSX.Element => (
         action: 'Browse Users'
       }}
     />
+    <Users />
   </div>
 );
 
