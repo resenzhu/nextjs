@@ -12,19 +12,21 @@ const Auth = ({welcome, title, subtitle, children}: AuthProps): JSX.Element => (
     <div className='absolute h-full w-full bg-[url("/images/project/breezy/login-background.webp")] bg-cover bg-center bg-no-repeat'></div>
     <div className='absolute h-full w-full bg-black opacity-60'></div>
     <div className='md:max-w-1/5 relative flex h-screen flex-col justify-between md:mx-auto md:w-1/5 md:items-center md:justify-center'>
-      <div className='mx-4 py-5 text-center font-semibold text-gray-100 md:mx-0 md:pb-4 md:pt-0 md:text-sm'>
+      <div className='mx-4 animate-fade-down py-5 text-center font-semibold text-gray-100 animate-duration-700 md:mx-0 md:pb-4 md:pt-0 md:text-sm'>
         {welcome}
       </div>
       <div className='space-y-9 md:space-y-6'>
         <div className='mx-4 space-y-4 md:mx-0 md:space-y-1 md:text-center'>
-          <div className='text-4xl font-semibold text-white md:text-2xl'>
+          <div className='animate-fade-right text-4xl font-semibold text-white animate-duration-700 md:text-2xl'>
             {title}
           </div>
-          <div className='tracking-wide text-gray-400 md:mx-auto md:w-3/4 md:text-xs'>
+          <div className='animate-fade-right tracking-wide text-gray-400 animate-duration-700 md:mx-auto md:w-3/4 md:text-xs'>
             {subtitle}
           </div>
         </div>
-        <div className='bg-white md:rounded-lg'>{children}</div>
+        <div className='animate-fade-up bg-white animate-duration-700 md:rounded-lg'>
+          {children}
+        </div>
       </div>
     </div>
   </>
