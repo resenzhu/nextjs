@@ -2,6 +2,7 @@ import {faCheck, faCheckDouble} from '@fortawesome/free-solid-svg-icons';
 import Browse from '@components/project/breezy/home/messages/browse';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
+import {T} from '@components/project/breezy/home/messages/transition';
 
 type ChatsProps = {
   empty: {
@@ -11,7 +12,7 @@ type ChatsProps = {
 };
 
 const Chats = ({empty}: ChatsProps): JSX.Element => (
-  <>
+  <T>
     <div className='mx-4 flex h-[calc(100vh-3.5rem)] items-center justify-center'>
       <div className='w-2/3 space-y-8 text-center'>
         <p className='text-gray-500'>{empty.message}</p>
@@ -384,7 +385,7 @@ const Chats = ({empty}: ChatsProps): JSX.Element => (
         </div>
       </div>
     </div>
-  </>
+  </T>
 );
 
 export type {ChatsProps};
