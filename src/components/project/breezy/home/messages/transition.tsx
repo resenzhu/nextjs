@@ -1,6 +1,6 @@
 'use client';
 
-import type {ReactNode} from 'react';
+import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
 import useHome from '@hooks/project/breezy/use-home';
 
@@ -11,4 +11,16 @@ export type TProps = {
 export const TMessages = ({children}: TProps): JSX.Element => {
   const {menu} = useHome();
   return <Transition show={menu.messages}>{children}</Transition>;
+};
+
+export const TEmpty = ({children}: TProps): JSX.Element => {
+  const {messages} = useHome();
+  return (
+    <Transition
+      show={messages.length === 0}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
 };
