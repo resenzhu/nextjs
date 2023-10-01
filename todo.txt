@@ -1,6 +1,6 @@
+// TODO remove use client from profile index.
 // TODO change users menu empty data.
 // TODO design desktop profile menu.
-// TODO add breezy home animation.
 
 'use client';
 
