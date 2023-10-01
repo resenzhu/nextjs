@@ -16,7 +16,7 @@ import {TProfile} from '@components/project/breezy/home/profile/transition';
 const Profile = (): JSX.Element => (
   <TProfile>
     <div className='flex h-[calc(100vh-3.5rem)] flex-col'>
-      <section className='flex-1 bg-gradient-to-b from-fuchsia-700 to-purple-600'>
+      <section className='flex-1 bg-gradient-to-b from-indigo-500 to-purple-600'>
         <div className='flex h-full items-center justify-center'>
           <div className='flex flex-col items-center justify-center space-y-5'>
             <div className='flex flex-col items-center justify-center space-y-2'>
@@ -33,24 +33,24 @@ const Profile = (): JSX.Element => (
               </div>
             </div>
             <Listbox>
-              <Listbox.Button className='w-40 rounded-lg bg-white py-1 text-lg font-semibold text-green-500'>
+              <Listbox.Button className='w-40 rounded-lg bg-white py-1 text-lg font-semibold text-green-600'>
                 online
               </Listbox.Button>
               <Listbox.Options className='absolute w-40 translate-y-40 rounded-lg bg-white text-center shadow-md'>
                 <Listbox.Option
-                  className='cursor-pointer py-2 font-semibold text-green-500 hover:bg-purple-500 hover:text-white'
+                  className='cursor-pointer py-2 font-semibold text-green-600 hover:rounded-lg hover:bg-gray-100'
                   value='online'
                 >
                   online
                 </Listbox.Option>
                 <Listbox.Option
-                  className='cursor-pointer py-2 font-semibold text-yellow-500 hover:bg-purple-500 hover:text-white'
+                  className='cursor-pointer py-2 font-semibold text-yellow-600 hover:rounded-lg hover:bg-gray-100'
                   value='away'
                 >
                   away
                 </Listbox.Option>
                 <Listbox.Option
-                  className='cursor-pointer py-2 font-semibold text-gray-500 hover:bg-purple-500 hover:text-white'
+                  className='cursor-pointer py-2 font-semibold text-gray-600 hover:rounded-lg hover:bg-gray-100'
                   value='invisible'
                 >
                   invisible
