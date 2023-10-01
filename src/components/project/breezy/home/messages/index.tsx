@@ -4,14 +4,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import {T} from '@components/project/breezy/home/messages/transition';
 
-type ChatsProps = {
+type MessagesProps = {
   empty: {
     message: string;
     action: string;
   };
 };
 
-const Chats = ({empty}: ChatsProps): JSX.Element => (
+const Messages = ({empty}: MessagesProps): JSX.Element => (
   <T>
     <div className='mx-4 flex h-[calc(100vh-3.5rem)] items-center justify-center'>
       <div className='w-2/3 space-y-8 text-center'>
@@ -388,8 +388,8 @@ const Chats = ({empty}: ChatsProps): JSX.Element => (
   </T>
 );
 
-export type {ChatsProps};
-export default Chats;
+export type {MessagesProps};
+export default Messages;
 
 /* eslint-disable */
 
