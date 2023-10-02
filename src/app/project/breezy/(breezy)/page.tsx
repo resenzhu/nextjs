@@ -41,7 +41,12 @@ const Page = (): JSX.Element => (
         action: 'Browse Users'
       }}
     />
-    <Users />
+    <Users
+      empty={{
+        message:
+          'No online users. Please create a new account on another browser or device to test the chat. Thank you!'
+      }}
+    />
     <Profile />
   </div>
 );
