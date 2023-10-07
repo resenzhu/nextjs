@@ -61,6 +61,7 @@ const slice = createSlice({
   reducers: reducers
 });
 
+export {initialState};
 export type {Section, Chat, Chatbot};
 export const {setSection, setChatbot} = slice.actions;
 export default slice.reducer;

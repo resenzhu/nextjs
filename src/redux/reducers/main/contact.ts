@@ -48,6 +48,7 @@ const slice = createSlice({
   reducers: reducers
 });
 
+export {initialState};
 export type {Form};
 export const {setForm} = slice.actions;
 export default slice.reducer;

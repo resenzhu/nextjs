@@ -97,6 +97,7 @@ const slice = createSlice({
   reducers: reducers
 });
 
+export {initialState};
 export type {Menu, User, Chat, Message, Messages, Users, Profile};
 export const {setMenu, setMessages, setUsers, setProfile} = slice.actions;
 export default slice.reducer;

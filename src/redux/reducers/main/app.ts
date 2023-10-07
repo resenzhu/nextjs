@@ -56,6 +56,7 @@ const slice = createSlice({
   reducers: reducers
 });
 
+export {initialState};
 export type {Online, Viewport, Sidenav};
 export const {setOnline, setViewport, setSidenav} = slice.actions;
 export default slice.reducer;
