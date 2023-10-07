@@ -7,6 +7,7 @@ import {
   useRef,
   useState
 } from 'react';
+import {type Form, initialState} from '@redux/reducers/project/breezy/login';
 import {
   TError,
   TSubmit,
@@ -15,7 +16,6 @@ import {
 import {ValidationError, object, string} from 'yup';
 import {faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import type {Form} from '@redux/reducers/project/breezy/login';
 import type Recaptcha from 'react-google-recaptcha';
 import {RecaptchaV2} from '@components/project/breezy/shared';
 import {breezySocket} from '@utils/socket';
@@ -142,6 +142,7 @@ const Input = ({label}: InputProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered) {
+      setForm(initialState.form);
       setTimeout((): void => {
         setThrottle(false);
       }, 5000);
