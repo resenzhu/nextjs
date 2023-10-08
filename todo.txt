@@ -1,5 +1,5 @@
+// TODO renew cookie when a user visit breezy home once a day.
 // TODO remove use client from profile index.
-// TODO change users menu empty data.
 // TODO design desktop profile menu.
 
 'use client';
