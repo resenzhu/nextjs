@@ -25,7 +25,7 @@ const Page = (): JSX.Element => (
         title='MEET RESEN'
         content={[
           `Welcome to my personal portfolio website! My name is Resen, and I'm a Full Stack developer based in Jakarta with over ${Math.floor(
-            DateTime.utc().diff(DateTime.fromISO('2017-03-01').toUTC(), [
+            DateTime.utc().diff(DateTime.fromISO('2017-03-01', {zone: 'utc'}), [
               'years'
             ]).years
           )} years of experience in the field.`,
