@@ -3,6 +3,7 @@ import {
   Messages,
   Navbar,
   Profile,
+  Refresh,
   Users
 } from '@components/project/breezy/home';
 import {
@@ -21,36 +22,38 @@ const metadata = createMetadata({
 
 const Page = (): JSX.Element => (
   <Cookie>
-    <div className='md:flex md:h-screen'>
-      <Navbar>
-        <Navbar.Menu
-          name='messages'
-          icon={faMessage}
-        ></Navbar.Menu>
-        <Navbar.Menu
-          name='users'
-          icon={faUserFriends}
-        ></Navbar.Menu>
-        <Navbar.Menu
-          name='profile'
-          icon={faUser}
-        ></Navbar.Menu>
-      </Navbar>
-      <Messages
-        empty={{
-          message:
-            'Welcome to Breezy! Connect with online users and experience the breezy conversations.',
-          action: 'Browse Users'
-        }}
-      />
-      <Users
-        empty={{
-          message:
-            'No online users. Please create a new account on another browser or device to test the chat. Thank you!'
-        }}
-      />
-      <Profile />
-    </div>
+    <Refresh>
+      <div className='md:flex md:h-screen'>
+        <Navbar>
+          <Navbar.Menu
+            name='messages'
+            icon={faMessage}
+          ></Navbar.Menu>
+          <Navbar.Menu
+            name='users'
+            icon={faUserFriends}
+          ></Navbar.Menu>
+          <Navbar.Menu
+            name='profile'
+            icon={faUser}
+          ></Navbar.Menu>
+        </Navbar>
+        <Messages
+          empty={{
+            message:
+              'Welcome to Breezy! Connect with online users and experience the breezy conversations.',
+            action: 'Browse Users'
+          }}
+        />
+        <Users
+          empty={{
+            message:
+              'No online users. Please create a new account on another browser or device to test the chat. Thank you!'
+          }}
+        />
+        <Profile />
+      </div>
+    </Refresh>
   </Cookie>
 );
 
