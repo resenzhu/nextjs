@@ -19,16 +19,13 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
     });
   }, 500);
 
-  useEffect((): (() => void) => {
+  useEffect((): void => {
     if (!rendered) {
       setRendered(true);
     }
-    return (): void => {
-      removeEventListener('resize', handleResizeViewport);
-    };
   }, []);
 
-  useEffect((): void => {
+  useEffect((): (() => void) => {
     if (rendered) {
       if (viewport.width !== innerWidth || viewport.height !== innerHeight) {
         setViewport({
@@ -38,6 +35,9 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
       }
       addEventListener('resize', handleResizeViewport);
     }
+    return (): void => {
+      removeEventListener('resize', handleResizeViewport);
+    };
   }, [rendered]);
 
   return <>{children}</>;

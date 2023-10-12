@@ -15,22 +15,22 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
     setOnline(navigator.onLine);
   };
 
-  useEffect((): (() => void) => {
+  useEffect((): void => {
     if (!rendered) {
       setRendered(true);
     }
-    return (): void => {
-      removeEventListener('offline', handleChangeConnectivity);
-      removeEventListener('online', handleChangeConnectivity);
-    };
   }, []);
 
-  useEffect((): void => {
+  useEffect((): (() => void) => {
     if (rendered) {
       setOnline(navigator.onLine);
       addEventListener('offline', handleChangeConnectivity);
       addEventListener('online', handleChangeConnectivity);
     }
+    return (): void => {
+      removeEventListener('offline', handleChangeConnectivity);
+      removeEventListener('online', handleChangeConnectivity);
+    };
   }, [rendered]);
 
   return <>{children}</>;

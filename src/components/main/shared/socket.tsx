@@ -10,23 +10,23 @@ type SocketProps = {
 const Socket = ({children}: SocketProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
 
-  useEffect((): (() => void) => {
+  useEffect((): void => {
     if (!rendered) {
       setRendered(true);
+    }
+  }, []);
+
+  useEffect((): (() => void) => {
+    if (rendered) {
+      if (!mainSocket.connected) {
+        mainSocket.connect();
+      }
     }
     return (): void => {
       if (mainSocket.connected) {
         mainSocket.disconnect();
       }
     };
-  }, []);
-
-  useEffect((): void => {
-    if (rendered) {
-      if (!mainSocket.connected) {
-        mainSocket.connect();
-      }
-    }
   }, [rendered]);
 
   return <>{children}</>;

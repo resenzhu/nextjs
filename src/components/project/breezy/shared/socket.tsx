@@ -10,23 +10,23 @@ type SocketProps = {
 const Socket = ({children}: SocketProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
 
-  useEffect((): (() => void) => {
+  useEffect((): void => {
     if (!rendered) {
       setRendered(true);
+    }
+  }, []);
+
+  useEffect((): (() => void) => {
+    if (rendered) {
+      if (!breezySocket.connected) {
+        breezySocket.connect();
+      }
     }
     return (): void => {
       if (breezySocket.connected) {
         breezySocket.disconnect();
       }
     };
-  }, []);
-
-  useEffect((): void => {
-    if (rendered) {
-      if (!breezySocket.connected) {
-        breezySocket.connect();
-      }
-    }
   }, [rendered]);
 
   return <>{children}</>;
