@@ -18,8 +18,7 @@ const Cookie = ({children}: CookieProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered) {
-      const cookieName =
-        process.env.NODE_ENV === 'production' ? '__Secure-BZ' : 'BZ';
+      const cookieName = process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY;
       const currentCookie = cookie.get(cookieName);
       if (currentCookie) {
         cookie.set(cookieName, currentCookie, {

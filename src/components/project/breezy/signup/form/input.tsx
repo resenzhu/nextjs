@@ -234,9 +234,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                 if (response) {
                   if (response.success) {
                     cookie.set(
-                      process.env.NODE_ENV === 'production'
-                        ? '__Secure-BZ'
-                        : 'BZ',
+                      process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY,
                       response.data.token,
                       {
                         path: '/project/breezy',
