@@ -117,13 +117,13 @@ const Input = ({label}: InputProps): JSX.Element => {
   const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     if (!form.submitting) {
-      let errorMessage: string = '';
+      let formError: string = '';
       if (!online) {
-        errorMessage =
+        formError =
           'You are currently offline. Please check your internet connection and try again later.';
       }
       if (throttle) {
-        errorMessage =
+        formError =
           'You are submitting too quickly. Please take a moment and try again.';
       }
       setForm({
@@ -131,7 +131,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         submitting: online && !throttle,
         error: {
           field: null,
-          message: errorMessage
+          message: formError
         }
       });
     }
@@ -224,11 +224,11 @@ const Input = ({label}: InputProps): JSX.Element => {
             .emit(
               'signup',
               request,
-              (error: Error, response: SignUpRes): void => {
-                let errorField: string = '';
-                let errorMessage: string = '';
-                if (error) {
-                  errorMessage =
+              (socketError: Error, response: SignUpRes): void => {
+                let formErrorField: string = '';
+                let formErrorMessage: string = '';
+                if (socketError) {
+                  formErrorMessage =
                     'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
                 }
                 if (response) {
@@ -249,85 +249,85 @@ const Input = ({label}: InputProps): JSX.Element => {
                       case 40001:
                       case 4220101:
                       case 4220102:
-                        errorField = 'username';
-                        errorMessage = 'Please enter your username.';
+                        formErrorField = 'username';
+                        formErrorMessage = 'Please enter your username.';
                         break;
                       case 4220103:
-                        errorField = 'username';
-                        errorMessage =
+                        formErrorField = 'username';
+                        formErrorMessage =
                           'Your username is too short. Please enter at least 2 characters.';
                         break;
                       case 4220104:
-                        errorField = 'username';
-                        errorMessage =
+                        formErrorField = 'username';
+                        formErrorMessage =
                           'Your username is too long. Please enter a maximum of 15 characters.';
                         break;
                       case 4220105:
-                        errorField = 'username';
-                        errorMessage =
+                        formErrorField = 'username';
+                        formErrorMessage =
                           'Please enter a username containing only letters, numbers, hyphen, and underscore.';
                         break;
                       case 40901:
-                        errorField = 'username';
-                        errorMessage =
+                        formErrorField = 'username';
+                        formErrorMessage =
                           'The username you entered is already taken. Please choose a different username.';
                         break;
                       case 40002:
                       case 4220201:
                       case 4220202:
-                        errorField = 'displayName';
-                        errorMessage = 'Please enter your display name.';
+                        formErrorField = 'displayName';
+                        formErrorMessage = 'Please enter your display name.';
                         break;
                       case 4220203:
-                        errorField = 'displayName';
-                        errorMessage =
+                        formErrorField = 'displayName';
+                        formErrorMessage =
                           'Your display name is too short. Please enter at least 2 characters.';
                         break;
                       case 4220204:
-                        errorField = 'displayName';
-                        errorMessage =
+                        formErrorField = 'displayName';
+                        formErrorMessage =
                           'Your display name is too long. Please enter a maximum of 25 characters.';
                         break;
                       case 4220205:
-                        errorField = 'displayName';
-                        errorMessage =
+                        formErrorField = 'displayName';
+                        formErrorMessage =
                           'Please enter a valid display name using only letters.';
                         break;
                       case 40003:
                       case 4220301:
                       case 4220302:
-                        errorField = 'password';
-                        errorMessage = 'Please enter your password.';
+                        formErrorField = 'password';
+                        formErrorMessage = 'Please enter your password.';
                         break;
                       case 4220303:
-                        errorField = 'password';
-                        errorMessage =
+                        formErrorField = 'password';
+                        formErrorMessage =
                           'Your password is too short. Please enter at least 8 characters.';
                         break;
                       case 4220304:
-                        errorField = 'password';
-                        errorMessage =
+                        formErrorField = 'password';
+                        formErrorMessage =
                           'Your password is too long. Please enter a maximum of 64 characters.';
                         break;
                       case 40004:
                       case 4220401:
                       case 4220402:
                       case 40304:
-                        errorMessage =
+                        formErrorMessage =
                           'Bot detection system triggered. Please ensure you are a human and not a bot.';
                         break;
                       case 40005:
                       case 4220501:
                       case 4220502:
-                        errorMessage =
+                        formErrorMessage =
                           'Please complete the reCAPTCHA verification.';
                         break;
                       case 500:
-                        errorMessage =
+                        formErrorMessage =
                           'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
                         break;
                       default:
-                        errorMessage =
+                        formErrorMessage =
                           'Oops! There was an error with your signup. Please review your information and try again.';
                         break;
                     }
@@ -336,8 +336,8 @@ const Input = ({label}: InputProps): JSX.Element => {
                       token: '',
                       submitting: false,
                       error: {
-                        field: errorField,
-                        message: errorMessage
+                        field: formErrorField,
+                        message: formErrorMessage
                       }
                     });
                     recaptcha.current?.reset();
@@ -346,15 +346,16 @@ const Input = ({label}: InputProps): JSX.Element => {
               }
             );
         })
-        .catch((error: ValidationError): void => {
+        .catch((validationError: ValidationError): void => {
           setForm({
             ...form,
             submitting: false,
             error: {
-              field: error.inner[0]?.path ?? error.path ?? '',
+              field:
+                validationError.inner[0]?.path ?? validationError.path ?? '',
               message:
-                error.inner[0]?.message ??
-                error.message ??
+                validationError.inner[0]?.message ??
+                validationError.message ??
                 'Oops! There was an error with your signup. Please review your information and try again.'
             }
           });

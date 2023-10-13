@@ -107,10 +107,10 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
             .emit(
               'ask chatbot',
               request,
-              (error: Error, response: AskChatbotRes): void => {
-                let errorMessage: string = '';
-                if (error) {
-                  errorMessage =
+              (socketError: Error, response: AskChatbotRes): void => {
+                let chatError: string = '';
+                if (socketError) {
+                  chatError =
                     "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience.";
                 }
                 if (response && !response.success) {
@@ -118,19 +118,19 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                     case 40001:
                     case 4220101:
                     case 4220102:
-                      errorMessage =
+                      chatError =
                         'Uh-oh! It looks like you forgot to write a message. Please enter your message before sending it my way.';
                       break;
                     case 4220103:
-                      errorMessage =
+                      chatError =
                         'Oops! Your message must be at least 1 character long. Please enter a message with at least 1 character before sending it.';
                       break;
                     case 4220104:
-                      errorMessage =
+                      chatError =
                         'Oops! Your message exceeds the maximum limit of 160 characters. Please shorten your message and try again.';
                       break;
                     default:
-                      errorMessage =
+                      chatError =
                         "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again.";
                       break;
                   }
@@ -146,14 +146,14 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                       message:
                         response && response.success
                           ? response.data.reply
-                          : errorMessage
+                          : chatError
                     }
                   ]
                 });
               }
             );
         })
-        .catch((error: ValidationError): void => {
+        .catch((validationError: ValidationError): void => {
           setChatbot({
             ...chatbot,
             input: '',
@@ -163,8 +163,8 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
               {
                 sender: 'bot',
                 message:
-                  error.inner[0]?.message ??
-                  error.message ??
+                  validationError.inner[0]?.message ??
+                  validationError.message ??
                   "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again."
               }
             ]

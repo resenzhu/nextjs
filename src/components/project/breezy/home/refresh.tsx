@@ -13,8 +13,8 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {push} = useRouter();
 
-  const handleLogout = (error: Error): void => {
-    if (error.message === 'JsonWebTokenError') {
+  const handleLogout = (socketError: Error): void => {
+    if (socketError.message === 'JsonWebTokenError') {
       cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
         path: '/project/breezy'
       });
