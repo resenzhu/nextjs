@@ -1,11 +1,5 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
-type Menu = {
-  messages: boolean;
-  users: boolean;
-  profile: boolean;
-};
-
 type User = {
   id: string;
   username: string;
@@ -37,21 +31,30 @@ type Message = {
   chats: Chat[];
 };
 
-type Messages = Message[];
+type Messages = {
+  show: boolean;
+  fetching: boolean;
+  list: Message[];
+};
 
-type Users = User[];
+type Users = {
+  show: boolean;
+  fetching: boolean;
+  list: User[];
+};
 
-type Profile = User;
+type Profile = {
+  show: boolean;
+  user: User;
+};
 
 type State = {
-  menu: Menu;
   messages: Messages;
   users: Users;
   profile: Profile;
 };
 
 type Reducers = {
-  setMenu: (state: State, action: PayloadAction<Menu>) => void;
   setMessages: (state: State, action: PayloadAction<Messages>) => void;
   setUsers: (state: State, action: PayloadAction<Users>) => void;
   setProfile: (state: State, action: PayloadAction<Profile>) => void;
@@ -60,30 +63,31 @@ type Reducers = {
 const name: string = 'home';
 
 const initialState: State = {
-  menu: {
-    messages: true,
-    users: false,
-    profile: false
+  messages: {
+    show: true,
+    fetching: true,
+    list: []
   },
-  messages: [],
-  users: [],
+  users: {
+    show: false,
+    fetching: true,
+    list: []
+  },
   profile: {
-    id: '',
-    username: '',
-    displayName: '',
-    session: {
-      status: 'offline',
-      lastOnline: ''
+    show: false,
+    user: {
+      id: '',
+      username: '',
+      displayName: '',
+      session: {
+        status: 'offline',
+        lastOnline: ''
+      }
     }
   }
 };
 
 const reducers: Reducers = {
-  setMenu: (state, action) => {
-    if (state.menu !== action.payload) {
-      state.menu = action.payload;
-    }
-  },
   setMessages: (state, action) => {
     if (state.messages !== action.payload) {
       state.messages = action.payload;
@@ -108,6 +112,6 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {Menu, User, Chat, Message, Messages, Users, Profile};
-export const {setMenu, setMessages, setUsers, setProfile} = slice.actions;
+export type {User, Chat, Message, Messages, Users, Profile};
+export const {setMessages, setUsers, setProfile} = slice.actions;
 export default slice.reducer;
