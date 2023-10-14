@@ -13,7 +13,7 @@ type User = {
   session: {
     status: 'online' | 'away' | 'offline';
     lastOnline: string;
-  }
+  };
 };
 
 type Chat = {
