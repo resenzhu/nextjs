@@ -7,7 +7,6 @@ import {
   useRef,
   useState
 } from 'react';
-import {type Form, initialState} from '@redux/reducers/project/breezy/login';
 import {
   TError,
   TSubmit,
@@ -20,6 +19,7 @@ import type Recaptcha from 'react-google-recaptcha';
 import {RecaptchaV2} from '@components/project/breezy/shared';
 import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
+import {initialState} from '@redux/reducers/project/breezy/login';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
 import useLogin from '@hooks/project/breezy/use-login';
@@ -60,7 +60,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   const {push} = useRouter();
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
-    const fieldName = event.target.name as keyof Form;
+    const fieldName = event.target.name as keyof typeof form;
     const {value} = event.target;
     if (form[fieldName] !== value) {
       setForm({
@@ -75,7 +75,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   };
 
   const handleTrimForm = (event: ChangeEvent<HTMLInputElement>): void => {
-    const fieldName = event.target.name as keyof Form;
+    const fieldName = event.target.name as keyof typeof form;
     const {value} = event.target;
     if (form[fieldName] !== value.trim()) {
       setForm({

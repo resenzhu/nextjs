@@ -12,7 +12,6 @@ import {
 } from '@components/main/contact/form/transition';
 import {ValidationError, object, string} from 'yup';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import type {Form} from '@redux/reducers/main/contact';
 import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
@@ -60,7 +59,7 @@ const Input = ({label}: InputProps): JSX.Element => {
     const fieldName =
       event.target.name === 'phone'
         ? 'honeypot'
-        : (event.target.name as keyof Form);
+        : (event.target.name as keyof typeof form);
     const {value} = event.target;
     if (form[fieldName] !== value) {
       setForm({
@@ -78,7 +77,7 @@ const Input = ({label}: InputProps): JSX.Element => {
     const fieldName =
       event.target.name === 'phone'
         ? 'honeypot'
-        : (event.target.name as keyof Form);
+        : (event.target.name as keyof typeof form);
     const {value} = event.target;
     if (form[fieldName] !== value.trim()) {
       setForm({
