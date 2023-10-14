@@ -9,15 +9,15 @@ export type TProps = {
 };
 
 export const TMessages = ({children}: TProps): JSX.Element => {
-  const {menu} = useHome();
-  return <Transition show={menu.messages}>{children}</Transition>;
+  const {messages} = useHome();
+  return <Transition show={messages.show}>{children}</Transition>;
 };
 
 export const TEmpty = ({children}: TProps): JSX.Element => {
   const {messages} = useHome();
   return (
     <Transition
-      show={messages.length === 0}
+      show={messages.list.length === 0}
       as={Fragment}
     >
       {children}
