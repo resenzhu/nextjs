@@ -10,8 +10,10 @@ type User = {
   id: string;
   username: string;
   displayName: string;
-  status: 'online' | 'away' | 'offline';
-  lastOnline: string;
+  session: {
+    status: 'online' | 'away' | 'offline';
+    lastOnline: string;
+  }
 };
 
 type Chat = {
