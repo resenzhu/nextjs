@@ -41,7 +41,7 @@ type Messages = Message[];
 
 type Users = User[];
 
-type Profile = User | null;
+type Profile = User;
 
 type State = {
   menu: Menu;
@@ -67,7 +67,15 @@ const initialState: State = {
   },
   messages: [],
   users: [],
-  profile: null
+  profile: {
+    id: '',
+    username: '',
+    displayName: '',
+    session: {
+      status: 'offline',
+      lastOnline: ''
+    }
+  }
 };
 
 const reducers: Reducers = {
