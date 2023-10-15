@@ -44,6 +44,10 @@ const Page = (): JSX.Element => (
         }}
       />
       <Users
+        fetch={{
+          message: `Sorry, we couldn't load the user list at the moment. Please try again later.`,
+          action: 'Retry'
+        }}
         empty={{
           message:
             'No online users. Please create a new account on another browser or device to test the chat. Thank you!'
