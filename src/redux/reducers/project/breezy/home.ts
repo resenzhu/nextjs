@@ -34,12 +34,14 @@ type Message = {
 type Messages = {
   show: boolean;
   fetching: boolean;
+  fetched: boolean;
   list: Message[];
 };
 
 type Users = {
   show: boolean;
   fetching: boolean;
+  fetched: boolean;
   list: User[];
 };
 
@@ -66,11 +68,13 @@ const initialState: State = {
   messages: {
     show: true,
     fetching: true,
+    fetched: false,
     list: []
   },
   users: {
     show: false,
     fetching: true,
+    fetched: false,
     list: []
   },
   profile: {
