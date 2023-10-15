@@ -39,14 +39,7 @@ export const TRetryFetch = ({children}: TProps): JSX.Element => {
 
 export const TFetched = ({children}: TProps): JSX.Element => {
   const {users} = useHome();
-  return (
-    <Transition
-      show={users.fetched}
-      as={Fragment}
-    >
-      {children}
-    </Transition>
-  );
+  return <Transition show={users.fetched}>{children}</Transition>;
 };
 
 export const TEmpty = ({children}: TProps): JSX.Element => {
