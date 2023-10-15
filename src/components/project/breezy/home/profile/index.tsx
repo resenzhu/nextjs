@@ -15,7 +15,7 @@ const Profile = (): JSX.Element => (
             <div className='flex flex-col items-center justify-center space-y-2'>
               <Image
                 className='rounded-full border-8'
-                src='/images/project/breezy/home-chats-profile-picture.webp'
+                src='/images/project/breezy/home-messages-profile-picture.webp'
                 width={100}
                 height={100}
                 alt='profile picture'
