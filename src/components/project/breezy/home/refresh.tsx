@@ -22,13 +22,23 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered && users.fetching) {
-      // breezySocket.timeout(60000).emit('fetch users', (socketError: Error, response: FetchUserRes): void => {
-      // });
+      console.log('fetch users');
+      breezySocket
+        .timeout(60000)
+        .emit(
+          'fetch users',
+          (socketError: Error, response: FetchUserRes): void => {
+            if (socketError) {
+              console.log(socketError);
+            }
+            console.log(response);
+          }
+        );
     }
   }, [rendered, users.fetching]);
 
   return <>{children}</>;
 };
 
-export type {RefreshProps};
+export type {RefreshProps, FetchUserRes};
 export default Refresh;
