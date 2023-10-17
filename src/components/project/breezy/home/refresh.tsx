@@ -3,6 +3,7 @@
 import {type ReactNode, useEffect, useState} from 'react';
 import type {User} from '@redux/reducers/project/breezy/home';
 import {breezySocket} from '@utils/socket';
+import cookie from 'js-cookie';
 import useHome from '@hooks/project/breezy/use-home';
 
 type RefreshProps = {
@@ -32,6 +33,13 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered && users.fetching) {
+      if (!breezySocket.auth) {
+        breezySocket.disconnect();
+        breezySocket.auth = {
+          token: cookie.get(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY)
+        };
+        breezySocket.connect();
+      }
       breezySocket
         .timeout(60000)
         .emit(
