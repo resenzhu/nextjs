@@ -1,6 +1,7 @@
 'use client';
 
 import {type ReactNode, useEffect, useState} from 'react';
+import type {User} from '@redux/reducers/project/breezy/home';
 import {breezySocket} from '@utils/socket';
 import useHome from '@hooks/project/breezy/use-home';
 
@@ -8,11 +9,20 @@ type RefreshProps = {
   children: ReactNode;
 };
 
-type FetchUserRes = {};
+type FetchUsersRes = {
+  success: boolean;
+  error: {
+    code: number;
+    message: string;
+  };
+  data: {
+    users: User[];
+  };
+};
 
 const Refresh = ({children}: RefreshProps): JSX.Element => {
-  const {users} = useHome();
   const [rendered, setRendered] = useState<boolean>(false);
+  const {users, setUsers} = useHome();
 
   useEffect((): void => {
     if (!rendered) {
@@ -22,16 +32,24 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered && users.fetching) {
-      console.log('fetch users');
       breezySocket
         .timeout(60000)
         .emit(
           'fetch users',
-          (socketError: Error, response: FetchUserRes): void => {
+          (socketError: Error, response: FetchUsersRes): void => {
             if (socketError) {
-              console.log(socketError);
+              setUsers({
+                ...users,
+                fetching: false
+              });
+            } else {
+              setUsers({
+                ...users,
+                fetching: false,
+                fetched: true,
+                list: response.data.users
+              });
             }
-            console.log(response);
           }
         );
     }
@@ -40,5 +58,5 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   return <>{children}</>;
 };
 
-export type {RefreshProps, FetchUserRes};
+export type {RefreshProps, FetchUsersRes};
 export default Refresh;
