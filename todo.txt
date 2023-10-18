@@ -1,4 +1,3 @@
-// TODO add retry fetch event.
 // TODO add notif event on client when a user signup or login.
 // TODO remove use client from profile index.
 // TODO design desktop profile menu.
