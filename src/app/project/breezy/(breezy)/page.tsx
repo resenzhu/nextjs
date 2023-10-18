@@ -45,7 +45,8 @@ const Page = (): JSX.Element => (
       />
       <Users
         fetch={{
-          message: `Sorry, we couldn't load the user list at the moment. Please try again later.`,
+          message:
+            "Sorry, we couldn't load the user list at the moment. Please try again later.",
           action: 'Retry'
         }}
         empty={{
