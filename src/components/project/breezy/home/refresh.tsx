@@ -21,14 +21,53 @@ type FetchUsersRes = {
   };
 };
 
+type UserSignedUpNotif = {
+  id: string;
+  username: string;
+  displayName: string;
+  session: {
+    status: 'online' | 'away' | 'offline';
+    lastOnline: string;
+  };
+};
+
+type UserLoggedInNotif = {
+  id: string;
+  session: {
+    status: 'online' | 'away' | 'offline';
+    lastOnline: string;
+  };
+};
+
 const Refresh = ({children}: RefreshProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {users, setUsers} = useHome();
 
-  const handleAddSignedUpUser = (user: User): void => {
+  const handleAddSignedUpUser = (signedUpUser: UserSignedUpNotif): void => {
     setUsers({
       ...users,
-      list: [...users.list, user]
+      list: [...users.list, signedUpUser]
+    });
+  };
+
+  const handleUpdateLoggedInUser = (loggedInUser: UserLoggedInNotif): void => {
+    const updatedUsers = users.list.map((user): User => {
+      if (user.id === loggedInUser.id) {
+        const updatedUser: User = {
+          ...user,
+          session: {
+            ...user.session,
+            status: loggedInUser.session.status,
+            lastOnline: loggedInUser.session.lastOnline
+          }
+        };
+        return updatedUser;
+      }
+      return user;
+    });
+    setUsers({
+      ...users,
+      list: updatedUsers
     });
   };
 
@@ -41,9 +80,11 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   useEffect((): (() => void) => {
     if (rendered) {
       breezySocket.on('user signed up', handleAddSignedUpUser);
+      breezySocket.on('user logged in', handleUpdateLoggedInUser);
     }
     return (): void => {
       breezySocket.off('user signed up', handleAddSignedUpUser);
+      breezySocket.off('user logged in', handleUpdateLoggedInUser);
     };
   }, [rendered]);
 
