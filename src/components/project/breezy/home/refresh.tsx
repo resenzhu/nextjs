@@ -33,14 +33,11 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered && users.fetching && !users.fetched) {
-      const token = cookie.get(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY);
-      if (!breezySocket.auth && token) {
-        breezySocket.disconnect();
-        breezySocket.auth = {
-          token: token
-        };
-        breezySocket.connect();
-      }
+      breezySocket.disconnect();
+      breezySocket.auth = {
+        token: cookie.get(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY)
+      };
+      breezySocket.connect();
       breezySocket
         .timeout(60000)
         .emit(
