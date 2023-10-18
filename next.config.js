@@ -56,7 +56,7 @@ const nextHeaders = {
             defaultSrc: ["'self'"],
             fontSrc: ["'self'"],
             formAction: ["'self'"],
-            frameSrc: ["'self'"],
+            frameSrc: ["'self'", 'https://www.google.com'],
             imgSrc: ["'self'", 'data:'],
             manifestSrc: ["'self'"],
             mediaSrc: ["'self'"],
