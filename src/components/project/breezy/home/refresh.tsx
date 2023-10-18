@@ -25,11 +25,27 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {users, setUsers} = useHome();
 
+  const handleAddSignedUpUser = (user: User): void => {
+    setUsers({
+      ...users,
+      list: [...users.list, user]
+    });
+  };
+
   useEffect((): void => {
     if (!rendered) {
       setRendered(true);
     }
   }, []);
+
+  useEffect((): (() => void) => {
+    if (rendered) {
+      breezySocket.on('user signed up', handleAddSignedUpUser);
+    }
+    return (): void => {
+      breezySocket.off('user signed up', handleAddSignedUpUser);
+    };
+  }, [rendered]);
 
   useEffect((): void => {
     if (rendered && users.fetching && !users.fetched) {
