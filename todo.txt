@@ -2,6 +2,10 @@
 // TODO add notif event on client when a user signup or login. [test]
 // TODO remove use client from profile index.
 // TODO design desktop profile menu.
+// TODO rename form token to form recapctha.
+// TODO change ttl from one month to two weeks.
+// TODO rename cookie.
+// TODO run setForm when refreshing signup/login only if the form content is different.
 
 'use client';
 
