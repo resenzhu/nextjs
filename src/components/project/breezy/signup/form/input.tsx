@@ -145,7 +145,9 @@ const Input = ({label}: InputProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered) {
-      setForm(initialState.form);
+      if (JSON.stringify(form) !== JSON.stringify(initialState.form)) {
+        setForm(initialState.form);
+      }
       setTimeout((): void => {
         setThrottle(false);
       }, 5000);
