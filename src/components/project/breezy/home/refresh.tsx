@@ -45,34 +45,6 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   const {users, setUsers} = useHome();
   const {push} = useRouter();
 
-  const handleAddSignedUpUser = (signedUpUser: UserSignedUpNotif): void => {
-    setUsers({
-      ...users,
-      list: [...users.list, signedUpUser]
-    });
-  };
-
-  const handleUpdateLoggedInUser = (loggedInUser: UserLoggedInNotif): void => {
-    const updatedUsers = users.list.map((user): User => {
-      if (user.id === loggedInUser.id) {
-        const updatedUser: User = {
-          ...user,
-          session: {
-            ...user.session,
-            status: loggedInUser.session.status,
-            lastOnline: loggedInUser.session.lastOnline
-          }
-        };
-        return updatedUser;
-      }
-      return user;
-    });
-    setUsers({
-      ...users,
-      list: updatedUsers
-    });
-  };
-
   const handleLogoutOldSession = (): void => {
     cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
       path: '/project/breezy'
@@ -88,19 +60,19 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
 
   useEffect((): (() => void) => {
     if (rendered) {
-      breezySocket.on('user signed up', handleAddSignedUpUser);
-      breezySocket.on('user logged in', handleUpdateLoggedInUser);
+      setUsers({
+        ...users,
+        fetching: true
+      });
       breezySocket.on('logout old session', handleLogoutOldSession);
     }
     return (): void => {
-      breezySocket.off('user signed up', handleAddSignedUpUser);
-      breezySocket.off('user logged in', handleUpdateLoggedInUser);
       breezySocket.off('logout old session', handleLogoutOldSession);
     };
   }, [rendered]);
 
-  useEffect((): void => {
-    if (rendered && users.fetching && !users.fetched) {
+  useEffect((): (() => void) => {
+    if (users.fetching && !users.fetched) {
       breezySocket.disconnect();
       breezySocket.auth = {
         token: cookie.get(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY)
@@ -111,23 +83,50 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         .emit(
           'fetch users',
           (socketError: Error, response: FetchUsersRes): void => {
-            if (socketError) {
-              setUsers({
-                ...users,
-                fetching: false
-              });
-            } else {
-              setUsers({
-                ...users,
-                fetching: false,
-                fetched: true,
-                list: response.data.users
-              });
-            }
+            setUsers({
+              ...users,
+              fetching: false,
+              fetched: !socketError,
+              list: socketError ? [...users.list] : response.data.users
+            });
           }
         );
     }
-  }, [rendered, users.fetching, users.fetched]);
+    const handleAddSignedUpUser = (signedUpUser: UserSignedUpNotif): void => {
+      setUsers({
+        ...users,
+        list: [...users.list, signedUpUser]
+      });
+    };
+    const handleUpdateLoggedInUser = (
+      loggedInUser: UserLoggedInNotif
+    ): void => {
+      const updatedUsers = users.list.map((user): User => {
+        if (user.id === loggedInUser.id) {
+          const updatedUser: User = {
+            ...user,
+            session: {
+              ...user.session,
+              status: loggedInUser.session.status,
+              lastOnline: loggedInUser.session.lastOnline
+            }
+          };
+          return updatedUser;
+        }
+        return user;
+      });
+      setUsers({
+        ...users,
+        list: updatedUsers
+      });
+    };
+    breezySocket.on('user signed up', handleAddSignedUpUser);
+    breezySocket.on('user logged in', handleUpdateLoggedInUser);
+    return (): void => {
+      breezySocket.off('user signed up', handleAddSignedUpUser);
+      breezySocket.off('user logged in', handleUpdateLoggedInUser);
+    };
+  }, [users]);
 
   return <>{children}</>;
 };
