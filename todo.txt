@@ -1,10 +1,10 @@
 // TODO logout old session if users logs in from new device. [test]
 // TODO add notif event on client when a user signup or login. [test]
+// TODO rename form token to form recapctha.
+// TODO rename cookie.
+// TODO simplify form useEffect.
 // TODO remove use client from profile index.
 // TODO design desktop profile menu.
-// TODO rename form token to form recapctha.
-// TODO change ttl from one month to two weeks.
-// TODO rename cookie.
 
 'use client';
 
