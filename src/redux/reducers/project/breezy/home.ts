@@ -67,13 +67,13 @@ const name: string = 'home';
 const initialState: State = {
   messages: {
     show: true,
-    fetching: true,
+    fetching: false,
     fetched: false,
     list: []
   },
   users: {
     show: false,
-    fetching: true,
+    fetching: false,
     fetched: false,
     list: []
   },
