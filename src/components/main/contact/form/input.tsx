@@ -124,23 +124,6 @@ const Input = ({label}: InputProps): JSX.Element => {
     }
   }, [rendered]);
 
-  useEffect((): (() => void) => {
-    let timer: ReturnType<typeof setTimeout> | null = null;
-    if (form.recaptcha.length !== 0) {
-      timer = setTimeout((): void => {
-        setForm({
-          ...form,
-          recaptcha: ''
-        });
-      }, 90000);
-    }
-    return (): void => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-    };
-  }, [form.recaptcha]);
-
   useEffect((): void => {
     if (form.submitting) {
       new Promise<string>(async (resolve): Promise<void> => {
@@ -333,6 +316,23 @@ const Input = ({label}: InputProps): JSX.Element => {
       });
     }
   }, [form.submitting]);
+
+  useEffect((): (() => void) => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    if (form.recaptcha.length !== 0) {
+      timer = setTimeout((): void => {
+        setForm({
+          ...form,
+          recaptcha: ''
+        });
+      }, 90000);
+    }
+    return (): void => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+    };
+  }, [form.recaptcha]);
 
   return (
     <form
