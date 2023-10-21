@@ -33,23 +33,16 @@ const Retry = ({label}: RetryProps): JSX.Element => {
         .emit(
           'fetch users',
           (socketError: Error, response: FetchUsersRes): void => {
-            if (socketError) {
-              setUsers({
-                ...users,
-                fetching: false
-              });
-            } else {
-              setUsers({
-                ...users,
-                fetching: false,
-                fetched: true,
-                list: response.data.users
-              });
-            }
+            setUsers({
+              ...users,
+              fetching: false,
+              fetched: !socketError,
+              list: socketError ? [...users.list] : response.data.users
+            });
           }
         );
     }
-  }, [rendered, users.fetching, users.fetched]);
+  }, [rendered, users]);
 
   return (
     <button
