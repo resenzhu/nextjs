@@ -49,7 +49,7 @@ const Users = ({fetch, empty}: UsersProps): JSX.Element => (
       </TEmpty>
       <TList>
         <div className='pb-14'>
-          <List />
+          <List label={{chat: 'CHAT'}} />
         </div>
       </TList>
     </TFetched>

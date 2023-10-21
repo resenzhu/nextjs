@@ -3,7 +3,13 @@
 import Image from 'next/image';
 import useHome from '@hooks/project/breezy/use-home';
 
-const List = (): JSX.Element => {
+type ListProps = {
+  label: {
+    chat: string;
+  };
+};
+
+const List = ({label}: ListProps): JSX.Element => {
   const {users} = useHome();
   return (
     <>
@@ -25,7 +31,10 @@ const List = (): JSX.Element => {
                 />
               </div>
               <div className='flex flex-1 justify-between'>
-                <div className='flex flex-col leading-5'>
+                <div
+                  className='mr-2 flex flex-col leading-5'
+                  style={{wordBreak: 'break-word'}}
+                >
                   <div className='font-bold text-gray-700'>
                     {user.displayName}
                   </div>
@@ -39,7 +48,7 @@ const List = (): JSX.Element => {
                     className='rounded-lg bg-purple-500 px-5 py-2 text-sm font-semibold text-white duration-150 hover:bg-purple-600'
                     type='button'
                   >
-                    CHAT
+                    {label.chat}
                   </button>
                 </div>
               </div>
@@ -50,4 +59,5 @@ const List = (): JSX.Element => {
   );
 };
 
+export type {ListProps};
 export default List;
