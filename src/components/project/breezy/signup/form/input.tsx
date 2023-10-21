@@ -40,7 +40,7 @@ type SignUpReq = {
   displayName: string;
   password: string;
   honeypot: string;
-  token: string;
+  recaptcha: string;
 };
 
 type SignUpRes = {
@@ -101,11 +101,11 @@ const Input = ({label}: InputProps): JSX.Element => {
     }
   };
 
-  const handleUpdateToken = (token: string | null): void => {
-    if (form.token !== token) {
+  const handleUpdateRecaptcha = (captcha: string | null): void => {
+    if (form.recaptcha !== captcha) {
       setForm({
         ...form,
-        token: token ?? '',
+        recaptcha: captcha ?? '',
         error: {
           field: null,
           message: ''
@@ -200,7 +200,7 @@ const Input = ({label}: InputProps): JSX.Element => {
             0,
             'Bot detection system triggered. Please ensure you are a human and not a bot.'
           ),
-        token: string()
+        recaptcha: string()
           .ensure()
           .required('Please complete the reCAPTCHA verification.')
       });
@@ -209,7 +209,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         displayName: sanitize(form.displayName).trim(),
         password: sanitize(form.password).trim(),
         honeypot: sanitize(form.honeypot).trim(),
-        token: form.token
+        recaptcha: form.recaptcha
       };
       requestSchema
         .validate(request, {abortEarly: false})
@@ -335,7 +335,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                     }
                     setForm({
                       ...form,
-                      token: '',
+                      recaptcha: '',
                       submitting: false,
                       error: {
                         field: formErrorField,
@@ -418,7 +418,7 @@ const Input = ({label}: InputProps): JSX.Element => {
       </div>
       <RecaptchaV2
         reference={recaptcha}
-        onChange={(token): void => handleUpdateToken(token)}
+        onChange={(captcha): void => handleUpdateRecaptcha(captcha)}
       />
       <button
         className={`rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 disabled:bg-gray-300 md:text-sm ${
@@ -429,7 +429,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           form.username.trim().length === 0 ||
           form.displayName.trim().length === 0 ||
           form.password.trim().length === 0 ||
-          form.token.trim().length === 0
+          form.recaptcha.trim().length === 0
         }
       >
         <TSubmit>

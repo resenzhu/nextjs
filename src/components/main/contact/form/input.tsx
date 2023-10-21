@@ -34,7 +34,7 @@ type SubmitContactFormReq = {
   email: string;
   message: string;
   honeypot: string;
-  token: string;
+  recaptcha: string;
 };
 
 type SubmitContactFormRes = {
@@ -126,11 +126,11 @@ const Input = ({label}: InputProps): JSX.Element => {
 
   useEffect((): (() => void) => {
     let timer: ReturnType<typeof setTimeout> | null = null;
-    if (form.token.length !== 0) {
+    if (form.recaptcha.length !== 0) {
       timer = setTimeout((): void => {
         setForm({
           ...form,
-          token: ''
+          recaptcha: ''
         });
       }, 90000);
     }
@@ -139,17 +139,17 @@ const Input = ({label}: InputProps): JSX.Element => {
         clearTimeout(timer);
       }
     };
-  }, [form.token]);
+  }, [form.recaptcha]);
 
   useEffect((): void => {
     if (form.submitting) {
       new Promise<string>(async (resolve): Promise<void> => {
-        let newToken: string = '';
-        if (executeRecaptcha && form.token.length === 0) {
-          newToken = await executeRecaptcha();
+        let newRecaptcha: string = '';
+        if (executeRecaptcha && form.recaptcha.length === 0) {
+          newRecaptcha = await executeRecaptcha();
         }
-        resolve(newToken);
-      }).then((newToken): void => {
+        resolve(newRecaptcha);
+      }).then((newRecaptcha): void => {
         const requestSchema = object().shape({
           name: string()
             .ensure()
@@ -190,7 +190,7 @@ const Input = ({label}: InputProps): JSX.Element => {
               0,
               'Bot detection system triggered. Please ensure you are a human and not a bot.'
             ),
-          token: string()
+          recaptcha: string()
             .ensure()
             .required(
               'Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again.'
@@ -201,7 +201,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           email: sanitize(form.email).trim(),
           message: sanitize(form.message).trim(),
           honeypot: sanitize(form.honeypot).trim(),
-          token: form.token.length === 0 ? newToken : form.token
+          recaptcha: form.recaptcha.length === 0 ? newRecaptcha : form.recaptcha
         };
         requestSchema
           .validate(request, {abortEarly: false})
@@ -308,7 +308,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                   }
                   setForm({
                     ...form,
-                    token: '',
+                    recaptcha: '',
                     submitting: false,
                     error: formError,
                     success:
@@ -322,7 +322,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           .catch((validationError: ValidationError): void => {
             setForm({
               ...form,
-              token: request.token,
+              recaptcha: request.recaptcha,
               submitting: false,
               error:
                 validationError.inner[0]?.message ??

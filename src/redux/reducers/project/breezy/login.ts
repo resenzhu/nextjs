@@ -5,7 +5,7 @@ type Form = {
   password: string;
   reveal: boolean;
   honeypot: string;
-  token: string;
+  recaptcha: string;
   submitting: boolean;
   error: {
     field: string | null;
@@ -29,7 +29,7 @@ const initialState: State = {
     password: '',
     reveal: false,
     honeypot: '',
-    token: '',
+    recaptcha: '',
     submitting: false,
     error: {
       field: null,

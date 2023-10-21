@@ -5,7 +5,7 @@ type Form = {
   email: string;
   message: string;
   honeypot: string;
-  token: string;
+  recaptcha: string;
   submitting: boolean;
   error: string;
   success: string;
@@ -27,7 +27,7 @@ const initialState: State = {
     email: '',
     message: '',
     honeypot: '',
-    token: '',
+    recaptcha: '',
     submitting: false,
     error: '',
     success: ''
