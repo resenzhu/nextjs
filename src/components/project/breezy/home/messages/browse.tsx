@@ -7,17 +7,14 @@ type BrowseProps = {
 };
 
 const Browse = ({label}: BrowseProps): JSX.Element => {
-  const {messages, users, setMessages, setUsers} = useHome();
+  const {menu, setMenu} = useHome();
 
   const handleToggleUsers = (show: boolean): void => {
-    if (users.show !== show) {
-      setMessages({
-        ...messages,
-        show: !show
-      });
-      setUsers({
-        ...users,
-        show: show
+    if (menu.users !== show) {
+      setMenu({
+        ...menu,
+        messages: !show,
+        users: show
       });
     }
   };

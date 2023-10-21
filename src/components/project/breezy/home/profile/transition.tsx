@@ -9,6 +9,6 @@ export type TProps = {
 };
 
 export const TProfile = ({children}: TProps): JSX.Element => {
-  const {profile} = useHome();
-  return <Transition show={profile.show}>{children}</Transition>;
+  const {menu} = useHome();
+  return <Transition show={menu.profile}>{children}</Transition>;
 };

@@ -9,8 +9,8 @@ export type TProps = {
 };
 
 export const TUsers = ({children}: TProps): JSX.Element => {
-  const {users} = useHome();
-  return <Transition show={users.show}>{children}</Transition>;
+  const {menu} = useHome();
+  return <Transition show={menu.users}>{children}</Transition>;
 };
 
 export const TFetching = ({children}: TProps): JSX.Element => {
