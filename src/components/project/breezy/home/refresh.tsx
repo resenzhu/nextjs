@@ -44,6 +44,26 @@ type UserLoggedInNotif = {
   };
 };
 
+type UserOnlineNotif = {
+  user: {
+    id: string;
+    session: {
+      status: 'online' | 'away' | 'offline';
+      lastOnline: string;
+    };
+  };
+};
+
+type UserOfflineNotif = {
+  user: {
+    id: string;
+    session: {
+      status: 'online' | 'away' | 'offline';
+      lastOnline: string;
+    };
+  };
+};
+
 const Refresh = ({children}: RefreshProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {users, setUsers} = useHome();
@@ -96,25 +116,23 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
           }
         );
     }
-    const handleAddSignedUpUser = (
-      userSignedUpNotif: UserSignedUpNotif
-    ): void => {
+    const handleAddSignedUpUser = (notification: UserSignedUpNotif): void => {
       setUsers({
         ...users,
-        list: [...users.list, userSignedUpNotif.user]
+        list: [...users.list, notification.user]
       });
     };
-    const handleUpdateLoggedInUser = (
-      userLoggedInNotif: UserLoggedInNotif
+    const handleUpdateUserStatus = (
+      notification: UserLoggedInNotif | UserOnlineNotif | UserOfflineNotif
     ): void => {
       const updatedUsers = users.list.map((user): User => {
-        if (user.id === userLoggedInNotif.user.id) {
+        if (user.id === notification.user.id) {
           const updatedUser: User = {
             ...user,
             session: {
               ...user.session,
-              status: userLoggedInNotif.user.session.status,
-              lastOnline: userLoggedInNotif.user.session.lastOnline
+              status: notification.user.session.status,
+              lastOnline: notification.user.session.lastOnline
             }
           };
           return updatedUser;
@@ -127,10 +145,14 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
       });
     };
     breezySocket.on('user signed up', handleAddSignedUpUser);
-    breezySocket.on('user logged in', handleUpdateLoggedInUser);
+    breezySocket.on('user logged in', handleUpdateUserStatus);
+    breezySocket.on('user online', handleUpdateUserStatus);
+    breezySocket.on('user offline', handleUpdateUserStatus);
     return (): void => {
       breezySocket.off('user signed up', handleAddSignedUpUser);
-      breezySocket.off('user logged in', handleUpdateLoggedInUser);
+      breezySocket.off('user logged in', handleUpdateUserStatus);
+      breezySocket.off('user online', handleUpdateUserStatus);
+      breezySocket.off('user offline', handleUpdateUserStatus);
     };
   }, [users]);
 
