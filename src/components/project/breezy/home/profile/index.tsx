@@ -1,7 +1,6 @@
 'use client';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
 import {Listbox} from '@headlessui/react';
 import {TProfile} from '@components/project/breezy/home/profile/transition';
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
@@ -12,14 +11,10 @@ const Profile = (): JSX.Element => (
       <section className='flex-1 bg-gradient-to-b from-indigo-500 to-purple-600'>
         <div className='flex h-full items-center justify-center'>
           <div className='flex flex-col items-center justify-center space-y-5'>
-            <div className='flex flex-col items-center justify-center space-y-2'>
-              <Image
-                className='rounded-full border-8'
-                src='/images/project/breezy/home-messages-profile-picture.webp'
-                width={100}
-                height={100}
-                alt='profile picture'
-              />
+            <div className='flex flex-col items-center justify-center space-y-4'>
+              <div className='flex h-20 w-20 items-center justify-center rounded-full border-4 bg-purple-500 text-3xl font-semibold tracking-wider text-white'>
+                R
+              </div>
               <div className='text-center text-white'>
                 <div className='text-lg font-bold'>RESEN</div>
                 <div className='font-light'>@resenzhu</div>
@@ -29,7 +24,7 @@ const Profile = (): JSX.Element => (
               <Listbox.Button className='w-40 rounded-lg bg-white py-1 text-lg font-semibold text-green-600 hover:animate-shake hover:animate-duration-700'>
                 online
               </Listbox.Button>
-              <Listbox.Options className='absolute w-40 translate-y-40 rounded-lg bg-white text-center shadow-md'>
+              <Listbox.Options className='absolute w-40 translate-y-[9.6rem] rounded-lg bg-white text-center shadow-md'>
                 <Listbox.Option
                   className='cursor-pointer py-2 font-semibold text-green-600 hover:rounded-lg hover:bg-gray-100'
                   value='online'
