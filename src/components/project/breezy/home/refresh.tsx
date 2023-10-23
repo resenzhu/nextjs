@@ -73,7 +73,7 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
     cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
       path: '/project/breezy'
     });
-    push('project/breezy/login');
+    push('/project/breezy/login');
   };
 
   useEffect((): void => {
