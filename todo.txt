@@ -1,5 +1,3 @@
-// TODO test users status whenever a user signup or login. [test]
-
 'use client';
 
 import {
