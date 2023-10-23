@@ -8,7 +8,7 @@ import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 const Profile = (): JSX.Element => (
   <TProfile>
     <div className='flex h-[calc(100vh-3.5rem)] flex-col'>
-      <section className='flex-1 bg-gradient-to-b from-indigo-500 to-purple-600'>
+      <section className='flex-1 bg-[url("/images/project/breezy/home-profile-cover.webp")] bg-cover bg-center bg-no-repeat'>
         <div className='flex h-full items-center justify-center'>
           <div className='flex flex-col items-center justify-center space-y-5'>
             <div className='flex flex-col items-center justify-center space-y-4'>
