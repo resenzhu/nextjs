@@ -26,7 +26,7 @@ const Profile = (): JSX.Element => (
               </div>
             </div>
             <Listbox>
-              <Listbox.Button className='w-40 rounded-lg bg-white py-1 text-lg font-semibold text-green-600'>
+              <Listbox.Button className='w-40 rounded-lg bg-white py-1 text-lg font-semibold text-green-600 hover:animate-shake hover:animate-duration-700'>
                 online
               </Listbox.Button>
               <Listbox.Options className='absolute w-40 translate-y-40 rounded-lg bg-white text-center shadow-md'>
