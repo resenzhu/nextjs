@@ -1,5 +1,4 @@
-// TODO test logout old session if the user logs in from new device.
-// TODO test users list whenever a user signup or login.
+// TODO test users status whenever a user signup or login. [test]
 
 'use client';
 
