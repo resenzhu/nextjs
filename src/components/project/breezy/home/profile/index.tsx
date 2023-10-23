@@ -1,10 +1,10 @@
 'use client';
 
-import {faSignOutAlt, faUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import {Listbox} from '@headlessui/react';
 import {TProfile} from '@components/project/breezy/home/profile/transition';
+import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 
 const Profile = (): JSX.Element => (
   <TProfile>
@@ -54,15 +54,6 @@ const Profile = (): JSX.Element => (
         </div>
       </section>
       <section className='mx-4 flex flex-col space-y-5 py-5'>
-        <button
-          className='flex w-fit items-baseline justify-center space-x-4 text-xl text-gray-600 duration-150 hover:text-purple-500'
-          type='button'
-        >
-          <div className='w-6 text-center'>
-            <FontAwesomeIcon icon={faUser} />
-          </div>{' '}
-          <span className='text-lg'>Profile</span>
-        </button>
         <button
           className='flex w-fit items-baseline justify-center space-x-4 text-xl text-gray-600 duration-150 hover:text-red-500'
           type='button'
