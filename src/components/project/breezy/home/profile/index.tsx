@@ -1,4 +1,5 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import Info from '@components/project/breezy/home/profile/info';
 import Status from '@components/project/breezy/home/profile/status';
 import {TProfile} from '@components/project/breezy/home/profile/transition';
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
@@ -10,13 +11,7 @@ const Profile = (): JSX.Element => (
         <div className='flex h-full items-center justify-center'>
           <div className='flex flex-col items-center justify-center space-y-5'>
             <div className='flex flex-col items-center justify-center space-y-4'>
-              <div className='flex h-20 w-20 items-center justify-center rounded-full border-4 bg-purple-500 text-3xl font-semibold tracking-wider text-white'>
-                R
-              </div>
-              <div className='text-center text-white'>
-                <div className='text-lg font-bold'>RESEN</div>
-                <div className='font-light'>@resenzhu</div>
-              </div>
+              <Info />
             </div>
             <Status
               modes={[
