@@ -21,8 +21,7 @@ const Profile = (): JSX.Element => (
             <Status
               modes={[
                 {label: 'online', color: 'text-green-600'},
-                {label: 'away', color: 'text-yellow-600'},
-                {label: 'invisible', color: 'text-gray-600'}
+                {label: 'away', color: 'text-yellow-600'}
               ]}
             />
           </div>
