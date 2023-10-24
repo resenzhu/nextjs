@@ -54,9 +54,9 @@ type LoginRes = {
 const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
   const recaptcha = useRef<Recaptcha>(null);
+  const {form, setForm} = useLogin();
   const [rendered, setRendered] = useState<boolean>(false);
   const [throttle, setThrottle] = useState<boolean>(true);
-  const {form, setForm} = useLogin();
   const {push} = useRouter();
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {

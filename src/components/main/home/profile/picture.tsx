@@ -9,8 +9,8 @@ type PictureProps = {
 };
 
 const Picture = ({src}: PictureProps): JSX.Element => {
-  const {viewport} = useApp();
   const easterTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const {viewport} = useApp();
   const [easter, setEaster] = useState<boolean>(false);
   const [pictureSize, setPictureSize] = useState<number>(0);
 
