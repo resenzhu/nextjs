@@ -18,10 +18,12 @@ import {faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type Recaptcha from 'react-google-recaptcha';
 import {RecaptchaV2} from '@components/project/breezy/shared';
+import type {User} from '@redux/reducers/project/breezy/home';
 import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
+import useHome from '@hooks/project/breezy/use-home';
 import {useRouter} from 'next/navigation';
 import useSignUp from '@hooks/project/breezy/use-signup';
 import validator from 'validator';
@@ -51,6 +53,7 @@ type SignUpRes = {
   };
   data: {
     token: string;
+    user: User;
   };
 };
 
@@ -58,6 +61,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   const {online} = useApp();
   const recaptcha = useRef<Recaptcha>(null);
   const {form, setForm} = useSignUp();
+  const {profile, setProfile} = useHome();
   const [rendered, setRendered] = useState<boolean>(false);
   const [throttle, setThrottle] = useState<boolean>(true);
   const {push} = useRouter();
@@ -235,6 +239,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                 }
                 if (response) {
                   if (response.success) {
+                    const {token, user} = response.data;
                     if (
                       JSON.stringify(form) !== JSON.stringify(initialState.form)
                     ) {
@@ -242,7 +247,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                     }
                     cookie.set(
                       process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY,
-                      response.data.token,
+                      token,
                       {
                         path: '/project/breezy',
                         sameSite: 'strict',
@@ -250,6 +255,17 @@ const Input = ({label}: InputProps): JSX.Element => {
                         expires: 2
                       }
                     );
+                    setProfile({
+                      ...profile,
+                      id: user.id,
+                      username: user.username,
+                      displayName: user.displayName,
+                      session: {
+                        ...profile.session,
+                        status: user.session.status,
+                        lastOnline: user.session.lastOnline
+                      }
+                    });
                     push('/project/breezy');
                   } else {
                     switch (response.error.code) {
