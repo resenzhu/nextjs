@@ -49,7 +49,11 @@ type Users = {
   list: User[];
 };
 
-type Profile = User;
+type Profile = {
+  fetching: boolean;
+  fetched: boolean;
+  user: User;
+};
 
 type State = {
   menu: Menu;
@@ -84,12 +88,16 @@ const initialState: State = {
     list: []
   },
   profile: {
-    id: '',
-    username: '',
-    displayName: '',
-    session: {
-      status: 'offline',
-      lastOnline: ''
+    fetching: false,
+    fetched: false,
+    user: {
+      id: '',
+      username: '',
+      displayName: '',
+      session: {
+        status: 'offline',
+        lastOnline: ''
+      }
     }
   }
 };
