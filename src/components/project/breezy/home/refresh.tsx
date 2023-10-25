@@ -205,5 +205,5 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   return <>{children}</>;
 };
 
-export type {RefreshProps, FetchUsersRes};
+export type {RefreshProps, FetchUsersRes, FetchProfileRes, UserSignedUpNotif, UserLoggedInNotif, UserOnlineNotif, UserOfflineNotif};
 export default Refresh;
