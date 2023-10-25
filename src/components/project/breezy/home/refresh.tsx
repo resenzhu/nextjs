@@ -29,7 +29,7 @@ type FetchProfileRes = {
     message: string;
   };
   data: {
-    user: User;
+    user: User | undefined;
   };
 };
 
@@ -135,19 +135,20 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
               ...profile,
               fetching: false,
               fetched: !socketError,
-              user: socketError
-                ? profile.user
-                : {
-                    ...profile.user,
-                    id: response.data.user.id,
-                    username: response.data.user.username,
-                    displayName: response.data.user.displayName,
-                    session: {
-                      ...profile.user.session,
-                      status: response.data.user.session.status,
-                      lastOnline: response.data.user.session.lastOnline
+              user:
+                socketError || !response.data.user
+                  ? profile.user
+                  : {
+                      ...profile.user,
+                      id: response.data.user.id,
+                      username: response.data.user.username,
+                      displayName: response.data.user.displayName,
+                      session: {
+                        ...profile.user.session,
+                        status: response.data.user.session.status,
+                        lastOnline: response.data.user.session.lastOnline
+                      }
                     }
-                  }
             });
           }
         );
