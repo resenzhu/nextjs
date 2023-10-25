@@ -22,6 +22,17 @@ type FetchUsersRes = {
   };
 };
 
+type FetchProfileRes = {
+  success: boolean;
+  error: {
+    code: number;
+    message: string;
+  };
+  data: {
+    user: User;
+  };
+};
+
 type UserSignedUpNotif = {
   user: {
     id: string;
@@ -65,8 +76,8 @@ type UserOfflineNotif = {
 };
 
 const Refresh = ({children}: RefreshProps): JSX.Element => {
+  const {profile, users, setProfile, setUsers} = useHome();
   const [rendered, setRendered] = useState<boolean>(false);
-  const {users, setUsers} = useHome();
   const {push} = useRouter();
 
   const handleLogoutOldSession = (): void => {
@@ -112,6 +123,31 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
               fetching: false,
               fetched: !socketError,
               list: socketError ? [...users.list] : response.data.users
+            });
+          }
+        );
+      breezySocket
+        .timeout(60000)
+        .emit(
+          'fetch profile',
+          (socketError: Error, response: FetchProfileRes): void => {
+            setProfile({
+              ...profile,
+              fetching: false,
+              fetched: !socketError,
+              user: socketError
+                ? profile.user
+                : {
+                    ...profile.user,
+                    id: response.data.user.id,
+                    username: response.data.user.username,
+                    displayName: response.data.user.displayName,
+                    session: {
+                      ...profile.user.session,
+                      status: response.data.user.session.status,
+                      lastOnline: response.data.user.session.lastOnline
+                    }
+                  }
             });
           }
         );
