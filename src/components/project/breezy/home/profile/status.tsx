@@ -18,12 +18,14 @@ const Status = ({modes}: StatusProps): JSX.Element => {
     <Listbox>
       <Listbox.Button
         className={`w-40 rounded-lg bg-white py-1 text-lg font-semibold ${
-          modes.find((mode): boolean => mode.label === profile.session.status)
-            ?.color ?? 'text-green-600'
+          modes.find(
+            (mode): boolean => mode.label === profile.user.session.status
+          )?.color ?? 'text-green-600'
         } hover:animate-shake hover:animate-duration-700 hover:animate-ease-in`}
       >
-        {modes.find((mode): boolean => mode.label === profile.session.status)
-          ?.label ?? 'online'}
+        {modes.find(
+          (mode): boolean => mode.label === profile.user.session.status
+        )?.label ?? 'online'}
       </Listbox.Button>
       <Listbox.Options className='absolute w-40 translate-y-[8.3rem] rounded-lg bg-white text-center shadow-md'>
         {modes.map(
