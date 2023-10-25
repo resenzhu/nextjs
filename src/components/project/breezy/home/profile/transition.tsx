@@ -28,10 +28,7 @@ export const TFetching = ({children}: TProps): JSX.Element => {
 export const TRetryFetch = ({children}: TProps): JSX.Element => {
   const {profile} = useHome();
   return (
-    <Transition
-      show={!profile.fetching && !profile.fetched}
-      as={Fragment}
-    >
+    <Transition show={!profile.fetching && !profile.fetched}>
       {children}
     </Transition>
   );
