@@ -95,8 +95,17 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
 
   useEffect((): (() => void) => {
     if (rendered) {
+      breezySocket.disconnect();
+      breezySocket.auth = {
+        token: cookie.get(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY)
+      };
+      breezySocket.connect();
       setUsers({
         ...users,
+        fetching: true
+      });
+      setProfile({
+        ...profile,
         fetching: true
       });
       breezySocket.on('logout old session', handleLogoutOldSession);
@@ -108,11 +117,6 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
 
   useEffect((): (() => void) => {
     if (users.fetching && !users.fetched) {
-      breezySocket.disconnect();
-      breezySocket.auth = {
-        token: cookie.get(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY)
-      };
-      breezySocket.connect();
       breezySocket
         .timeout(60000)
         .emit(
@@ -126,34 +130,8 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
             });
           }
         );
-      breezySocket
-        .timeout(60000)
-        .emit(
-          'fetch profile',
-          (socketError: Error, response: FetchProfileRes): void => {
-            setProfile({
-              ...profile,
-              fetching: false,
-              fetched: !socketError && response.data.user,
-              user:
-                socketError || !response.data.user
-                  ? profile.user
-                  : {
-                      ...profile.user,
-                      id: response.data.user.id,
-                      username: response.data.user.username,
-                      displayName: response.data.user.displayName,
-                      session: {
-                        ...profile.user.session,
-                        status: response.data.user.session.status,
-                        lastOnline: response.data.user.session.lastOnline
-                      }
-                    }
-            });
-          }
-        );
     }
-    const handleAddSignedUpUser = (notification: UserSignedUpNotif): void => {
+    const handleAddNewUser = (notification: UserSignedUpNotif): void => {
       setUsers({
         ...users,
         list: [...users.list, notification.user]
@@ -181,17 +159,48 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         list: updatedUsers
       });
     };
-    breezySocket.on('user signed up', handleAddSignedUpUser);
+    breezySocket.on('user signed up', handleAddNewUser);
     breezySocket.on('user logged in', handleUpdateUserStatus);
     breezySocket.on('user online', handleUpdateUserStatus);
     breezySocket.on('user offline', handleUpdateUserStatus);
     return (): void => {
-      breezySocket.off('user signed up', handleAddSignedUpUser);
+      breezySocket.off('user signed up', handleAddNewUser);
       breezySocket.off('user logged in', handleUpdateUserStatus);
       breezySocket.off('user online', handleUpdateUserStatus);
       breezySocket.off('user offline', handleUpdateUserStatus);
     };
   }, [users]);
+
+  useEffect((): void => {
+    if (profile.fetching && !profile.fetched) {
+      breezySocket
+        .timeout(60000)
+        .emit(
+          'fetch profile',
+          (socketError: Error, response: FetchProfileRes): void => {
+            setProfile({
+              ...profile,
+              fetching: false,
+              fetched: !socketError && response.data.user,
+              user:
+                socketError || !response.data.user
+                  ? profile.user
+                  : {
+                      ...profile.user,
+                      id: response.data.user.id,
+                      username: response.data.user.username,
+                      displayName: response.data.user.displayName,
+                      session: {
+                        ...profile.user.session,
+                        status: response.data.user.session.status,
+                        lastOnline: response.data.user.session.lastOnline
+                      }
+                    }
+            });
+          }
+        );
+    }
+  }, [profile]);
 
   return <>{children}</>;
 };
