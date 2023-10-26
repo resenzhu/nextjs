@@ -9,7 +9,7 @@ export type TProps = {
   children: ReactNode;
 };
 
-export const T = ({children}: TProps): JSX.Element => {
+export const TChatbot = ({children}: TProps): JSX.Element => {
   const {section} = useHome();
   const {viewport} = useApp();
   return (
@@ -27,7 +27,7 @@ export const T = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TBackdrop = ({children}: TProps): JSX.Element => {
+export const TChatbotBackdrop = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
@@ -48,7 +48,7 @@ export const TBackdrop = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TChatbot = ({children}: TProps): JSX.Element => {
+export const TChatbotBox = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
