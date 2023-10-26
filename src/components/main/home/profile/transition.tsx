@@ -9,7 +9,7 @@ export type TProps = {
   children: ReactNode;
 };
 
-export const T = ({children}: TProps): JSX.Element => {
+export const TProfile = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   const {section, setSection} = useHome();
 
@@ -40,7 +40,7 @@ export const T = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TPicture = ({children}: TProps): JSX.Element => {
+export const TProfilePicture = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
@@ -62,7 +62,7 @@ export const TPicture = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TName = ({children}: TProps): JSX.Element => {
+export const TProfileName = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
@@ -84,7 +84,7 @@ export const TName = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TSpecialty = ({children}: TProps): JSX.Element => {
+export const TProfileSpecialty = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
@@ -106,7 +106,7 @@ export const TSpecialty = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TBio = ({children}: TProps): JSX.Element => {
+export const TProfileBio = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
@@ -128,7 +128,7 @@ export const TBio = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TButtons = ({children}: TProps): JSX.Element => {
+export const TProfileButtons = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
@@ -150,7 +150,7 @@ export const TButtons = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TSocials = ({children}: TProps): JSX.Element => {
+export const TProfileSocials = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
