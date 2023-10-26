@@ -8,12 +8,19 @@ export type TProps = {
   children: ReactNode;
 };
 
-export const T = ({children}: TProps): JSX.Element => {
+export const TNav = ({children}: TProps): JSX.Element => {
   const {sidenav} = useApp();
-  return <Transition show={sidenav}>{children}</Transition>;
+  return (
+    <Transition
+      show={sidenav}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
 };
 
-export const TBackdrop = ({children}: TProps): JSX.Element => (
+export const TNavBackdrop = ({children}: TProps): JSX.Element => (
   <Transition.Child
     as={Fragment}
     enter='duration-150 ease-out'
@@ -27,7 +34,7 @@ export const TBackdrop = ({children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TSidenav = ({children}: TProps): JSX.Element => (
+export const TNavSidenav = ({children}: TProps): JSX.Element => (
   <Transition.Child
     as={Fragment}
     enter='duration-150 ease-out'

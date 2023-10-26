@@ -1,7 +1,11 @@
 'use client';
 
 import {type ReactNode, useEffect, useRef, useState} from 'react';
-import {T, TBackdrop, TSidenav} from '@components/main/navbar/transition';
+import {
+  TNav,
+  TNavBackdrop,
+  TNavSidenav
+} from '@components/main/navbar/transition';
 import {faEllipsisV, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import useApp from '@hooks/main/use-app';
@@ -57,34 +61,36 @@ const Nav = ({children}: NavProps): JSX.Element => {
             />
           </button>
           <div className='fixed'>
-            <T>
-              <TBackdrop>
-                <div className='fixed left-0 top-0 h-screen w-screen bg-black'></div>
-              </TBackdrop>
-              <TSidenav>
-                <div
-                  className='fixed right-0 top-0 h-screen w-3/5 bg-white'
-                  ref={sidebar}
-                >
-                  <div className='mx-6 flex h-full py-6'>
-                    <div className='flex flex-1 flex-col space-y-5'>
-                      {children}
-                    </div>
-                    <div className='pt-1'>
-                      <button
-                        type='button'
-                        onClick={(): void => handleToggleSidenav(false)}
-                      >
-                        <FontAwesomeIcon
-                          className='text-2xl text-gray-500 duration-150 hover:text-red-500'
-                          icon={faXmark}
-                        />
-                      </button>
+            <TNav>
+              <div>
+                <TNavBackdrop>
+                  <div className='fixed left-0 top-0 h-screen w-screen bg-black'></div>
+                </TNavBackdrop>
+                <TNavSidenav>
+                  <div
+                    className='fixed right-0 top-0 h-screen w-3/5 bg-white'
+                    ref={sidebar}
+                  >
+                    <div className='mx-6 flex h-full py-6'>
+                      <div className='flex flex-1 flex-col space-y-5'>
+                        {children}
+                      </div>
+                      <div className='pt-1'>
+                        <button
+                          type='button'
+                          onClick={(): void => handleToggleSidenav(false)}
+                        >
+                          <FontAwesomeIcon
+                            className='text-2xl text-gray-500 duration-150 hover:text-red-500'
+                            icon={faXmark}
+                          />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </TSidenav>
-            </T>
+                </TNavSidenav>
+              </div>
+            </TNav>
           </div>
         </>
       )}
