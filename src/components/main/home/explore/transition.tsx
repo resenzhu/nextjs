@@ -9,7 +9,7 @@ export type TProps = {
   children: ReactNode;
 };
 
-export const T = ({children}: TProps): JSX.Element => {
+export const TExplore = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   const {section, setSection} = useHome();
 
@@ -35,12 +35,13 @@ export const T = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const THome = ({children}: TProps): JSX.Element => {
+export const TExploreHome = ({children}: TProps): JSX.Element => {
   const {viewport} = useApp();
   return (
     <>
       {viewport.width < 768 && (
         <Transition.Child
+          as={Fragment}
           enter='duration-700 ease-out'
           enterFrom='-translate-y-full opacity-0'
           enterTo='translate-y-0 opacity-100'
@@ -55,7 +56,7 @@ export const THome = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TAbout = ({children}: TProps): JSX.Element => (
+export const TExploreAbout = ({children}: TProps): JSX.Element => (
   <Transition.Child
     as={Fragment}
     enter='duration-700 ease-out'
@@ -69,7 +70,7 @@ export const TAbout = ({children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TPortfolio = ({children}: TProps): JSX.Element => (
+export const TExplorePortfolio = ({children}: TProps): JSX.Element => (
   <Transition.Child
     as={Fragment}
     enter='duration-700 ease-out'
@@ -83,7 +84,7 @@ export const TPortfolio = ({children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TResources = ({children}: TProps): JSX.Element => (
+export const TExploreResources = ({children}: TProps): JSX.Element => (
   <Transition.Child
     as={Fragment}
     enter='duration-700 ease-out'
@@ -97,7 +98,7 @@ export const TResources = ({children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TContact = ({children}: TProps): JSX.Element => (
+export const TExploreContact = ({children}: TProps): JSX.Element => (
   <Transition.Child
     as={Fragment}
     enter='duration-700 ease-out'
@@ -111,7 +112,7 @@ export const TContact = ({children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TGitHub = ({children}: TProps): JSX.Element => (
+export const TExploreGitHub = ({children}: TProps): JSX.Element => (
   <Transition.Child
     as={Fragment}
     enter='duration-700 ease-out'

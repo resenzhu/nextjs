@@ -1,11 +1,11 @@
 import {
-  T,
-  TAbout,
-  TContact,
-  TGitHub,
-  THome,
-  TPortfolio,
-  TResources
+  TExplore,
+  TExploreAbout,
+  TExploreContact,
+  TExploreGitHub,
+  TExploreHome,
+  TExplorePortfolio,
+  TExploreResources
 } from '@components/main/home/explore/transition';
 import Home from '@components/main/home/explore/home';
 import Link from 'next/link';
@@ -22,19 +22,21 @@ type ExploreProps = {
 };
 
 const Explore = ({label}: ExploreProps): JSX.Element => (
-  <T>
+  <TExplore>
     <div className='grid h-full grid-cols-2 gap-2 overflow-hidden px-4 py-6 md:row-span-2 md:p-0 lg:row-span-1 lg:animate-fade lg:duration-700'>
-      <THome>
-        <Home className='group/home relative h-full w-full hover:shadow-lg md:hover:shadow-none'>
-          <div className='absolute h-full w-full bg-[url("/images/main/home-explore-home.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
-          <div className='relative h-full'>
-            <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/home:bg-white group-hover/home:text-gray-700 group-hover/home:shadow-md'>
-              {label.home}
+      <TExploreHome>
+        <div>
+          <Home className='group/home relative h-full w-full hover:shadow-lg md:hover:shadow-none'>
+            <div className='absolute h-full w-full bg-[url("/images/main/home-explore-home.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
+            <div className='relative h-full'>
+              <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/home:bg-white group-hover/home:text-gray-700 group-hover/home:shadow-md'>
+                {label.home}
+              </div>
             </div>
-          </div>
-        </Home>
-      </THome>
-      <TAbout>
+          </Home>
+        </div>
+      </TExploreHome>
+      <TExploreAbout>
         <Link
           className='group/about relative'
           href='/about'
@@ -46,8 +48,8 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
             </div>
           </div>
         </Link>
-      </TAbout>
-      <TPortfolio>
+      </TExploreAbout>
+      <TExplorePortfolio>
         <Link
           className='group/portfolio relative col-span-2 md:col-span-1 md:row-span-2'
           href='/portfolio'
@@ -59,8 +61,8 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
             </div>
           </div>
         </Link>
-      </TPortfolio>
-      <TResources>
+      </TExplorePortfolio>
+      <TExploreResources>
         <Link
           className='group/resources relative col-span-2 md:col-span-1 md:row-span-2'
           href='/resources'
@@ -72,8 +74,8 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
             </div>
           </div>
         </Link>
-      </TResources>
-      <TContact>
+      </TExploreResources>
+      <TExploreContact>
         <Link
           className='group/contact relative'
           href='/contact'
@@ -85,8 +87,8 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
             </div>
           </div>
         </Link>
-      </TContact>
-      <TGitHub>
+      </TExploreContact>
+      <TExploreGitHub>
         <Link
           className='group/github relative md:col-span-2'
           href='https://github.com/resenzhu/nextjs'
@@ -98,9 +100,9 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
             </div>
           </div>
         </Link>
-      </TGitHub>
+      </TExploreGitHub>
     </div>
-  </T>
+  </TExplore>
 );
 
 export type {ExploreProps};
