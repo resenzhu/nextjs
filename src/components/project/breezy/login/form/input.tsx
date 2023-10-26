@@ -402,5 +402,5 @@ const Input = ({label}: InputProps): JSX.Element => {
   );
 };
 
-export type {InputProps};
+export type {InputProps, LoginReq, LoginRes};
 export default Input;
