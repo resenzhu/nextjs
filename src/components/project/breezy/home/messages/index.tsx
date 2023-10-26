@@ -13,14 +13,16 @@ type MessagesProps = {
 
 const Messages = ({empty}: MessagesProps): JSX.Element => (
   <TMessages>
-    <TEmpty>
-      <div className='mx-4 flex h-[calc(100vh-3.5rem)] items-center justify-center'>
-        <div className='w-3/4 space-y-8 text-center'>
-          <p className='text-gray-500'>{empty.message}</p>
-          <Browse label={empty.action} />
+    <div>
+      <TEmpty>
+        <div className='mx-4 flex h-[calc(100vh-3.5rem)] items-center justify-center'>
+          <div className='w-3/4 space-y-8 text-center'>
+            <p className='text-gray-500'>{empty.message}</p>
+            <Browse label={empty.action} />
+          </div>
         </div>
-      </div>
-    </TEmpty>
+      </TEmpty>
+    </div>
   </TMessages>
 );
 

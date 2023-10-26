@@ -10,7 +10,14 @@ export type TProps = {
 
 export const TMessages = ({children}: TProps): JSX.Element => {
   const {menu} = useHome();
-  return <Transition show={menu.messages}>{children}</Transition>;
+  return (
+    <Transition
+      show={menu.messages}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
 };
 
 export const TEmpty = ({children}: TProps): JSX.Element => {
