@@ -10,7 +10,14 @@ export type TProps = {
 
 export const TUsers = ({children}: TProps): JSX.Element => {
   const {menu} = useHome();
-  return <Transition show={menu.users}>{children}</Transition>;
+  return (
+    <Transition
+      show={menu.users}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
 };
 
 export const TFetching = ({children}: TProps): JSX.Element => {
@@ -39,7 +46,14 @@ export const TRetryFetch = ({children}: TProps): JSX.Element => {
 
 export const TFetched = ({children}: TProps): JSX.Element => {
   const {users} = useHome();
-  return <Transition show={users.fetched}>{children}</Transition>;
+  return (
+    <Transition
+      show={users.fetched}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
 };
 
 export const TEmpty = ({children}: TProps): JSX.Element => {
