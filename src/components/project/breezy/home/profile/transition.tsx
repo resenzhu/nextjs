@@ -10,7 +10,14 @@ export type TProps = {
 
 export const TProfile = ({children}: TProps): JSX.Element => {
   const {menu} = useHome();
-  return <Transition show={menu.profile}>{children}</Transition>;
+  return (
+    <Transition
+      show={menu.profile}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
 };
 
 export const TFetching = ({children}: TProps): JSX.Element => {
@@ -28,7 +35,10 @@ export const TFetching = ({children}: TProps): JSX.Element => {
 export const TRetryFetch = ({children}: TProps): JSX.Element => {
   const {profile} = useHome();
   return (
-    <Transition show={!profile.fetching && !profile.fetched}>
+    <Transition
+      show={!profile.fetching && !profile.fetched}
+      as={Fragment}
+    >
       {children}
     </Transition>
   );
@@ -36,5 +46,12 @@ export const TRetryFetch = ({children}: TProps): JSX.Element => {
 
 export const TFetched = ({children}: TProps): JSX.Element => {
   const {profile} = useHome();
-  return <Transition show={profile.fetched}>{children}</Transition>;
+  return (
+    <Transition
+      show={profile.fetched}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
 };
