@@ -1,6 +1,8 @@
 'use client';
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Listbox} from '@headlessui/react';
+import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 import useHome from '@hooks/project/breezy/use-home';
 
 type Mode = {
@@ -21,11 +23,17 @@ const Status = ({modes}: StatusProps): JSX.Element => {
           modes.find(
             (mode): boolean => mode.label === profile.user.session.status
           )?.color ?? 'text-green-600'
-        } hover:animate-shake hover:animate-duration-700 hover:animate-ease-in`}
+        }`}
       >
         {modes.find(
           (mode): boolean => mode.label === profile.user.session.status
         )?.label ?? 'online'}
+        <div className='absolute -translate-y-full'>
+          <FontAwesomeIcon
+            className='ml-3 text-sm text-gray-500'
+            icon={faAngleDown}
+          />
+        </div>
       </Listbox.Button>
       <Listbox.Options className='absolute w-40 translate-y-[8.3rem] rounded-lg bg-white text-center shadow-md'>
         {modes.map(
