@@ -46,7 +46,7 @@ const Page = (): JSX.Element => (
       <Users
         fetch={{
           message:
-            "Sorry, we couldn't load the user list at the moment. Please try again later.",
+            "Oops! The user list couldn't be loaded at this time. Please retry later.",
           action: 'Retry'
         }}
         empty={{
@@ -54,7 +54,13 @@ const Page = (): JSX.Element => (
             'No online users. Please create a new account on another browser or device to test the chat. Thank you!'
         }}
       />
-      <Profile />
+      <Profile
+        fetch={{
+          message:
+            "Oops! The user profile couldn't be loaded at this time. Please retry later.",
+          action: 'Retry'
+        }}
+      />
     </div>
   </Refresh>
 );
