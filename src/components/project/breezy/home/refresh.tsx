@@ -181,9 +181,9 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
             setProfile({
               ...profile,
               fetching: false,
-              fetched: !socketError && response.data.user,
+              fetched: !socketError && response.data.user !== undefined,
               user:
-                socketError || !response.data.user
+                socketError || response.data.user === undefined
                   ? profile.user
                   : {
                       ...profile.user,
