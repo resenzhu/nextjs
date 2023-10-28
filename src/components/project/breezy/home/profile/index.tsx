@@ -1,14 +1,19 @@
 import {
   TFetched,
   TFetching,
+  TProfile,
   TRetryFetch
 } from '@components/project/breezy/home/profile/transition';
-import {faSpinner, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
+import {
+  faAngleRight,
+  faCog,
+  faSignOutAlt,
+  faSpinner
+} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Info from '@components/project/breezy/home/profile/info';
 import Retry from '@components/project/breezy/home/profile/retry';
 import Status from '@components/project/breezy/home/profile/status';
-import {TProfile} from '@components/project/breezy/home/profile/transition';
 
 type ProfileProps = {
   fetch: {
@@ -33,32 +38,10 @@ const Profile = ({fetch}: ProfileProps): JSX.Element => (
             <Retry label={fetch.action} />
           </div>
         </TRetryFetch>
-      </div>
-    </div>
-    {/* <div className='flex h-[calc(100vh-3.5rem)] flex-col'>
-      <section className='flex-1 bg-[url("/images/project/breezy/home-profile-cover.webp")] bg-cover bg-center bg-no-repeat'>
-        <div className='flex h-full items-center justify-center'>
-          <TFetching>
-            <FontAwesomeIcon
-              className='animate-spin text-4xl text-white animate-duration-[1400ms] animate-infinite'
-              icon={faSpinner}
-            />
-          </TFetching>
-          <TRetryFetch>
-            <div className='flex items-center justify-center'>
-              <div className='w-3/4 space-y-8 text-center'>
-                <p className='text-white'>
-                  Failed to fetch profile. Please try again later.
-                </p>
-                <Retry label='Retry' />
-              </div>
-            </div>
-          </TRetryFetch>
-          <div className='flex flex-col items-center justify-center space-y-5'>
-            <div className='flex items-center justify-center'>
-              <div className='flex flex-col items-center justify-center space-y-4'>
-                <Info />
-              </div>
+        <TFetched>
+          <div className='flex flex-col items-center justify-center space-y-12'>
+            <div className='flex flex-col items-center justify-center space-y-5'>
+              <Info />
               <Status
                 modes={[
                   {label: 'online', color: 'text-green-600'},
@@ -66,10 +49,35 @@ const Profile = ({fetch}: ProfileProps): JSX.Element => (
                 ]}
               />
             </div>
+            <div className='flex w-64 flex-col items-center justify-center space-y-3'>
+              <button
+                className='flex w-64 items-center justify-start space-x-3 rounded-full bg-purple-500 px-5 py-2 text-gray-100 duration-150 hover:bg-purple-600'
+                type='button'
+              >
+                <div className='text-center'>
+                  <FontAwesomeIcon icon={faCog} />
+                </div>
+                <span className='flex-1 text-start text-lg font-semibold'>
+                  Settings
+                </span>
+                <div className='text-center'>
+                  <FontAwesomeIcon icon={faAngleRight} />
+                </div>
+              </button>
+              <button
+                className='flex w-64 items-center justify-start space-x-3 rounded-full bg-purple-500 px-5 py-2 text-gray-100 duration-150 hover:bg-purple-600'
+                type='button'
+              >
+                <div className='text-center'>
+                  <FontAwesomeIcon icon={faSignOutAlt} />
+                </div>
+                <span className='text-lg font-semibold'>Logout</span>
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
-    </div> */}
+        </TFetched>
+      </div>
+    </div>
   </TProfile>
 );
 
