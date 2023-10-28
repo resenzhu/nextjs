@@ -60,6 +60,10 @@ const Page = (): JSX.Element => (
             "Oops! The user profile couldn't be loaded at this time. Please retry later.",
           action: 'Retry'
         }}
+        label={{
+          settings: 'Settings',
+          logout: 'Logout'
+        }}
       />
     </div>
   </Refresh>

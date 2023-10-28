@@ -20,9 +20,13 @@ type ProfileProps = {
     message: string;
     action: string;
   };
+  label: {
+    settings: string;
+    logout: string;
+  };
 };
 
-const Profile = ({fetch}: ProfileProps): JSX.Element => (
+const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
   <TProfile>
     <div className='h-[calc(100vh-3.5rem)] bg-[url("/images/project/breezy/home-profile-cover.webp")] bg-cover bg-center bg-no-repeat'>
       <div className='mx-4 flex h-full items-center justify-center'>
@@ -58,7 +62,7 @@ const Profile = ({fetch}: ProfileProps): JSX.Element => (
                   <FontAwesomeIcon icon={faCog} />
                 </div>
                 <span className='flex-1 text-start text-lg font-semibold'>
-                  Settings
+                  {label.settings}
                 </span>
                 <div className='text-center'>
                   <FontAwesomeIcon icon={faAngleRight} />
@@ -71,7 +75,7 @@ const Profile = ({fetch}: ProfileProps): JSX.Element => (
                 <div className='text-center'>
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </div>
-                <span className='text-lg font-semibold'>Logout</span>
+                <span className='text-lg font-semibold'>{label.logout}</span>
               </button>
             </div>
           </div>
