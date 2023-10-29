@@ -1,7 +1,9 @@
 'use client';
 
+import {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Listbox} from '@headlessui/react';
+import {breezySocket} from '@utils/socket';
 import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 import useHome from '@hooks/project/breezy/use-home';
 
@@ -14,10 +16,82 @@ type StatusProps = {
   modes: Mode[];
 };
 
+type UpdateUserStatusRes = {
+  success: boolean;
+  error: {
+    code: number;
+    message: string;
+  };
+  data: {
+    user: {
+      session: {
+        lastOnline: string;
+      };
+    };
+  };
+};
+
 const Status = ({modes}: StatusProps): JSX.Element => {
-  const {profile} = useHome();
+  const {profile, setProfile} = useHome();
+  const [previousStatus, setPreviousStatus] = useState<string>(
+    profile.user.session.status
+  );
+  const [rendered, setRendered] = useState<boolean>(false);
+
+  const handleUpdateUserStatus = (status: string): void => {
+    if (profile.user.session.status !== status) {
+      setPreviousStatus(profile.user.session.status);
+      setProfile({
+        ...profile,
+        user: {
+          ...profile.user,
+          session: {
+            ...profile.user.session,
+            status: status as typeof profile.user.session.status
+          }
+        }
+      });
+    }
+  };
+
+  useEffect((): void => {
+    if (!rendered) {
+      setRendered(true);
+    }
+  }, []);
+
+  useEffect((): void => {
+    if (rendered && profile.user.session.status !== previousStatus) {
+      breezySocket
+        .timeout(60000)
+        .emit(
+          'update user status',
+          (socketError: Error, response: UpdateUserStatusRes): void => {
+            setPreviousStatus(
+              socketError ? previousStatus : profile.user.session.status
+            );
+            setProfile({
+              ...profile,
+              user: {
+                ...profile.user,
+                session: {
+                  ...profile.user.session,
+                  status: socketError
+                    ? (previousStatus as typeof profile.user.session.status)
+                    : profile.user.session.status,
+                  lastOnline: socketError
+                    ? profile.user.session.lastOnline
+                    : response.data.user.session.lastOnline
+                }
+              }
+            });
+          }
+        );
+    }
+  }, [rendered, profile, previousStatus]);
+
   return (
-    <Listbox>
+    <Listbox onChange={(status): void => handleUpdateUserStatus(status)}>
       <Listbox.Button
         className={`w-40 rounded-lg bg-white py-1 text-lg font-semibold ${
           modes.find(
@@ -52,5 +126,5 @@ const Status = ({modes}: StatusProps): JSX.Element => {
   );
 };
 
-export type {Mode, StatusProps};
+export type {Mode, StatusProps, UpdateUserStatusRes};
 export default Status;
