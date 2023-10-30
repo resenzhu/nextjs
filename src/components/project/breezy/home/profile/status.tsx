@@ -1,5 +1,6 @@
 'use client';
 
+import {object, string} from 'yup';
 import {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Listbox} from '@headlessui/react';
@@ -14,6 +15,10 @@ type Mode = {
 
 type StatusProps = {
   modes: Mode[];
+};
+
+type UpdateUserStatusReq = {
+  status: 'online' | 'away' | 'offline';
 };
 
 type UpdateUserStatusRes = {
@@ -62,31 +67,42 @@ const Status = ({modes}: StatusProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered && profile.user.session.status !== previousStatus) {
-      breezySocket
-        .timeout(60000)
-        .emit(
-          'update user status',
-          (socketError: Error, response: UpdateUserStatusRes): void => {
-            setPreviousStatus(
-              socketError ? previousStatus : profile.user.session.status
-            );
-            setProfile({
-              ...profile,
-              user: {
-                ...profile.user,
-                session: {
-                  ...profile.user.session,
-                  status: socketError
-                    ? (previousStatus as typeof profile.user.session.status)
-                    : profile.user.session.status,
-                  lastOnline: socketError
-                    ? profile.user.session.lastOnline
-                    : response.data.user.session.lastOnline
+      const requestSchema = object().shape({
+        status: string()
+          .ensure()
+          .required()
+          .oneOf(['online', 'away', 'offline'])
+      });
+      const request: UpdateUserStatusReq = {
+        status: profile.user.session.status
+      };
+      requestSchema.validate(request, {abortEarly: false}).then((): void => {
+        breezySocket
+          .timeout(60000)
+          .emit(
+            'update user status',
+            (socketError: Error, response: UpdateUserStatusRes): void => {
+              setPreviousStatus(
+                socketError ? previousStatus : profile.user.session.status
+              );
+              setProfile({
+                ...profile,
+                user: {
+                  ...profile.user,
+                  session: {
+                    ...profile.user.session,
+                    status: socketError
+                      ? (previousStatus as typeof profile.user.session.status)
+                      : profile.user.session.status,
+                    lastOnline: socketError
+                      ? profile.user.session.lastOnline
+                      : response.data.user.session.lastOnline
+                  }
                 }
-              }
-            });
-          }
-        );
+              });
+            }
+          );
+      });
     }
   }, [rendered, profile, previousStatus]);
 
