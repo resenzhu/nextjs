@@ -52,7 +52,15 @@ type Users = {
 type Profile = {
   fetching: boolean;
   fetched: boolean;
-  user: User;
+  user: {
+    id: string;
+    username: string;
+    displayName: string;
+    session: {
+      status: 'online' | 'away' | 'appear away' | 'offline' | 'appear offline';
+      lastOnline: string;
+    };
+  };
 };
 
 type State = {
