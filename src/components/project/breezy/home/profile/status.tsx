@@ -112,7 +112,7 @@ const Status = ({modes}: StatusProps): JSX.Element => {
   return (
     <Listbox onChange={(status): void => handleUpdateUserStatus(status)}>
       <Listbox.Button
-        className={`w-40 rounded-lg bg-white py-1 text-lg font-semibold ${
+        className={`w-56 rounded-lg bg-white py-1 text-lg font-semibold ${
           modes.find(
             (mode): boolean => mode.label === profile.user.session.status
           )?.color ?? 'text-green-600'
@@ -128,7 +128,7 @@ const Status = ({modes}: StatusProps): JSX.Element => {
           />
         </div>
       </Listbox.Button>
-      <Listbox.Options className='absolute w-40 translate-y-[8.3rem] rounded-lg bg-white text-center shadow-md'>
+      <Listbox.Options className='absolute w-56 translate-y-[9.5rem] rounded-lg bg-white text-center shadow-md'>
         {modes.map(
           (mode): JSX.Element => (
             <Listbox.Option
