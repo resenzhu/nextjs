@@ -18,7 +18,7 @@ type StatusProps = {
 };
 
 type UpdateUserStatusReq = {
-  status: 'online' | 'away' | 'offline';
+  status: 'online' | 'appear away' | 'appear offline';
 };
 
 type UpdateUserStatusRes = {
@@ -71,10 +71,13 @@ const Status = ({modes}: StatusProps): JSX.Element => {
         status: string()
           .ensure()
           .required()
-          .oneOf(['online', 'away', 'offline'])
+          .oneOf(['online', 'appear away', 'appear offline'])
       });
       const request: UpdateUserStatusReq = {
-        status: profile.user.session.status
+        status: profile.user.session.status as
+          | 'online'
+          | 'appear away'
+          | 'appear offline'
       };
       requestSchema.validate(request, {abortEarly: false}).then((): void => {
         breezySocket
@@ -142,5 +145,5 @@ const Status = ({modes}: StatusProps): JSX.Element => {
   );
 };
 
-export type {Mode, StatusProps, UpdateUserStatusRes};
+export type {Mode, StatusProps, UpdateUserStatusReq, UpdateUserStatusRes};
 export default Status;
