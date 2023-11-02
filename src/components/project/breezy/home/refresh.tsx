@@ -80,7 +80,7 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {push} = useRouter();
 
-  const handleLogoutOldSession = (): void => {
+  const handleLogout = (): void => {
     cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
       path: '/project/breezy'
     });
@@ -108,10 +108,12 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         ...profile,
         fetching: true
       });
-      breezySocket.on('logout old session', handleLogoutOldSession);
+      breezySocket.on('connect_error', handleLogout);
+      breezySocket.on('logout old session', handleLogout);
     }
     return (): void => {
-      breezySocket.off('logout old session', handleLogoutOldSession);
+      breezySocket.off('connect_error', handleLogout);
+      breezySocket.off('logout old session', handleLogout);
     };
   }, [rendered]);
 
