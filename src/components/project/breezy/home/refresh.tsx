@@ -80,7 +80,20 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {push} = useRouter();
 
-  const handleLogout = (): void => {
+  const handleForceLogout = (error: Error): void => {
+    if (error.message === 'UserDataError') {
+      cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
+        path: '/project/breezy'
+      });
+      breezySocket.auth = {
+        token: undefined
+      };
+      breezySocket.connect();
+      push('/project/breezy/login');
+    }
+  };
+
+  const handleLogoutOldSession = (): void => {
     cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
       path: '/project/breezy'
     });
@@ -108,12 +121,12 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         ...profile,
         fetching: true
       });
-      breezySocket.on('connect_error', handleLogout);
-      breezySocket.on('logout old session', handleLogout);
+      breezySocket.on('connect_error', handleForceLogout);
+      breezySocket.on('logout old session', handleLogoutOldSession);
     }
     return (): void => {
-      breezySocket.off('connect_error', handleLogout);
-      breezySocket.off('logout old session', handleLogout);
+      breezySocket.off('connect_error', handleForceLogout);
+      breezySocket.off('logout old session', handleLogoutOldSession);
     };
   }, [rendered]);
 
