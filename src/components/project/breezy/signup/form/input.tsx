@@ -7,7 +7,6 @@ import {
   useRef,
   useState
 } from 'react';
-import {type Form, initialState} from '@redux/reducers/project/breezy/signup';
 import {
   TError,
   TSubmit,
@@ -20,6 +19,7 @@ import type Recaptcha from 'react-google-recaptcha';
 import {RecaptchaV2} from '@components/project/breezy/shared';
 import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
+import {initialState} from '@redux/reducers/project/breezy/signup';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/main/use-app';
 import {useRouter} from 'next/navigation';
@@ -63,7 +63,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   const {push} = useRouter();
 
   const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
-    const fieldName = event.target.name as keyof Form;
+    const fieldName = event.target.name as keyof typeof form;
     const {value} = event.target;
     if (form[fieldName] !== value) {
       setForm({
@@ -78,7 +78,7 @@ const Input = ({label}: InputProps): JSX.Element => {
   };
 
   const handleTrimForm = (event: ChangeEvent<HTMLInputElement>): void => {
-    const fieldName = event.target.name as keyof Form;
+    const fieldName = event.target.name as keyof typeof form;
     const {value} = event.target;
     if (form[fieldName] !== value.trim()) {
       setForm({
@@ -207,16 +207,16 @@ const Input = ({label}: InputProps): JSX.Element => {
       const request: SignUpReq = {
         username: sanitize(form.username).trim(),
         displayName: sanitize(form.displayName).trim(),
-        password: sanitize(form.password).trim(),
+        password: form.password,
         honeypot: sanitize(form.honeypot).trim(),
-        recaptcha: form.recaptcha
+        recaptcha: sanitize(form.recaptcha).trim()
       };
       requestSchema
         .validate(request, {abortEarly: false})
         .then((): void => {
           if (!validator.isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
             throw new ValidationError(
-              'Please enter a valid display name using only letters.',
+              'Please enter a valid display name using only letters and spaces.',
               request.displayName,
               'displayName'
             );
