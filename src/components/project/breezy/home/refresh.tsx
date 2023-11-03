@@ -81,7 +81,7 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   const {push} = useRouter();
 
   const handleForceLogout = (error: Error): void => {
-    if (error.message === 'UserDataError') {
+    if (error.message === 'ServerError') {
       cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
         path: '/project/breezy'
       });
