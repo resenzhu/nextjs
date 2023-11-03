@@ -184,14 +184,16 @@ const Input = ({label}: InputProps): JSX.Element => {
           email: sanitize(form.email).trim(),
           message: sanitize(form.message).trim(),
           honeypot: sanitize(form.honeypot).trim(),
-          recaptcha: form.recaptcha.length === 0 ? newRecaptcha : form.recaptcha
+          recaptcha: sanitize(
+            form.recaptcha.length === 0 ? newRecaptcha : form.recaptcha
+          ).trim()
         };
         requestSchema
           .validate(request, {abortEarly: false})
           .then((): void => {
             if (!validator.isAlpha(request.name, 'en-US', {ignore: ' '})) {
               throw new ValidationError(
-                'Please enter a valid name using only letters.',
+                'Please enter a valid name using only letters and spaces.',
                 request.name,
                 'name'
               );
@@ -231,7 +233,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                         break;
                       case 4220105:
                         formError =
-                          'Please enter a valid name using only letters.';
+                          'Please enter a valid name using only letters and spaces.';
                         break;
                       case 40002:
                       case 4220201:
