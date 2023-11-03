@@ -205,7 +205,7 @@ const Input = ({label}: InputProps): JSX.Element => {
           .required('Please complete the reCAPTCHA verification.')
       });
       const request: SignUpReq = {
-        username: sanitize(form.username).trim(),
+        username: sanitize(form.username).trim().toLowerCase(),
         displayName: sanitize(form.displayName).trim(),
         password: form.password,
         honeypot: sanitize(form.honeypot).trim(),
