@@ -80,19 +80,6 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {push} = useRouter();
 
-  const handleForceLogout = (error: Error): void => {
-    if (error.message === 'ServerError') {
-      cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
-        path: '/project/breezy'
-      });
-      breezySocket.auth = {
-        token: undefined
-      };
-      breezySocket.connect();
-      push('/project/breezy/login');
-    }
-  };
-
   const handleLogoutOldSession = (): void => {
     cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
       path: '/project/breezy'
@@ -121,11 +108,9 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         ...profile,
         fetching: true
       });
-      breezySocket.on('connect_error', handleForceLogout);
       breezySocket.on('logout old session', handleLogoutOldSession);
     }
     return (): void => {
-      breezySocket.off('connect_error', handleForceLogout);
       breezySocket.off('logout old session', handleLogoutOldSession);
     };
   }, [rendered]);
@@ -147,10 +132,14 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         );
     }
     const handleAddNewUser = (notification: UserSignedUpNotif): void => {
-      setUsers({
-        ...users,
-        list: [...users.list, notification.user]
-      });
+      if (
+        !users.list.some((user): boolean => user.id === notification.user.id)
+      ) {
+        setUsers({
+          ...users,
+          list: [...users.list, notification.user]
+        });
+      }
     };
     const handleUpdateUserStatus = (
       notification: UserLoggedInNotif | UserOnlineNotif | UserOfflineNotif
@@ -199,7 +188,7 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
               fetched: !socketError && response.data.user !== undefined,
               user:
                 socketError || response.data.user === undefined
-                  ? profile.user
+                  ? {...profile.user}
                   : {
                       ...profile.user,
                       id: response.data.user.id,
