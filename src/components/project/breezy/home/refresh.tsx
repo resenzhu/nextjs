@@ -33,7 +33,7 @@ type FetchProfileRes = {
   };
 };
 
-type UserSignedUpNotif = {
+type NewUserNotif = {
   user: {
     id: string;
     username: string;
@@ -45,27 +45,7 @@ type UserSignedUpNotif = {
   };
 };
 
-type UserLoggedInNotif = {
-  user: {
-    id: string;
-    session: {
-      status: 'online' | 'away' | 'offline';
-      lastOnline: string;
-    };
-  };
-};
-
-type UserOnlineNotif = {
-  user: {
-    id: string;
-    session: {
-      status: 'online' | 'away' | 'offline';
-      lastOnline: string;
-    };
-  };
-};
-
-type UserOfflineNotif = {
+type UserStatusNotif = {
   user: {
     id: string;
     session: {
@@ -131,7 +111,7 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
           }
         );
     }
-    const handleAddNewUser = (notification: UserSignedUpNotif): void => {
+    const handleAddNewUser = (notification: NewUserNotif): void => {
       if (
         !users.list.some((user): boolean => user.id === notification.user.id)
       ) {
@@ -141,9 +121,7 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         });
       }
     };
-    const handleUpdateUserStatus = (
-      notification: UserLoggedInNotif | UserOnlineNotif | UserOfflineNotif
-    ): void => {
+    const handleUpdateUserStatus = (notification: UserStatusNotif): void => {
       const updatedUsers = users.list.map((user): User => {
         if (user.id === notification.user.id) {
           const updatedUser: User = {
@@ -163,15 +141,11 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         list: updatedUsers
       });
     };
-    breezySocket.on('user signed up', handleAddNewUser);
-    breezySocket.on('user logged in', handleUpdateUserStatus);
-    breezySocket.on('user online', handleUpdateUserStatus);
-    breezySocket.on('user offline', handleUpdateUserStatus);
+    breezySocket.on('add new user', handleAddNewUser);
+    breezySocket.on('update user status', handleUpdateUserStatus);
     return (): void => {
-      breezySocket.off('user signed up', handleAddNewUser);
-      breezySocket.off('user logged in', handleUpdateUserStatus);
-      breezySocket.off('user online', handleUpdateUserStatus);
-      breezySocket.off('user offline', handleUpdateUserStatus);
+      breezySocket.off('add new user', handleAddNewUser);
+      breezySocket.off('update user status', handleUpdateUserStatus);
     };
   }, [users]);
 
@@ -213,9 +187,7 @@ export type {
   RefreshProps,
   FetchUsersRes,
   FetchProfileRes,
-  UserSignedUpNotif,
-  UserLoggedInNotif,
-  UserOnlineNotif,
-  UserOfflineNotif
+  NewUserNotif,
+  UserStatusNotif
 };
 export default Refresh;
