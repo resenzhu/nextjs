@@ -39,7 +39,7 @@ const Retry = ({label}: RetryProps): JSX.Element => {
               fetched: !socketError && response.data.user,
               user:
                 socketError || !response.data.user
-                  ? profile.user
+                  ? {...profile.user}
                   : {
                       ...profile.user,
                       id: response.data.user.id,
