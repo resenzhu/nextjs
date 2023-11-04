@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Listbox} from '@headlessui/react';
 import {breezySocket} from '@utils/socket';
 import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
+import {sanitize} from 'isomorphic-dompurify';
 import useHome from '@hooks/project/breezy/use-home';
 
 type Mode = {
@@ -74,7 +75,7 @@ const Status = ({modes}: StatusProps): JSX.Element => {
           .oneOf(['online', 'appear away', 'appear offline'])
       });
       const request: UpdateUserStatusReq = {
-        status: profile.user.session.status as
+        status: sanitize(profile.user.session.status).trim() as
           | 'online'
           | 'appear away'
           | 'appear offline'
@@ -84,6 +85,7 @@ const Status = ({modes}: StatusProps): JSX.Element => {
           .timeout(60000)
           .emit(
             'update user status',
+            request,
             (socketError: Error, response: UpdateUserStatusRes): void => {
               setPreviousStatus(
                 socketError ? previousStatus : profile.user.session.status
