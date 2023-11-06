@@ -57,7 +57,10 @@ type Profile = {
     username: string;
     displayName: string;
     session: {
-      status: 'online' | 'away' | 'appear away' | 'offline' | 'appear offline';
+      status: {
+        name: 'online' | 'away' | 'appear away' | 'offline' | 'appear offline';
+        updating: boolean;
+      };
       lastOnline: string;
     };
   };

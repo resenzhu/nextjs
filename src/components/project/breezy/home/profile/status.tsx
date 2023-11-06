@@ -68,6 +68,8 @@ const Status = ({modes}: StatusProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered && profile.user.session.status !== previousStatus) {
+      console.log(profile.user.session.status);
+      console.log(previousStatus);
       const requestSchema = object().shape({
         status: string()
           .ensure()
