@@ -39,21 +39,25 @@ type UpdateUserStatusRes = {
 
 const Status = ({modes}: StatusProps): JSX.Element => {
   const {profile, setProfile} = useHome();
-  const [previousStatus, setPreviousStatus] = useState<string>(
-    profile.user.session.status
-  );
   const [rendered, setRendered] = useState<boolean>(false);
 
   const handleUpdateUserStatus = (status: string): void => {
-    if (profile.user.session.status !== status) {
-      setPreviousStatus(profile.user.session.status);
+    if (
+      profile.user.session.status.current !== status &&
+      !profile.user.session.status.updating
+    ) {
       setProfile({
         ...profile,
         user: {
           ...profile.user,
           session: {
             ...profile.user.session,
-            status: status as typeof profile.user.session.status
+            status: {
+              ...profile.user.session.status,
+              previous: profile.user.session.status.current,
+              current: status as typeof profile.user.session.status.current,
+              updating: true
+            }
           }
         }
       });
@@ -67,9 +71,7 @@ const Status = ({modes}: StatusProps): JSX.Element => {
   }, []);
 
   useEffect((): void => {
-    if (rendered && profile.user.session.status !== previousStatus) {
-      console.log(profile.user.session.status);
-      console.log(previousStatus);
+    if (rendered && profile.user.session.status.updating) {
       const requestSchema = object().shape({
         status: string()
           .ensure()
@@ -77,7 +79,7 @@ const Status = ({modes}: StatusProps): JSX.Element => {
           .oneOf(['online', 'appear away', 'appear offline'])
       });
       const request: UpdateUserStatusReq = {
-        status: sanitize(profile.user.session.status).trim() as
+        status: sanitize(profile.user.session.status.current).trim() as
           | 'online'
           | 'appear away'
           | 'appear offline'
@@ -89,18 +91,22 @@ const Status = ({modes}: StatusProps): JSX.Element => {
             'update user status',
             request,
             (socketError: Error, response: UpdateUserStatusRes): void => {
-              setPreviousStatus(
-                socketError ? previousStatus : profile.user.session.status
-              );
               setProfile({
                 ...profile,
                 user: {
                   ...profile.user,
                   session: {
                     ...profile.user.session,
-                    status: socketError
-                      ? (previousStatus as typeof profile.user.session.status)
-                      : profile.user.session.status,
+                    status: {
+                      ...profile.user.session.status,
+                      previous: socketError
+                        ? profile.user.session.status.previous
+                        : profile.user.session.status.current,
+                      current: socketError
+                        ? profile.user.session.status.previous
+                        : profile.user.session.status.current,
+                      updating: false
+                    },
                     lastOnline: socketError
                       ? profile.user.session.lastOnline
                       : response.data.user.session.lastOnline
@@ -111,19 +117,20 @@ const Status = ({modes}: StatusProps): JSX.Element => {
           );
       });
     }
-  }, [rendered, profile, previousStatus]);
+  }, [rendered, profile]);
 
   return (
     <Listbox onChange={(status): void => handleUpdateUserStatus(status)}>
       <Listbox.Button
         className={`w-56 rounded-lg bg-white py-1 text-lg font-semibold ${
           modes.find(
-            (mode): boolean => mode.label === profile.user.session.status
+            (mode): boolean =>
+              mode.label === profile.user.session.status.current
           )?.color ?? 'text-green-600'
         }`}
       >
         {modes.find(
-          (mode): boolean => mode.label === profile.user.session.status
+          (mode): boolean => mode.label === profile.user.session.status.current
         )?.label ?? 'online'}
         <div className='absolute -translate-y-full'>
           <FontAwesomeIcon
