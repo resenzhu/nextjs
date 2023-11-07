@@ -58,7 +58,18 @@ type Profile = {
     displayName: string;
     session: {
       status: {
-        name: 'online' | 'away' | 'appear away' | 'offline' | 'appear offline';
+        previous:
+          | 'online'
+          | 'away'
+          | 'appear away'
+          | 'offline'
+          | 'appear offline';
+        current:
+          | 'online'
+          | 'away'
+          | 'appear away'
+          | 'offline'
+          | 'appear offline';
         updating: boolean;
       };
       lastOnline: string;
@@ -106,7 +117,11 @@ const initialState: State = {
       username: '',
       displayName: '',
       session: {
-        status: 'offline',
+        status: {
+          previous: 'offline',
+          current: 'offline',
+          updating: false
+        },
         lastOnline: ''
       }
     }
