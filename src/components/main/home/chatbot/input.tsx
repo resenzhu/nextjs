@@ -2,6 +2,7 @@
 
 import {type ChangeEvent, type FormEvent, useEffect} from 'react';
 import {ValidationError, object, string} from 'yup';
+import {Button} from '@components/main/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
@@ -187,8 +188,8 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
         onChange={(event): void => handleUpdateInput(event)}
         onBlur={handleTrimInput}
       />
-      <button
-        className='rounded-full bg-cyan-600 p-1 duration-150 hover:bg-cyan-700 disabled:bg-gray-300'
+      <Button
+        className='h-9 w-9 rounded-full py-0 hover:bg-cyan-700'
         type='submit'
         disabled={
           !online ||
@@ -201,7 +202,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
           className='w-6 text-white'
           icon={sendIcon}
         />
-      </button>
+      </Button>
     </form>
   );
 };

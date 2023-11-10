@@ -1,3 +1,4 @@
+import {Button} from '@components/main/shared';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -23,12 +24,7 @@ const Card = ({name, description, url}: CardProps): JSX.Element => (
       </div>
       <div>
         <Link href={url}>
-          <button
-            className='bg-cyan-600 px-5 py-3 font-bold tracking-wider text-white duration-150 active:bg-cyan-700 md:text-xs'
-            type='button'
-          >
-            VIEW PROJECT
-          </button>
+          <Button className='px-5 py-3 md:text-xs'>VIEW PROJECT</Button>
         </Link>
       </div>
     </div>

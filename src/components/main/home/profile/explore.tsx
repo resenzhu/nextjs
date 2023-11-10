@@ -1,5 +1,6 @@
 'use client';
 
+import {Button} from '@components/main/shared';
 import useApp from '@hooks/main/use-app';
 import useHome from '@hooks/main/use-home';
 
@@ -23,13 +24,12 @@ const Explore = ({label}: ExploreProps): JSX.Element => {
   return (
     <>
       {viewport.width < 768 && (
-        <button
-          className='border-2 border-cyan-600 py-2 font-bold tracking-wider text-cyan-600 duration-150 hover:bg-cyan-600 hover:text-white active:bg-cyan-700'
-          type='button'
+        <Button
+          style='transparent'
           onClick={(): void => handleToggleProfile(false)}
         >
           {label}
-        </button>
+        </Button>
       )}
     </>
   );

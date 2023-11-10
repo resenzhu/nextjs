@@ -1,6 +1,6 @@
+import {Button, LazyLoad} from '@components/main/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {LazyLoad} from '@components/main/shared';
 import Link from 'next/link';
 
 type LinkedInProps = {
@@ -30,16 +30,13 @@ const LinkedIn = ({title, description, action}: LinkedInProps): JSX.Element => (
             href={action.url}
             target='_blank'
           >
-            <button
-              className='flex space-x-3 bg-cyan-600 px-5 py-3 tracking-wider text-white duration-150 active:bg-cyan-700'
-              type='button'
-            >
+            <Button className='space-x-3 px-5 py-3 font-normal'>
               <FontAwesomeIcon
                 className='text-2xl'
                 icon={action.icon}
               />
               <span>{action.label}</span>
-            </button>
+            </Button>
           </Link>
         </div>
       </LazyLoad>

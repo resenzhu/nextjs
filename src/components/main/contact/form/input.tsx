@@ -11,6 +11,7 @@ import {
   TSuccess
 } from '@components/main/contact/form/transition';
 import {ValidationError, object, string} from 'yup';
+import {Button} from '@components/main/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
@@ -420,8 +421,8 @@ const Input = ({label}: InputProps): JSX.Element => {
       <TSuccess>
         <div className='bg-green-600 p-2 text-white'>{form.success}</div>
       </TSuccess>
-      <button
-        className={`w-36 animate-fade-left place-self-center bg-cyan-600 py-3 font-bold tracking-wider text-white duration-150 animate-duration-700 disabled:bg-gray-300 ${
+      <Button
+        className={`w-36 animate-fade-left place-self-center animate-duration-700 ${
           form.submitting ? 'cursor-default' : 'active:bg-cyan-700'
         }`}
         type='submit'
@@ -440,7 +441,7 @@ const Input = ({label}: InputProps): JSX.Element => {
             icon={faSpinner}
           />
         </TSubmitting>
-      </button>
+      </Button>
     </form>
   );
 };
