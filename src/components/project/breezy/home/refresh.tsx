@@ -170,7 +170,11 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
                       displayName: response.data.user.displayName,
                       session: {
                         ...profile.user.session,
-                        status: response.data.user.session.status,
+                        status: {
+                          ...profile.user.session.status,
+                          previous: response.data.user.session.status,
+                          current: response.data.user.session.status
+                        },
                         lastOnline: response.data.user.session.lastOnline
                       }
                     }
