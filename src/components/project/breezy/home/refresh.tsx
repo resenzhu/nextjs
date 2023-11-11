@@ -61,9 +61,7 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
   const {push} = useRouter();
 
   const handleLogoutOldSession = (): void => {
-    cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY, {
-      path: '/project/breezy'
-    });
+    cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY);
     push('/project/breezy/login');
   };
 

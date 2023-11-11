@@ -26,15 +26,12 @@ const Cookie = ({children}: CookieProps): JSX.Element => {
           (auth): boolean => pathname === auth
         )
       ) {
-        cookie.remove(cookieName, {
-          path: '/project/breezy'
-        });
+        cookie.remove(cookieName);
       }
       if (pathname === '/project/breezy') {
         const currentCookie = cookie.get(cookieName);
         if (currentCookie) {
           cookie.set(cookieName, currentCookie, {
-            path: '/project/breezy',
             sameSite: 'strict',
             secure: true,
             expires: 2

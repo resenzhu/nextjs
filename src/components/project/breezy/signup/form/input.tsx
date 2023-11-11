@@ -244,7 +244,6 @@ const Input = ({label}: InputProps): JSX.Element => {
                       process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY,
                       response.data.token,
                       {
-                        path: '/project/breezy',
                         sameSite: 'strict',
                         secure: true,
                         expires: 2
