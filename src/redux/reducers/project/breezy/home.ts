@@ -75,6 +75,9 @@ type Profile = {
       lastOnline: string;
     };
   };
+  menu: {
+    confirmLogout: boolean;
+  };
 };
 
 type State = {
@@ -124,6 +127,9 @@ const initialState: State = {
         },
         lastOnline: ''
       }
+    },
+    menu: {
+      confirmLogout: false
     }
   }
 };
