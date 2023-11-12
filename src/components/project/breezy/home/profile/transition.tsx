@@ -55,3 +55,15 @@ export const TFetched = ({children}: TProps): JSX.Element => {
     </Transition>
   );
 };
+
+export const TConfirmLogout = ({children}: TProps): JSX.Element => {
+  const {profile} = useHome();
+  return (
+    <Transition
+      show={profile.menu.confirmLogout}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};

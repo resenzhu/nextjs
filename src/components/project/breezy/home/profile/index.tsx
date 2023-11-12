@@ -1,30 +1,22 @@
+import Menu, {type Label} from '@components/project/breezy/home/profile/menu';
 import {
   TFetched,
   TFetching,
   TProfile,
   TRetryFetch
 } from '@components/project/breezy/home/profile/transition';
-import {
-  faAngleRight,
-  faCog,
-  faSignOutAlt,
-  faSpinner
-} from '@fortawesome/free-solid-svg-icons';
-import {Button} from '@components/project/breezy/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Info from '@components/project/breezy/home/profile/info';
 import Retry from '@components/project/breezy/home/profile/retry';
 import Status from '@components/project/breezy/home/profile/status';
+import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 
 type ProfileProps = {
   fetch: {
     message: string;
     action: string;
   };
-  label: {
-    settings: string;
-    logout: string;
-  };
+  label: Label;
 };
 
 const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
@@ -56,23 +48,7 @@ const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
               />
             </div>
             <div className='flex w-64 flex-col items-center justify-center space-y-3'>
-              <Button style='profile'>
-                <div className='text-center'>
-                  <FontAwesomeIcon icon={faCog} />
-                </div>
-                <span className='flex-1 text-start text-lg font-semibold'>
-                  {label.settings}
-                </span>
-                <div className='text-center'>
-                  <FontAwesomeIcon icon={faAngleRight} />
-                </div>
-              </Button>
-              <Button style='profile'>
-                <div className='text-center'>
-                  <FontAwesomeIcon icon={faSignOutAlt} />
-                </div>
-                <span className='text-lg font-semibold'>{label.logout}</span>
-              </Button>
+              <Menu label={label} />
             </div>
           </div>
         </TFetched>
