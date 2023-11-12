@@ -10,6 +10,7 @@ import {
   faSignOutAlt,
   faSpinner
 } from '@fortawesome/free-solid-svg-icons';
+import {Button} from '@components/project/breezy/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Info from '@components/project/breezy/home/profile/info';
 import Retry from '@components/project/breezy/home/profile/retry';
@@ -55,10 +56,7 @@ const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
               />
             </div>
             <div className='flex w-64 flex-col items-center justify-center space-y-3'>
-              <button
-                className='flex w-64 items-center justify-start space-x-3 rounded-full bg-purple-500 px-5 py-2 text-gray-100 duration-150 hover:bg-purple-600'
-                type='button'
-              >
+              <Button style='profile'>
                 <div className='text-center'>
                   <FontAwesomeIcon icon={faCog} />
                 </div>
@@ -68,16 +66,13 @@ const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
                 <div className='text-center'>
                   <FontAwesomeIcon icon={faAngleRight} />
                 </div>
-              </button>
-              <button
-                className='flex w-64 items-center justify-start space-x-3 rounded-full bg-purple-500 px-5 py-2 text-gray-100 duration-150 hover:bg-purple-600'
-                type='button'
-              >
+              </Button>
+              <Button style='profile'>
                 <div className='text-center'>
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </div>
                 <span className='text-lg font-semibold'>{label.logout}</span>
-              </button>
+              </Button>
             </div>
           </div>
         </TFetched>

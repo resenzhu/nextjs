@@ -1,6 +1,7 @@
 'use client';
 
 import {useEffect, useState} from 'react';
+import {Button} from '@components/project/breezy/shared';
 import type {FetchProfileRes} from '@components/project/breezy/home/refresh';
 import {breezySocket} from '@utils/socket';
 import useHome from '@hooks/project/breezy/use-home';
@@ -36,9 +37,9 @@ const Retry = ({label}: RetryProps): JSX.Element => {
             setProfile({
               ...profile,
               fetching: false,
-              fetched: !socketError && response.data.user,
+              fetched: !socketError && response.data.user !== undefined,
               user:
-                socketError || !response.data.user
+                socketError || response.data.user === undefined
                   ? {...profile.user}
                   : {
                       ...profile.user,
@@ -47,7 +48,11 @@ const Retry = ({label}: RetryProps): JSX.Element => {
                       displayName: response.data.user.displayName,
                       session: {
                         ...profile.user.session,
-                        status: response.data.user.session.status,
+                        status: {
+                          ...profile.user.session.status,
+                          previous: response.data.user.session.status,
+                          current: response.data.user.session.status
+                        },
                         lastOnline: response.data.user.session.lastOnline
                       }
                     }
@@ -57,15 +62,7 @@ const Retry = ({label}: RetryProps): JSX.Element => {
     }
   }, [rendered, profile]);
 
-  return (
-    <button
-      className='rounded-lg bg-purple-500 px-5 py-2 font-semibold text-white duration-150 hover:bg-purple-600'
-      type='button'
-      onClick={(): void => handleRetryFetch()}
-    >
-      {label}
-    </button>
-  );
+  return <Button onClick={(): void => handleRetryFetch()}>{label}</Button>;
 };
 
 export type {RetryProps};

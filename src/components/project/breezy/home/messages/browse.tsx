@@ -1,5 +1,6 @@
 'use client';
 
+import {Button} from '@components/project/breezy/shared';
 import useHome from '@hooks/project/breezy/use-home';
 
 type BrowseProps = {
@@ -19,15 +20,7 @@ const Browse = ({label}: BrowseProps): JSX.Element => {
     }
   };
 
-  return (
-    <button
-      className='rounded-lg bg-purple-500 px-5 py-2 font-semibold text-white duration-150 hover:bg-purple-600'
-      type='button'
-      onClick={(): void => handleToggleUsers(true)}
-    >
-      {label}
-    </button>
-  );
+  return <Button onClick={(): void => handleToggleUsers(true)}>{label}</Button>;
 };
 
 export type {BrowseProps};

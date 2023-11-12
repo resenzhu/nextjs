@@ -1,6 +1,7 @@
 'use client';
 
 import {useEffect, useState} from 'react';
+import {Button} from '@components/project/breezy/shared';
 import type {FetchUsersRes} from '@components/project/breezy/home/refresh';
 import {breezySocket} from '@utils/socket';
 import useHome from '@hooks/project/breezy/use-home';
@@ -44,15 +45,7 @@ const Retry = ({label}: RetryProps): JSX.Element => {
     }
   }, [rendered, users]);
 
-  return (
-    <button
-      className='rounded-lg bg-purple-500 px-5 py-2 font-semibold text-white duration-150 hover:bg-purple-600'
-      type='button'
-      onClick={(): void => handleRetryFetch()}
-    >
-      {label}
-    </button>
-  );
+  return <Button onClick={(): void => handleRetryFetch()}>{label}</Button>;
 };
 
 export type {RetryProps};
