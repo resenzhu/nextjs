@@ -1,7 +1,7 @@
 import '@app/(main)/layout.css';
 import Navbar from '@components/main/navbar';
 import type {ReactNode} from 'react';
-import {Socket} from '@components/main/shared';
+import {Socket} from '@components/main/layout';
 
 type RootLayoutProps = {
   children: ReactNode;
