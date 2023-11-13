@@ -3,6 +3,7 @@ import {
   Navbar,
   Profile,
   Refresh,
+  Settings,
   Users
 } from '@components/project/breezy/home';
 import {
@@ -65,6 +66,7 @@ const Page = (): JSX.Element => (
           logout: 'Logout'
         }}
       />
+      <Settings />
     </div>
   </Refresh>
 );
