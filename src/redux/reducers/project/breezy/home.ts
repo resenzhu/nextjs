@@ -95,7 +95,7 @@ type Reducers = {
   setMessages: (state: State, action: PayloadAction<Messages>) => void;
   setUsers: (state: State, action: PayloadAction<Users>) => void;
   setProfile: (state: State, action: PayloadAction<Profile>) => void;
-  setSettings:  (state: State, action: PayloadAction<Settings>) => void;
+  setSettings: (state: State, action: PayloadAction<Settings>) => void;
 };
 
 const name: string = 'home';
@@ -175,5 +175,6 @@ const slice = createSlice({
 
 export {initialState};
 export type {Menu, User, Chat, Message, Messages, Users, Profile, Settings};
-export const {setMenu, setMessages, setUsers, setProfile} = slice.actions;
+export const {setMenu, setMessages, setUsers, setProfile, setSettings} =
+  slice.actions;
 export default slice.reducer;
