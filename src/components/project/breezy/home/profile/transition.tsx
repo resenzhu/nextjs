@@ -56,11 +56,23 @@ export const TFetched = ({children}: TProps): JSX.Element => {
   );
 };
 
+export const TSettings = ({children}: TProps): JSX.Element => {
+  const {settings} = useHome();
+  return (
+    <Transition
+      show={settings.show}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
+
 export const TConfirmLogout = ({children}: TProps): JSX.Element => {
   const {profile} = useHome();
   return (
     <Transition
-      show={profile.menu.confirmLogout}
+      show={profile.confirmLogout}
       as={Fragment}
     >
       {children}
