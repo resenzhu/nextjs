@@ -75,9 +75,11 @@ type Profile = {
       lastOnline: string;
     };
   };
-  menu: {
-    confirmLogout: boolean;
-  };
+  confirmLogout: boolean;
+};
+
+type Settings = {
+  show: boolean;
 };
 
 type State = {
@@ -85,6 +87,7 @@ type State = {
   messages: Messages;
   users: Users;
   profile: Profile;
+  settings: Settings;
 };
 
 type Reducers = {
@@ -92,6 +95,7 @@ type Reducers = {
   setMessages: (state: State, action: PayloadAction<Messages>) => void;
   setUsers: (state: State, action: PayloadAction<Users>) => void;
   setProfile: (state: State, action: PayloadAction<Profile>) => void;
+  setSettings:  (state: State, action: PayloadAction<Settings>) => void;
 };
 
 const name: string = 'home';
@@ -128,9 +132,10 @@ const initialState: State = {
         lastOnline: ''
       }
     },
-    menu: {
-      confirmLogout: false
-    }
+    confirmLogout: false
+  },
+  settings: {
+    show: false
   }
 };
 
@@ -154,6 +159,11 @@ const reducers: Reducers = {
     if (state.profile !== action.payload) {
       state.profile = action.payload;
     }
+  },
+  setSettings: (state, action) => {
+    if (state.settings !== action.payload) {
+      state.settings = action.payload;
+    }
   }
 };
 
@@ -164,6 +174,6 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {Menu, User, Chat, Message, Messages, Users, Profile};
+export type {Menu, User, Chat, Message, Messages, Users, Profile, Settings};
 export const {setMenu, setMessages, setUsers, setProfile} = slice.actions;
 export default slice.reducer;
