@@ -7,7 +7,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {Button, Modal} from '@components/project/breezy/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {useState} from 'react';
+import {TSettings} from '@components/project/breezy/home/profile/transition';
+import useHome from '@hooks/project/breezy/use-home';
 
 type Label = {
   settings: string;
@@ -19,11 +20,14 @@ type MenuProps = {
 };
 
 const Menu = ({label}: MenuProps): JSX.Element => {
-  const [confirmLogout, setConfirmLogout] = useState<boolean>(false);
+  const {profile, setProfile} = useHome();
 
   const handleToggleConfirmLogout = (show: boolean): void => {
-    if (confirmLogout !== show) {
-      setConfirmLogout(show);
+    if (profile.confirmLogout !== show) {
+      setProfile({
+        ...profile,
+        confirmLogout: show
+      });
     }
   };
 
@@ -49,7 +53,9 @@ const Menu = ({label}: MenuProps): JSX.Element => {
         </div>
         <span className='text-lg font-semibold'>{label.logout}</span>
       </Button>
-      {confirmLogout && <Modal />}
+      <TSettings>
+        <Modal />
+      </TSettings>
     </>
   );
 };
