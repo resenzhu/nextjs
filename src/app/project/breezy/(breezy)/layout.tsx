@@ -1,5 +1,5 @@
 import '@app/project/breezy/(breezy)/layout.css';
-import {Cookie, Socket} from '@components/project/breezy/shared';
+import {Cookie, Socket} from '@components/project/breezy/layout';
 import type {ReactNode} from 'react';
 
 type RootLayoutProps = {
