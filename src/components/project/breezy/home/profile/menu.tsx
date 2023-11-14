@@ -23,10 +23,10 @@ const Menu = ({label}: MenuProps): JSX.Element => {
   const {profile, settings, setProfile, setSettings} = useHome();
 
   const handleToggleSettings = (show: boolean): void => {
-    if (profile.confirmLogout !== show) {
-      setProfile({
-        ...profile,
-        confirmLogout: show
+    if (settings.show !== show) {
+      setSettings({
+        ...settings,
+        show: show
       });
     }
   };
@@ -42,7 +42,10 @@ const Menu = ({label}: MenuProps): JSX.Element => {
 
   return (
     <>
-      <Button style='profile'>
+      <Button
+        style='profile'
+        onClick={(): void => handleToggleSettings(true)}
+      >
         <div className='text-center'>
           <FontAwesomeIcon icon={faCog} />
         </div>
@@ -63,7 +66,9 @@ const Menu = ({label}: MenuProps): JSX.Element => {
         <span className='text-lg font-semibold'>{label.logout}</span>
       </Button>
       <TConfirmLogout>
-        <Modal />
+        <div>
+          <Modal />
+        </div>
       </TConfirmLogout>
     </>
   );
