@@ -7,18 +7,14 @@ type Viewport = {
   height: number;
 };
 
-type Sidenav = boolean;
-
 type State = {
   online: Online;
   viewport: Viewport;
-  sidenav: Sidenav;
 };
 
 type Reducers = {
   setOnline: (state: State, action: PayloadAction<Online>) => void;
   setViewport: (state: State, action: PayloadAction<Viewport>) => void;
-  setSidenav: (state: State, action: PayloadAction<Sidenav>) => void;
 };
 
 const name: string = 'app';
@@ -28,8 +24,7 @@ const initialState: State = {
   viewport: {
     width: 0,
     height: 0
-  },
-  sidenav: false
+  }
 };
 
 const reducers: Reducers = {
@@ -42,11 +37,6 @@ const reducers: Reducers = {
     if (state.viewport !== action.payload) {
       state.viewport = action.payload;
     }
-  },
-  setSidenav: (state, action) => {
-    if (state.sidenav !== action.payload) {
-      state.sidenav = action.payload;
-    }
   }
 };
 
@@ -57,6 +47,6 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {Online, Viewport, Sidenav};
-export const {setOnline, setViewport, setSidenav} = slice.actions;
+export type {Online, Viewport};
+export const {setOnline, setViewport} = slice.actions;
 export default slice.reducer;
