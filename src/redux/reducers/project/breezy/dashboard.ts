@@ -98,7 +98,7 @@ type Reducers = {
   setSettings: (state: State, action: PayloadAction<Settings>) => void;
 };
 
-const name: string = 'home';
+const name: string = 'dashboard';
 
 const initialState: State = {
   menu: {
