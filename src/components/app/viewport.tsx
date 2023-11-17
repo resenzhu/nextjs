@@ -2,7 +2,7 @@
 
 import {type ReactNode, useEffect, useState} from 'react';
 import {debounce} from '@utils/timer';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
 
 type ViewportProps = {
   children: ReactNode;

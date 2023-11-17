@@ -1,13 +1,13 @@
 'use client';
 
 import {type ReactNode, useEffect, useState} from 'react';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
 
-type ViewportProps = {
+type OnlineProps = {
   children: ReactNode;
 };
 
-const Viewport = ({children}: ViewportProps): JSX.Element => {
+const Online = ({children}: OnlineProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
   const {setOnline} = useApp();
 
@@ -36,5 +36,5 @@ const Viewport = ({children}: ViewportProps): JSX.Element => {
   return <>{children}</>;
 };
 
-export type {ViewportProps};
-export default Viewport;
+export type {OnlineProps};
+export default Online;
