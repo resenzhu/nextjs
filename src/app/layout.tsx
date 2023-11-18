@@ -1,5 +1,5 @@
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import {Online, Redux, Viewport} from '@components/main/app';
+import {Online, Redux, Viewport} from '@components/app';
 import {Analytics} from '@vercel/analytics/react';
 import type {ReactNode} from 'react';
 import {config} from '@fortawesome/fontawesome-svg-core';
