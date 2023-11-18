@@ -34,5 +34,5 @@ const Showcase = ({title, projects}: ShowcaseProps): JSX.Element => (
   </div>
 );
 
-export type {ShowcaseProps};
+export type {Project, ShowcaseProps};
 export default Showcase;
