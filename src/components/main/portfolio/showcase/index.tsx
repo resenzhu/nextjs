@@ -1,11 +1,7 @@
-import Card from '@components/main/portfolio/showcase/card';
+import Card, {
+  type CardProps as Project
+} from '@components/main/portfolio/showcase/card';
 import {LazyLoad} from '@components/main/shared';
-
-type Project = {
-  name: string;
-  description: string;
-  url: string;
-};
 
 type ShowcaseProps = {
   title: string;
@@ -38,5 +34,5 @@ const Showcase = ({title, projects}: ShowcaseProps): JSX.Element => (
   </div>
 );
 
-export type {Project, ShowcaseProps};
+export type {ShowcaseProps};
 export default Showcase;
