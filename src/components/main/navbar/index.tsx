@@ -1,19 +1,15 @@
-import type {HTMLAttributeAnchorTarget, ReactNode} from 'react';
+import NavMenu, {
+  type NavMenuProps as MenuProps
+} from '@components/main/navbar/navmenu';
 import Image from 'next/image';
 import Link from 'next/link';
 import Nav from '@components/main/navbar/nav';
-import NavMenu from '@components/main/navbar/navmenu';
+import type {ReactNode} from 'react';
 
 type NavbarProps = {
   logo: string;
   title: string;
   children: ReactNode;
-};
-
-type MenuProps = {
-  label: string;
-  url: string;
-  target?: HTMLAttributeAnchorTarget;
 };
 
 const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
