@@ -1,7 +1,7 @@
 'use client';
 
 import {Chrono} from 'react-chrono';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
 
 type Experience = {
   title: string;
