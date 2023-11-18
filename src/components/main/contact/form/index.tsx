@@ -1,18 +1,17 @@
-import Input from '@components/main/contact/form/input';
+import Input, {
+  type Label,
+  type Message
+} from '@components/main/contact/form/input';
 import {LazyLoad} from '@components/main/shared';
 
 type FormProps = {
   title: string;
   description: string;
-  label: {
-    name: string;
-    email: string;
-    message: string;
-    submit: string;
-  };
+  label: Label;
+  message: Message;
 };
 
-const Form = ({title, description, label}: FormProps): JSX.Element => (
+const Form = ({title, description, label, message}: FormProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-8 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -25,12 +24,8 @@ const Form = ({title, description, label}: FormProps): JSX.Element => (
       </LazyLoad>
       <LazyLoad>
         <Input
-          label={{
-            name: label.name,
-            email: label.email,
-            message: label.message,
-            submit: label.submit
-          }}
+          label={label}
+          message={message}
         />
       </LazyLoad>
     </div>

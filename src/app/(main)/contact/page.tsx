@@ -28,6 +28,51 @@ const Page = (): JSX.Element => (
           message: 'Message',
           submit: 'SUBMIT'
         }}
+        message={{
+          error: {
+            offline:
+              'You are currently offline. Please check your internet connection and try again later.',
+            throttle:
+              'You are submitting too quickly. Please take a moment and try again.',
+            input: {
+              name: {
+                empty: 'Please enter your name.',
+                tooShort:
+                  'Your name is too short. Please enter at least 2 characters.',
+                tooLong:
+                  'Your name is too long. Please enter a maximum of 120 characters.',
+                invalid:
+                  'Please enter a valid name using only letters and spaces.'
+              },
+              email: {
+                empty: 'Please enter your email address.',
+                tooShort:
+                  'Your email is too short. Please enter at least 3 characters.',
+                tooLong:
+                  'Your email is too long. Please enter a maximum of 320 characters.',
+                invalid: 'Please enter a valid email address.'
+              },
+              message: {
+                empty: 'Please enter a message.',
+                tooShort:
+                  'Your message is too short. Please enter at least 15 characters.',
+                tooLong:
+                  'Your message is too long. Please enter a maximum of 2000 characters.'
+              },
+              honeypot:
+                'Bot detection system triggered. Please ensure you are a human and not a bot.',
+              recaptcha:
+                'Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again.'
+            },
+            client:
+              'Oops! There was an error processing your form submission. Please review your information and try again.',
+            server:
+              'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.',
+            limit:
+              'Oops! You have exceeded the maximum number of contact form submissions for today. Please try again tomorrow.'
+          },
+          success: 'Thank you! Your form has been successfully submitted.'
+        }}
       />
     </section>
     <section className='h-full min-h-[12rem] pt-20'>

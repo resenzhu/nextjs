@@ -16,18 +16,53 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
 import useContact from '@hooks/main/use-contact';
 import {useGoogleReCaptcha} from 'react-google-recaptcha-v3';
 import validator from 'validator';
 
-type InputProps = {
-  label: {
-    name: string;
-    email: string;
-    message: string;
-    submit: string;
+type Label = {
+  name: string;
+  email: string;
+  message: string;
+  submit: string;
+};
+
+type Message = {
+  error: {
+    offline: string;
+    throttle: string;
+    input: {
+      name: {
+        empty: string;
+        tooShort: string;
+        tooLong: string;
+        invalid: string;
+      };
+      email: {
+        empty: string;
+        tooShort: string;
+        tooLong: string;
+        invalid: string;
+      };
+      message: {
+        empty: string;
+        tooShort: string;
+        tooLong: string;
+      };
+      honeypot: string;
+      recaptcha: string;
+    };
+    client: string;
+    server: string;
+    limit: string;
   };
+  success: string;
+};
+
+type InputProps = {
+  label: Label;
+  message: Message;
 };
 
 type SubmitContactFormReq = {
@@ -47,7 +82,7 @@ type SubmitContactFormRes = {
   data: {};
 };
 
-const Input = ({label}: InputProps): JSX.Element => {
+const Input = ({label, message}: InputProps): JSX.Element => {
   const {online} = useApp();
   const {form, setForm} = useContact();
   const [rendered, setRendered] = useState<boolean>(false);
@@ -95,12 +130,10 @@ const Input = ({label}: InputProps): JSX.Element => {
     if (!form.submitting) {
       let formError: string = '';
       if (!online) {
-        formError =
-          'You are currently offline. Please check your internet connection and try again later.';
+        formError = message.error.offline;
       }
       if (throttle) {
-        formError =
-          'You are submitting too quickly. Please take a moment and try again.';
+        formError = message.error.throttle;
       }
       setForm({
         ...form,
@@ -137,48 +170,21 @@ const Input = ({label}: InputProps): JSX.Element => {
         const requestSchema = object().shape({
           name: string()
             .ensure()
-            .required('Please enter your name.')
-            .min(
-              2,
-              'Your name is too short. Please enter at least 2 characters.'
-            )
-            .max(
-              120,
-              'Your name is too long. Please enter a maximum of 120 characters.'
-            ),
+            .required(message.error.input.name.empty)
+            .min(2, message.error.input.name.tooShort)
+            .max(120, message.error.input.name.tooLong),
           email: string()
             .ensure()
-            .required('Please enter your email address.')
-            .min(
-              3,
-              'Your email is too short. Please enter at least 3 characters.'
-            )
-            .max(
-              320,
-              'Your email is too long. Please enter a maximum of 320 characters.'
-            ),
+            .required(message.error.input.email.empty)
+            .min(3, message.error.input.email.tooShort)
+            .max(320, message.error.input.email.tooLong),
           message: string()
             .ensure()
-            .required('Please enter a message.')
-            .min(
-              15,
-              'Your message is too short. Please enter at least 15 characters.'
-            )
-            .max(
-              2000,
-              'Your message is too long. Please enter a maximum of 2000 characters.'
-            ),
-          honeypot: string()
-            .ensure()
-            .length(
-              0,
-              'Bot detection system triggered. Please ensure you are a human and not a bot.'
-            ),
-          recaptcha: string()
-            .ensure()
-            .required(
-              'Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again.'
-            )
+            .required(message.error.input.message.empty)
+            .min(15, message.error.input.message.tooShort)
+            .max(2000, message.error.input.message.tooLong),
+          honeypot: string().ensure().length(0, message.error.input.honeypot),
+          recaptcha: string().ensure().required(message.error.input.recaptcha)
         });
         const request: SubmitContactFormReq = {
           name: sanitize(form.name).trim(),
@@ -194,14 +200,14 @@ const Input = ({label}: InputProps): JSX.Element => {
           .then((): void => {
             if (!validator.isAlpha(request.name, 'en-US', {ignore: ' '})) {
               throw new ValidationError(
-                'Please enter a valid name using only letters and spaces.',
+                message.error.input.name.invalid,
                 request.name,
                 'name'
               );
             }
             if (!validator.isEmail(request.email)) {
               throw new ValidationError(
-                'Please enter a valid email address.',
+                message.error.input.email.invalid,
                 request.email,
                 'email'
               );
@@ -214,81 +220,68 @@ const Input = ({label}: InputProps): JSX.Element => {
                 (socketError: Error, response: SubmitContactFormRes): void => {
                   let formError: string = '';
                   if (socketError) {
-                    formError =
-                      'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.';
+                    formError = message.error.server;
                   }
                   if (response && !response.success) {
                     switch (response.error.code) {
                       case 40001:
                       case 4220101:
                       case 4220102:
-                        formError = 'Please enter your name.';
+                        formError = message.error.input.name.empty;
                         break;
                       case 4220103:
-                        formError =
-                          'Your name is too short. Please enter at least 2 characters.';
+                        formError = message.error.input.name.tooShort;
                         break;
                       case 4220104:
-                        formError =
-                          'Your name is too long. Please enter a maximum of 120 characters.';
+                        formError = message.error.input.name.tooLong;
                         break;
                       case 4220105:
-                        formError =
-                          'Please enter a valid name using only letters and spaces.';
+                        formError = message.error.input.name.invalid;
                         break;
                       case 40002:
                       case 4220201:
                       case 4220202:
-                        formError = 'Please enter your email address.';
+                        formError = message.error.input.email.empty;
                         break;
                       case 4220203:
-                        formError =
-                          'Your email is too short. Please enter at least 3 characters.';
+                        formError = message.error.input.email.tooShort;
                         break;
                       case 4220204:
-                        formError =
-                          'Your email is too long. Please enter a maximum of 320 characters.';
+                        formError = message.error.input.email.tooLong;
                         break;
                       case 4220205:
-                        formError = 'Please enter a valid email address.';
+                        formError = message.error.input.email.invalid;
                         break;
                       case 40003:
                       case 4220301:
                       case 4220302:
-                        formError = 'Please enter a message.';
+                        formError = message.error.input.message.empty;
                         break;
                       case 4220303:
-                        formError =
-                          'Your message is too short. Please enter at least 15 characters.';
+                        formError = message.error.input.message.tooShort;
                         break;
                       case 4220304:
-                        formError =
-                          'Your message is too long. Please enter a maximum of 2000 characters.';
+                        formError = message.error.input.message.tooLong;
                         break;
                       case 40004:
                       case 4220401:
                       case 4220402:
                       case 40304:
-                        formError =
-                          'Bot detection system triggered. Please ensure you are a human and not a bot.';
+                        formError = message.error.input.honeypot;
                         break;
                       case 40005:
                       case 4220501:
                       case 4220502:
-                        formError =
-                          'Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again.';
+                        formError = message.error.input.recaptcha;
                         break;
                       case 429:
-                        formError =
-                          'Oops! You have exceeded the maximum number of contact form submissions for today. Please try again tomorrow.';
+                        formError = message.error.limit;
                         break;
                       case 500:
-                        formError =
-                          'Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.';
+                        formError = message.error.server;
                         break;
                       default:
-                        formError =
-                          'Oops! There was an error processing your form submission. Please review your information and try again.';
+                        formError = message.error.client;
                         break;
                     }
                   }
@@ -297,10 +290,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                     recaptcha: '',
                     submitting: false,
                     error: formError,
-                    success:
-                      response && response.success
-                        ? 'Thank you! Your form has been successfully submitted.'
-                        : ''
+                    success: response && response.success ? message.success : ''
                   });
                 }
               );
@@ -313,7 +303,7 @@ const Input = ({label}: InputProps): JSX.Element => {
               error:
                 validationError.inner[0]?.message ??
                 validationError.message ??
-                'Oops! There was an error processing your form submission. Please review your information and try again.'
+                message.error.client
             });
           });
       });
@@ -446,5 +436,11 @@ const Input = ({label}: InputProps): JSX.Element => {
   );
 };
 
-export type {InputProps, SubmitContactFormReq, SubmitContactFormRes};
+export type {
+  Label,
+  Message,
+  InputProps,
+  SubmitContactFormReq,
+  SubmitContactFormRes
+};
 export default Input;
