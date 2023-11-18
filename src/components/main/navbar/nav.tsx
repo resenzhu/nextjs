@@ -8,7 +8,8 @@ import {
 } from '@components/main/navbar/transition';
 import {faEllipsisV, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
+import useNavbar from '@hooks/main/use-navbar';
 
 type NavProps = {
   children: ReactNode;
@@ -16,8 +17,9 @@ type NavProps = {
 
 const Nav = ({children}: NavProps): JSX.Element => {
   const sidebar = useRef<HTMLDivElement>(null);
+  const {viewport} = useApp();
   const [rendered, setRendered] = useState<boolean>(false);
-  const {sidenav, viewport, setSidenav} = useApp();
+  const {sidenav, setSidenav} = useNavbar();
 
   const handleToggleSidenav = (show: boolean): void => {
     if (sidenav !== show) {
@@ -31,19 +33,19 @@ const Nav = ({children}: NavProps): JSX.Element => {
     }
   };
 
-  useEffect((): (() => void) => {
+  useEffect((): void => {
     if (!rendered) {
       setRendered(true);
+    }
+  }, []);
+
+  useEffect((): (() => void) => {
+    if (rendered) {
+      addEventListener('mousedown', handleHideSidenav);
     }
     return (): void => {
       removeEventListener('mousedown', handleHideSidenav);
     };
-  }, []);
-
-  useEffect((): void => {
-    if (rendered) {
-      addEventListener('mousedown', handleHideSidenav);
-    }
   }, [rendered]);
 
   return (

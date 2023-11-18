@@ -2,14 +2,14 @@
 
 import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
-import useApp from '@hooks/main/use-app';
+import useNavbar from '@hooks/main/use-navbar';
 
 export type TProps = {
   children: ReactNode;
 };
 
 export const TNav = ({children}: TProps): JSX.Element => {
-  const {sidenav} = useApp();
+  const {sidenav} = useNavbar();
   return (
     <Transition
       show={sidenav}
