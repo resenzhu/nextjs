@@ -41,7 +41,6 @@ type Message = {
         tooShort: string;
         tooLong: string;
         invalid: string;
-        taken: string;
       };
       password: {
         empty: string;
@@ -252,10 +251,6 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                       case 4220105:
                         formErrorField = 'username';
                         formErrorMessage = message.error.input.username.invalid;
-                        break;
-                      case 40901:
-                        formErrorField = 'username';
-                        formErrorMessage = message.error.input.username.taken;
                         break;
                       case 40002:
                       case 4220201:

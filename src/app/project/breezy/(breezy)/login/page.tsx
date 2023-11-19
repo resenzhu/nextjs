@@ -31,9 +31,7 @@ const Page = (): JSX.Element => (
               tooLong:
                 'Your username is too long. Please enter a maximum of 15 characters.',
               invalid:
-                'Please enter a username containing only letters, numbers, hyphen, and underscore.',
-              taken:
-                'The username you entered is already taken. Please choose a different username.'
+                'Please enter a username containing only letters, numbers, hyphen, and underscore.'
             },
             password: {
               empty: 'Please enter your password.',
