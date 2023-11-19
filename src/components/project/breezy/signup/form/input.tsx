@@ -21,18 +21,52 @@ import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
 import {initialState} from '@redux/reducers/project/breezy/signup';
 import {sanitize} from 'isomorphic-dompurify';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
 import {useRouter} from 'next/navigation';
 import useSignUp from '@hooks/project/breezy/use-signup';
 import validator from 'validator';
 
-type InputProps = {
-  label: {
-    username: string;
-    displayName: string;
-    password: string;
-    submit: string;
+type Label = {
+  username: string;
+  displayName: string;
+  password: string;
+  submit: string;
+};
+
+type Message = {
+  error: {
+    offline: string;
+    throttle: string;
+    input: {
+      username: {
+        empty: string;
+        tooShort: string;
+        tooLong: string;
+        invalid: string;
+        taken: string;
+      };
+      displayName: {
+        empty: string;
+        tooShort: string;
+        tooLong: string;
+        invalid: string;
+      };
+      password: {
+        empty: string;
+        tooShort: string;
+        tooLong: string;
+      };
+      honeypot: string;
+      recaptcha: string;
+    };
+    client: string;
+    server: string;
   };
+};
+
+type InputProps = {
+  label: Label;
+  message: Message;
 };
 
 type SignUpReq = {
@@ -54,7 +88,7 @@ type SignUpRes = {
   };
 };
 
-const Input = ({label}: InputProps): JSX.Element => {
+const Input = ({label, message}: InputProps): JSX.Element => {
   const {online} = useApp();
   const recaptcha = useRef<Recaptcha>(null);
   const {form, setForm} = useSignUp();
@@ -119,12 +153,10 @@ const Input = ({label}: InputProps): JSX.Element => {
     if (!form.submitting) {
       let formError: string = '';
       if (!online) {
-        formError =
-          'You are currently offline. Please check your internet connection and try again later.';
+        formError = message.error.offline;
       }
       if (throttle) {
-        formError =
-          'You are submitting too quickly. Please take a moment and try again.';
+        formError = message.error.throttle;
       }
       setForm({
         ...form,
@@ -159,50 +191,22 @@ const Input = ({label}: InputProps): JSX.Element => {
       const requestSchema = object().shape({
         username: string()
           .ensure()
-          .required('Please enter your username.')
-          .min(
-            2,
-            'Your username is too short. Please enter at least 2 characters.'
-          )
-          .max(
-            15,
-            'Your username is too long. Please enter a maximum of 15 characters.'
-          )
-          .matches(
-            /^[a-zA-Z0-9_-]+$/u,
-            'Please enter a username containing only letters, numbers, hyphen, and underscore.'
-          ),
+          .required(message.error.input.username.empty)
+          .min(2, message.error.input.username.tooShort)
+          .max(15, message.error.input.username.tooLong)
+          .matches(/^[a-zA-Z0-9_-]+$/u, message.error.input.username.invalid),
         displayName: string()
           .ensure()
-          .required('Please enter your display name.')
-          .min(
-            2,
-            'Your display name is too short. Please enter at least 2 characters.'
-          )
-          .max(
-            25,
-            'Your display name is too long. Please enter a maximum of 25 characters.'
-          ),
+          .required(message.error.input.displayName.empty)
+          .min(2, message.error.input.displayName.tooShort)
+          .max(25, message.error.input.displayName.tooLong),
         password: string()
           .ensure()
-          .required('Please enter your password.')
-          .min(
-            8,
-            'Your password is too short. Please enter at least 8 characters.'
-          )
-          .max(
-            64,
-            'Your password is too long. Please enter a maximum of 64 characters.'
-          ),
-        honeypot: string()
-          .ensure()
-          .length(
-            0,
-            'Bot detection system triggered. Please ensure you are a human and not a bot.'
-          ),
-        recaptcha: string()
-          .ensure()
-          .required('Please complete the reCAPTCHA verification.')
+          .required(message.error.input.password.empty)
+          .min(8, message.error.input.password.tooShort)
+          .max(64, message.error.input.password.tooLong),
+        honeypot: string().ensure().length(0, message.error.input.honeypot),
+        recaptcha: string().ensure().required(message.error.input.recaptcha)
       });
       const request: SignUpReq = {
         username: sanitize(form.username).trim().toLowerCase(),
@@ -216,7 +220,7 @@ const Input = ({label}: InputProps): JSX.Element => {
         .then((): void => {
           if (!validator.isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
             throw new ValidationError(
-              'Please enter a valid display name using only letters and spaces.',
+              message.error.input.displayName.invalid,
               request.displayName,
               'displayName'
             );
@@ -230,8 +234,7 @@ const Input = ({label}: InputProps): JSX.Element => {
                 let formErrorField: string = '';
                 let formErrorMessage: string = '';
                 if (socketError) {
-                  formErrorMessage =
-                    'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
+                  formErrorMessage = message.error.server;
                 }
                 if (response) {
                   if (response.success) {
@@ -256,85 +259,78 @@ const Input = ({label}: InputProps): JSX.Element => {
                       case 4220101:
                       case 4220102:
                         formErrorField = 'username';
-                        formErrorMessage = 'Please enter your username.';
+                        formErrorMessage = message.error.input.username.empty;
                         break;
                       case 4220103:
                         formErrorField = 'username';
                         formErrorMessage =
-                          'Your username is too short. Please enter at least 2 characters.';
+                          message.error.input.username.tooShort;
                         break;
                       case 4220104:
                         formErrorField = 'username';
-                        formErrorMessage =
-                          'Your username is too long. Please enter a maximum of 15 characters.';
+                        formErrorMessage = message.error.input.username.tooLong;
                         break;
                       case 4220105:
                         formErrorField = 'username';
-                        formErrorMessage =
-                          'Please enter a username containing only letters, numbers, hyphen, and underscore.';
+                        formErrorMessage = message.error.input.username.invalid;
                         break;
                       case 40901:
                         formErrorField = 'username';
-                        formErrorMessage =
-                          'The username you entered is already taken. Please choose a different username.';
+                        formErrorMessage = message.error.input.username.taken;
                         break;
                       case 40002:
                       case 4220201:
                       case 4220202:
                         formErrorField = 'displayName';
-                        formErrorMessage = 'Please enter your display name.';
+                        formErrorMessage =
+                          message.error.input.displayName.empty;
                         break;
                       case 4220203:
                         formErrorField = 'displayName';
                         formErrorMessage =
-                          'Your display name is too short. Please enter at least 2 characters.';
+                          message.error.input.displayName.tooShort;
                         break;
                       case 4220204:
                         formErrorField = 'displayName';
                         formErrorMessage =
-                          'Your display name is too long. Please enter a maximum of 25 characters.';
+                          message.error.input.displayName.tooLong;
                         break;
                       case 4220205:
                         formErrorField = 'displayName';
                         formErrorMessage =
-                          'Please enter a valid display name using only letters.';
+                          message.error.input.displayName.invalid;
                         break;
                       case 40003:
                       case 4220301:
                       case 4220302:
                         formErrorField = 'password';
-                        formErrorMessage = 'Please enter your password.';
+                        formErrorMessage = message.error.input.password.empty;
                         break;
                       case 4220303:
                         formErrorField = 'password';
                         formErrorMessage =
-                          'Your password is too short. Please enter at least 8 characters.';
+                          message.error.input.password.tooShort;
                         break;
                       case 4220304:
                         formErrorField = 'password';
-                        formErrorMessage =
-                          'Your password is too long. Please enter a maximum of 64 characters.';
+                        formErrorMessage = message.error.input.password.tooLong;
                         break;
                       case 40004:
                       case 4220401:
                       case 4220402:
                       case 40304:
-                        formErrorMessage =
-                          'Bot detection system triggered. Please ensure you are a human and not a bot.';
+                        formErrorMessage = message.error.input.honeypot;
                         break;
                       case 40005:
                       case 4220501:
                       case 4220502:
-                        formErrorMessage =
-                          'Please complete the reCAPTCHA verification.';
+                        formErrorMessage = message.error.input.recaptcha;
                         break;
                       case 500:
-                        formErrorMessage =
-                          'Apologies, there was an unexpected error during the signup process. Please retry your signup later.';
+                        formErrorMessage = message.error.server;
                         break;
                       default:
-                        formErrorMessage =
-                          'Oops! There was an error with your signup. Please review your information and try again.';
+                        formErrorMessage = message.error.client;
                         break;
                     }
                     setForm({
@@ -362,7 +358,7 @@ const Input = ({label}: InputProps): JSX.Element => {
               message:
                 validationError.inner[0]?.message ??
                 validationError.message ??
-                'Oops! There was an error with your signup. Please review your information and try again.'
+                message.error.client
             }
           });
         });
@@ -455,5 +451,5 @@ const Input = ({label}: InputProps): JSX.Element => {
   );
 };
 
-export type {InputProps, SignUpReq, SignUpRes};
+export type {Label, Message, InputProps, SignUpReq, SignUpRes};
 export default Input;

@@ -1,13 +1,12 @@
-import Input from '@components/project/breezy/signup/form/input';
+import Input, {
+  type Label,
+  type Message
+} from '@components/project/breezy/signup/form/input';
 import Link from 'next/link';
 
 type FormProps = {
-  label: {
-    username: string;
-    displayName: string;
-    password: string;
-    submit: string;
-  };
+  label: Label;
+  message: Message;
   login: {
     description: string;
     label: string;
@@ -15,15 +14,11 @@ type FormProps = {
   };
 };
 
-const Form = ({label, login}: FormProps): JSX.Element => (
+const Form = ({label, message, login}: FormProps): JSX.Element => (
   <>
     <Input
-      label={{
-        username: label.username,
-        displayName: label.displayName,
-        password: label.password,
-        submit: label.submit
-      }}
+      label={label}
+      message={message}
     />
     <div className='mx-4 pb-4 text-center md:pb-5 md:text-xs'>
       {login.description}{' '}
