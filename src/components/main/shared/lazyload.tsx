@@ -1,7 +1,7 @@
 'use client';
 
 import type {ReactNode} from 'react';
-import SharedLazyLoad from 'react-lazy-load';
+import ReactLazyLoad from 'react-lazy-load';
 
 type LazyLoadProps = {
   offset?: number;
@@ -9,7 +9,7 @@ type LazyLoadProps = {
 };
 
 const LazyLoad = ({offset = -150, children}: LazyLoadProps): JSX.Element => (
-  <SharedLazyLoad offset={offset}>{children}</SharedLazyLoad>
+  <ReactLazyLoad offset={offset}>{children}</ReactLazyLoad>
 );
 
 export type {LazyLoadProps};
