@@ -25,8 +25,8 @@ const useApp = (): UseApp => {
   };
 
   return {
-    online: useSelector((state) => state.main.app.online),
-    viewport: useSelector((state) => state.main.app.viewport),
+    online: useSelector((state) => state.app.online),
+    viewport: useSelector((state) => state.app.viewport),
     setOnline: setOnline,
     setViewport: setViewport
   };
