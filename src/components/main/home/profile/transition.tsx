@@ -2,7 +2,7 @@
 
 import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
 
 export type TProps = {

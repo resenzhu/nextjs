@@ -1,7 +1,7 @@
 'use client';
 
 import type {ReactNode} from 'react';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
 
 type HomeProps = {
