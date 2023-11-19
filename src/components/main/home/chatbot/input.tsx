@@ -7,12 +7,19 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
-import useApp from '@hooks/main/use-app';
+import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
 
 type InputProps = {
   placeholder: string;
   sendIcon: IconDefinition;
+  error: {
+    empty: string;
+    tooShort: string;
+    tooLong: string;
+    client: string;
+    server: string;
+  };
 };
 
 type AskChatbotReq = {
@@ -30,7 +37,7 @@ type AskChatbotRes = {
   };
 };
 
-const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
+const Input = ({placeholder, sendIcon, error}: InputProps): JSX.Element => {
   const {online} = useApp();
   const {chatbot, setChatbot} = useHome();
 
@@ -81,17 +88,9 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
       const requestSchema = object().shape({
         input: string()
           .ensure()
-          .required(
-            'Uh-oh! It looks like you forgot to write a message. Please enter your message before sending it my way.'
-          )
-          .min(
-            1,
-            'Oops! Your message must be at least 1 character long. Please enter a message with at least 1 character before sending it.'
-          )
-          .max(
-            160,
-            'Oops! Your message exceeds the maximum limit of 160 characters. Please shorten your message and try again.'
-          )
+          .required(error.empty)
+          .min(1, error.tooShort)
+          .max(160, error.tooLong)
       });
       const request: AskChatbotReq = {
         input: sanitize(chatbot.input).trim()
@@ -111,28 +110,23 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
               (socketError: Error, response: AskChatbotRes): void => {
                 let chatError: string = '';
                 if (socketError) {
-                  chatError =
-                    "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience.";
+                  chatError = error.server;
                 }
                 if (response && !response.success) {
                   switch (response.error.code) {
                     case 40001:
                     case 4220101:
                     case 4220102:
-                      chatError =
-                        'Uh-oh! It looks like you forgot to write a message. Please enter your message before sending it my way.';
+                      chatError = error.empty;
                       break;
                     case 4220103:
-                      chatError =
-                        'Oops! Your message must be at least 1 character long. Please enter a message with at least 1 character before sending it.';
+                      chatError = error.tooShort;
                       break;
                     case 4220104:
-                      chatError =
-                        'Oops! Your message exceeds the maximum limit of 160 characters. Please shorten your message and try again.';
+                      chatError = error.tooLong;
                       break;
                     default:
-                      chatError =
-                        "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again.";
+                      chatError = error.client;
                       break;
                   }
                 }
@@ -166,7 +160,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                 message:
                   validationError.inner[0]?.message ??
                   validationError.message ??
-                  "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again."
+                  error.client
               }
             ]
           });

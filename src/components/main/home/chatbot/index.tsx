@@ -10,11 +10,21 @@ import Input from '@components/main/home/chatbot/input';
 
 type ChatbotProps = {
   name: string;
-  placeholder: string;
-  sendIcon: IconDefinition;
+  input: {
+    placeholder: string;
+    sendIcon: IconDefinition;
+  };
+  error: {
+    offline: string;
+    empty: string;
+    tooShort: string;
+    tooLong: string;
+    client: string;
+    server: string;
+  };
 };
 
-const Chatbot = ({name, placeholder, sendIcon}: ChatbotProps): JSX.Element => (
+const Chatbot = ({name, input, error}: ChatbotProps): JSX.Element => (
   <TChatbot>
     <div className='fixed bottom-0 z-10 h-full md:relative md:z-0 md:animate-fade-right md:shadow-2xl md:animate-duration-700 lg:animate-fade-left'>
       <TChatbotBackdrop>
@@ -29,12 +39,19 @@ const Chatbot = ({name, placeholder, sendIcon}: ChatbotProps): JSX.Element => (
             </div>
           </div>
           <div className='flex h-full flex-1 flex-col space-y-2 overflow-y-auto p-4'>
-            <Chat />
+            <Chat offline={error.offline} />
           </div>
           <div className='border-t-2'>
             <Input
-              placeholder={placeholder}
-              sendIcon={sendIcon}
+              placeholder={input.placeholder}
+              sendIcon={input.sendIcon}
+              error={{
+                empty: error.empty,
+                tooShort: error.tooShort,
+                tooLong: error.tooLong,
+                client: error.client,
+                server: error.server
+              }}
             />
           </div>
         </div>

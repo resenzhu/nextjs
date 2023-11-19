@@ -59,8 +59,24 @@ const Page = (): JSX.Element => (
       />
       <Chatbot
         name='RESEN [BOT]'
-        placeholder='Type a message'
-        sendIcon={faPaperPlane}
+        input={{
+          placeholder: 'Type a message',
+          sendIcon: faPaperPlane
+        }}
+        error={{
+          offline:
+            "Oops! It appears that you're currently offline. Please ensure that you're connected to the internet and try again later.",
+          empty:
+            'Uh-oh! It looks like you forgot to write a message. Please enter your message before sending it my way.',
+          tooShort:
+            'Oops! Your message must be at least 1 character long. Please enter a message with at least 1 character before sending it.',
+          tooLong:
+            'Oops! Your message exceeds the maximum limit of 160 characters. Please shorten your message and try again.',
+          client:
+            "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again.",
+          server:
+            "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience."
+        }}
       />
     </div>
   </section>

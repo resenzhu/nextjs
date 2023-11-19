@@ -3,7 +3,11 @@
 import {TOffline} from '@components/main/home/chatbot/transition';
 import useHome from '@hooks/main/use-home';
 
-const Chat = (): JSX.Element => {
+type ChatProps = {
+  offline: string;
+};
+
+const Chat = ({offline}: ChatProps): JSX.Element => {
   const {chatbot} = useHome();
   return (
     <>
@@ -26,12 +30,12 @@ const Chat = (): JSX.Element => {
       )}
       <TOffline>
         <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
-          Oops! It appears that you&#39;re currently offline. Please ensure that
-          you&#39;re connected to the internet and try again later.
+          {offline}
         </div>
       </TOffline>
     </>
   );
 };
 
+export type {ChatProps};
 export default Chat;
