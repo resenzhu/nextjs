@@ -15,12 +15,18 @@ import Link from 'next/link';
 import Picture from '@components/main/home/profile/picture';
 import Specialty from '@components/main/home/profile/specialty';
 
+type Social = {
+  name: string;
+  icon: IconDefinition;
+  url: string;
+};
+
 type ProfileProps = {
   picture: string | [string, string];
   name: string;
   specialties: string[];
   bio: string;
-  socials: {name: string; icon: IconDefinition; url: string}[];
+  socials: Social[];
 };
 
 const Profile = ({
@@ -86,5 +92,5 @@ const Profile = ({
   </TProfile>
 );
 
-export type {ProfileProps};
+export type {Social, ProfileProps};
 export default Profile;
