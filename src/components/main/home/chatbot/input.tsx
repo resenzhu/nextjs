@@ -13,12 +13,14 @@ import useHome from '@hooks/main/use-home';
 type InputProps = {
   placeholder: string;
   sendIcon: IconDefinition;
-  error: {
-    empty: string;
-    tooShort: string;
-    tooLong: string;
-    client: string;
-    server: string;
+  message: {
+    error: {
+      empty: string;
+      tooShort: string;
+      tooLong: string;
+      client: string;
+      server: string;
+    };
   };
 };
 
@@ -37,7 +39,7 @@ type AskChatbotRes = {
   };
 };
 
-const Input = ({placeholder, sendIcon, error}: InputProps): JSX.Element => {
+const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
   const {online} = useApp();
   const {chatbot, setChatbot} = useHome();
 
@@ -88,9 +90,9 @@ const Input = ({placeholder, sendIcon, error}: InputProps): JSX.Element => {
       const requestSchema = object().shape({
         input: string()
           .ensure()
-          .required(error.empty)
-          .min(1, error.tooShort)
-          .max(160, error.tooLong)
+          .required(message.error.empty)
+          .min(1, message.error.tooShort)
+          .max(160, message.error.tooLong)
       });
       const request: AskChatbotReq = {
         input: sanitize(chatbot.input).trim()
@@ -110,23 +112,23 @@ const Input = ({placeholder, sendIcon, error}: InputProps): JSX.Element => {
               (socketError: Error, response: AskChatbotRes): void => {
                 let chatError: string = '';
                 if (socketError) {
-                  chatError = error.server;
+                  chatError = message.error.server;
                 }
                 if (response && !response.success) {
                   switch (response.error.code) {
                     case 40001:
                     case 4220101:
                     case 4220102:
-                      chatError = error.empty;
+                      chatError = message.error.empty;
                       break;
                     case 4220103:
-                      chatError = error.tooShort;
+                      chatError = message.error.tooShort;
                       break;
                     case 4220104:
-                      chatError = error.tooLong;
+                      chatError = message.error.tooLong;
                       break;
                     default:
-                      chatError = error.client;
+                      chatError = message.error.client;
                       break;
                   }
                 }
@@ -160,7 +162,7 @@ const Input = ({placeholder, sendIcon, error}: InputProps): JSX.Element => {
                 message:
                   validationError.inner[0]?.message ??
                   validationError.message ??
-                  error.client
+                  message.error.client
               }
             ]
           });
