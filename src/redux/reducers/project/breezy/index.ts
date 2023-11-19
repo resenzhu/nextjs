@@ -8,7 +8,10 @@ import signUpReducer from '@redux/reducers/project/breezy/signup';
 const combinedReducers = combineReducers({
   signup: persistReducer(createPersistConfig({key: 'signup'}), signUpReducer),
   login: persistReducer(createPersistConfig({key: 'login'}), loginReducer),
-  dashboard: persistReducer(createPersistConfig({key: 'dashboard'}), dashboardReducer)
+  dashboard: persistReducer(
+    createPersistConfig({key: 'dashboard'}),
+    dashboardReducer
+  )
 });
 
 export default combinedReducers;
