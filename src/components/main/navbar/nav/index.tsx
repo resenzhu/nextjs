@@ -5,7 +5,7 @@ import {
   TNav,
   TNavBackdrop,
   TNavSidenav
-} from '@components/main/navbar/transition';
+} from '@components/main/navbar/nav/transition';
 import {faEllipsisV, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import useApp from '@hooks/app/use-app';
