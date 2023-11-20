@@ -7,7 +7,7 @@ import {Listbox} from '@headlessui/react';
 import {breezySocket} from '@utils/socket';
 import {faAngleDown} from '@fortawesome/free-solid-svg-icons';
 import {sanitize} from 'isomorphic-dompurify';
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 type Mode = {
   label: string;
@@ -38,7 +38,7 @@ type UpdateUserStatusRes = {
 };
 
 const Status = ({modes}: StatusProps): JSX.Element => {
-  const {profile, setProfile} = useHome();
+  const {profile, setProfile} = useDashboard();
   const [rendered, setRendered] = useState<boolean>(false);
 
   const handleUpdateUserStatus = (status: string): void => {

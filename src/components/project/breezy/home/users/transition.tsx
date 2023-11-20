@@ -2,14 +2,14 @@
 
 import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 export type TProps = {
   children: ReactNode;
 };
 
 export const TUsers = ({children}: TProps): JSX.Element => {
-  const {menu} = useHome();
+  const {menu} = useDashboard();
   return (
     <Transition
       show={menu.users}
@@ -21,7 +21,7 @@ export const TUsers = ({children}: TProps): JSX.Element => {
 };
 
 export const TFetching = ({children}: TProps): JSX.Element => {
-  const {users} = useHome();
+  const {users} = useDashboard();
   return (
     <Transition
       show={users.fetching && !users.fetched}
@@ -33,7 +33,7 @@ export const TFetching = ({children}: TProps): JSX.Element => {
 };
 
 export const TRetryFetch = ({children}: TProps): JSX.Element => {
-  const {users} = useHome();
+  const {users} = useDashboard();
   return (
     <Transition
       show={!users.fetching && !users.fetched}
@@ -45,7 +45,7 @@ export const TRetryFetch = ({children}: TProps): JSX.Element => {
 };
 
 export const TFetched = ({children}: TProps): JSX.Element => {
-  const {users} = useHome();
+  const {users} = useDashboard();
   return (
     <Transition
       show={users.fetched}
@@ -57,7 +57,7 @@ export const TFetched = ({children}: TProps): JSX.Element => {
 };
 
 export const TEmpty = ({children}: TProps): JSX.Element => {
-  const {users} = useHome();
+  const {users} = useDashboard();
   return (
     <Transition
       show={
@@ -72,7 +72,7 @@ export const TEmpty = ({children}: TProps): JSX.Element => {
 };
 
 export const TList = ({children}: TProps): JSX.Element => {
-  const {users} = useHome();
+  const {users} = useDashboard();
   return (
     <Transition
       show={

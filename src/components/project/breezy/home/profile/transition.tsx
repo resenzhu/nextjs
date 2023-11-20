@@ -2,14 +2,14 @@
 
 import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 export type TProps = {
   children: ReactNode;
 };
 
 export const TProfile = ({children}: TProps): JSX.Element => {
-  const {menu} = useHome();
+  const {menu} = useDashboard();
   return (
     <Transition
       show={menu.profile}
@@ -21,7 +21,7 @@ export const TProfile = ({children}: TProps): JSX.Element => {
 };
 
 export const TFetching = ({children}: TProps): JSX.Element => {
-  const {profile} = useHome();
+  const {profile} = useDashboard();
   return (
     <Transition
       show={profile.fetching && !profile.fetched}
@@ -33,7 +33,7 @@ export const TFetching = ({children}: TProps): JSX.Element => {
 };
 
 export const TRetryFetch = ({children}: TProps): JSX.Element => {
-  const {profile} = useHome();
+  const {profile} = useDashboard();
   return (
     <Transition
       show={!profile.fetching && !profile.fetched}
@@ -45,7 +45,7 @@ export const TRetryFetch = ({children}: TProps): JSX.Element => {
 };
 
 export const TFetched = ({children}: TProps): JSX.Element => {
-  const {profile} = useHome();
+  const {profile} = useDashboard();
   return (
     <Transition
       show={profile.fetched}
@@ -57,7 +57,7 @@ export const TFetched = ({children}: TProps): JSX.Element => {
 };
 
 export const TSettings = ({children}: TProps): JSX.Element => {
-  const {settings} = useHome();
+  const {settings} = useDashboard();
   return (
     <Transition
       show={settings.show}

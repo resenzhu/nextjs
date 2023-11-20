@@ -2,7 +2,7 @@
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/fontawesome-svg-core';
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 type NavMenuProps = {
   name: string;
@@ -10,7 +10,7 @@ type NavMenuProps = {
 };
 
 const NavMenu = ({name, icon}: NavMenuProps): JSX.Element => {
-  const {menu, setMenu} = useHome();
+  const {menu, setMenu} = useDashboard();
   const {keys} = Object;
 
   const handleSelectMenu = (menuName: string): void => {

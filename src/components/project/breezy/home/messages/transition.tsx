@@ -2,14 +2,14 @@
 
 import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 export type TProps = {
   children: ReactNode;
 };
 
 export const TMessages = ({children}: TProps): JSX.Element => {
-  const {menu} = useHome();
+  const {menu} = useDashboard();
   return (
     <Transition
       show={menu.messages}
@@ -21,7 +21,7 @@ export const TMessages = ({children}: TProps): JSX.Element => {
 };
 
 export const TEmpty = ({children}: TProps): JSX.Element => {
-  const {messages} = useHome();
+  const {messages} = useDashboard();
   return (
     <Transition
       show={messages.list.length === 0}

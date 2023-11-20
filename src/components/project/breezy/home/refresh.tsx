@@ -1,10 +1,10 @@
 'use client';
 
 import {type ReactNode, useEffect, useState} from 'react';
-import type {User} from '@redux/reducers/project/breezy/home';
+import type {User} from '@redux/reducers/project/breezy/dashboard';
 import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 import {useRouter} from 'next/navigation';
 
 type RefreshProps = {
@@ -56,7 +56,7 @@ type UserStatusNotif = {
 };
 
 const Refresh = ({children}: RefreshProps): JSX.Element => {
-  const {profile, users, setProfile, setUsers} = useHome();
+  const {profile, users, setProfile, setUsers} = useDashboard();
   const [rendered, setRendered] = useState<boolean>(false);
   const {push} = useRouter();
 

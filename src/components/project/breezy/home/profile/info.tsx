@@ -1,9 +1,9 @@
 'use client';
 
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 const Info = (): JSX.Element => {
-  const {profile} = useHome();
+  const {profile} = useDashboard();
   return (
     <div className='flex flex-col items-center justify-center space-y-4'>
       <div className='flex h-20 w-20 items-center justify-center rounded-full border-4 bg-purple-500 text-3xl font-semibold tracking-wider text-white'>

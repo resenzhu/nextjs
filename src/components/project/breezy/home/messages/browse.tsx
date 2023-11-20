@@ -1,14 +1,14 @@
 'use client';
 
 import {Button} from '@components/project/breezy/shared';
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 type BrowseProps = {
   label: string;
 };
 
 const Browse = ({label}: BrowseProps): JSX.Element => {
-  const {menu, setMenu} = useHome();
+  const {menu, setMenu} = useDashboard();
 
   const handleToggleUsers = (show: boolean): void => {
     if (menu.users !== show) {

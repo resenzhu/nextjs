@@ -1,6 +1,6 @@
 'use client';
 
-import useHome from '@hooks/project/breezy/use-home';
+import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 type ListProps = {
   label: {
@@ -9,7 +9,7 @@ type ListProps = {
 };
 
 const List = ({label}: ListProps): JSX.Element => {
-  const {users} = useHome();
+  const {users} = useDashboard();
   return (
     <>
       {users.list
