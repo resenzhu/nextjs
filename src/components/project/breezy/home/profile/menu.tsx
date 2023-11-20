@@ -65,8 +65,8 @@ const Menu = ({label}: MenuProps): JSX.Element => {
         <span className='text-lg font-semibold'>{label.logout}</span>
       </Button>
       <Dialog
-        open={true}
-        onClose={(): void => {}}
+        open={profile.confirmLogout}
+        onClose={(): void => handleToggleConfirmLogout(false)}
       />
     </>
   );
