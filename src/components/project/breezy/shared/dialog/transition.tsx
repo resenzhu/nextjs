@@ -12,13 +12,11 @@ export type TProps = {
   children: ReactNode;
 };
 
-export const TDialog = ({show, children}: TDialogProps): JSX.Element => {
-  return (
-    <Transition
-      show={show}
-      as={Fragment}
-    >
-      {children}
-    </Transition>
-  );
-};
+export const TDialog = ({show, children}: TDialogProps): JSX.Element => (
+  <Transition
+    show={show}
+    as={Fragment}
+  >
+    {children}
+  </Transition>
+);
