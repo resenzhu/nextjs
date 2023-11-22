@@ -1,7 +1,7 @@
 'use client';
 
-import type {ReactNode} from 'react';
 import ReactLazyLoad from 'react-lazy-load';
+import type {ReactNode} from 'react';
 
 type LazyLoadProps = {
   offset?: number;

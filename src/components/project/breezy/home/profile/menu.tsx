@@ -1,11 +1,11 @@
 'use client';
 
+import {Button, Dialog} from '@components/project/breezy/shared';
 import {
   faAngleRight,
   faCog,
   faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
-import {Button, Dialog} from '@components/project/breezy/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 
