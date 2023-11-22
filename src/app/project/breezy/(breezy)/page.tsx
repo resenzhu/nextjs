@@ -63,7 +63,15 @@ const Page = (): JSX.Element => (
         }}
         label={{
           settings: 'Settings',
-          logout: 'Logout'
+          logout: 'Logout',
+          dialog: {
+            logout: {
+              title: 'Log Out',
+              subtitle: 'Are you sure you want to log out?',
+              cancel: 'CANCEL',
+              confirm: 'LOG OUT'
+            }
+          }
         }}
       />
       <Settings />

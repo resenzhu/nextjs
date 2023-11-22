@@ -12,6 +12,14 @@ import useDashboard from '@hooks/project/breezy/use-dashboard';
 type Label = {
   settings: string;
   logout: string;
+  dialog: {
+    logout: {
+      title: string;
+      subtitle: string;
+      cancel: string;
+      confirm: string;
+    };
+  };
 };
 
 type MenuProps = {
@@ -66,7 +74,14 @@ const Menu = ({label}: MenuProps): JSX.Element => {
       </Button>
       <Dialog
         open={profile.confirmLogout}
+        label={{
+          title: label.dialog.logout.title,
+          subtitle: label.dialog.logout.subtitle,
+          cancel: label.dialog.logout.cancel,
+          confirm: label.dialog.logout.confirm
+        }}
         onClose={(): void => handleToggleConfirmLogout(false)}
+        onConfirm={(): void => handleToggleConfirmLogout(false)}
       />
     </>
   );
