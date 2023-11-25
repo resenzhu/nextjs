@@ -1,4 +1,3 @@
-import Menu, {type Label} from '@components/project/breezy/home/profile/menu';
 import {
   TFetched,
   TFetching,
@@ -7,7 +6,9 @@ import {
 } from '@components/project/breezy/home/profile/transition';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Info from '@components/project/breezy/home/profile/info';
+import Logout from '@components/project/breezy/home/profile/logout';
 import Retry from '@components/project/breezy/home/profile/retry';
+import Settings from '@components/project/breezy/home/profile/settings';
 import Status from '@components/project/breezy/home/profile/status';
 import {faSpinner} from '@fortawesome/free-solid-svg-icons';
 
@@ -16,7 +17,18 @@ type ProfileProps = {
     message: string;
     action: string;
   };
-  label: Label;
+  label: {
+    settings: string;
+    logout: string;
+    dialog: {
+      logout: {
+        title: string;
+        subtitle: string;
+        cancel: string;
+        confirm: string;
+      };
+    };
+  };
 };
 
 const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
@@ -48,7 +60,11 @@ const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
               />
             </div>
             <div className='flex w-64 flex-col items-center justify-center space-y-3'>
-              <Menu label={label} />
+              <Settings label={label.settings} />
+              <Logout
+                label={label.logout}
+                dialog={label.dialog.logout}
+              />
             </div>
           </div>
         </TFetched>
