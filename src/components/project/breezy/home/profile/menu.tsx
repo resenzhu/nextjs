@@ -58,9 +58,11 @@ const Menu = ({label}: MenuProps): JSX.Element => {
   };
 
   const handleLogout = (): void => {
-    breezySocket.timeout(60000).emit('logout', (socketError: Error, response: LogoutRes): void => {
-      console.log(response);
-    });
+    breezySocket
+      .timeout(60000)
+      .emit('logout', (socketError: Error, response: LogoutRes): void => {
+        console.log(response);
+      });
   };
 
   return (
