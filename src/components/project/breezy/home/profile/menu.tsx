@@ -7,6 +7,7 @@ import {
   faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {breezySocket} from '@utils/socket';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 type Label = {
@@ -24,6 +25,15 @@ type Label = {
 
 type MenuProps = {
   label: Label;
+};
+
+type LogoutRes = {
+  success: boolean;
+  error: {
+    code: number;
+    message: string;
+  };
+  data: {};
 };
 
 const Menu = ({label}: MenuProps): JSX.Element => {
@@ -45,6 +55,12 @@ const Menu = ({label}: MenuProps): JSX.Element => {
         confirmLogout: show
       });
     }
+  };
+
+  const handleLogout = (): void => {
+    breezySocket.timeout(60000).emit('logout', (socketError: Error, response: LogoutRes): void => {
+      console.log(response);
+    });
   };
 
   return (
@@ -81,7 +97,7 @@ const Menu = ({label}: MenuProps): JSX.Element => {
           confirm: label.dialog.logout.confirm
         }}
         onClose={(): void => handleToggleConfirmLogout(false)}
-        onConfirm={(): void => handleToggleConfirmLogout(false)}
+        onConfirm={(): void => handleLogout()}
       />
     </>
   );
