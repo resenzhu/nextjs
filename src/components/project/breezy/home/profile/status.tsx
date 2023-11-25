@@ -99,17 +99,20 @@ const Status = ({modes}: StatusProps): JSX.Element => {
                     ...profile.user.session,
                     status: {
                       ...profile.user.session.status,
-                      previous: socketError
-                        ? profile.user.session.status.previous
-                        : profile.user.session.status.current,
-                      current: socketError
-                        ? profile.user.session.status.previous
-                        : profile.user.session.status.current,
+                      previous:
+                        socketError || !response.success
+                          ? profile.user.session.status.previous
+                          : profile.user.session.status.current,
+                      current:
+                        socketError || !response.success
+                          ? profile.user.session.status.previous
+                          : profile.user.session.status.current,
                       updating: false
                     },
-                    lastOnline: socketError
-                      ? profile.user.session.lastOnline
-                      : response.data.user.session.lastOnline
+                    lastOnline:
+                      socketError || !response.success
+                        ? profile.user.session.lastOnline
+                        : response.data.user.session.lastOnline
                   }
                 }
               });
