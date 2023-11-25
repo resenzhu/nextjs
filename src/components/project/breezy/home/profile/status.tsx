@@ -100,17 +100,17 @@ const Status = ({modes}: StatusProps): JSX.Element => {
                     status: {
                       ...profile.user.session.status,
                       previous:
-                        socketError || !response.success
+                        socketError || (response && !response.success)
                           ? profile.user.session.status.previous
                           : profile.user.session.status.current,
                       current:
-                        socketError || !response.success
+                        socketError || (response && !response.success)
                           ? profile.user.session.status.previous
                           : profile.user.session.status.current,
                       updating: false
                     },
                     lastOnline:
-                      socketError || !response.success
+                      socketError || (response && !response.success)
                         ? profile.user.session.lastOnline
                         : response.data.user.session.lastOnline
                   }

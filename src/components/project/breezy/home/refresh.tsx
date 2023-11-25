@@ -104,7 +104,10 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
               ...users,
               fetching: false,
               fetched: !socketError,
-              list: socketError ? [...users.list] : response.data.users
+              list:
+                socketError || (response && !response.success)
+                  ? [...users.list]
+                  : response.data.users
             });
           }
         );
