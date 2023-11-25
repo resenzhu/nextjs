@@ -75,7 +75,6 @@ type Profile = {
       lastOnline: string;
     };
   };
-  confirmLogout: boolean;
 };
 
 type Settings = {
@@ -131,8 +130,7 @@ const initialState: State = {
         },
         lastOnline: ''
       }
-    },
-    confirmLogout: false
+    }
   },
   settings: {
     show: false
