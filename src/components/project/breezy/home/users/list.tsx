@@ -36,7 +36,13 @@ const List = ({label}: ListProps): JSX.Element => {
                     {user.displayName}
                   </div>
                   <div className='text-sm text-gray-600'>{`@${user.username}`}</div>
-                  <div className='text-sm font-semibold text-green-500'>
+                  <div
+                    className={`text-sm font-semibold ${
+                      user.session.status === 'online'
+                        ? 'text-green-500'
+                        : 'text-yellow-600'
+                    }`}
+                  >
                     {user.session.status}
                   </div>
                 </div>
