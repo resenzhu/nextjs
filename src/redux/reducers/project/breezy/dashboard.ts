@@ -29,7 +29,6 @@ type Chat = {
 };
 
 type Message = {
-  id: string;
   sender: {
     id: string;
     typing: boolean;
