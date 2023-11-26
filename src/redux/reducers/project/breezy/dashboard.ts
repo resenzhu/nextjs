@@ -29,6 +29,7 @@ type Chat = {
 };
 
 type Message = {
+  id: string;
   sender: {
     id: string;
     typing: boolean;
@@ -40,6 +41,7 @@ type Messages = {
   fetching: boolean;
   fetched: boolean;
   list: Message[];
+  active: string | null;
 };
 
 type Users = {
@@ -107,7 +109,8 @@ const initialState: State = {
   messages: {
     fetching: false,
     fetched: false,
-    list: []
+    list: [],
+    active: null
   },
   users: {
     fetching: false,
