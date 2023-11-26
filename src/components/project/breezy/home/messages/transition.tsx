@@ -24,7 +24,31 @@ export const TEmpty = ({children}: TProps): JSX.Element => {
   const {messages} = useDashboard();
   return (
     <Transition
-      show={messages.list.length === 0}
+      show={messages.list.length === 0 && !messages.active}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
+
+export const TList = ({children}: TProps): JSX.Element => {
+  const {messages} = useDashboard();
+  return (
+    <Transition
+      show={messages.list.length !== 0 && !messages.active}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
+
+export const TActive = ({children}: TProps): JSX.Element => {
+  const {messages} = useDashboard();
+  return (
+    <Transition
+      show={messages.active !== null}
       as={Fragment}
     >
       {children}
