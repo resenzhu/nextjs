@@ -31,7 +31,7 @@ type Chat = {
 type Message = {
   id: string;
   sender: {
-    user: User;
+    id: string;
     typing: boolean;
   };
   chats: Chat[];
