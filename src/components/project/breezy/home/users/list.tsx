@@ -1,7 +1,6 @@
 'use client';
 
 import {Button} from '@components/project/breezy/shared';
-import {nanoid} from 'nanoid';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 type ListProps = {
@@ -13,32 +12,37 @@ type ListProps = {
 const List = ({label}: ListProps): JSX.Element => {
   const {menu, messages, users, setMenu, setMessages} = useDashboard();
 
-  const handleOpenChat = (userId: string): void => {
+  const handleOpenChat = (onlineUserId: string): void => {
     if (
-      !messages.list.some((message): boolean => message.sender.id === userId)
+      messages.list.some(
+        (message): boolean => message.sender.id === onlineUserId
+      )
     ) {
-      const newMessageId = nanoid();
+      setMessages({
+        ...messages,
+        active: onlineUserId
+      });
+    } else {
       setMessages({
         ...messages,
         list: [
           ...messages.list,
           {
-            id: newMessageId,
             sender: {
-              id: userId,
+              id: onlineUserId,
               typing: false
             },
             chats: []
           }
         ],
-        active: newMessageId
-      });
-      setMenu({
-        ...menu,
-        messages: true,
-        users: false
+        active: onlineUserId
       });
     }
+    setMenu({
+      ...menu,
+      messages: true,
+      users: false
+    });
   };
 
   return (
