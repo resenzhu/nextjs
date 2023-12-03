@@ -56,11 +56,12 @@ const List = ({label}: ListProps): JSX.Element => {
               key={user.id}
             >
               <div className='mr-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-500 text-2xl font-semibold tracking-wider text-white'>
-                {`${
-                  user.displayName.split(' ')[0]?.charAt(0).toUpperCase() ?? ''
-                }${
-                  user.displayName.split(' ')[1]?.charAt(0).toUpperCase() ?? ''
-                }`}
+                {user.displayName
+                  .split(' ')
+                  .map((word): string => word[0] ?? '')
+                  .join('')
+                  .slice(0, 2)
+                  .toUpperCase() ?? ''}
               </div>
               <div className='flex flex-1 justify-between'>
                 <div
