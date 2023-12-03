@@ -1,10 +1,14 @@
 'use client';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
+import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 
-const Back = (): JSX.Element => {
+type BackProps = {
+  icon: IconDefinition;
+};
+
+const Back = ({icon}: BackProps): JSX.Element => {
   const {messages, setMessages} = useDashboard();
 
   const handleGoBack = (): void => {
@@ -21,10 +25,11 @@ const Back = (): JSX.Element => {
     >
       <FontAwesomeIcon
         className='flex text-2xl text-gray-500 duration-150 hover:text-purple-500'
-        icon={faArrowLeftLong}
+        icon={icon}
       />
     </button>
   );
 };
 
+export type {BackProps};
 export default Back;
