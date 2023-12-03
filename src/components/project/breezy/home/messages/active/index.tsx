@@ -1,8 +1,8 @@
-import {faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
 import Back from '@components/project/breezy/home/messages/active/back';
 import Chat from '@components/project/breezy/home/messages/active/chat';
 import Info from '@components/project/breezy/home/messages/active/info';
 import Input from '@components/project/breezy/home/messages/active/input';
+import {faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
 
 const Active = (): JSX.Element => (
   <div className='flex h-screen flex-col'>

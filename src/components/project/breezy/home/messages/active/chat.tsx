@@ -1,7 +1,4 @@
-import {
-  faCheckDouble,
-  faEllipsisH
-} from '@fortawesome/free-solid-svg-icons';
+import {faCheckDouble, faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Tooltip} from '@components/project/breezy/shared';
 
@@ -41,8 +38,8 @@ const Chat = (): JSX.Element => (
         style={{wordBreak: 'break-word'}}
       >
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
-        has roots in a piece of classical Latin literature from 45 BC, making
-        it over 2000 years old.
+        has roots in a piece of classical Latin literature from 45 BC, making it
+        over 2000 years old.
       </p>
       <div className='mx-1 text-end'>
         <div className='space-x-2'>
@@ -102,8 +99,8 @@ const Chat = (): JSX.Element => (
         style={{wordBreak: 'break-word'}}
       >
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
-        has roots in a piece of classical Latin literature from 45 BC, making
-        it over 2000 years old.
+        has roots in a piece of classical Latin literature from 45 BC, making it
+        over 2000 years old.
       </p>
       <div className='mx-1 text-end'>
         <div className='space-x-2'>
