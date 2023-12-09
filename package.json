@@ -10,7 +10,7 @@
   },
   "scripts": {
     "upgrade": "ncu -u",
-    "prettier": "prettier --write . !.next",
+    "prettier": "prettier --list-different --write . !.next",
     "lint": "next lint",
     "dev": "next dev",
     "build": "next build",
