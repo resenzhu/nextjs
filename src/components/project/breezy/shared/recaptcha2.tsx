@@ -5,7 +5,7 @@ import Recaptcha from 'react-google-recaptcha';
 
 type RecaptchaV2Props = {
   reference: LegacyRef<Recaptcha>;
-  onChange: (token: string | null) => void;
+  onChange: (captchaToken: string | null) => void;
 };
 
 const RecaptchaV2 = ({reference, onChange}: RecaptchaV2Props): JSX.Element => (
