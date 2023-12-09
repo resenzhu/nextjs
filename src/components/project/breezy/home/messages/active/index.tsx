@@ -1,6 +1,6 @@
 import Back from '@components/project/breezy/home/messages/active/back';
 import Chat from '@components/project/breezy/home/messages/active/chat';
-import Info from '@components/project/breezy/home/messages/active/info';
+import Header from '@components/project/breezy/home/messages/active/header';
 import Input from '@components/project/breezy/home/messages/active/input';
 import {faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
 
@@ -10,7 +10,7 @@ const Active = (): JSX.Element => (
       <div className='mx-4 flex space-x-5 py-2'>
         <Back icon={faArrowLeftLong} />
         <div className='flex flex-1 items-center'>
-          <Info />
+          <Header />
         </div>
       </div>
     </div>

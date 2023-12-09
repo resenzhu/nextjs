@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import type {User} from '@redux/reducers/project/breezy/dashboard';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 
-const Info = (): JSX.Element => {
+const Header = (): JSX.Element => {
   const {messages, users} = useDashboard();
   const [activeUser, setActiveUser] = useState<User | undefined>(
     users.list.find((user): boolean => user.id === messages.active)
@@ -41,4 +41,4 @@ const Info = (): JSX.Element => {
   );
 };
 
-export default Info;
+export default Header;
