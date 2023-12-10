@@ -8,9 +8,10 @@ import {
   useState
 } from 'react';
 import {
-  TError,
-  TSubmit,
-  TSubmitting
+  TFormError,
+  TFormSubmit,
+  TFormSubmitting,
+  TRecaptchaLoading
 } from '@components/project/breezy/signup/form/transition';
 import {ValidationError, object, string} from 'yup';
 import {faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons';
@@ -135,11 +136,26 @@ const Input = ({label, message}: InputProps): JSX.Element => {
     }
   };
 
-  const handleUpdateRecaptcha = (captcha: string | null): void => {
-    if (form.recaptcha !== captcha) {
+  const handleToggleRecaptcha = (show: boolean): void => {
+    if (form.recaptcha.loading !== !show) {
       setForm({
         ...form,
-        recaptcha: captcha ?? '',
+        recaptcha: {
+          ...form.recaptcha,
+          loading: !show
+        }
+      });
+    }
+  };
+
+  const handleUpdateRecaptcha = (captchaToken: string | null): void => {
+    if (form.recaptcha.token !== captchaToken) {
+      setForm({
+        ...form,
+        recaptcha: {
+          ...form.recaptcha,
+          token: captchaToken ?? ''
+        },
         error: {
           field: null,
           message: ''
@@ -213,7 +229,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         displayName: sanitize(form.displayName).trim(),
         password: form.password,
         honeypot: sanitize(form.honeypot).trim(),
-        recaptcha: sanitize(form.recaptcha).trim()
+        recaptcha: sanitize(form.recaptcha.token).trim()
       };
       requestSchema
         .validate(request, {abortEarly: false})
@@ -335,7 +351,10 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                     }
                     setForm({
                       ...form,
-                      recaptcha: '',
+                      recaptcha: {
+                        ...form.recaptcha,
+                        token: ''
+                      },
                       submitting: false,
                       error: {
                         field: formErrorField,
@@ -416,10 +435,21 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           onClick={(): void => handleToggleRevealPassword(!form.reveal)}
         />
       </div>
-      <RecaptchaV2
-        reference={recaptcha}
-        onChange={(captcha): void => handleUpdateRecaptcha(captcha)}
-      />
+      <TRecaptchaLoading>
+        <div className='flex h-20 items-center justify-center'>
+          <FontAwesomeIcon
+            className='animate-spin text-3xl text-purple-500 animate-duration-[1400ms] animate-infinite'
+            icon={faSpinner}
+          />
+        </div>
+      </TRecaptchaLoading>
+      <div className='place-self-center'>
+        <RecaptchaV2
+          reference={recaptcha}
+          asyncScriptOnLoad={(): void => handleToggleRecaptcha(true)}
+          onChange={(captcha): void => handleUpdateRecaptcha(captcha)}
+        />
+      </div>
       <button
         className={`rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 disabled:bg-gray-300 md:text-sm ${
           form.submitting ? 'cursor-default' : 'active:bg-purple-600'
@@ -429,24 +459,24 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           form.username.trim().length === 0 ||
           form.displayName.trim().length === 0 ||
           form.password.trim().length === 0 ||
-          form.recaptcha.trim().length === 0
+          form.recaptcha.token.trim().length === 0
         }
       >
-        <TSubmit>
+        <TFormSubmit>
           <span>{label.submit}</span>
-        </TSubmit>
-        <TSubmitting>
+        </TFormSubmit>
+        <TFormSubmitting>
           <FontAwesomeIcon
             className='animate-spin text-xl animate-infinite'
             icon={faSpinner}
           />
-        </TSubmitting>
+        </TFormSubmitting>
       </button>
-      <TError>
+      <TFormError>
         <div className='rounded-lg bg-red-500 p-2 text-center text-sm text-white md:text-xs'>
           {form.error.message}
         </div>
-      </TError>
+      </TFormError>
     </form>
   );
 };
