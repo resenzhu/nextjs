@@ -8,6 +8,30 @@ export type TProps = {
   children: ReactNode;
 };
 
+export const TRecaptchaLoading = ({children}: TProps): JSX.Element => {
+  const {form} = useSignUp();
+  return (
+    <Transition
+      show={form.recaptcha.loading}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
+
+export const TRecaptchaReady = ({children}: TProps): JSX.Element => {
+  const {form} = useSignUp();
+  return (
+    <Transition
+      show={!form.recaptcha.loading}
+      as={Fragment}
+    >
+      {children}
+    </Transition>
+  );
+};
+
 export const TFormError = ({children}: TProps): JSX.Element => {
   const {form} = useSignUp();
   return (
