@@ -44,7 +44,7 @@ export const TLabelMessage = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TError = ({children}: TProps): JSX.Element => {
+export const TFormError = ({children}: TProps): JSX.Element => {
   const {form} = useContact();
   return (
     <Transition
@@ -56,7 +56,7 @@ export const TError = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TSuccess = ({children}: TProps): JSX.Element => {
+export const TFormSuccess = ({children}: TProps): JSX.Element => {
   const {form} = useContact();
   return (
     <Transition
@@ -68,7 +68,7 @@ export const TSuccess = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TSubmit = ({children}: TProps): JSX.Element => {
+export const TFormSubmit = ({children}: TProps): JSX.Element => {
   const {form} = useContact();
   return (
     <Transition
@@ -80,7 +80,7 @@ export const TSubmit = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TSubmitting = ({children}: TProps): JSX.Element => {
+export const TFormSubmitting = ({children}: TProps): JSX.Element => {
   const {form} = useContact();
   return (
     <Transition

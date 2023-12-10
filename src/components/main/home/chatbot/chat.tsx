@@ -1,6 +1,6 @@
 'use client';
 
-import {TOffline} from '@components/main/home/chatbot/transition';
+import {TChatbotOffline} from '@components/main/home/chatbot/transition';
 import useHome from '@hooks/main/use-home';
 
 type ChatProps = {
@@ -28,11 +28,11 @@ const Chat = ({offline}: ChatProps): JSX.Element => {
           </div>
         )
       )}
-      <TOffline>
+      <TChatbotOffline>
         <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
           {offline}
         </div>
-      </TOffline>
+      </TChatbotOffline>
     </>
   );
 };

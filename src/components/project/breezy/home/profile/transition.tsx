@@ -20,7 +20,7 @@ export const TProfile = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TFetching = ({children}: TProps): JSX.Element => {
+export const TProfileFetching = ({children}: TProps): JSX.Element => {
   const {profile} = useDashboard();
   return (
     <Transition
@@ -32,7 +32,7 @@ export const TFetching = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TRetryFetch = ({children}: TProps): JSX.Element => {
+export const TProfileFetchRetry = ({children}: TProps): JSX.Element => {
   const {profile} = useDashboard();
   return (
     <Transition
@@ -44,7 +44,7 @@ export const TRetryFetch = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TFetched = ({children}: TProps): JSX.Element => {
+export const TProfileFetched = ({children}: TProps): JSX.Element => {
   const {profile} = useDashboard();
   return (
     <Transition
@@ -56,7 +56,7 @@ export const TFetched = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TSettings = ({children}: TProps): JSX.Element => {
+export const TProfileSettings = ({children}: TProps): JSX.Element => {
   const {settings} = useDashboard();
   return (
     <Transition

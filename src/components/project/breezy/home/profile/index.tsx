@@ -1,8 +1,8 @@
 import {
-  TFetched,
-  TFetching,
   TProfile,
-  TRetryFetch
+  TProfileFetchRetry,
+  TProfileFetched,
+  TProfileFetching
 } from '@components/project/breezy/home/profile/transition';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import Info from '@components/project/breezy/home/profile/info';
@@ -35,19 +35,19 @@ const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
   <TProfile>
     <div className='h-[calc(100vh-3.5rem)] bg-[url("/images/project/breezy/home-profile-cover.webp")] bg-cover bg-center bg-no-repeat'>
       <div className='mx-4 flex h-full items-center justify-center'>
-        <TFetching>
+        <TProfileFetching>
           <FontAwesomeIcon
             className='animate-spin text-4xl text-white animate-duration-[1400ms] animate-infinite'
             icon={faSpinner}
           />
-        </TFetching>
-        <TRetryFetch>
+        </TProfileFetching>
+        <TProfileFetchRetry>
           <div className='w-3/4 space-y-8 text-center'>
             <p className='text-white'>{fetch.message}</p>
             <Retry label={fetch.action} />
           </div>
-        </TRetryFetch>
-        <TFetched>
+        </TProfileFetchRetry>
+        <TProfileFetched>
           <div className='flex flex-col items-center justify-center space-y-12'>
             <div className='flex flex-col items-center justify-center space-y-5'>
               <Info />
@@ -67,7 +67,7 @@ const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
               />
             </div>
           </div>
-        </TFetched>
+        </TProfileFetched>
       </div>
     </div>
   </TProfile>

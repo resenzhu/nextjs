@@ -8,9 +8,9 @@ import {
   useState
 } from 'react';
 import {
-  TError,
-  TSubmit,
-  TSubmitting
+  TFormError,
+  TFormSubmit,
+  TFormSubmitting
 } from '@components/project/breezy/login/form/transition';
 import {ValidationError, object, string} from 'yup';
 import {faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons';
@@ -373,21 +373,21 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           form.recaptcha.trim().length === 0
         }
       >
-        <TSubmit>
+        <TFormSubmit>
           <span>{label.submit}</span>
-        </TSubmit>
-        <TSubmitting>
+        </TFormSubmit>
+        <TFormSubmitting>
           <FontAwesomeIcon
             className='animate-spin text-xl animate-infinite'
             icon={faSpinner}
           />
-        </TSubmitting>
+        </TFormSubmitting>
       </button>
-      <TError>
+      <TFormError>
         <div className='rounded-lg bg-red-500 p-2 text-center text-sm text-white md:text-xs'>
           {form.error.message}
         </div>
-      </TError>
+      </TFormError>
     </form>
   );
 };

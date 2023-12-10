@@ -70,7 +70,7 @@ export const TChatbotBox = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TOffline = ({children}: TProps): JSX.Element => {
+export const TChatbotOffline = ({children}: TProps): JSX.Element => {
   const {online} = useApp();
   return (
     <Transition

@@ -20,7 +20,7 @@ export const TMessages = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TEmpty = ({children}: TProps): JSX.Element => {
+export const TMessagesEmpty = ({children}: TProps): JSX.Element => {
   const {messages} = useDashboard();
   return (
     <Transition
@@ -32,7 +32,7 @@ export const TEmpty = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TList = ({children}: TProps): JSX.Element => {
+export const TMessagesList = ({children}: TProps): JSX.Element => {
   const {messages} = useDashboard();
   return (
     <Transition
@@ -44,7 +44,7 @@ export const TList = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TActive = ({children}: TProps): JSX.Element => {
+export const TMessagesActive = ({children}: TProps): JSX.Element => {
   const {messages} = useDashboard();
   return (
     <Transition

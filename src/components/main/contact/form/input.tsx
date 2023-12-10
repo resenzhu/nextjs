@@ -2,13 +2,13 @@
 
 import {type ChangeEvent, type FormEvent, useEffect, useState} from 'react';
 import {
-  TError,
+  TFormError,
+  TFormSubmit,
+  TFormSubmitting,
+  TFormSuccess,
   TLabelEmail,
   TLabelMessage,
-  TLabelName,
-  TSubmit,
-  TSubmitting,
-  TSuccess
+  TLabelName
 } from '@components/main/contact/form/transition';
 import {ValidationError, object, string} from 'yup';
 import {Button} from '@components/main/shared';
@@ -405,12 +405,12 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           disabled={form.submitting}
         />
       </div>
-      <TError>
+      <TFormError>
         <div className='bg-red-500 p-2 text-white'>{form.error}</div>
-      </TError>
-      <TSuccess>
+      </TFormError>
+      <TFormSuccess>
         <div className='bg-green-600 p-2 text-white'>{form.success}</div>
-      </TSuccess>
+      </TFormSuccess>
       <Button
         className={`w-36 animate-fade-left place-self-center animate-duration-700 ${
           form.submitting ? 'cursor-default' : 'active:bg-cyan-700'
@@ -422,15 +422,15 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           form.message.trim().length === 0
         }
       >
-        <TSubmit>
+        <TFormSubmit>
           <span>{label.submit}</span>
-        </TSubmit>
-        <TSubmitting>
+        </TFormSubmit>
+        <TFormSubmitting>
           <FontAwesomeIcon
             className='animate-spin text-xl animate-infinite'
             icon={faSpinner}
           />
-        </TSubmitting>
+        </TFormSubmitting>
       </Button>
     </form>
   );

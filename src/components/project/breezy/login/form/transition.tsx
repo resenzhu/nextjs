@@ -8,7 +8,7 @@ export type TProps = {
   children: ReactNode;
 };
 
-export const TError = ({children}: TProps): JSX.Element => {
+export const TFormError = ({children}: TProps): JSX.Element => {
   const {form} = useLogin();
   return (
     <Transition
@@ -20,7 +20,7 @@ export const TError = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TSubmit = ({children}: TProps): JSX.Element => {
+export const TFormSubmit = ({children}: TProps): JSX.Element => {
   const {form} = useLogin();
   return (
     <Transition
@@ -32,7 +32,7 @@ export const TSubmit = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TSubmitting = ({children}: TProps): JSX.Element => {
+export const TFormSubmitting = ({children}: TProps): JSX.Element => {
   const {form} = useLogin();
   return (
     <Transition

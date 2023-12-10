@@ -20,7 +20,7 @@ export const TUsers = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TFetching = ({children}: TProps): JSX.Element => {
+export const TUsersFetching = ({children}: TProps): JSX.Element => {
   const {users} = useDashboard();
   return (
     <Transition
@@ -32,7 +32,7 @@ export const TFetching = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TRetryFetch = ({children}: TProps): JSX.Element => {
+export const TUsersFetchRetry = ({children}: TProps): JSX.Element => {
   const {users} = useDashboard();
   return (
     <Transition
@@ -44,7 +44,7 @@ export const TRetryFetch = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TFetched = ({children}: TProps): JSX.Element => {
+export const TUsersFetched = ({children}: TProps): JSX.Element => {
   const {users} = useDashboard();
   return (
     <Transition
@@ -56,7 +56,7 @@ export const TFetched = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TEmpty = ({children}: TProps): JSX.Element => {
+export const TUsersEmpty = ({children}: TProps): JSX.Element => {
   const {users} = useDashboard();
   return (
     <Transition
@@ -71,7 +71,7 @@ export const TEmpty = ({children}: TProps): JSX.Element => {
   );
 };
 
-export const TList = ({children}: TProps): JSX.Element => {
+export const TUsersList = ({children}: TProps): JSX.Element => {
   const {users} = useDashboard();
   return (
     <Transition

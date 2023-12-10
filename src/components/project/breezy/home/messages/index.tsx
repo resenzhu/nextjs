@@ -1,7 +1,7 @@
 import {
-  TActive,
-  TEmpty,
-  TMessages
+  TMessages,
+  TMessagesActive,
+  TMessagesEmpty
 } from '@components/project/breezy/home/messages/transition';
 import Active from '@components/project/breezy/home/messages/active';
 import Browse from '@components/project/breezy/home/messages/browse';
@@ -16,14 +16,14 @@ type MessagesProps = {
 const Messages = ({empty}: MessagesProps): JSX.Element => (
   <TMessages>
     <div>
-      <TEmpty>
+      <TMessagesEmpty>
         <div className='mx-4 flex h-[calc(100vh-3.5rem)] items-center justify-center'>
           <div className='w-3/4 space-y-8 text-center'>
             <p className='text-gray-500'>{empty.message}</p>
             <Browse label={empty.action} />
           </div>
         </div>
-      </TEmpty>
+      </TMessagesEmpty>
       {/* <TList>
         <div className='pb-14'>
           <div className='mx-4 py-4'>
@@ -595,11 +595,11 @@ const Messages = ({empty}: MessagesProps): JSX.Element => (
           </div>
         </div>
       </TActive> */}
-      <TActive>
+      <TMessagesActive>
         <div>
           <Active />
         </div>
-      </TActive>
+      </TMessagesActive>
     </div>
   </TMessages>
 );
