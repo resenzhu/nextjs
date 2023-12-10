@@ -11,11 +11,11 @@ const Header = (): JSX.Element => {
   );
 
   useEffect((): void => {
-    const user = users.list.find(
+    const updatedUser = users.list.find(
       (user): boolean => user.id === messages.active
     );
-    if (JSON.stringify(activeUser) !== JSON.stringify(user)) {
-      setActiveUser(user);
+    if (JSON.stringify(activeUser) !== JSON.stringify(updatedUser)) {
+      setActiveUser(updatedUser);
     }
   }, [users.list]);
 
