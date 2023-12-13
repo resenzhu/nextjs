@@ -459,6 +459,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           form.username.trim().length === 0 ||
           form.displayName.trim().length === 0 ||
           form.password.trim().length === 0 ||
+          form.recaptcha.loading ||
           form.recaptcha.token.trim().length === 0
         }
       >
