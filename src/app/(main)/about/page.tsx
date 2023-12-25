@@ -1,4 +1,10 @@
-import {Experience, LinkedIn, Me, Skill, Web} from '@components/main/about';
+import {
+  Author,
+  Experience,
+  GitHub,
+  LinkedIn,
+  Skill
+} from '@components/main/about';
 import {Footer, Header} from '@components/main/shared';
 import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import {DateTime} from 'luxon';
@@ -21,7 +27,7 @@ const Page = (): JSX.Element => (
       />
     </section>
     <section className='h-full min-h-[40vh]'>
-      <Me
+      <Author
         title='MEET RESEN'
         content={[
           `Welcome to my personal portfolio website! My name is Resen, and I'm a Full Stack developer based in Jakarta with over ${Math.floor(
@@ -104,7 +110,7 @@ const Page = (): JSX.Element => (
       />
     </section>
     <section className='h-full min-h-[40vh]'>
-      <Web
+      <GitHub
         title='UNDER THE HOOD'
         content={[
           "Here, I'll provide you with some insights into the technologies and frameworks that power my personal portfolio website.",

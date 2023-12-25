@@ -9,13 +9,13 @@ type Repository = {
   url: string;
 };
 
-type WebProps = {
+type GitHubProps = {
   title: string;
   content: string[];
   repositories: Repository[];
 };
 
-const Web = ({title, content, repositories}: WebProps): JSX.Element => (
+const GitHub = ({title, content, repositories}: GitHubProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-10 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -65,5 +65,5 @@ const Web = ({title, content, repositories}: WebProps): JSX.Element => (
   </div>
 );
 
-export type {Repository, WebProps};
-export default Web;
+export type {Repository, GitHubProps};
+export default GitHub;

@@ -1,11 +1,11 @@
 import {LazyLoad} from '@components/main/shared';
 
-type MeProps = {
+type AuthorProps = {
   title: string;
   content: string[];
 };
 
-const Me = ({title, content}: MeProps): JSX.Element => (
+const Author = ({title, content}: AuthorProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-8 md:mx-0'>
     <LazyLoad>
       <div className='animate-fade-right text-2xl font-extrabold text-cyan-600 animate-duration-700'>
@@ -30,5 +30,5 @@ const Me = ({title, content}: MeProps): JSX.Element => (
   </div>
 );
 
-export type {MeProps};
-export default Me;
+export type {AuthorProps};
+export default Author;
