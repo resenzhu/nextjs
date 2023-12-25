@@ -342,6 +342,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                       case 4220502:
                         formErrorMessage = message.error.input.recaptcha;
                         break;
+                      case 500:
                       case 503:
                         formErrorMessage = message.error.server;
                         break;

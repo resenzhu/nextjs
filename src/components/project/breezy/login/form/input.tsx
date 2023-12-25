@@ -297,6 +297,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                       case 401:
                         formErrorMessage = message.error.invalid;
                         break;
+                      case 500:
                       case 503:
                         formErrorMessage = message.error.server;
                         break;
