@@ -1,1 +1,1 @@
-export {default as Socket, type SocketProps} from '@components/main/layout/socket';
+export {default as Socket} from '@components/main/layout/socket';
