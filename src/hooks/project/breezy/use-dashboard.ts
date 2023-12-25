@@ -1,9 +1,11 @@
 import {
+  type ForceLogout,
   type Menu,
   type Messages,
   type Profile,
   type Settings,
   type Users,
+  setForceLogout as setDashboardForceLogout,
   setMenu as setDashboardMenu,
   setMessages as setDashboardMessages,
   setProfile as setDashboardProfile,
@@ -18,11 +20,13 @@ type UseDashboard = {
   users: Users;
   profile: Profile;
   settings: Settings;
+  forceLogout: ForceLogout;
   setMenu: (menu: Menu) => void;
   setMessages: (messages: Messages) => void;
   setUsers: (users: Users) => void;
   setProfile: (profile: Profile) => void;
   setSettings: (settings: Settings) => void;
+  setForceLogout: (forceLogout: ForceLogout) => void;
 };
 
 const useDashboard = (): UseDashboard => {
@@ -48,17 +52,25 @@ const useDashboard = (): UseDashboard => {
     dispatch(setDashboardSettings(settings));
   };
 
+  const setForceLogout = (forceLogout: ForceLogout): void => {
+    dispatch(setDashboardForceLogout(forceLogout));
+  };
+
   return {
     menu: useSelector((state) => state.project.breezy.dashboard.menu),
     messages: useSelector((state) => state.project.breezy.dashboard.messages),
     users: useSelector((state) => state.project.breezy.dashboard.users),
     profile: useSelector((state) => state.project.breezy.dashboard.profile),
     settings: useSelector((state) => state.project.breezy.dashboard.settings),
+    forceLogout: useSelector(
+      (state) => state.project.breezy.dashboard.forceLogout
+    ),
     setMenu: setMenu,
     setMessages: setMessages,
     setUsers: setUsers,
     setProfile: setProfile,
-    setSettings: setSettings
+    setSettings: setSettings,
+    setForceLogout: setForceLogout
   };
 };
 
