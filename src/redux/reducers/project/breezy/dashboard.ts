@@ -81,12 +81,15 @@ type Settings = {
   show: boolean;
 };
 
+type ForceLogout = boolean;
+
 type State = {
   menu: Menu;
   messages: Messages;
   users: Users;
   profile: Profile;
   settings: Settings;
+  forceLogout: ForceLogout;
 };
 
 type Reducers = {
@@ -95,6 +98,7 @@ type Reducers = {
   setUsers: (state: State, action: PayloadAction<Users>) => void;
   setProfile: (state: State, action: PayloadAction<Profile>) => void;
   setSettings: (state: State, action: PayloadAction<Settings>) => void;
+  setForceLogout: (state: State, action: PayloadAction<ForceLogout>) => void;
 };
 
 const name: string = 'dashboard';
@@ -135,7 +139,8 @@ const initialState: State = {
   },
   settings: {
     show: false
-  }
+  },
+  forceLogout: false
 };
 
 const reducers: Reducers = {
@@ -163,6 +168,11 @@ const reducers: Reducers = {
     if (state.settings !== action.payload) {
       state.settings = action.payload;
     }
+  },
+  setForceLogout: (state, action) => {
+    if (state.forceLogout !== action.payload) {
+      state.forceLogout = action.payload;
+    }
   }
 };
 
@@ -173,7 +183,23 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {Menu, User, Chat, Message, Messages, Users, Profile, Settings};
-export const {setMenu, setMessages, setUsers, setProfile, setSettings} =
-  slice.actions;
+export type {
+  Menu,
+  User,
+  Chat,
+  Message,
+  Messages,
+  Users,
+  Profile,
+  Settings,
+  ForceLogout
+};
+export const {
+  setMenu,
+  setMessages,
+  setUsers,
+  setProfile,
+  setSettings,
+  setForceLogout
+} = slice.actions;
 export default slice.reducer;
