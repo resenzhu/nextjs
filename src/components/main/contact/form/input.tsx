@@ -277,6 +277,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                       case 429:
                         formError = message.error.limit;
                         break;
+                      case 500:
                       case 503:
                         formError = message.error.server;
                         break;
