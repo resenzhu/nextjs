@@ -56,7 +56,7 @@ type UserStatusNotif = {
 };
 
 const Refresh = ({children}: RefreshProps): JSX.Element => {
-  const {profile, users, setProfile, setUsers} = useDashboard();
+  const {profile, users, setForceLogout, setProfile, setUsers} = useDashboard();
   const [rendered, setRendered] = useState<boolean>(false);
   const {push} = useRouter();
 
@@ -100,6 +100,9 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         .emit(
           'fetch users',
           (socketError: Error, response: FetchUsersRes): void => {
+            setForceLogout(
+              response && !response.success && response.error.code === 500
+            );
             setUsers({
               ...users,
               fetching: false,
@@ -157,6 +160,9 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         .emit(
           'fetch profile',
           (socketError: Error, response: FetchProfileRes): void => {
+            setForceLogout(
+              response && !response.success && response.error.code === 500
+            );
             setProfile({
               ...profile,
               fetching: false,
