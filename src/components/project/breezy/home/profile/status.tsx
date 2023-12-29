@@ -38,7 +38,7 @@ type UpdateUserStatusRes = {
 };
 
 const Status = ({modes}: StatusProps): JSX.Element => {
-  const {profile, setProfile} = useDashboard();
+  const {profile, setForceLogout, setProfile} = useDashboard();
   const [rendered, setRendered] = useState<boolean>(false);
 
   const handleUpdateUserStatus = (status: string): void => {
@@ -91,6 +91,9 @@ const Status = ({modes}: StatusProps): JSX.Element => {
             'update user status',
             request,
             (socketError: Error, response: UpdateUserStatusRes): void => {
+              setForceLogout(
+                response && !response.success && response.error.code === 500
+              );
               setProfile({
                 ...profile,
                 user: {
