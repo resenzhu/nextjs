@@ -184,9 +184,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
 
   useEffect((): void => {
     if (rendered) {
-      if (JSON.stringify(form) !== JSON.stringify(initialState.form)) {
-        setForm(initialState.form);
-      }
+      setForm(initialState.form);
       setTimeout((): void => {
         setThrottle(false);
       }, 5000);
@@ -232,11 +230,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                 }
                 if (response) {
                   if (response.success) {
-                    if (
-                      JSON.stringify(form) !== JSON.stringify(initialState.form)
-                    ) {
-                      setForm(initialState.form);
-                    }
+                    setForm(initialState.form);
                     cookie.set(
                       process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY,
                       response.data.token,
