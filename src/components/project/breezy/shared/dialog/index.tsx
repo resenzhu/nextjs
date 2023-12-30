@@ -33,12 +33,16 @@ const Dialog = ({
       </TDialogBackdrop>
       <div className='fixed left-0 top-0 flex h-full w-full items-center justify-center'>
         <TDialogPanel>
-          <ReactDialog.Panel className='space-y-4 rounded-2xl bg-white px-6 py-4'>
+          <ReactDialog.Panel className='max-w-xs space-y-4 rounded-2xl bg-white px-6 py-4'>
             <ReactDialog.Title className='text-xl font-bold'>
               {label.title}
             </ReactDialog.Title>
             <div className='text-gray-700'>{label.subtitle}</div>
-            <div className='flex justify-between'>
+            <div
+              className={`flex ${
+                label.cancel === undefined ? 'justify-end' : 'justify-between'
+              }`}
+            >
               <TDialogCancel show={label.cancel !== undefined}>
                 <button
                   className='font-bold text-purple-600'
