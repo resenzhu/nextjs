@@ -1,4 +1,5 @@
 import {
+  ForceLogout,
   Messages,
   Navbar,
   Profile,
@@ -75,6 +76,18 @@ const Page = (): JSX.Element => (
         }}
       />
       <Settings />
+      <ForceLogout
+        label={{
+          dialog: {
+            forceLogout: {
+              title: 'Server Error',
+              subtitle:
+                'A server error has occured. Plase log out and try again later.',
+              confirm: 'LOG OUT'
+            }
+          }
+        }}
+      />
     </div>
   </Refresh>
 );
