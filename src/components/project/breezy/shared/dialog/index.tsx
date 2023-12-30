@@ -3,6 +3,7 @@
 import {
   TDialog,
   TDialogBackdrop,
+  TDialogCancel,
   TDialogPanel
 } from '@components/project/breezy/shared/dialog/transition';
 import {Dialog as ReactDialog} from '@headlessui/react';
@@ -12,11 +13,11 @@ type DialogProps = {
   label: {
     title: string;
     subtitle: string;
-    cancel: string;
     confirm: string;
+    cancel?: string;
   };
   onConfirm: (...args: any[]) => any;
-  onClose: (...args: any[]) => any;
+  onClose?: (...args: any[]) => any;
 };
 
 const Dialog = ({
@@ -26,7 +27,7 @@ const Dialog = ({
   onClose
 }: DialogProps): JSX.Element => (
   <TDialog show={open}>
-    <ReactDialog onClose={onClose}>
+    <ReactDialog onClose={onClose ?? onConfirm}>
       <TDialogBackdrop>
         <div className='fixed left-0 top-0 h-full w-full bg-black'></div>
       </TDialogBackdrop>
@@ -38,13 +39,15 @@ const Dialog = ({
             </ReactDialog.Title>
             <div className='text-gray-700'>{label.subtitle}</div>
             <div className='flex justify-between'>
-              <button
-                className='font-bold text-purple-600'
-                type='button'
-                onClick={onClose}
-              >
-                {label.cancel}
-              </button>
+              <TDialogCancel show={label.cancel !== undefined}>
+                <button
+                  className='font-bold text-purple-600'
+                  type='button'
+                  onClick={onClose}
+                >
+                  {label.cancel}
+                </button>
+              </TDialogCancel>
               <button
                 className='font-bold text-purple-600'
                 type='button'

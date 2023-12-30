@@ -3,7 +3,7 @@
 import {Fragment, type ReactNode} from 'react';
 import {Transition} from '@headlessui/react';
 
-export type TDialogProps = {
+export type TToggleProps = {
   show: boolean;
   children: ReactNode;
 };
@@ -12,7 +12,7 @@ export type TProps = {
   children: ReactNode;
 };
 
-export const TDialog = ({show, children}: TDialogProps): JSX.Element => (
+export const TDialog = ({show, children}: TToggleProps): JSX.Element => (
   <Transition
     show={show}
     as={Fragment}
@@ -47,4 +47,13 @@ export const TDialogPanel = ({children}: TProps): JSX.Element => (
   >
     {children}
   </Transition.Child>
+);
+
+export const TDialogCancel = ({show, children}: TToggleProps): JSX.Element => (
+  <Transition
+    show={show}
+    as={Fragment}
+  >
+    {children}
+  </Transition>
 );
