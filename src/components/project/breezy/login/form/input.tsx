@@ -10,8 +10,7 @@ import {
 import {
   TFormError,
   TFormSubmit,
-  TFormSubmitting,
-  TRecaptchaLoading
+  TFormSubmitting
 } from '@components/project/breezy/login/form/transition';
 import {ValidationError, object, string} from 'yup';
 import {faEye, faEyeSlash, faSpinner} from '@fortawesome/free-solid-svg-icons';
@@ -127,26 +126,11 @@ const Input = ({label, message}: InputProps): JSX.Element => {
     }
   };
 
-  const handleToggleRecaptcha = (show: boolean): void => {
-    if (form.recaptcha.loading !== !show) {
-      setForm({
-        ...form,
-        recaptcha: {
-          ...form.recaptcha,
-          loading: !show
-        }
-      });
-    }
-  };
-
   const handleUpdateRecaptcha = (captchaToken: string | null): void => {
-    if (form.recaptcha.token !== captchaToken) {
+    if (form.recaptcha !== captchaToken) {
       setForm({
         ...form,
-        recaptcha: {
-          ...form.recaptcha,
-          token: captchaToken ?? ''
-        },
+        recaptcha: captchaToken ?? '',
         error: {
           field: null,
           message: ''
@@ -212,7 +196,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         username: sanitize(form.username).trim().toLowerCase(),
         password: form.password,
         honeypot: sanitize(form.honeypot).trim(),
-        recaptcha: sanitize(form.recaptcha.token).trim()
+        recaptcha: sanitize(form.recaptcha).trim()
       };
       requestSchema
         .validate(request, {abortEarly: false})
@@ -301,10 +285,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                     }
                     setForm({
                       ...form,
-                      recaptcha: {
-                        ...form.recaptcha,
-                        token: ''
-                      },
+                      recaptcha: '',
                       submitting: false,
                       error: {
                         field: formErrorField,
@@ -372,18 +353,9 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           onClick={(): void => handleToggleRevealPassword(!form.reveal)}
         />
       </div>
-      <TRecaptchaLoading>
-        <div className='flex h-20 items-center justify-center'>
-          <FontAwesomeIcon
-            className='animate-spin text-3xl text-purple-500 animate-duration-[1400ms] animate-infinite'
-            icon={faSpinner}
-          />
-        </div>
-      </TRecaptchaLoading>
       <div className='place-self-center'>
         <RecaptchaV2
           reference={recaptcha}
-          asyncScriptOnLoad={(): void => handleToggleRecaptcha(true)}
           onChange={(captcha): void => handleUpdateRecaptcha(captcha)}
         />
       </div>
@@ -395,8 +367,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         disabled={
           form.username.trim().length === 0 ||
           form.password.trim().length === 0 ||
-          form.recaptcha.loading ||
-          form.recaptcha.token.trim().length === 0
+          form.recaptcha.trim().length === 0
         }
       >
         <TFormSubmit>
