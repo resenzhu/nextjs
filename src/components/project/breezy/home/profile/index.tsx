@@ -17,21 +17,26 @@ type ProfileProps = {
     message: string;
     action: string;
   };
-  label: {
+  status: {
+    online: string;
+    appearAway: string;
+    appearOffline: string;
+  };
+  menu: {
     settings: string;
     logout: string;
-    dialog: {
-      logout: {
-        title: string;
-        subtitle: string;
-        cancel: string;
-        confirm: string;
-      };
+  };
+  dialog: {
+    logout: {
+      title: string;
+      subtitle: string;
+      cancel: string;
+      confirm: string;
     };
   };
 };
 
-const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
+const Profile = ({fetch, status, menu, dialog}: ProfileProps): JSX.Element => (
   <TProfile>
     <div className='h-[calc(100vh-3.5rem)] bg-[url("/images/project/breezy/home-profile-cover.webp")] bg-cover bg-center bg-no-repeat'>
       <div className='mx-4 flex h-full items-center justify-center'>
@@ -53,17 +58,29 @@ const Profile = ({fetch, label}: ProfileProps): JSX.Element => (
               <Info />
               <Status
                 modes={[
-                  {label: 'online', color: 'text-green-600'},
-                  {label: 'appear away', color: 'text-yellow-600'},
-                  {label: 'appear offline', color: 'text-gray-600'}
+                  {
+                    label: status.online,
+                    value: 'online',
+                    color: 'text-green-600'
+                  },
+                  {
+                    label: status.appearAway,
+                    value: 'appear away',
+                    color: 'text-yellow-600'
+                  },
+                  {
+                    label: status.appearOffline,
+                    value: 'appear offline',
+                    color: 'text-gray-600'
+                  }
                 ]}
               />
             </div>
             <div className='flex w-64 flex-col items-center justify-center space-y-3'>
-              <Settings label={label.settings} />
+              <Settings label={menu.settings} />
               <Logout
-                label={label.logout}
-                dialog={label.dialog.logout}
+                label={menu.logout}
+                dialog={dialog.logout}
               />
             </div>
           </div>
