@@ -47,7 +47,10 @@ const Page = (): JSX.Element => (
           action: 'Browse Users'
         }}
         active={{
-          lastSeen: 'last seen {{date}} at {{time}}',
+          lastSeen: {
+            known: 'last seen {{date}} at {{time}}',
+            unknown: 'last seen status unknown'
+          },
           placeholder: 'Type a message',
           backIcon: faArrowLeftLong,
           sendIcon: faPaperPlane

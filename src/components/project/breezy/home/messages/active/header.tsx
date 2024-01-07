@@ -1,11 +1,15 @@
 'use client';
 
 import {useEffect, useState} from 'react';
+import {DateTime} from 'luxon';
 import type {User} from '@redux/reducers/project/breezy/dashboard';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 type HeaderProps = {
-  lastSeen: string;
+  lastSeen: {
+    known: string;
+    unknown: string;
+  };
 };
 
 const Header = ({lastSeen}: HeaderProps): JSX.Element => {
@@ -38,7 +42,21 @@ const Header = ({lastSeen}: HeaderProps): JSX.Element => {
         <div className='text-sm font-semibold text-gray-500'>
           {activeUser?.session.status === 'online'
             ? 'online'
-            : `${lastSeen} ${activeUser?.session.lastOnline}`}
+            : activeUser?.session.lastOnline === undefined
+            ? lastSeen.unknown
+            : lastSeen.known
+                .replace(
+                  '{{date}}',
+                  DateTime.fromISO(
+                    activeUser.session.lastOnline
+                  ).toLocaleString({weekday: 'short'})
+                )
+                .replace(
+                  '{{time}}',
+                  DateTime.fromISO(
+                    activeUser.session.lastOnline
+                  ).toLocaleString(DateTime.TIME_24_SIMPLE)
+                )}
         </div>
       </div>
     </>

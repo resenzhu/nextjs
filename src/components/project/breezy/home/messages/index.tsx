@@ -13,7 +13,10 @@ type MessagesProps = {
     action: string;
   };
   active: {
-    lastSeen: string;
+    lastSeen: {
+      known: string;
+      unknown: string;
+    };
     placeholder: string;
     backIcon: IconDefinition;
     sendIcon: IconDefinition;

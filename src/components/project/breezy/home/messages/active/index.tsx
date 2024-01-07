@@ -5,7 +5,10 @@ import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import Input from '@components/project/breezy/home/messages/active/input';
 
 type ActiveProps = {
-  lastSeen: string;
+  lastSeen: {
+    known: string;
+    unknown: string;
+  };
   placeholder: string;
   backIcon: IconDefinition;
   sendIcon: IconDefinition;
