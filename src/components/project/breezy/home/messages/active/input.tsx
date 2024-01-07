@@ -1,11 +1,16 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
+import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 
-const Input = (): JSX.Element => (
+type InputProps = {
+  placeholder: string;
+  sendIcon: IconDefinition;
+};
+
+const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => (
   <form className='mx-4 flex items-center justify-between space-x-3 py-3'>
     <textarea
       className='w-full flex-1 resize-none bg-gray-50 px-3 py-2 outline-0'
-      placeholder='Type a message'
+      placeholder={placeholder}
       rows={1}
     />
     <button
@@ -14,10 +19,11 @@ const Input = (): JSX.Element => (
     >
       <FontAwesomeIcon
         className='w-6 text-white'
-        icon={faPaperPlane}
+        icon={sendIcon}
       />
     </button>
   </form>
 );
 
+export type {InputProps};
 export default Input;

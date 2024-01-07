@@ -8,7 +8,9 @@ import {
   Users
 } from '@components/project/breezy/home';
 import {
+  faArrowLeftLong,
   faMessage,
+  faPaperPlane,
   faUser,
   faUserFriends
 } from '@fortawesome/free-solid-svg-icons';
@@ -44,6 +46,12 @@ const Page = (): JSX.Element => (
             'Welcome to Breezy! Connect with online users and experience the breezy conversations.',
           action: 'Browse Users'
         }}
+        active={{
+          lastSeen: 'last seen {{date}} at {{time}}',
+          placeholder: 'Type a message',
+          backIcon: faArrowLeftLong,
+          sendIcon: faPaperPlane
+        }}
       />
       <Users
         fetch={{
@@ -64,14 +72,14 @@ const Page = (): JSX.Element => (
         }}
         label={{
           settings: 'Settings',
-          logout: 'Logout',
-          dialog: {
-            logout: {
-              title: 'Log Out',
-              subtitle: 'Are you sure you want to log out?',
-              cancel: 'CANCEL',
-              confirm: 'LOG OUT'
-            }
+          logout: 'Logout'
+        }}
+        dialog={{
+          logout: {
+            title: 'Log Out',
+            subtitle: 'Are you sure you want to log out?',
+            cancel: 'CANCEL',
+            confirm: 'LOG OUT'
           }
         }}
       />

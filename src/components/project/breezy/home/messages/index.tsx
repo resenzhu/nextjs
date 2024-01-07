@@ -5,15 +5,22 @@ import {
 } from '@components/project/breezy/home/messages/transition';
 import Active from '@components/project/breezy/home/messages/active';
 import Browse from '@components/project/breezy/home/messages/browse';
+import type {IconDefinition} from '@fortawesome/fontawesome-svg-core';
 
 type MessagesProps = {
   empty: {
     message: string;
     action: string;
   };
+  active: {
+    lastSeen: string;
+    placeholder: string;
+    backIcon: IconDefinition;
+    sendIcon: IconDefinition;
+  };
 };
 
-const Messages = ({empty}: MessagesProps): JSX.Element => (
+const Messages = ({empty, active}: MessagesProps): JSX.Element => (
   <TMessages>
     <div>
       <TMessagesEmpty>
@@ -597,7 +604,12 @@ const Messages = ({empty}: MessagesProps): JSX.Element => (
       </TActive> */}
       <TMessagesActive>
         <div>
-          <Active />
+          <Active
+            lastSeen={active.lastSeen}
+            placeholder={active.placeholder}
+            backIcon={active.backIcon}
+            sendIcon={active.sendIcon}
+          />
         </div>
       </TMessagesActive>
     </div>

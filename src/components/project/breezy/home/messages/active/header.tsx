@@ -4,18 +4,22 @@ import {useEffect, useState} from 'react';
 import type {User} from '@redux/reducers/project/breezy/dashboard';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 
-const Header = (): JSX.Element => {
+type HeaderProps = {
+  lastSeen: string;
+};
+
+const Header = ({lastSeen}: HeaderProps): JSX.Element => {
   const {messages, users} = useDashboard();
   const [activeUser, setActiveUser] = useState<User | undefined>(
     users.list.find((user): boolean => user.id === messages.active)
   );
 
   useEffect((): void => {
-    const updatedUser = users.list.find(
+    const updatedActiveUser = users.list.find(
       (user): boolean => user.id === messages.active
     );
-    if (JSON.stringify(activeUser) !== JSON.stringify(updatedUser)) {
-      setActiveUser(updatedUser);
+    if (JSON.stringify(activeUser) !== JSON.stringify(updatedActiveUser)) {
+      setActiveUser(updatedActiveUser);
     }
   }, [users.list]);
 
@@ -34,11 +38,12 @@ const Header = (): JSX.Element => {
         <div className='text-sm font-semibold text-gray-500'>
           {activeUser?.session.status === 'online'
             ? 'online'
-            : activeUser?.session.lastOnline}
+            : `${lastSeen} ${activeUser?.session.lastOnline}`}
         </div>
       </div>
     </>
   );
 };
 
+export type {HeaderProps};
 export default Header;
