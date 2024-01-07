@@ -17,12 +17,7 @@ type ProfileProps = {
     message: string;
     action: string;
   };
-  status: {
-    online: string;
-    appearAway: string;
-    appearOffline: string;
-  };
-  menu: {
+  label: {
     settings: string;
     logout: string;
   };
@@ -36,7 +31,7 @@ type ProfileProps = {
   };
 };
 
-const Profile = ({fetch, status, menu, dialog}: ProfileProps): JSX.Element => (
+const Profile = ({fetch, label, dialog}: ProfileProps): JSX.Element => (
   <TProfile>
     <div className='h-[calc(100vh-3.5rem)] bg-[url("/images/project/breezy/home-profile-cover.webp")] bg-cover bg-center bg-no-repeat'>
       <div className='mx-4 flex h-full items-center justify-center'>
@@ -59,27 +54,24 @@ const Profile = ({fetch, status, menu, dialog}: ProfileProps): JSX.Element => (
               <Status
                 modes={[
                   {
-                    label: status.online,
-                    value: 'online',
+                    label: 'online',
                     color: 'text-green-600'
                   },
                   {
-                    label: status.appearAway,
-                    value: 'appear away',
+                    label: 'appear away',
                     color: 'text-yellow-600'
                   },
                   {
-                    label: status.appearOffline,
-                    value: 'appear offline',
+                    label: 'appear offline',
                     color: 'text-gray-600'
                   }
                 ]}
               />
             </div>
             <div className='flex w-64 flex-col items-center justify-center space-y-3'>
-              <Settings label={menu.settings} />
+              <Settings label={label.settings} />
               <Logout
-                label={menu.logout}
+                label={label.logout}
                 dialog={dialog.logout}
               />
             </div>
