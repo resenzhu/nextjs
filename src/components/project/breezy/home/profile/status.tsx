@@ -11,6 +11,7 @@ import useDashboard from '@hooks/project/breezy/use-dashboard';
 
 type Mode = {
   label: string;
+  value: string;
   color: string;
 };
 
@@ -131,13 +132,13 @@ const Status = ({modes}: StatusProps): JSX.Element => {
         className={`w-56 rounded-lg bg-white py-1 text-lg font-semibold ${
           modes.find(
             (mode): boolean =>
-              mode.label === profile.user.session.status.current
+              mode.value === profile.user.session.status.current
           )?.color ?? 'text-green-600'
         }`}
       >
         {modes.find(
-          (mode): boolean => mode.label === profile.user.session.status.current
-        )?.label ?? 'online'}
+          (mode): boolean => mode.value === profile.user.session.status.current
+        )?.value ?? 'online'}
         <div className='absolute -translate-y-full'>
           <FontAwesomeIcon
             className='ml-3 text-sm text-gray-500'
@@ -150,8 +151,8 @@ const Status = ({modes}: StatusProps): JSX.Element => {
           (mode): JSX.Element => (
             <Listbox.Option
               className={`cursor-pointer py-2 font-semibold ${mode.color} hover:rounded-lg hover:bg-gray-100`}
-              key={mode.label}
-              value={mode.label}
+              key={mode.value}
+              value={mode.value}
             >
               {mode.label}
             </Listbox.Option>
