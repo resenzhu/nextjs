@@ -34,6 +34,7 @@ type Message = {
     typing: boolean;
   };
   chats: Chat[];
+  message: string;
 };
 
 type Messages = {
