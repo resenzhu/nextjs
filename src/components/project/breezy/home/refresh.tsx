@@ -100,9 +100,9 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         .emit(
           'fetch users',
           (socketError: Error, response: FetchUsersRes): void => {
-            setForceLogout(
-              response && !response.success && response.error.code === 500
-            );
+            if (response && !response.success && response.error.code === 500) {
+              setForceLogout(true);
+            }
             setUsers({
               ...users,
               fetching: false,
@@ -160,9 +160,9 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
         .emit(
           'fetch profile',
           (socketError: Error, response: FetchProfileRes): void => {
-            setForceLogout(
-              response && !response.success && response.error.code === 500
-            );
+            if (response && !response.success && response.error.code === 500) {
+              setForceLogout(true);
+            }
             setProfile({
               ...profile,
               fetching: false,
