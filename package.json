@@ -29,6 +29,7 @@
     "jose": "^5.2.0",
     "js-cookie": "^3.0.5",
     "luxon": "^3.4.4",
+    "nanoid": "^5.0.4",
     "next": "^14.1.0",
     "next-compose-plugins": "^2.2.1",
     "next-secure-headers": "^2.2.0",
