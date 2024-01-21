@@ -32,7 +32,8 @@ const List = ({label}: ListProps): JSX.Element => {
               id: onlineUserId,
               typing: false
             },
-            chats: []
+            chats: [],
+            message: ''
           }
         ],
         active: onlineUserId
