@@ -23,8 +23,8 @@ type Chat = {
   status: 'failed' | 'sending' | 'sent' | 'delivered' | 'read';
   timestamp: {
     created: string;
-    delivered: string;
-    read: string;
+    delivered: string | null;
+    read: string | null;
   };
 };
 
