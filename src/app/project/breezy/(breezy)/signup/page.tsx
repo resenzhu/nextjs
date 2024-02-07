@@ -17,7 +17,7 @@ const Page = (): JSX.Element => (
   >
     <Form
       label={{
-        username: 'Username',
+        userName: 'Username',
         displayName: 'Display Name',
         password: 'Password',
         submit: 'Sign Up'
@@ -29,7 +29,7 @@ const Page = (): JSX.Element => (
           throttle:
             'You are submitting too quickly. Please take a moment and try again.',
           input: {
-            username: {
+            userName: {
               empty: 'Please enter your username.',
               tooShort:
                 'Your username is too short. Please enter at least 2 characters.',

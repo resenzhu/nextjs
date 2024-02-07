@@ -27,7 +27,7 @@ import useSignUp from '@hooks/project/breezy/use-signup';
 import validator from 'validator';
 
 type Label = {
-  username: string;
+  userName: string;
   displayName: string;
   password: string;
   submit: string;
@@ -38,7 +38,7 @@ type Message = {
     offline: string;
     throttle: string;
     input: {
-      username: {
+      userName: {
         empty: string;
         tooShort: string;
         tooLong: string;
@@ -70,7 +70,7 @@ type InputProps = {
 };
 
 type SignUpReq = {
-  username: string;
+  userName: string;
   displayName: string;
   password: string;
   honeypot: string;
@@ -187,12 +187,12 @@ const Input = ({label, message}: InputProps): JSX.Element => {
   useEffect((): void => {
     if (form.submitting) {
       const requestSchema = object().shape({
-        username: string()
+        userName: string()
           .ensure()
-          .required(message.error.input.username.empty)
-          .min(2, message.error.input.username.tooShort)
-          .max(15, message.error.input.username.tooLong)
-          .matches(/^[a-zA-Z0-9_-]+$/u, message.error.input.username.invalid),
+          .required(message.error.input.userName.empty)
+          .min(2, message.error.input.userName.tooShort)
+          .max(15, message.error.input.userName.tooLong)
+          .matches(/^[a-zA-Z0-9_-]+$/u, message.error.input.userName.invalid),
         displayName: string()
           .ensure()
           .required(message.error.input.displayName.empty)
@@ -207,7 +207,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         recaptcha: string().ensure().required(message.error.input.recaptcha)
       });
       const request: SignUpReq = {
-        username: sanitize(form.username).trim().toLowerCase(),
+        userName: sanitize(form.userName).trim().toLowerCase(),
         displayName: sanitize(form.displayName).trim(),
         password: form.password,
         honeypot: sanitize(form.honeypot).trim(),
@@ -252,25 +252,25 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                       case 40001:
                       case 4220101:
                       case 4220102:
-                        formErrorField = 'username';
-                        formErrorMessage = message.error.input.username.empty;
+                        formErrorField = 'userName';
+                        formErrorMessage = message.error.input.userName.empty;
                         break;
                       case 4220103:
-                        formErrorField = 'username';
+                        formErrorField = 'userName';
                         formErrorMessage =
-                          message.error.input.username.tooShort;
+                          message.error.input.userName.tooShort;
                         break;
                       case 4220104:
-                        formErrorField = 'username';
-                        formErrorMessage = message.error.input.username.tooLong;
+                        formErrorField = 'userName';
+                        formErrorMessage = message.error.input.userName.tooLong;
                         break;
                       case 4220105:
-                        formErrorField = 'username';
-                        formErrorMessage = message.error.input.username.invalid;
+                        formErrorField = 'userName';
+                        formErrorMessage = message.error.input.userName.invalid;
                         break;
                       case 40901:
-                        formErrorField = 'username';
-                        formErrorMessage = message.error.input.username.taken;
+                        formErrorField = 'userName';
+                        formErrorMessage = message.error.input.userName.taken;
                         break;
                       case 40002:
                       case 4220201:
@@ -367,12 +367,12 @@ const Input = ({label, message}: InputProps): JSX.Element => {
     >
       <input
         className={`rounded-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs ${
-          form.error.field === 'username' && 'border-red-500'
+          form.error.field === 'userName' && 'border-red-500'
         }`}
-        name='username'
+        name='userName'
         type='text'
-        placeholder={label.username}
-        value={form.username}
+        placeholder={label.userName}
+        value={form.userName}
         maxLength={15}
         onChange={(event): void => handleUpdateForm(event)}
         onBlur={(event): void => handleTrimForm(event)}
@@ -423,7 +423,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         }`}
         type='submit'
         disabled={
-          form.username.trim().length === 0 ||
+          form.userName.trim().length === 0 ||
           form.displayName.trim().length === 0 ||
           form.password.trim().length === 0 ||
           form.recaptcha.trim().length === 0
