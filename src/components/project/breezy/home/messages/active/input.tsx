@@ -60,7 +60,7 @@ const Input = ({placeholder, sendIcon}: InputProps): JSX.Element => {
                   message: activeMessage.message,
                   status: 'sending',
                   timestamp: {
-                    created: DateTime.utc().toISO() ?? new Date().toISOString(),
+                    created: DateTime.utc().toISO(),
                     delivered: null,
                     read: null
                   }

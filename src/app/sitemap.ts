@@ -4,7 +4,7 @@ import type {MetadataRoute} from 'next';
 const Sitemap = (): MetadataRoute.Sitemap => [
   {
     url: process.env.NEXT_PUBLIC_APP_URL,
-    lastModified: DateTime.utc().toISO() ?? new Date().toISOString()
+    lastModified: DateTime.utc().toISO()
   }
 ];
 
