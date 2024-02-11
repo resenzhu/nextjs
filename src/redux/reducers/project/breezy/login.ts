@@ -1,7 +1,7 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
 type Form = {
-  username: string;
+  userName: string;
   password: string;
   reveal: boolean;
   honeypot: string;
@@ -25,7 +25,7 @@ const name: string = 'login';
 
 const initialState: State = {
   form: {
-    username: '',
+    userName: '',
     password: '',
     reveal: false,
     honeypot: '',

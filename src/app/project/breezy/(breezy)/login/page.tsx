@@ -16,7 +16,7 @@ const Page = (): JSX.Element => (
     subtitle='Instantly access your account and start chatting in seconds.'
   >
     <Form
-      label={{username: 'Username', password: 'Password', submit: 'Login'}}
+      label={{userName: 'Username', password: 'Password', submit: 'Login'}}
       message={{
         error: {
           offline:
@@ -24,7 +24,7 @@ const Page = (): JSX.Element => (
           throttle:
             'You are submitting too quickly. Please take a moment and try again.',
           input: {
-            username: {
+            userName: {
               empty: 'Please enter your username.',
               tooShort:
                 'Your username is too short. Please enter at least 2 characters.',
