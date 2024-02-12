@@ -9,7 +9,7 @@
     "url": "https://linkedin.com/in/resen"
   },
   "scripts": {
-    "upgrade": "ncu -u",
+    "upgrade": "ncu --interactive --format group",
     "prettier": "prettier --list-different --write . !.next",
     "lint": "next lint",
     "dev": "next dev",
