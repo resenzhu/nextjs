@@ -8,7 +8,7 @@ type Menu = {
 
 type User = {
   id: string;
-  username: string;
+  userName: string;
   displayName: string;
   session: {
     status: 'online' | 'away' | 'offline';
@@ -55,7 +55,7 @@ type Profile = {
   fetched: boolean;
   user: {
     id: string;
-    username: string;
+    userName: string;
     displayName: string;
     session: {
       status: {
@@ -126,7 +126,7 @@ const initialState: State = {
     fetched: false,
     user: {
       id: '',
-      username: '',
+      userName: '',
       displayName: '',
       session: {
         status: {

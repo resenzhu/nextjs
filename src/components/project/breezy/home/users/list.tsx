@@ -72,7 +72,7 @@ const List = ({label}: ListProps): JSX.Element => {
                   <div className='font-bold text-gray-700'>
                     {user.displayName}
                   </div>
-                  <div className='text-sm text-gray-600'>{`@${user.username}`}</div>
+                  <div className='text-sm text-gray-600'>{`@${user.userName}`}</div>
                   <div
                     className={`text-sm font-semibold ${
                       user.session.status === 'online'

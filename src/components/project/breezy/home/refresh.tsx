@@ -36,7 +36,7 @@ type FetchProfileRes = {
 type NewUserNotif = {
   user: {
     id: string;
-    username: string;
+    userName: string;
     displayName: string;
     session: {
       status: 'online' | 'away' | 'offline';
@@ -173,7 +173,7 @@ const Refresh = ({children}: RefreshProps): JSX.Element => {
                   : {
                       ...profile.user,
                       id: response.data.user.id,
-                      username: response.data.user.username,
+                      userName: response.data.user.userName,
                       displayName: response.data.user.displayName,
                       session: {
                         ...profile.user.session,
