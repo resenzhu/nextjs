@@ -1,9 +1,9 @@
 import {
-  ForceLogout,
   Messages,
   Navbar,
   Profile,
   Refresh,
+  ServerError,
   Settings,
   Users
 } from '@components/project/breezy/home';
@@ -87,12 +87,11 @@ const Page = (): JSX.Element => (
         }}
       />
       <Settings />
-      <ForceLogout
+      <ServerError
         dialog={{
           title: 'Server Error',
-          subtitle:
-            'A server error has occured. Please log out and try again later.',
-          confirm: 'LOG OUT'
+          subtitle: 'A server error has occured. Please try again later.',
+          confirm: 'OK'
         }}
       />
     </div>
