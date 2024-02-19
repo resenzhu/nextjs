@@ -62,7 +62,9 @@ const useDashboard = (): UseDashboard => {
     users: useSelector((state) => state.project.breezy.dashboard.users),
     profile: useSelector((state) => state.project.breezy.dashboard.profile),
     settings: useSelector((state) => state.project.breezy.dashboard.settings),
-    serverError: useSelector((state) => state.project.breezy.dashboard.serverError),
+    serverError: useSelector(
+      (state) => state.project.breezy.dashboard.serverError
+    ),
     setMenu: setMenu,
     setMessages: setMessages,
     setUsers: setUsers,

@@ -9,30 +9,36 @@ const Chat = (): JSX.Element => {
   const {messages} = useDashboard();
   return (
     <>
-      {
-        messages.list.find((message): boolean => message.sender.id === messages.active)?.chats.map((chat): JSX.Element => (
-          <div className={`flex w-fit flex-col ${chat.self ? 'place-self-end' : 'place-self-start'}`}>
-            <p
-              className={`w-fit max-w-[80vw] rounded-r-xl rounded-bl-xl bg-purple-500 px-3 py-2 text-white shadow-md`}
-              style={{wordBreak: 'break-word'}}
+      {messages.list
+        .find((message): boolean => message.sender.id === messages.active)
+        ?.chats.map(
+          (chat): JSX.Element => (
+            <div
+              className={`flex w-fit flex-col ${
+                chat.self ? 'place-self-end' : 'place-self-start'
+              }`}
             >
-              {chat.message}
-            </p>
-            <div className={`mx-1 ${chat.self ? 'text-end' : 'text-start'}`}>
-              <Tooltip id='1'>
-                <span
-                  className='text-sm text-gray-500'
-                  data-tooltip-id='1'
-                  data-tooltip-content='9/9/2023, 5:04 PM'
-                  data-tooltip-place='right'
-                >
-                  5:04 PM
-                </span>
-              </Tooltip>
+              <p
+                className={`w-fit max-w-[80vw] rounded-r-xl rounded-bl-xl bg-purple-500 px-3 py-2 text-white shadow-md`}
+                style={{wordBreak: 'break-word'}}
+              >
+                {chat.message}
+              </p>
+              <div className={`mx-1 ${chat.self ? 'text-end' : 'text-start'}`}>
+                <Tooltip id='1'>
+                  <span
+                    className='text-sm text-gray-500'
+                    data-tooltip-id='1'
+                    data-tooltip-content='9/9/2023, 5:04 PM'
+                    data-tooltip-place='right'
+                  >
+                    5:04 PM
+                  </span>
+                </Tooltip>
+              </div>
             </div>
-          </div>
-        ))
-      }
+          )
+        )}
       <div className='flex w-fit flex-col place-self-start'>
         <p
           className='w-fit max-w-[80vw] rounded-r-xl rounded-bl-xl bg-purple-500 px-3 py-2 text-white shadow-md'
@@ -67,8 +73,8 @@ const Chat = (): JSX.Element => {
           style={{wordBreak: 'break-word'}}
         >
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making it
-          over 2000 years old.
+          has roots in a piece of classical Latin literature from 45 BC, making
+          it over 2000 years old.
         </p>
         <div className='mx-1 text-end'>
           <div className='space-x-2'>
@@ -128,8 +134,8 @@ const Chat = (): JSX.Element => {
           style={{wordBreak: 'break-word'}}
         >
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making it
-          over 2000 years old.
+          has roots in a piece of classical Latin literature from 45 BC, making
+          it over 2000 years old.
         </p>
         <div className='mx-1 text-end'>
           <div className='space-x-2'>

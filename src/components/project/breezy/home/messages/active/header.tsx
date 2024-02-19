@@ -43,20 +43,20 @@ const Header = ({lastSeen}: HeaderProps): JSX.Element => {
           {activeUser?.session.status === 'online'
             ? 'online'
             : activeUser?.session.lastOnline === undefined
-              ? lastSeen.unknown
-              : lastSeen.known
-                  .replace(
-                    '{{date}}',
-                    DateTime.fromISO(
-                      activeUser.session.lastOnline
-                    ).toLocaleString({weekday: 'short'})
-                  )
-                  .replace(
-                    '{{time}}',
-                    DateTime.fromISO(
-                      activeUser.session.lastOnline
-                    ).toLocaleString(DateTime.TIME_24_SIMPLE)
-                  )}
+            ? lastSeen.unknown
+            : lastSeen.known
+                .replace(
+                  '{{date}}',
+                  DateTime.fromISO(
+                    activeUser.session.lastOnline
+                  ).toLocaleString({weekday: 'short'})
+                )
+                .replace(
+                  '{{time}}',
+                  DateTime.fromISO(
+                    activeUser.session.lastOnline
+                  ).toLocaleString(DateTime.TIME_24_SIMPLE)
+                )}
         </div>
       </div>
     </>
