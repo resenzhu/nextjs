@@ -29,7 +29,7 @@ const Dialog = ({
   <TDialog show={open}>
     <ReactDialog onClose={onClose ?? onConfirm}>
       <TDialogBackdrop>
-        <div className='fixed left-0 top-0 h-full w-full bg-black'></div>
+        <div className='fixed left-0 top-0 h-full w-full bg-black opacity-60'></div>
       </TDialogBackdrop>
       <div className='fixed left-0 top-0 flex h-full w-full items-center justify-center'>
         <TDialogPanel>

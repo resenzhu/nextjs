@@ -33,7 +33,7 @@ const Chatbot = ({
   <TChatbot>
     <div className='fixed bottom-0 z-10 h-full md:relative md:z-0 md:animate-fade-right md:shadow-2xl md:animate-duration-700 lg:animate-fade-left'>
       <TChatbotBackdrop>
-        <div className='fixed h-full w-full bg-black'></div>
+        <div className='fixed h-full w-full bg-black opacity-60'></div>
       </TChatbotBackdrop>
       <TChatbotBox>
         <div className='fixed bottom-0 flex h-[80vh] w-full flex-col bg-white md:relative md:h-full'>

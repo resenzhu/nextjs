@@ -66,7 +66,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
             <TNav>
               <div>
                 <TNavBackdrop>
-                  <div className='fixed left-0 top-0 h-screen w-screen bg-black'></div>
+                  <div className='fixed left-0 top-0 h-screen w-screen bg-black opacity-60'></div>
                 </TNavBackdrop>
                 <TNavSidenav>
                   <div
