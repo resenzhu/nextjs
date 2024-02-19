@@ -82,7 +82,7 @@ type Settings = {
   show: boolean;
 };
 
-type ForceLogout = boolean;
+type ServerError = boolean;
 
 type State = {
   menu: Menu;
@@ -90,7 +90,7 @@ type State = {
   users: Users;
   profile: Profile;
   settings: Settings;
-  forceLogout: ForceLogout;
+  serverError: ServerError;
 };
 
 type Reducers = {
@@ -99,7 +99,7 @@ type Reducers = {
   setUsers: (state: State, action: PayloadAction<Users>) => void;
   setProfile: (state: State, action: PayloadAction<Profile>) => void;
   setSettings: (state: State, action: PayloadAction<Settings>) => void;
-  setForceLogout: (state: State, action: PayloadAction<ForceLogout>) => void;
+  setServerError: (state: State, action: PayloadAction<ServerError>) => void;
 };
 
 const name: string = 'dashboard';
@@ -141,7 +141,7 @@ const initialState: State = {
   settings: {
     show: false
   },
-  forceLogout: false
+  serverError: false
 };
 
 const reducers: Reducers = {
@@ -170,9 +170,9 @@ const reducers: Reducers = {
       state.settings = action.payload;
     }
   },
-  setForceLogout: (state, action) => {
-    if (state.forceLogout !== action.payload) {
-      state.forceLogout = action.payload;
+  setServerError: (state, action) => {
+    if (state.serverError !== action.payload) {
+      state.serverError = action.payload;
     }
   }
 };
@@ -193,7 +193,7 @@ export type {
   Users,
   Profile,
   Settings,
-  ForceLogout
+  ServerError
 };
 export const {
   setMenu,
@@ -201,6 +201,6 @@ export const {
   setUsers,
   setProfile,
   setSettings,
-  setForceLogout
+  setServerError
 } = slice.actions;
 export default slice.reducer;
