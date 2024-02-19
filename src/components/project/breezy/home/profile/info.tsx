@@ -16,7 +16,7 @@ const Info = (): JSX.Element => {
       </div>
       <div className='text-center text-white'>
         <div className='text-lg font-bold'>{profile.user.displayName}</div>
-        <div className='font-light'>{`@${profile.user.username}`}</div>
+        <div className='font-light'>{`@${profile.user.userName}`}</div>
       </div>
     </div>
   );
