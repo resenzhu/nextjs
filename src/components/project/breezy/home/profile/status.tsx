@@ -91,7 +91,11 @@ const Status = ({modes}: StatusProps): JSX.Element => {
             'update user status',
             request,
             (socketError: Error, response: UpdateUserStatusRes): void => {
-              if (response && !response.success && response.error.code === 500) {
+              if (
+                response &&
+                !response.success &&
+                response.error.code === 500
+              ) {
                 setServerError(true);
               }
               setProfile({
