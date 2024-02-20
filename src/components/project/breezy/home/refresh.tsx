@@ -4,6 +4,7 @@ import {type ReactNode, useEffect, useState} from 'react';
 import type {User} from '@redux/reducers/project/breezy/dashboard';
 import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
+import {initialState} from '@redux/reducers/project/breezy/dashboard';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 import {useRouter} from 'next/navigation';
 
@@ -56,11 +57,26 @@ type UserStatusNotif = {
 };
 
 const Refresh = ({children}: RefreshProps): JSX.Element => {
-  const {profile, users, setProfile, setServerError, setUsers} = useDashboard();
+  const {
+    profile,
+    users,
+    setMenu,
+    setMessages,
+    setProfile,
+    setServerError,
+    setSettings,
+    setUsers
+  } = useDashboard();
   const [rendered, setRendered] = useState<boolean>(false);
   const {push} = useRouter();
 
   const handleLogoutOldSession = (): void => {
+    setMenu(initialState.menu);
+    setMessages(initialState.messages);
+    setUsers(initialState.users);
+    setProfile(initialState.profile);
+    setSettings(initialState.settings);
+    setServerError(initialState.serverError);
     cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY);
     push('/project/breezy/login');
   };
