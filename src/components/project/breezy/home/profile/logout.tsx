@@ -34,10 +34,10 @@ const Logout = ({label, dialog}: LogoutProps): JSX.Element => {
   const [loggingOut, setLoggingOut] = useState<boolean>(false);
   const {push} = useRouter();
   const {
-    setForceLogout,
     setMenu,
     setMessages,
     setProfile,
+    setServerError,
     setSettings,
     setUsers
   } = useDashboard();
@@ -67,7 +67,7 @@ const Logout = ({label, dialog}: LogoutProps): JSX.Element => {
             setUsers(initialState.users);
             setProfile(initialState.profile);
             setSettings(initialState.settings);
-            setForceLogout(initialState.forceLogout);
+            setServerError(initialState.serverError);
             cookie.remove(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY);
             push('/project/breezy/login');
           } else if (
@@ -75,7 +75,7 @@ const Logout = ({label, dialog}: LogoutProps): JSX.Element => {
             !response.success &&
             response.error.code === 500
           ) {
-            setForceLogout(true);
+            setServerError(true);
           }
         });
     }
