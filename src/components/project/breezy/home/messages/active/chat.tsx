@@ -1,6 +1,7 @@
 'use client';
 
 import {faCheckDouble, faEllipsisH} from '@fortawesome/free-solid-svg-icons';
+import {DateTime} from 'luxon';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Tooltip} from '@components/project/breezy/shared';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
@@ -17,22 +18,27 @@ const Chat = (): JSX.Element => {
               className={`flex w-fit flex-col ${
                 chat.self ? 'place-self-end' : 'place-self-start'
               }`}
+              key={chat.id}
             >
               <p
-                className={`w-fit max-w-[80vw] rounded-r-xl rounded-bl-xl bg-purple-500 px-3 py-2 text-white shadow-md`}
+                className={'w-fit max-w-[80vw] rounded-r-xl rounded-bl-xl bg-purple-500 px-3 py-2 text-white shadow-md'}
                 style={{wordBreak: 'break-word'}}
               >
                 {chat.message}
               </p>
               <div className={`mx-1 ${chat.self ? 'text-end' : 'text-start'}`}>
-                <Tooltip id='1'>
+                <Tooltip id={`timestamp-${chat.id}`}>
                   <span
                     className='text-sm text-gray-500'
-                    data-tooltip-id='1'
-                    data-tooltip-content='9/9/2023, 5:04 PM'
-                    data-tooltip-place='right'
+                    data-tooltip-id={`timestamp-${chat.id}`}
+                    data-tooltip-content={DateTime.fromISO(
+                      chat.timestamp.created
+                    ).toLocaleString(DateTime.DATETIME_SHORT)}
+                    data-tooltip-place={chat.self ? 'left' : 'right'}
                   >
-                    5:04 PM
+                    {DateTime.fromISO(chat.timestamp.created).toLocaleString(
+                      DateTime.TIME_SIMPLE
+                    )}
                   </span>
                 </Tooltip>
               </div>
