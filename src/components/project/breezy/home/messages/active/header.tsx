@@ -47,15 +47,30 @@ const Header = ({lastSeen}: HeaderProps): JSX.Element => {
             : lastSeen.known
                 .replace(
                   '{{date}}',
-                  DateTime.fromISO(
-                    activeUser.session.lastOnline
-                  ).toLocaleString({weekday: 'short'})
+                  DateTime.utc()
+                    .toLocal()
+                    .hasSame(
+                      DateTime.fromISO(activeUser.session.lastOnline),
+                      'day'
+                    )
+                    ? 'today'
+                    : DateTime.utc()
+                        .toLocal()
+                        .minus({days: 1})
+                        .hasSame(
+                          DateTime.fromISO(activeUser.session.lastOnline),
+                          'day'
+                        )
+                    ? 'yesterday'
+                    : DateTime.fromISO(
+                        activeUser.session.lastOnline
+                      ).toLocaleString({weekday: 'short'})
                 )
                 .replace(
                   '{{time}}',
                   DateTime.fromISO(
                     activeUser.session.lastOnline
-                  ).toLocaleString(DateTime.TIME_24_SIMPLE)
+                  ).toLocaleString(DateTime.TIME_SIMPLE)
                 )}
         </div>
       </div>
