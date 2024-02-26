@@ -21,9 +21,11 @@ const Chat = (): JSX.Element => {
               key={chat.id}
             >
               <p
-                className={
-                  'w-fit max-w-[80vw] rounded-r-xl rounded-bl-xl bg-purple-500 px-3 py-2 text-white shadow-md'
-                }
+                className={`w-fit max-w-[80vw] px-3 py-2 shadow-md ${
+                  chat.self
+                    ? 'rounded-l-xl rounded-br-xl bg-white'
+                    : 'rounded-r-xl rounded-bl-xl bg-purple-500 text-white'
+                }`}
                 style={{wordBreak: 'break-word'}}
               >
                 {chat.message}
