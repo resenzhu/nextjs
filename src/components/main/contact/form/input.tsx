@@ -1,15 +1,6 @@
 'use client';
 
 import {type ChangeEvent, type FormEvent, useEffect, useState} from 'react';
-import {
-  TFormError,
-  TFormSubmit,
-  TFormSubmitting,
-  TFormSuccess,
-  TLabelEmail,
-  TLabelMessage,
-  TLabelName
-} from '@components/main/contact/form/transition';
 import {ValidationError, object, string} from 'yup';
 import {Button} from '@components/main/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -334,14 +325,14 @@ const Input = ({label, message}: InputProps): JSX.Element => {
       onSubmit={(event): void => handleSubmitForm(event)}
     >
       <div className='flex animate-fade-right flex-col text-start animate-duration-700'>
-        <TLabelName>
+        {form.name.length !== 0 && (
           <label
             className='font-semibold'
             htmlFor='name'
           >
             {label.name}
           </label>
-        </TLabelName>
+        )}
         <input
           className='border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           name='name'
@@ -355,14 +346,14 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         />
       </div>
       <div className='flex animate-fade-left flex-col text-start animate-duration-700'>
-        <TLabelEmail>
+        {form.email.length !== 0 && (
           <label
             className='font-semibold'
             htmlFor='email'
           >
             {label.email}
           </label>
-        </TLabelEmail>
+        )}
         <input
           className='border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           name='email'
@@ -376,14 +367,14 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         />
       </div>
       <div className='flex animate-fade-right flex-col text-start animate-duration-700'>
-        <TLabelMessage>
+        {form.message.length !== 0 && (
           <label
             className='font-semibold'
             htmlFor='message'
           >
             {label.message}
           </label>
-        </TLabelMessage>
+        )}
         <textarea
           className='min-h-[20vh] resize-none border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           name='message'
@@ -406,12 +397,12 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           disabled={form.submitting}
         />
       </div>
-      <TFormError>
+      {form.error.length !== 0 && (
         <div className='bg-red-500 p-2 text-white'>{form.error}</div>
-      </TFormError>
-      <TFormSuccess>
+      )}
+      {form.success.length !== 0 && (
         <div className='bg-green-600 p-2 text-white'>{form.success}</div>
-      </TFormSuccess>
+      )}
       <Button
         className={`w-36 animate-fade-left place-self-center animate-duration-700 ${
           form.submitting ? 'cursor-default' : 'active:bg-cyan-700'
@@ -423,15 +414,13 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           form.message.trim().length === 0
         }
       >
-        <TFormSubmit>
-          <span>{label.submit}</span>
-        </TFormSubmit>
-        <TFormSubmitting>
+        {!form.submitting && <span>{label.submit}</span>}
+        {form.submitting && (
           <FontAwesomeIcon
             className='animate-spin text-xl animate-infinite'
             icon={faSpinner}
           />
-        </TFormSubmitting>
+        )}
       </Button>
     </form>
   );

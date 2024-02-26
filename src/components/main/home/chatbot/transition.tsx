@@ -69,15 +69,3 @@ export const TChatbotBox = ({children}: TProps): JSX.Element => {
     </>
   );
 };
-
-export const TChatbotOffline = ({children}: TProps): JSX.Element => {
-  const {online} = useApp();
-  return (
-    <Transition
-      show={!online}
-      as={Fragment}
-    >
-      {children}
-    </Transition>
-  );
-};

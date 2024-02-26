@@ -1,6 +1,6 @@
 'use client';
 
-import {TChatbotOffline} from '@components/main/home/chatbot/transition';
+import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
 
 type ChatProps = {
@@ -9,6 +9,7 @@ type ChatProps = {
 
 const Chat = ({offline}: ChatProps): JSX.Element => {
   const {chatbot} = useHome();
+  const {online} = useApp();
   return (
     <>
       {chatbot.chats.map(
@@ -28,11 +29,11 @@ const Chat = ({offline}: ChatProps): JSX.Element => {
           </div>
         )
       )}
-      <TChatbotOffline>
+      {!online && (
         <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
           {offline}
         </div>
-      </TChatbotOffline>
+      )}
     </>
   );
 };
