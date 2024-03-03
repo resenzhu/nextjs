@@ -1,6 +1,6 @@
 'use client';
 
-import {faCheckDouble, faEllipsisH} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 import {DateTime} from 'luxon';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Tooltip} from '@components/project/breezy/shared';
@@ -16,7 +16,9 @@ const Chat = (): JSX.Element => {
           (chat): JSX.Element => (
             <div
               className={`flex w-fit flex-col ${
-                chat.self ? 'place-self-end' : 'place-self-start'
+                chat.self
+                  ? 'place-items-end place-self-end'
+                  : 'place-items-start place-self-start'
               }`}
               key={chat.id}
             >
@@ -31,20 +33,28 @@ const Chat = (): JSX.Element => {
                 {chat.message}
               </p>
               <div className={`mx-1 ${chat.self ? 'text-end' : 'text-start'}`}>
-                <Tooltip id={`timestamp-${chat.id}`}>
-                  <span
-                    className='text-sm text-gray-500'
-                    data-tooltip-id={`timestamp-${chat.id}`}
-                    data-tooltip-content={DateTime.fromISO(
-                      chat.timestamp.created
-                    ).toLocaleString(DateTime.DATETIME_SHORT)}
-                    data-tooltip-place={chat.self ? 'left' : 'right'}
-                  >
-                    {DateTime.fromISO(chat.timestamp.created).toLocaleString(
-                      DateTime.TIME_SIMPLE
-                    )}
-                  </span>
-                </Tooltip>
+                <div className='space-x-2'>
+                  <Tooltip id={`timestamp-${chat.id}`}>
+                    <span
+                      className='text-sm text-gray-500'
+                      data-tooltip-id={`timestamp-${chat.id}`}
+                      data-tooltip-content={DateTime.fromISO(
+                        chat.timestamp.created
+                      ).toLocaleString(DateTime.DATETIME_SHORT)}
+                      data-tooltip-place={chat.self ? 'left' : 'right'}
+                    >
+                      {DateTime.fromISO(chat.timestamp.created).toLocaleString(
+                        DateTime.TIME_SIMPLE
+                      )}
+                    </span>
+                  </Tooltip>
+                  {chat.self && (
+                    <FontAwesomeIcon
+                      className='text-gray-500'
+                      icon={faCheck}
+                    />
+                  )}
+                </div>
               </div>
             </div>
           )
@@ -100,7 +110,7 @@ const Chat = (): JSX.Element => {
             </Tooltip>
             <FontAwesomeIcon
               className='text-green-500'
-              icon={faCheckDouble}
+              icon={faCheck}
             />
           </div>
         </div>
@@ -161,7 +171,7 @@ const Chat = (): JSX.Element => {
             </Tooltip>
             <FontAwesomeIcon
               className='text-green-500'
-              icon={faCheckDouble}
+              icon={faCheck}
             />
           </div>
         </div>
