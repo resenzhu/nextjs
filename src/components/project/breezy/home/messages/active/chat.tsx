@@ -28,8 +28,47 @@ const Chat = (): JSX.Element => {
               ) && (
                 <div className='grid place-content-center py-2'>
                   <div className='w-fit rounded-xl bg-white px-5 py-2 text-gray-500 shadow-md'>
-                    {DateTime.utc().toLocal().hasSame(DateTime.fromISO(chat.timestamp.created), 'day') && <>TODAY</>}
-                    {DateTime.utc().toLocal().minus({days: 1}).hasSame(DateTime.fromISO(chat.timestamp.created), 'day') && <>YESTERDAY</>}
+                    {DateTime.utc()
+                      .toLocal()
+                      .hasSame(
+                        DateTime.fromISO(chat.timestamp.created),
+                        'day'
+                      ) && <>TODAY</>}
+                    {DateTime.utc()
+                      .toLocal()
+                      .minus({days: 1})
+                      .hasSame(
+                        DateTime.fromISO(chat.timestamp.created),
+                        'day'
+                      ) && <>YESTERDAY</>}
+                    {DateTime.utc()
+                      .toLocal()
+                      .diff(DateTime.fromISO(chat.timestamp.created), 'days')
+                      .days >= 2 &&
+                      DateTime.utc()
+                        .toLocal()
+                        .diff(DateTime.fromISO(chat.timestamp.created), 'days')
+                        .days <= 5 && (
+                        <>
+                          {DateTime.fromISO(chat.timestamp.created)
+                            .toLocaleString({weekday: 'long'})
+                            .toUpperCase()}
+                        </>
+                      )}
+                    {DateTime.utc()
+                      .toLocal()
+                      .diff(DateTime.fromISO(chat.timestamp.created), 'days')
+                      .days > 5 && (
+                      <>
+                        {DateTime.fromISO(
+                          chat.timestamp.created
+                        ).toLocaleString({
+                          month: '2-digit',
+                          day: '2-digit',
+                          year: 'numeric'
+                        })}
+                      </>
+                    )}
                   </div>
                 </div>
               )}
