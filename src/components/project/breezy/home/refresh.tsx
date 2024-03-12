@@ -1,10 +1,12 @@
 'use client';
 
 import {type ReactNode, useEffect, useState} from 'react';
-import type {User} from '@redux/reducers/project/breezy/dashboard';
+import {
+  type User,
+  initialState
+} from '@redux/reducers/project/breezy/dashboard';
 import {breezySocket} from '@utils/socket';
 import cookie from 'js-cookie';
-import {initialState} from '@redux/reducers/project/breezy/dashboard';
 import useDashboard from '@hooks/project/breezy/use-dashboard';
 import {useRouter} from 'next/navigation';
 
