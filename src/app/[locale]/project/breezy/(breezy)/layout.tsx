@@ -1,4 +1,4 @@
-import '@app/project/breezy/(breezy)/layout.css';
+import '@app/[locale]/project/breezy/(breezy)/layout.css';
 import {Cookie, Socket} from '@components/project/breezy/layout';
 import type {ReactNode} from 'react';
 
