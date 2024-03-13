@@ -1,5 +1,7 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
+type Locale = 'en' | 'id';
+
 type Online = boolean;
 
 type Viewport = {
@@ -8,11 +10,13 @@ type Viewport = {
 };
 
 type State = {
+  locale: Locale;
   online: Online;
   viewport: Viewport;
 };
 
 type Reducers = {
+  setLocale: (state: State, action: PayloadAction<Locale>) => void;
   setOnline: (state: State, action: PayloadAction<Online>) => void;
   setViewport: (state: State, action: PayloadAction<Viewport>) => void;
 };
@@ -20,6 +24,7 @@ type Reducers = {
 const name: string = 'app';
 
 const initialState: State = {
+  locale: 'en',
   online: false,
   viewport: {
     width: 0,
@@ -28,6 +33,11 @@ const initialState: State = {
 };
 
 const reducers: Reducers = {
+  setLocale: (state, action) => {
+    if (state.locale !== action.payload) {
+      state.locale = action.payload;
+    }
+  },
   setOnline: (state, action) => {
     if (state.online !== action.payload) {
       state.online = action.payload;
@@ -47,6 +57,6 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {Online, Viewport};
-export const {setOnline, setViewport} = slice.actions;
+export type {Locale, Online, Viewport};
+export const {setLocale, setOnline, setViewport} = slice.actions;
 export default slice.reducer;
