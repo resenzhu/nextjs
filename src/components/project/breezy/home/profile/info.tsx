@@ -12,7 +12,7 @@ const Info = (): JSX.Element => {
           .map((word): string => word[0] ?? '')
           .join('')
           .slice(0, 2)
-          .toUpperCase() ?? ''}
+          .toUpperCase()}
       </div>
       <div className='text-center text-white'>
         <div className='text-lg font-bold'>{profile.user.displayName}</div>

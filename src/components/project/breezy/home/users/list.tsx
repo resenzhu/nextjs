@@ -62,7 +62,7 @@ const List = ({label}: ListProps): JSX.Element => {
                   .map((word): string => word[0] ?? '')
                   .join('')
                   .slice(0, 2)
-                  .toUpperCase() ?? ''}
+                  .toUpperCase()}
               </div>
               <div className='flex flex-1 justify-between'>
                 <div
