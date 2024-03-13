@@ -1,7 +1,8 @@
 'use strict';
 
 const {createSecureHeaders} = require('next-secure-headers');
-const withPlugins = require('next-compose-plugins');
+const withNextCompose = require('next-compose-plugins');
+const withNextIntl = require('next-intl/plugin')();
 
 /**
  * @type {boolean}
@@ -98,6 +99,9 @@ const nextHeaders = {
   ]
 };
 
-const composedPlugins = withPlugins([nextHeaders], nextConfig);
+const composedPlugins = withNextCompose(
+  [nextHeaders],
+  withNextIntl(nextConfig)
+);
 
 module.exports = composedPlugins;
