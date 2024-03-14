@@ -2,10 +2,6 @@ import {type NextRequest, NextResponse} from 'next/server';
 import {importSPKI, jwtVerify} from 'jose';
 import createNextIntlMiddleware from 'next-intl/middleware';
 
-export const config = {
-  matcher: ['/', '/(en|id)/:path*']
-};
-
 const intlMiddleware = createNextIntlMiddleware({
   locales: ['en', 'id'],
   defaultLocale: 'en',
@@ -87,6 +83,10 @@ const middleware = async (nextRequest: NextRequest): Promise<NextResponse> => {
     default:
       return nextResponse;
   }
+};
+
+export const config = {
+  matcher: ['/', '/(en|id)/:path*']
 };
 
 export default middleware;
