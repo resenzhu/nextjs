@@ -18,27 +18,27 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
           title={translate('navbar.title')}
         >
           <Navbar.Menu
-            label='Home'
+            label={translate('navbar.menu.home')}
             url='/'
           />
           <Navbar.Menu
-            label='About'
+            label={translate('navbar.menu.about')}
             url='/about'
           />
           <Navbar.Menu
-            label='Portfolio'
+            label={translate('navbar.menu.portfolio')}
             url='/portfolio'
           />
           <Navbar.Menu
-            label='Resources'
+            label={translate('navbar.menu.resources')}
             url='/resources'
           />
           <Navbar.Menu
-            label='Contact'
+            label={translate('navbar.menu.contact')}
             url='/contact'
           />
           <Navbar.Menu
-            label='GitHub'
+            label={translate('navbar.menu.github')}
             url='https://github.com/resenzhu'
             target='_blank'
           />
