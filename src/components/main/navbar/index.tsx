@@ -44,6 +44,7 @@ const Menu = ({label, url, target}: MenuProps): JSX.Element => (
 );
 
 Navbar.Menu = Menu;
+Navbar.Language = Language;
 
 export type {NavbarProps, MenuProps};
 export default Navbar;

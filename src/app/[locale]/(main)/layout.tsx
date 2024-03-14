@@ -15,7 +15,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
       <div className='overflow-x-hidden pt-16 md:pt-14'>
         <Navbar
           logo='/images/main/navbar-brand-logo.webp'
-          title={translate('navbar.title')}
+          title={translate('navbar.brand')}
         >
           <Navbar.Menu
             label={translate('navbar.menu.home')}
@@ -42,6 +42,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
             url='https://github.com/resenzhu'
             target='_blank'
           />
+          <Navbar.Language />
         </Navbar>
         {children}
       </div>
