@@ -1,10 +1,10 @@
 import {getRequestConfig} from 'next-intl/server';
+import {locales} from '@navigation';
 import {notFound} from 'next/navigation';
 
 const i18n = getRequestConfig(
   async ({locale}: {locale: string}): Promise<object> => {
-    const locales: string[] = ['en', 'id'];
-    if (!locales.includes(locale)) {
+    if (!locales.includes(locale as (typeof locales)[number])) {
       notFound();
     }
     return {
