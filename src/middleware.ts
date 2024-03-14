@@ -1,11 +1,12 @@
 import {type NextRequest, NextResponse} from 'next/server';
+import {defaultLocale, localePrefix, locales} from '@navigation';
 import {importSPKI, jwtVerify} from 'jose';
 import createNextIntlMiddleware from 'next-intl/middleware';
 
 const intlMiddleware = createNextIntlMiddleware({
-  locales: ['en', 'id'],
-  defaultLocale: 'en',
-  localePrefix: 'always',
+  locales: locales,
+  defaultLocale: defaultLocale,
+  localePrefix: localePrefix,
   localeDetection: false,
   alternateLinks: true
 });
