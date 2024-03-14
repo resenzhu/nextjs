@@ -17,32 +17,31 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
           logo='/images/main/navbar-brand-logo.webp'
           title={translate('navbar.brand')}
         >
-          <Navbar.Menu
+          <Navbar.Route
             label={translate('navbar.menu.home')}
             url='/'
           />
-          <Navbar.Menu
+          <Navbar.Route
             label={translate('navbar.menu.about')}
             url='/about'
           />
-          <Navbar.Menu
+          <Navbar.Route
             label={translate('navbar.menu.portfolio')}
             url='/portfolio'
           />
-          <Navbar.Menu
+          <Navbar.Route
             label={translate('navbar.menu.resources')}
             url='/resources'
           />
-          <Navbar.Menu
+          <Navbar.Route
             label={translate('navbar.menu.contact')}
             url='/contact'
           />
-          <Navbar.Menu
+          <Navbar.Route
             label={translate('navbar.menu.github')}
             url='https://github.com/resenzhu'
             target='_blank'
           />
-          <Navbar.Language />
         </Navbar>
         {children}
       </div>

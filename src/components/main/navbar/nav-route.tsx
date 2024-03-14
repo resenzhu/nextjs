@@ -4,13 +4,13 @@ import type {HTMLAttributeAnchorTarget} from 'react';
 import {Link} from '@navigation';
 import useNavbar from '@hooks/main/use-navbar';
 
-type NavMenuProps = {
+type NavRouteProps = {
   label: string;
   url: string;
   target?: HTMLAttributeAnchorTarget | undefined;
 };
 
-const NavMenu = ({label, url, target}: NavMenuProps) => {
+const NavRoute = ({label, url, target}: NavRouteProps) => {
   const {sidenav, setSidenav} = useNavbar();
 
   const handleToggleSidenav = (show: boolean) => {
@@ -31,5 +31,5 @@ const NavMenu = ({label, url, target}: NavMenuProps) => {
   );
 };
 
-export type {NavMenuProps};
-export default NavMenu;
+export type {NavRouteProps};
+export default NavRoute;

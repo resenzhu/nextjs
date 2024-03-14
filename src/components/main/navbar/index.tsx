@@ -1,6 +1,6 @@
-import NavMenu, {
-  type NavMenuProps as MenuProps
-} from '@components/main/navbar/navmenu';
+import NavRoute, {
+  type NavRouteProps as RouteProps
+} from '@components/main/navbar/nav-route';
 import Image from 'next/image';
 import {Link} from '@navigation';
 import Nav from '@components/main/navbar/nav';
@@ -35,16 +35,15 @@ const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
   </nav>
 );
 
-const Menu = ({label, url, target}: MenuProps): JSX.Element => (
-  <NavMenu
+const Route = ({label, url, target}: RouteProps): JSX.Element => (
+  <NavRoute
     label={label}
     url={url}
     target={target}
   />
 );
 
-Navbar.Menu = Menu;
-Navbar.Language = Language;
+Navbar.Route = Route;
 
-export type {NavbarProps, MenuProps};
+export type {NavbarProps, RouteProps};
 export default Navbar;
