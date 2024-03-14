@@ -1,7 +1,16 @@
 {
   "main": {
     "navbar": {
-      "title": "RESEN"
+      "brand": "RESEN",
+      "menu": {
+        "home": "Beranda",
+        "about": "Tentang",
+        "portfolio": "Portofolio",
+        "resources": "Sumber Daya",
+        "contact": "Kontak",
+        "github": "GitHub",
+        "language": "Bahasa"
+      }
     }
   }
 }

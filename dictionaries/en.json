@@ -1,7 +1,16 @@
 {
   "main": {
     "navbar": {
-      "title": "RESEN"
+      "brand": "RESEN",
+      "menu": {
+        "home": "Home",
+        "about": "About",
+        "portfolio": "Portfolio",
+        "resources": "Resources",
+        "contact": "Contact",
+        "github": "GitHub",
+        "language": "Language"
+      }
     }
   }
 }
