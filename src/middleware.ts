@@ -1,4 +1,4 @@
-import {type NextRequest, NextResponse} from 'next/server';
+import type {NextRequest, NextResponse} from 'next/server';
 import {defaultLocale, localePrefix, locales} from '@navigation';
 import {importSPKI, jwtVerify} from 'jose';
 import createNextIntlMiddleware from 'next-intl/middleware';
