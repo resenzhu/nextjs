@@ -26,6 +26,7 @@
       "@app/*": ["src/app/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
+      "@navigation": ["src/navigation.ts"],
       "@redux/*": ["src/redux/*"],
       "@utils/*": ["src/utils/*"]
     },
