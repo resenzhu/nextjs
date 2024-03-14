@@ -40,8 +40,9 @@
     "strict": true
   },
   "include": [
-    "next-env.d.ts",
     "environment.d.ts",
+    "next-env.d.ts",
+    "next.intl.d.ts",
     ".next/types/**/*.ts",
     "src/**/*"
   ],
