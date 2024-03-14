@@ -2,7 +2,7 @@ import NavMenu, {
   type NavMenuProps as MenuProps
 } from '@components/main/navbar/navmenu';
 import Image from 'next/image';
-import Link from 'next/link';
+import {Link} from '@navigation';
 import Nav from '@components/main/navbar/nav';
 import type {ReactNode} from 'react';
 

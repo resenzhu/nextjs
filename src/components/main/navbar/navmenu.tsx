@@ -1,7 +1,7 @@
 'use client';
 
 import type {HTMLAttributeAnchorTarget} from 'react';
-import Link from 'next/link';
+import {Link} from '@navigation';
 import useNavbar from '@hooks/main/use-navbar';
 
 type NavMenuProps = {
