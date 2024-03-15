@@ -4,6 +4,7 @@ import NavRoute, {
 import Image from 'next/image';
 import {Link} from '@navigation';
 import Nav from '@components/main/navbar/nav';
+import NavLanguage from '@components/main/navbar/nav-language';
 import type {ReactNode} from 'react';
 
 type NavbarProps = {
@@ -43,7 +44,10 @@ const Route = ({label, url, target}: RouteProps): JSX.Element => (
   />
 );
 
+const Language = (): JSX.Element => <NavLanguage />;
+
 Navbar.Route = Route;
+Navbar.Language = Language;
 
 export type {NavbarProps, RouteProps};
 export default Navbar;

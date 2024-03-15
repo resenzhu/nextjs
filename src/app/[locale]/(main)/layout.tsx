@@ -42,6 +42,7 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
             url='https://github.com/resenzhu'
             target='_blank'
           />
+          <Navbar.Language />
         </Navbar>
         {children}
       </div>
