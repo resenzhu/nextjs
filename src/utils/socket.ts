@@ -7,11 +7,9 @@ const socketManager = new Manager(process.env.NEXT_PUBLIC_APP_SOCKET, {
   autoConnect: false
 });
 
-const mainSocket = socketManager.socket('/main');
-const breezySocket = socketManager.socket('/project/breezy', {
+export const mainSocket = socketManager.socket('/main');
+export const breezySocket = socketManager.socket('/project/breezy', {
   auth: {
     token: cookie.get(process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY)
   }
 });
-
-export {mainSocket, breezySocket};

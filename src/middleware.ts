@@ -89,5 +89,4 @@ const middleware = async (nextRequest: NextRequest): Promise<NextResponse> => {
 export const config = {
   matcher: ['/', '/(en|id)/:path*']
 };
-
 export default middleware;
