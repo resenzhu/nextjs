@@ -1,9 +1,5 @@
-import {
-  type Middleware,
-  type MiddlewareArray,
-  configureStore
-} from '@reduxjs/toolkit';
-import type {CurriedGetDefaultMiddleware} from '@reduxjs/toolkit/dist/getDefaultMiddleware';
+import {type Middleware, type Tuple, configureStore} from '@reduxjs/toolkit';
+import type {GetDefaultMiddleware} from '@reduxjs/toolkit/dist/getDefaultMiddleware';
 import {createPersistConfig} from '@utils/persist';
 import {persistReducer} from 'redux-persist';
 import reducers from '@redux/reducers';
@@ -14,8 +10,8 @@ const persistedReducer = persistReducer(
 );
 
 const middleware = (
-  getDefaultMiddleware: CurriedGetDefaultMiddleware
-): MiddlewareArray<Middleware[]> =>
+  getDefaultMiddleware: GetDefaultMiddleware
+): Tuple<Middleware[]> =>
   getDefaultMiddleware({
     serializableCheck: {
       ignoreActions: true
