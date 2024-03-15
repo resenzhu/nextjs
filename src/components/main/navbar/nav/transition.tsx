@@ -9,10 +9,10 @@ export type TProps = {
 };
 
 export const TNav = ({children}: TProps): JSX.Element => {
-  const {sidenav} = useNavbar();
+  const {isSideNavOpen} = useNavbar();
   return (
     <Transition
-      show={sidenav}
+      show={isSideNavOpen}
       as={Fragment}
     >
       {children}
@@ -34,7 +34,7 @@ export const TNavBackdrop = ({children}: TProps): JSX.Element => (
   </Transition.Child>
 );
 
-export const TNavSidenav = ({children}: TProps): JSX.Element => (
+export const TNavSideNav = ({children}: TProps): JSX.Element => (
   <Transition.Child
     as={Fragment}
     enter='duration-150 ease-out'

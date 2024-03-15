@@ -11,11 +11,11 @@ type NavRouteProps = {
 };
 
 const NavRoute = ({label, url, target}: NavRouteProps) => {
-  const {sidenav, setSidenav} = useNavbar();
+  const {isSideNavOpen, setIsSideNavOpen} = useNavbar();
 
-  const handleToggleSidenav = (show: boolean) => {
-    if (sidenav !== show) {
-      setSidenav(show);
+  const handleToggleSideNav = (open: boolean) => {
+    if (isSideNavOpen !== open) {
+      setIsSideNavOpen(open);
     }
   };
 
@@ -24,7 +24,7 @@ const NavRoute = ({label, url, target}: NavRouteProps) => {
       className='w-fit text-lg font-bold text-gray-600 duration-150 hover:text-cyan-600 md:text-sm'
       href={url}
       target={target}
-      onClick={(): void => handleToggleSidenav(false)}
+      onClick={(): void => handleToggleSideNav(false)}
     >
       {label}
     </Link>

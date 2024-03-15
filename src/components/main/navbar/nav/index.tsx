@@ -4,7 +4,7 @@ import {type ReactNode, useEffect, useRef, useState} from 'react';
 import {
   TNav,
   TNavBackdrop,
-  TNavSidenav
+  TNavSideNav
 } from '@components/main/navbar/nav/transition';
 import {faEllipsisV, faXmark} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -16,20 +16,20 @@ type NavProps = {
 };
 
 const Nav = ({children}: NavProps): JSX.Element => {
-  const sidebar = useRef<HTMLDivElement>(null);
+  const sideNav = useRef<HTMLDivElement>(null);
   const {viewport} = useApp();
+  const {isSideNavOpen, setIsSideNavOpen} = useNavbar();
   const [rendered, setRendered] = useState<boolean>(false);
-  const {sidenav, setSidenav} = useNavbar();
 
-  const handleToggleSidenav = (show: boolean): void => {
-    if (sidenav !== show) {
-      setSidenav(show);
+  const handleToggleSideNav = (open: boolean): void => {
+    if (isSideNavOpen !== open) {
+      setIsSideNavOpen(open);
     }
   };
 
-  const handleHideSidenav = (event: MouseEvent): void => {
-    if (sidebar.current && !sidebar.current.contains(event.target as Node)) {
-      setSidenav(false);
+  const handleHideSideNav = (event: MouseEvent): void => {
+    if (sideNav.current && !sideNav.current.contains(event.target as Node)) {
+      setIsSideNavOpen(false);
     }
   };
 
@@ -41,10 +41,10 @@ const Nav = ({children}: NavProps): JSX.Element => {
 
   useEffect((): (() => void) => {
     if (rendered) {
-      addEventListener('mousedown', handleHideSidenav);
+      addEventListener('mousedown', handleHideSideNav);
     }
     return (): void => {
-      removeEventListener('mousedown', handleHideSidenav);
+      removeEventListener('mousedown', handleHideSideNav);
     };
   }, [rendered]);
 
@@ -55,7 +55,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
           <button
             className='flex'
             type='button'
-            onClick={(): void => handleToggleSidenav(true)}
+            onClick={(): void => handleToggleSideNav(true)}
           >
             <FontAwesomeIcon
               className='w-6 text-2xl text-gray-500'
@@ -68,10 +68,10 @@ const Nav = ({children}: NavProps): JSX.Element => {
                 <TNavBackdrop>
                   <div className='fixed left-0 top-0 h-screen w-screen bg-black opacity-60'></div>
                 </TNavBackdrop>
-                <TNavSidenav>
+                <TNavSideNav>
                   <div
                     className='fixed right-0 top-0 h-screen w-3/5 bg-white'
-                    ref={sidebar}
+                    ref={sideNav}
                   >
                     <div className='mx-6 flex h-full py-6'>
                       <div className='flex flex-1 flex-col space-y-5'>
@@ -80,7 +80,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
                       <div className='pt-1'>
                         <button
                           type='button'
-                          onClick={(): void => handleToggleSidenav(false)}
+                          onClick={(): void => handleToggleSideNav(false)}
                         >
                           <FontAwesomeIcon
                             className='text-2xl text-gray-500 duration-150 hover:text-red-500'
@@ -90,7 +90,7 @@ const Nav = ({children}: NavProps): JSX.Element => {
                       </div>
                     </div>
                   </div>
-                </TNavSidenav>
+                </TNavSideNav>
               </div>
             </TNav>
           </div>
