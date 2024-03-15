@@ -1,9 +1,8 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
+import {locales} from '@navigation';
 
-type Locale = 'en' | 'id';
-
-type Online = boolean;
-
+type Locale = (typeof locales)[number];
+type IsOnline = boolean;
 type Viewport = {
   width: number;
   height: number;
@@ -11,13 +10,13 @@ type Viewport = {
 
 type State = {
   locale: Locale;
-  online: Online;
+  isOnline: IsOnline;
   viewport: Viewport;
 };
 
 type Reducers = {
   setLocale: (state: State, action: PayloadAction<Locale>) => void;
-  setOnline: (state: State, action: PayloadAction<Online>) => void;
+  setIsOnline: (state: State, action: PayloadAction<IsOnline>) => void;
   setViewport: (state: State, action: PayloadAction<Viewport>) => void;
 };
 
@@ -25,7 +24,7 @@ const name: string = 'app';
 
 const initialState: State = {
   locale: 'en',
-  online: false,
+  isOnline: false,
   viewport: {
     width: 0,
     height: 0
@@ -38,9 +37,9 @@ const reducers: Reducers = {
       state.locale = action.payload;
     }
   },
-  setOnline: (state, action) => {
-    if (state.online !== action.payload) {
-      state.online = action.payload;
+  setIsOnline: (state, action) => {
+    if (state.isOnline !== action.payload) {
+      state.isOnline = action.payload;
     }
   },
   setViewport: (state, action) => {
@@ -57,6 +56,6 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {Locale, Online, Viewport};
-export const {setLocale, setOnline, setViewport} = slice.actions;
+export type {Locale, IsOnline, Viewport};
+export const {setLocale, setIsOnline, setViewport} = slice.actions;
 export default slice.reducer;

@@ -6,9 +6,9 @@ type Form = {
   message: string;
   honeypot: string;
   recaptcha: string;
-  submitting: boolean;
+  isSubmitting: boolean;
+  isSuccess: boolean;
   error: string;
-  success: string;
 };
 
 type State = {
@@ -19,7 +19,7 @@ type Reducers = {
   setForm: (state: State, action: PayloadAction<Form>) => void;
 };
 
-const name: string = 'home';
+const name: string = 'contact';
 
 const initialState: State = {
   form: {
@@ -28,9 +28,9 @@ const initialState: State = {
     message: '',
     honeypot: '',
     recaptcha: '',
-    submitting: false,
-    error: '',
-    success: ''
+    isSubmitting: false,
+    isSuccess: false,
+    error: ''
   }
 };
 

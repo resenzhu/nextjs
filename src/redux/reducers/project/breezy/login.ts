@@ -3,10 +3,11 @@ import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 type Form = {
   userName: string;
   password: string;
-  reveal: boolean;
+  isPasswordVisible: boolean;
   honeypot: string;
   recaptcha: string;
-  submitting: boolean;
+  isSubmitting: boolean;
+  isSuccess: boolean;
   error: {
     field: string | null;
     message: string;
@@ -27,10 +28,11 @@ const initialState: State = {
   form: {
     userName: '',
     password: '',
-    reveal: false,
+    isPasswordVisible: false,
     honeypot: '',
     recaptcha: '',
-    submitting: false,
+    isSubmitting: false,
+    isSuccess: false,
     error: {
       field: null,
       message: ''

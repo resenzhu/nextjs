@@ -1,58 +1,49 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
 type Menu = {
-  messages: boolean;
-  users: boolean;
-  profile: boolean;
+  isMessagesShown: boolean;
+  isUsersShown: boolean;
+  isProfileShown: boolean;
 };
-
-type User = {
-  id: string;
-  userName: string;
-  displayName: string;
-  session: {
-    status: 'online' | 'away' | 'offline';
-    lastOnline: string;
-  };
-};
-
-type Chat = {
-  id: string;
-  self: boolean;
-  message: string;
-  status: 'failed' | 'sending' | 'sent' | 'delivered' | 'read';
-  timestamp: {
-    created: string;
-    delivered: string | null;
-    read: string | null;
-  };
-};
-
-type Message = {
-  sender: {
-    id: string;
-    typing: boolean;
-  };
-  chats: Chat[];
-  message: string;
-};
-
 type Messages = {
-  fetching: boolean;
-  fetched: boolean;
-  list: Message[];
-  active: string | null;
+  isFetching: boolean;
+  isFetched: boolean;
+  list: {
+    sender: {
+      id: string;
+      isTyping: boolean;
+    };
+    chats: {
+      id: string;
+      isSelf: boolean;
+      message: string;
+      status: 'failed' | 'sending' | 'sent' | 'delivered' | 'read';
+      timestamp: {
+        created: string;
+        delivered: string | null;
+        read: string | null;
+      };
+    }[];
+    input: string;
+  }[];
+  current: string | null;
 };
-
 type Users = {
-  fetching: boolean;
-  fetched: boolean;
-  list: User[];
+  isFetching: boolean;
+  isFetched: boolean;
+  list: {
+    id: string;
+    userName: string;
+    displayName: string;
+    session: {
+      status: 'online' | 'away' | 'offline';
+      lastOnline: string;
+    };
+  }[];
 };
-
 type Profile = {
-  fetching: boolean;
-  fetched: boolean;
+  isFetching: boolean;
+  isFetched: boolean;
   user: {
     id: string;
     userName: string;
@@ -71,18 +62,16 @@ type Profile = {
           | 'appear away'
           | 'offline'
           | 'appear offline';
-        updating: boolean;
+        isUpdating: boolean;
       };
       lastOnline: string;
     };
   };
 };
-
 type Settings = {
-  show: boolean;
+  isVisible: boolean;
 };
-
-type ServerError = boolean;
+type IsServerError = boolean;
 
 type State = {
   menu: Menu;
@@ -90,7 +79,7 @@ type State = {
   users: Users;
   profile: Profile;
   settings: Settings;
-  serverError: ServerError;
+  isServerError: IsServerError;
 };
 
 type Reducers = {
@@ -99,31 +88,34 @@ type Reducers = {
   setUsers: (state: State, action: PayloadAction<Users>) => void;
   setProfile: (state: State, action: PayloadAction<Profile>) => void;
   setSettings: (state: State, action: PayloadAction<Settings>) => void;
-  setServerError: (state: State, action: PayloadAction<ServerError>) => void;
+  setIsServerError: (
+    state: State,
+    action: PayloadAction<IsServerError>
+  ) => void;
 };
 
 const name: string = 'dashboard';
 
 const initialState: State = {
   menu: {
-    messages: true,
-    users: false,
-    profile: false
+    isMessagesShown: true,
+    isUsersShown: false,
+    isProfileShown: false
   },
   messages: {
-    fetching: false,
-    fetched: false,
+    isFetching: false,
+    isFetched: false,
     list: [],
-    active: null
+    current: null
   },
   users: {
-    fetching: false,
-    fetched: false,
+    isFetching: false,
+    isFetched: false,
     list: []
   },
   profile: {
-    fetching: false,
-    fetched: false,
+    isFetching: false,
+    isFetched: false,
     user: {
       id: '',
       userName: '',
@@ -132,16 +124,16 @@ const initialState: State = {
         status: {
           previous: 'offline',
           current: 'offline',
-          updating: false
+          isUpdating: false
         },
         lastOnline: ''
       }
     }
   },
   settings: {
-    show: false
+    isVisible: false
   },
-  serverError: false
+  isServerError: false
 };
 
 const reducers: Reducers = {
@@ -170,9 +162,9 @@ const reducers: Reducers = {
       state.settings = action.payload;
     }
   },
-  setServerError: (state, action) => {
-    if (state.serverError !== action.payload) {
-      state.serverError = action.payload;
+  setIsServerError: (state, action) => {
+    if (state.isServerError !== action.payload) {
+      state.isServerError = action.payload;
     }
   }
 };
@@ -184,23 +176,13 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {
-  Menu,
-  User,
-  Chat,
-  Message,
-  Messages,
-  Users,
-  Profile,
-  Settings,
-  ServerError
-};
+export type {Menu, Messages, Users, Profile, Settings, IsServerError};
 export const {
   setMenu,
   setMessages,
   setUsers,
   setProfile,
   setSettings,
-  setServerError
+  setIsServerError
 } = slice.actions;
 export default slice.reducer;

@@ -1,20 +1,17 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
 type Section = {
-  profile: boolean;
-  explore: boolean;
-  chatbot: boolean;
+  isProfileShown: boolean;
+  isExploreShown: boolean;
+  isChatbotShown: boolean;
 };
-
-type Chat = {
-  sender: 'bot' | 'user';
-  message: string;
-};
-
 type Chatbot = {
   input: string;
-  sending: boolean;
-  chats: Chat[];
+  isSending: boolean;
+  chats: {
+    sender: 'bot' | 'user';
+    message: string;
+  }[];
 };
 
 type State = {
@@ -31,13 +28,13 @@ const name: string = 'home';
 
 const initialState: State = {
   section: {
-    profile: true,
-    explore: false,
-    chatbot: false
+    isProfileShown: true,
+    isExploreShown: false,
+    isChatbotShown: false
   },
   chatbot: {
     input: '',
-    sending: false,
+    isSending: false,
     chats: []
   }
 };
@@ -62,6 +59,6 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {Section, Chat, Chatbot};
+export type {Section, Chatbot};
 export const {setSection, setChatbot} = slice.actions;
 export default slice.reducer;

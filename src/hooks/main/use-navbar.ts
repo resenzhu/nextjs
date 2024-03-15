@@ -1,24 +1,24 @@
 import {
-  type Sidenav,
-  setSidenav as setNavbarSidenav
+  type IsSideNavOpen,
+  setIsSideNavOpen as setNavbarIsSideNavOpen
 } from '@redux/reducers/main/navbar';
 import {useDispatch, useSelector} from '@redux/hooks';
 
 type UseNavbar = {
-  sidenav: Sidenav;
-  setSidenav: (sidenav: Sidenav) => void;
+  isSideNavOpen: IsSideNavOpen;
+  setIsSideNavOpen: (isSideNavOpen: IsSideNavOpen) => void;
 };
 
 const useNavbar = (): UseNavbar => {
   const dispatch = useDispatch();
 
-  const setSidenav = (sidenav: Sidenav): void => {
-    dispatch(setNavbarSidenav(sidenav));
+  const setIsSideNavOpen = (isSideNavOpen: IsSideNavOpen): void => {
+    dispatch(setNavbarIsSideNavOpen(isSideNavOpen));
   };
 
   return {
-    sidenav: useSelector((state) => state.main.navbar.sidenav),
-    setSidenav: setSidenav
+    isSideNavOpen: useSelector((state) => state.main.navbar.isSideNavOpen),
+    setIsSideNavOpen: setIsSideNavOpen
   };
 };
 

@@ -1,19 +1,19 @@
 import {
   type Locale,
-  type Online,
+  type IsOnline,
   type Viewport,
   setLocale as setAppLocale,
-  setOnline as setAppOnline,
+  setIsOnline as setAppIsOnline,
   setViewport as setAppViewport
 } from '@redux/reducers/app';
 import {useDispatch, useSelector} from '@redux/hooks';
 
 type UseApp = {
   locale: Locale;
-  online: Online;
+  isOnline: IsOnline;
   viewport: Viewport;
   setLocale: (locale: Locale) => void;
-  setOnline: (online: Online) => void;
+  setIsOnline: (online: IsOnline) => void;
   setViewport: (viewport: Viewport) => void;
 };
 
@@ -24,8 +24,8 @@ const useApp = (): UseApp => {
     dispatch(setAppLocale(locale));
   };
 
-  const setOnline = (online: Online): void => {
-    dispatch(setAppOnline(online));
+  const setIsOnline = (isOnline: IsOnline): void => {
+    dispatch(setAppIsOnline(isOnline));
   };
 
   const setViewport = (viewport: Viewport): void => {
@@ -34,10 +34,10 @@ const useApp = (): UseApp => {
 
   return {
     locale: useSelector((state) => state.app.locale),
-    online: useSelector((state) => state.app.online),
+    isOnline: useSelector((state) => state.app.isOnline),
     viewport: useSelector((state) => state.app.viewport),
     setLocale: setLocale,
-    setOnline: setOnline,
+    setIsOnline: setIsOnline,
     setViewport: setViewport
   };
 };

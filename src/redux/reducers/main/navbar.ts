@@ -1,25 +1,28 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
 
-type Sidenav = boolean;
+type IsSideNavOpen = boolean;
 
 type State = {
-  sidenav: Sidenav;
+  isSideNavOpen: IsSideNavOpen;
 };
 
 type Reducers = {
-  setSidenav: (state: State, action: PayloadAction<Sidenav>) => void;
+  setIsSideNavOpen: (
+    state: State,
+    action: PayloadAction<IsSideNavOpen>
+  ) => void;
 };
 
 const name: string = 'navbar';
 
 const initialState: State = {
-  sidenav: false
+  isSideNavOpen: false
 };
 
 const reducers: Reducers = {
-  setSidenav: (state, action) => {
-    if (state.sidenav !== action.payload) {
-      state.sidenav = action.payload;
+  setIsSideNavOpen: (state, action) => {
+    if (state.isSideNavOpen !== action.payload) {
+      state.isSideNavOpen = action.payload;
     }
   }
 };
@@ -31,6 +34,6 @@ const slice = createSlice({
 });
 
 export {initialState};
-export type {Sidenav};
-export const {setSidenav} = slice.actions;
+export type {IsSideNavOpen};
+export const {setIsSideNavOpen} = slice.actions;
 export default slice.reducer;

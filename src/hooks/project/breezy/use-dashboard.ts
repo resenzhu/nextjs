@@ -2,13 +2,13 @@ import {
   type Menu,
   type Messages,
   type Profile,
-  type ServerError,
+  type IsServerError,
   type Settings,
   type Users,
   setMenu as setDashboardMenu,
   setMessages as setDashboardMessages,
   setProfile as setDashboardProfile,
-  setServerError as setDashboardServerError,
+  setIsServerError as setDashboardIsServerError,
   setSettings as setDashboardSettings,
   setUsers as setDashboardUsers
 } from '@redux/reducers/project/breezy/dashboard';
@@ -20,13 +20,13 @@ type UseDashboard = {
   users: Users;
   profile: Profile;
   settings: Settings;
-  serverError: ServerError;
+  isServerError: IsServerError;
   setMenu: (menu: Menu) => void;
   setMessages: (messages: Messages) => void;
   setUsers: (users: Users) => void;
   setProfile: (profile: Profile) => void;
   setSettings: (settings: Settings) => void;
-  setServerError: (serverError: ServerError) => void;
+  setIsServerError: (isServerError: IsServerError) => void;
 };
 
 const useDashboard = (): UseDashboard => {
@@ -52,8 +52,8 @@ const useDashboard = (): UseDashboard => {
     dispatch(setDashboardSettings(settings));
   };
 
-  const setServerError = (serverError: ServerError): void => {
-    dispatch(setDashboardServerError(serverError));
+  const setIsServerError = (isServerError: IsServerError): void => {
+    dispatch(setDashboardIsServerError(isServerError));
   };
 
   return {
@@ -62,15 +62,15 @@ const useDashboard = (): UseDashboard => {
     users: useSelector((state) => state.project.breezy.dashboard.users),
     profile: useSelector((state) => state.project.breezy.dashboard.profile),
     settings: useSelector((state) => state.project.breezy.dashboard.settings),
-    serverError: useSelector(
-      (state) => state.project.breezy.dashboard.serverError
+    isServerError: useSelector(
+      (state) => state.project.breezy.dashboard.isServerError
     ),
     setMenu: setMenu,
     setMessages: setMessages,
     setUsers: setUsers,
     setProfile: setProfile,
     setSettings: setSettings,
-    setServerError: setServerError
+    setIsServerError: setIsServerError
   };
 };
 
