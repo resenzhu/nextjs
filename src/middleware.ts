@@ -3,7 +3,7 @@ import {defaultLocale, localePrefix, locales} from '@navigation';
 import {importSPKI, jwtVerify} from 'jose';
 import createNextIntlMiddleware from 'next-intl/middleware';
 
-const intlMiddleware = createNextIntlMiddleware({
+const nextIntlMiddleware = createNextIntlMiddleware({
   locales: locales,
   defaultLocale: defaultLocale,
   localePrefix: localePrefix,
@@ -12,7 +12,7 @@ const intlMiddleware = createNextIntlMiddleware({
 });
 
 const middleware = async (nextRequest: NextRequest): Promise<NextResponse> => {
-  const nextResponse = intlMiddleware(nextRequest);
+  const nextResponse = nextIntlMiddleware(nextRequest);
   switch (nextRequest.nextUrl.pathname) {
     case '/project/breezy/signup':
     case '/project/breezy/login': {
