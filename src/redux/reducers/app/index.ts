@@ -1,5 +1,5 @@
 import {type PayloadAction, createSlice} from '@reduxjs/toolkit';
-import {locales} from '@navigation';
+import {defaultLocale, locales} from '@navigation';
 
 type Locale = (typeof locales)[number];
 type IsOnline = boolean;
@@ -23,7 +23,7 @@ type Reducers = {
 const name: string = 'app';
 
 const initialState: State = {
-  locale: 'en',
+  locale: defaultLocale,
   isOnline: false,
   viewport: {
     width: 0,
