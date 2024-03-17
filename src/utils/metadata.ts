@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import {locales} from '@navigation';
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL),
@@ -20,11 +21,13 @@ export const rootMetadata: Metadata = {
 export const createMetadata = ({
   title,
   description,
-  url
+  url,
+  locale
 }: {
   title: string;
   description: string;
   url: string;
+  locale: (typeof locales)[number];
 }): Metadata => ({
   title: title,
   description: description,
@@ -32,7 +35,7 @@ export const createMetadata = ({
     title: title,
     description: description,
     url: url,
-    locale: 'en',
+    locale: locale,
     type: 'website'
   },
   twitter: {
