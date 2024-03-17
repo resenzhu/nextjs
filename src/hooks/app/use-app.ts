@@ -1,9 +1,9 @@
 import {
-  type Locale,
   type IsOnline,
+  type Locale,
   type Viewport,
-  setLocale as setAppLocale,
   setIsOnline as setAppIsOnline,
+  setLocale as setAppLocale,
   setViewport as setAppViewport
 } from '@redux/reducers/app';
 import {useDispatch, useSelector} from '@redux/hooks';

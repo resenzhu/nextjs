@@ -1,14 +1,14 @@
 import {
+  type IsServerError,
   type Menu,
   type Messages,
   type Profile,
-  type IsServerError,
   type Settings,
   type Users,
+  setIsServerError as setDashboardIsServerError,
   setMenu as setDashboardMenu,
   setMessages as setDashboardMessages,
   setProfile as setDashboardProfile,
-  setIsServerError as setDashboardIsServerError,
   setSettings as setDashboardSettings,
   setUsers as setDashboardUsers
 } from '@redux/reducers/project/breezy/dashboard';
