@@ -5,14 +5,24 @@ import {
   faInstagram,
   faLinkedin
 } from '@fortawesome/free-brands-svg-icons';
+import type {Metadata} from 'next';
 import {createMetadata} from '@utils/metadata';
+import {getTranslations} from 'next-intl/server';
+import {locales} from '@navigation';
 
-const metadata = createMetadata({
-  title: 'Resen | Full Stack Developer',
-  description:
-    'Welcome to my NextJS website, a showcase of my portfolio and projects brought to life with cutting-edge technology.',
-  url: '/'
-});
+const generateMetadata = async ({
+  params: {locale}
+}: {
+  params: {locale: (typeof locales)[number]};
+}): Promise<Metadata> => {
+  const translate = await getTranslations({locale: locale});
+  return createMetadata({
+    title: translate('main.home.metadata.title'),
+    description: translate('main.home.metadata.description'),
+    url: '/',
+    locale: locale
+  });
+};
 
 const Page = (): JSX.Element => (
   <section className='h-[calc(100vh-4rem)] md:mx-16 md:grid md:h-[calc(100vh-3.5rem)] md:items-center lg:mx-auto lg:w-4/6'>
@@ -82,5 +92,5 @@ const Page = (): JSX.Element => (
   </section>
 );
 
-export {metadata};
+export {generateMetadata};
 export default Page;
