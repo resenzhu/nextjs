@@ -11,6 +11,12 @@
         "github": "GitHub",
         "language": "Language"
       }
+    },
+    "home": {
+      "metadata": {
+        "title": "Resen | Full Stack Developer",
+        "description": "Welcome to my NextJS website, a showcase of my portfolio and projects brought to life with cutting-edge technology."
+      }
     }
   }
 }

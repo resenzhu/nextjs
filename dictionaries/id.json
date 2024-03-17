@@ -11,6 +11,12 @@
         "github": "GitHub",
         "language": "Bahasa"
       }
+    },
+    "home": {
+      "metadata": {
+        "title": "Resen | Full Stack Developer",
+        "description": "Selamat datang di situs web NextJS saya, sebuah showcase dari portofolio dan proyek-proyek saya yang dihidupkan dengan teknologi mutakhir."
+      }
     }
   }
 }
