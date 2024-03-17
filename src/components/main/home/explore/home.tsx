@@ -14,10 +14,10 @@ const Home = ({className, children}: HomeProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleExplore = (show: boolean): void => {
-    if (section.explore !== show) {
+    if (section.isExploreShown !== show) {
       setSection({
         ...section,
-        explore: show
+        isExploreShown: show
       });
     }
   };

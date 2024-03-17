@@ -40,7 +40,7 @@ type AskChatbotRes = {
 };
 
 const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
-  const {online} = useApp();
+  const {isOnline} = useApp();
   const {chatbot, setChatbot} = useHome();
 
   const handleUpdateInput = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -66,14 +66,14 @@ const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
   const handleSendInput = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     if (
-      online &&
+      isOnline &&
       chatbot.input.trim().length > 0 &&
       chatbot.input.length <= 160 &&
-      !chatbot.sending
+      !chatbot.isSending
     ) {
       setChatbot({
         ...chatbot,
-        sending: true,
+        isSending: true,
         chats: [
           ...chatbot.chats,
           {
@@ -86,7 +86,7 @@ const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
   };
 
   useEffect(() => {
-    if (chatbot.sending) {
+    if (chatbot.isSending) {
       const requestSchema = object().shape({
         input: string()
           .ensure()
@@ -135,7 +135,7 @@ const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
                 setChatbot({
                   ...chatbot,
                   input: '',
-                  sending: false,
+                  isSending: false,
                   chats: [
                     ...chatbot.chats,
                     {
@@ -154,7 +154,7 @@ const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
           setChatbot({
             ...chatbot,
             input: '',
-            sending: false,
+            isSending: false,
             chats: [
               ...chatbot.chats,
               {
@@ -168,7 +168,7 @@ const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
           });
         });
     }
-  }, [chatbot.sending]);
+  }, [chatbot.isSending]);
 
   return (
     <form
@@ -188,10 +188,10 @@ const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
         className='h-9 w-9 rounded-full py-0 hover:bg-cyan-700'
         type='submit'
         disabled={
-          !online ||
+          !isOnline ||
           chatbot.input.trim().length === 0 ||
           chatbot.input.length > 160 ||
-          chatbot.sending
+          chatbot.isSending
         }
       >
         <FontAwesomeIcon

@@ -14,19 +14,21 @@ import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import Picture from '@components/main/home/profile/picture';
 import Specialty from '@components/main/home/profile/specialty';
-
-type Social = {
-  name: string;
-  icon: IconDefinition;
-  url: string;
-};
+import {useTranslations} from 'next-intl';
 
 type ProfileProps = {
-  picture: string | [string, string];
+  picture: {
+    src: string;
+    alt: string;
+  };
   name: string;
   specialties: string[];
   bio: string;
-  socials: Social[];
+  socials: {
+    name: string;
+    icon: IconDefinition;
+    url: string;
+  }[];
 };
 
 const Profile = ({
@@ -43,7 +45,10 @@ const Profile = ({
           <div className='absolute h-full w-full bg-[url("/images/main/home-profile-background.webp")] bg-cover bg-top bg-no-repeat brightness-50 contrast-125'></div>
           <div className='absolute h-full w-full bg-cyan-600 opacity-40'></div>
           <div className='relative z-10 flex h-full translate-y-1/2 items-center justify-center'>
-            <Picture src={picture} />
+            <Picture
+              src={picture.src}
+              alt={picture.alt}
+            />
           </div>
         </div>
       </TProfilePicture>
@@ -66,7 +71,7 @@ const Profile = ({
           </TProfileBio>
           <TProfileButtons>
             <div className='flex w-36 flex-1 flex-col justify-center space-y-2'>
-              <Hello label='HELLO' />
+              <Hello label={useTranslations('main')('home.profile.hello')} />
               <Explore label='EXPLORE' />
             </div>
           </TProfileButtons>
@@ -92,5 +97,5 @@ const Profile = ({
   </TProfile>
 );
 
-export type {Social, ProfileProps};
+export type {ProfileProps};
 export default Profile;

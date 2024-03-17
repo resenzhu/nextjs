@@ -14,11 +14,11 @@ export const TExplore = ({children}: TProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleProfile = (show: boolean): void => {
-    if (section.profile !== show) {
+    if (section.isProfileShown !== show) {
       setTimeout((): void => {
         setSection({
           ...section,
-          profile: show
+          isProfileShown: show
         });
       }, 50);
     }
@@ -26,7 +26,10 @@ export const TExplore = ({children}: TProps): JSX.Element => {
 
   return (
     <Transition
-      show={(viewport.width < 768 && section.explore) || viewport.width >= 768}
+      show={
+        (viewport.width < 768 && section.isExploreShown) ||
+        viewport.width >= 768
+      }
       as={Fragment}
       afterLeave={(): void => handleToggleProfile(true)}
     >

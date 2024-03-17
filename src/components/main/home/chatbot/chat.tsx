@@ -9,7 +9,7 @@ type ChatProps = {
 
 const Chat = ({offline}: ChatProps): JSX.Element => {
   const {chatbot} = useHome();
-  const {online} = useApp();
+  const {isOnline} = useApp();
   return (
     <>
       {chatbot.chats.map(
@@ -29,7 +29,7 @@ const Chat = ({offline}: ChatProps): JSX.Element => {
           </div>
         )
       )}
-      {!online && (
+      {!isOnline && (
         <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
           {offline}
         </div>

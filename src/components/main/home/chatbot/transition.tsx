@@ -16,7 +16,7 @@ export const TChatbot = ({children}: TProps): JSX.Element => {
     <>
       {viewport.width < 768 && (
         <Transition
-          show={section.chatbot}
+          show={section.isChatbotShown}
           as={Fragment}
         >
           {children}

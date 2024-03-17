@@ -13,10 +13,10 @@ const Hello = ({label}: HelloProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleChatbot = (show: boolean): void => {
-    if (section.chatbot !== show) {
+    if (section.isChatbotShown !== show) {
       setSection({
         ...section,
-        chatbot: show
+        isChatbotShown: show
       });
     }
   };

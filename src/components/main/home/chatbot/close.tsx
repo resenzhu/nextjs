@@ -14,10 +14,10 @@ const Close = ({icon}: CloseProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleChatbot = (show: boolean): void => {
-    if (viewport.width <= 768 && section.chatbot !== show) {
+    if (viewport.width <= 768 && section.isChatbotShown !== show) {
       setSection({
         ...section,
-        chatbot: show
+        isChatbotShown: show
       });
     }
   };

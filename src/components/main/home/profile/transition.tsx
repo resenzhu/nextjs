@@ -14,11 +14,11 @@ export const TProfile = ({children}: TProps): JSX.Element => {
   const {section, setSection} = useHome();
 
   const handleToggleExplore = (show: boolean): void => {
-    if (section.explore !== show) {
+    if (section.isExploreShown !== show) {
       setTimeout((): void => {
         setSection({
           ...section,
-          explore: show
+          isExploreShown: show
         });
       }, 50);
     }
@@ -28,7 +28,7 @@ export const TProfile = ({children}: TProps): JSX.Element => {
     <>
       {viewport.width < 768 && (
         <Transition
-          show={section.profile}
+          show={section.isProfileShown}
           as={Fragment}
           afterLeave={(): void => handleToggleExplore(true)}
         >
