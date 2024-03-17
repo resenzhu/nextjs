@@ -9,10 +9,10 @@ type OnlineProps = {
 
 const Online = ({children}: OnlineProps): JSX.Element => {
   const [rendered, setRendered] = useState<boolean>(false);
-  const {setOnline} = useApp();
+  const {setIsOnline} = useApp();
 
   const handleChangeConnectivity = (): void => {
-    setOnline(navigator.onLine);
+    setIsOnline(navigator.onLine);
   };
 
   useEffect((): void => {
@@ -23,7 +23,7 @@ const Online = ({children}: OnlineProps): JSX.Element => {
 
   useEffect((): (() => void) => {
     if (rendered) {
-      setOnline(navigator.onLine);
+      setIsOnline(navigator.onLine);
       addEventListener('offline', handleChangeConnectivity);
       addEventListener('online', handleChangeConnectivity);
     }
