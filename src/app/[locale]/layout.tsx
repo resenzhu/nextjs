@@ -16,7 +16,7 @@ const RootLayout = ({
   children,
   params: {locale}
 }: RootLayoutProps): JSX.Element => {
-  config.autoAddCss = false;
+  config.autoAddCss && (config.autoAddCss = false);
   return (
     <html lang={locale}>
       <body>
