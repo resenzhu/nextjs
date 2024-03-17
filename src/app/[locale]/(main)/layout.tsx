@@ -14,8 +14,11 @@ const RootLayout = ({children}: RootLayoutProps): JSX.Element => {
     <Socket>
       <div className='overflow-x-hidden pt-16 md:pt-14'>
         <Navbar
-          logo='/images/main/navbar-brand-logo.webp'
-          title={translate('navbar.brand')}
+          logo={{
+            src: '/images/main/navbar-brand-logo.webp',
+            alt: translate('navbar.brand.logo.alt')
+          }}
+          title={translate('navbar.brand.label')}
         >
           <Navbar.Route
             label={translate('navbar.menu.home')}

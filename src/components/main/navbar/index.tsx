@@ -8,7 +8,10 @@ import NavLanguage from '@components/main/navbar/nav-language';
 import type {ReactNode} from 'react';
 
 type NavbarProps = {
-  logo: string;
+  logo: {
+    src: string;
+    alt: string;
+  };
   title: string;
   children: ReactNode;
 };
@@ -22,10 +25,10 @@ const Navbar = ({logo, title, children}: NavbarProps): JSX.Element => (
       >
         <Image
           className='mr-2 rounded-md'
-          src={logo}
+          src={logo.src}
           width={30}
           height={30}
-          alt='web brand logo'
+          alt={logo.alt}
         />
         <span className='text-xl font-bold text-gray-700 sm:text-base'>
           {title}
