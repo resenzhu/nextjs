@@ -1,7 +1,12 @@
 {
   "main": {
     "navbar": {
-      "brand": "RESEN",
+      "brand": {
+        "label": "RESEN",
+        "logo": {
+          "alt": "logo web"
+        }
+      },
       "menu": {
         "home": "Beranda",
         "about": "Tentang",
@@ -16,6 +21,21 @@
       "metadata": {
         "title": "Resen | Full Stack Developer",
         "description": "Selamat datang di situs web NextJS saya, sebuah showcase dari portofolio dan proyek-proyek saya yang dihidupkan dengan teknologi mutakhir."
+      },
+      "profile": {
+        "picture": {
+          "alt": "foto profil penulis"
+        },
+        "name": "RESEN",
+        "specialty": {
+          "fullStackDeveloper": "DEVELOPER FULL STACK",
+          "frontEndDeveloper": "DEVELOPER FRONT END",
+          "backEndDeveloper": "DEVELOPER BACK END",
+          "middlewareDeveloper": "DEVELOPER MIDDLEWARE",
+          "mobileLegendsPlayer": "PEMAIN MOBILE LEGENDS",
+          "horrorEnthusiast": "PENGGEMAR HORROR"
+        },
+        "bio": "Programmer analitis dengan pola pikir pemecahan masalah yang kuat, terampil dalam meningkatkan kode untuk kinerja dan efisiensi yang optimal."
       }
     }
   }

@@ -1,7 +1,12 @@
 {
   "main": {
     "navbar": {
-      "brand": "RESEN",
+      "brand": {
+        "label": "RESEN",
+        "logo": {
+          "alt": "web logo"
+        }
+      },
       "menu": {
         "home": "Home",
         "about": "About",
@@ -16,6 +21,21 @@
       "metadata": {
         "title": "Resen | Full Stack Developer",
         "description": "Welcome to my NextJS website, a showcase of my portfolio and projects brought to life with cutting-edge technology."
+      },
+      "profile": {
+        "picture": {
+          "alt": "author profile picture"
+        },
+        "name": "RESEN",
+        "specialty": {
+          "fullStackDeveloper": "FULL STACK DEVELOPER",
+          "frontEndDeveloper": "FRONT END DEVELOPER",
+          "backEndDeveloper": "BACK END DEVELOPER",
+          "middlewareDeveloper": "MIDDLEWARE DEVELOPER",
+          "mobileLegendsPlayer": "MOBILE LEGENDS PLAYER",
+          "horrorEnthusiast": "HORROR ENTHUSIAST"
+        },
+        "bio": "Analytical programmer with a strong problem-solving mindset, adept at optimizing code for performance and efficiency."
       }
     }
   }
