@@ -4,11 +4,11 @@ import {Button} from '@components/main/shared';
 import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
 
-type HelloProps = {
+type ChatbotProps = {
   label: string;
 };
 
-const Hello = ({label}: HelloProps): JSX.Element => {
+const Chatbot = ({label}: ChatbotProps): JSX.Element => {
   const {viewport} = useApp();
   const {section, setSection} = useHome();
 
@@ -30,5 +30,5 @@ const Hello = ({label}: HelloProps): JSX.Element => {
   );
 };
 
-export type {HelloProps};
-export default Hello;
+export type {ChatbotProps};
+export default Chatbot;
