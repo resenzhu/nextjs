@@ -78,9 +78,9 @@ const Input = (): JSX.Element => {
       const requestSchema = object().shape({
         input: string()
           .ensure()
-          .required(message.error.empty)
-          .min(1, message.error.tooShort)
-          .max(160, message.error.tooLong)
+          .required(translate('home.chatbot.error.empty'))
+          .min(1, translate('home.chatbot.error.tooShort'))
+          .max(160, translate('home.chatbot.error.tooLong'))
       });
       const request: AskChatbotReq = {
         input: sanitize(chatbot.input).trim()
@@ -100,23 +100,23 @@ const Input = (): JSX.Element => {
               (socketError: Error, response: AskChatbotRes): void => {
                 let chatError: string = '';
                 if (socketError) {
-                  chatError = message.error.server;
+                  chatError = translate('home.chatbot.error.server');
                 }
                 if (response && !response.success) {
                   switch (response.error.code) {
                     case 40001:
                     case 4220101:
                     case 4220102:
-                      chatError = message.error.empty;
+                      chatError = translate('home.chatbot.error.empty');
                       break;
                     case 4220103:
-                      chatError = message.error.tooShort;
+                      chatError = translate('home.chatbot.error.tooShort');
                       break;
                     case 4220104:
-                      chatError = message.error.tooLong;
+                      chatError = translate('home.chatbot.error.tooLong');
                       break;
                     default:
-                      chatError = message.error.client;
+                      chatError = translate('home.chatbot.error.client');
                       break;
                   }
                 }
@@ -150,7 +150,7 @@ const Input = (): JSX.Element => {
                 message:
                   validationError.inner[0]?.message ??
                   validationError.message ??
-                  message.error.client
+                  translate('home.chatbot.error.client')
               }
             ]
           });
