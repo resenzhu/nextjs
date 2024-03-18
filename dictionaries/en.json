@@ -38,6 +38,23 @@
         "bio": "Analytical programmer with a strong problem-solving mindset, adept at optimizing code for performance and efficiency.",
         "chatbot": "HELLO",
         "explore": "EXPLORE"
+      },
+      "explore": {
+        "home": "HOME",
+        "about": "ABOUT",
+        "portfolio": "PORTFOLIO",
+        "resources": "RESOURCES",
+        "contact": "CONTACT",
+        "github": "GITHUB"
+      },
+      "chatbot": {
+        "botName": "{botName} [BOT]",
+        "input": {
+          "placeholder": "Type a message"
+        },
+        "error": {
+          "offline": "Oops! It appears that you're currently offline. Please ensure that you're connected to the internet and try again later."
+        }
       }
     }
   }

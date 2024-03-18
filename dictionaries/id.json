@@ -38,6 +38,23 @@
         "bio": "Programmer analitis dengan pola pikir pemecahan masalah yang kuat, terampil dalam meningkatkan kode untuk kinerja dan efisiensi yang optimal.",
         "chatbot": "HALO",
         "explore": "JELAJAH"
+      },
+      "explore": {
+        "home": "BERANDA",
+        "about": "TENTANG",
+        "portfolio": "PORTOFOLIO",
+        "resources": "KONTEN",
+        "contact": "KONTAK",
+        "github": "GITHUB"
+      },
+      "chatbot": {
+        "botName": "{botName} [BOT]",
+        "input": {
+          "placeholder": "Ketikkan pesan"
+        },
+        "error": {
+          "offline": "Ups! Tampaknya Anda sedang tidak terhubung ke internet. Mohon pastikan bahwa Anda terhubung ke internet dan coba lagi nanti."
+        }
       }
     }
   }
