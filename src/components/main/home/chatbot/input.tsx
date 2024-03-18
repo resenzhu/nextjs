@@ -4,25 +4,12 @@ import {type ChangeEvent, type FormEvent, useEffect} from 'react';
 import {ValidationError, object, string} from 'yup';
 import {Button} from '@components/main/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import {mainSocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
-
-type InputProps = {
-  placeholder: string;
-  sendIcon: IconDefinition;
-  message: {
-    error: {
-      empty: string;
-      tooShort: string;
-      tooLong: string;
-      client: string;
-      server: string;
-    };
-  };
-};
+import {useTranslations} from 'next-intl';
 
 type AskChatbotReq = {
   input: string;
@@ -39,8 +26,9 @@ type AskChatbotRes = {
   };
 };
 
-const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
+const Input = (): JSX.Element => {
   const {isOnline} = useApp();
+  const translate = useTranslations('main');
   const {chatbot, setChatbot} = useHome();
 
   const handleUpdateInput = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -178,7 +166,7 @@ const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
       <input
         className='w-full flex-1 bg-gray-100 px-3 py-2 outline-0 md:text-sm'
         type='text'
-        placeholder={placeholder}
+        placeholder={translate('home.chatbot.input.placeholder')}
         value={chatbot.input}
         maxLength={160}
         onChange={(event): void => handleUpdateInput(event)}
@@ -196,12 +184,12 @@ const Input = ({placeholder, sendIcon, message}: InputProps): JSX.Element => {
       >
         <FontAwesomeIcon
           className='w-6 text-white'
-          icon={sendIcon}
+          icon={faPaperPlane}
         />
       </Button>
     </form>
   );
 };
 
-export type {InputProps, AskChatbotReq, AskChatbotRes};
+export type {AskChatbotReq, AskChatbotRes};
 export default Input;
