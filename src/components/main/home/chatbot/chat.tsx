@@ -2,14 +2,12 @@
 
 import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
+import {useTranslations} from 'next-intl';
 
-type ChatProps = {
-  offline: string;
-};
-
-const Chat = ({offline}: ChatProps): JSX.Element => {
+const Chat = (): JSX.Element => {
   const {chatbot} = useHome();
   const {isOnline} = useApp();
+  const translate = useTranslations('main');
   return (
     <>
       {chatbot.chats.map(
@@ -31,12 +29,11 @@ const Chat = ({offline}: ChatProps): JSX.Element => {
       )}
       {!isOnline && (
         <div className='w-fit max-w-[80vw] place-self-start bg-cyan-600 px-3 py-1 text-white'>
-          {offline}
+          {translate('home.chatbot.error.offline')}
         </div>
       )}
     </>
   );
 };
 
-export type {ChatProps};
 export default Chat;

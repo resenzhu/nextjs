@@ -1,5 +1,4 @@
 import {Chatbot, Explore, Profile} from '@components/main/home';
-import {faEnvelope, faPaperPlane} from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
   faInstagram,
@@ -7,6 +6,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import type {Metadata} from 'next';
 import {createMetadata} from '@utils/metadata';
+import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {getTranslations} from 'next-intl/server';
 import {locales} from '@navigation';
 import {useTranslations} from 'next-intl';
@@ -65,35 +65,29 @@ const Page = (): JSX.Element => {
           ]}
         />
         <Explore
-          label={{
-            home: 'HOME',
-            about: 'ABOUT',
-            portfolio: 'PORTFOLIO',
-            resources: 'RESOURCES',
-            contact: 'CONTACT',
-            github: 'GITHUB'
+          route={{
+            home: {label: translate('home.explore.home'), url: '/'},
+            about: {label: translate('home.explore.about'), url: '/about'},
+            portfolio: {
+              label: translate('home.explore.portfolio'),
+              url: '/portfolio'
+            },
+            resources: {
+              label: translate('home.explore.resources'),
+              url: '/resources'
+            },
+            contact: {
+              label: translate('home.explore.contact'),
+              url: '/contact'
+            },
+            github: {
+              label: translate('home.explore.github'),
+              url: 'https://github.com/resenzhu/nextjs'
+            }
           }}
         />
         <Chatbot
-          name='RESEN [BOT]'
-          placeholder='Type a message'
-          sendIcon={faPaperPlane}
-          message={{
-            error: {
-              offline:
-                "Oops! It appears that you're currently offline. Please ensure that you're connected to the internet and try again later.",
-              empty:
-                'Uh-oh! It looks like you forgot to write a message. Please enter your message before sending it my way.',
-              tooShort:
-                'Oops! Your message must be at least 1 character long. Please enter a message with at least 1 character before sending it.',
-              tooLong:
-                'Oops! Your message exceeds the maximum limit of 160 characters. Please shorten your message and try again.',
-              client:
-                "Oops! It seems there was an issue with your message. Please make sure you've entered a valid message and try again.",
-              server:
-                "Oops! It looks like something went wrong on my end, and I'm unable to provide a response at the moment. I apologize for any inconvenience caused. Please come back later, and I'll be back up and running. Thank you for your patience."
-            }
-          }}
+          botName={translate('home.chatbot.botName', {botName: 'RESEN'})}
         />
       </div>
     </section>

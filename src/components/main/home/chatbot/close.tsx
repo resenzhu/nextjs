@@ -1,15 +1,11 @@
 'use client';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {faClose} from '@fortawesome/free-solid-svg-icons';
 import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
 
-type CloseProps = {
-  icon: IconDefinition;
-};
-
-const Close = ({icon}: CloseProps): JSX.Element => {
+const Close = (): JSX.Element => {
   const {viewport} = useApp();
   const {section, setSection} = useHome();
 
@@ -32,7 +28,7 @@ const Close = ({icon}: CloseProps): JSX.Element => {
         >
           <FontAwesomeIcon
             className='w-6 text-2xl'
-            icon={icon}
+            icon={faClose}
           />
         </button>
       )}
@@ -40,5 +36,4 @@ const Close = ({icon}: CloseProps): JSX.Element => {
   );
 };
 
-export type {CloseProps};
 export default Close;

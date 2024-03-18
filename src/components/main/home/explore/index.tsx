@@ -11,17 +11,35 @@ import Home from '@components/main/home/explore/home';
 import {Link} from '@navigation';
 
 type ExploreProps = {
-  label: {
-    home: string;
-    about: string;
-    portfolio: string;
-    resources: string;
-    contact: string;
-    github: string;
+  route: {
+    home: {
+      label: string;
+      url: string;
+    };
+    about: {
+      label: string;
+      url: string;
+    };
+    portfolio: {
+      label: string;
+      url: string;
+    };
+    resources: {
+      label: string;
+      url: string;
+    };
+    contact: {
+      label: string;
+      url: string;
+    };
+    github: {
+      label: string;
+      url: string;
+    };
   };
 };
 
-const Explore = ({label}: ExploreProps): JSX.Element => (
+const Explore = ({route}: ExploreProps): JSX.Element => (
   <TExplore>
     <div className='grid h-full grid-cols-2 gap-2 overflow-hidden px-4 py-6 md:row-span-2 md:p-0 lg:row-span-1 lg:animate-fade lg:duration-700'>
       <TExploreHome>
@@ -30,7 +48,7 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
             <div className='absolute h-full w-full bg-[url("/images/main/home-explore-home.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
             <div className='relative h-full'>
               <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/home:bg-white group-hover/home:text-gray-700 group-hover/home:shadow-md'>
-                {label.home}
+                {route.home.label}
               </div>
             </div>
           </Home>
@@ -38,11 +56,11 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
       </TExploreHome>
       <TExploreAbout>
         <div className='group/about relative'>
-          <Link href='/about'>
+          <Link href={route.about.url}>
             <div className='absolute h-full w-full bg-[url("/images/main/home-explore-about.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
             <div className='relative h-full'>
               <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/about:bg-white group-hover/about:text-gray-700 group-hover/about:shadow-md'>
-                {label.about}
+                {route.about.label}
               </div>
             </div>
           </Link>
@@ -50,11 +68,11 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
       </TExploreAbout>
       <TExplorePortfolio>
         <div className='group/portfolio relative col-span-2 md:col-span-1 md:row-span-2'>
-          <Link href='/portfolio'>
+          <Link href={route.portfolio.url}>
             <div className='absolute h-full w-full bg-[url("/images/main/home-explore-portfolio.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
             <div className='relative h-full'>
               <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/portfolio:bg-white group-hover/portfolio:text-gray-700 group-hover/portfolio:shadow-md'>
-                {label.portfolio}
+                {route.portfolio.label}
               </div>
             </div>
           </Link>
@@ -62,11 +80,11 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
       </TExplorePortfolio>
       <TExploreResources>
         <div className='group/resources relative col-span-2 md:col-span-1 md:row-span-2'>
-          <Link href='/resources'>
+          <Link href={route.resources.url}>
             <div className='absolute h-full w-full bg-[url("/images/main/home-explore-resources.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
             <div className='relative h-full'>
               <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/resources:bg-white group-hover/resources:text-gray-700 group-hover/resources:shadow-md'>
-                {label.resources}
+                {route.resources.label}
               </div>
             </div>
           </Link>
@@ -74,11 +92,11 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
       </TExploreResources>
       <TExploreContact>
         <div className='group/contact relative'>
-          <Link href='/contact'>
+          <Link href={route.contact.url}>
             <div className='absolute h-full w-full bg-[url("/images/main/home-explore-contact.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
             <div className='relative h-full'>
               <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/contact:bg-white group-hover/contact:text-gray-700 group-hover/contact:shadow-md'>
-                {label.contact}
+                {route.contact.label}
               </div>
             </div>
           </Link>
@@ -86,11 +104,11 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
       </TExploreContact>
       <TExploreGitHub>
         <div className='group/github relative md:col-span-2'>
-          <Link href='https://github.com/resenzhu/nextjs'>
+          <Link href={route.github.url}>
             <div className='absolute h-full w-full bg-[url("/images/main/home-explore-github.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
             <div className='relative h-full'>
               <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/github:bg-white group-hover/github:text-gray-700 group-hover/github:shadow-md'>
-                {label.github}
+                {route.github.label}
               </div>
             </div>
           </Link>
