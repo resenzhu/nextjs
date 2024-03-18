@@ -9,7 +9,17 @@ import {mainSocket} from '@utils/socket';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/app/use-app';
 import useHome from '@hooks/main/use-home';
-import {useTranslations} from 'next-intl';
+
+type InputProps = {
+  placeholder: string;
+  error: {
+    empty: string;
+    tooShort: string;
+    tooLong: string;
+    client: string;
+    server: string;
+  };
+};
 
 type AskChatbotReq = {
   input: string;
@@ -26,9 +36,8 @@ type AskChatbotRes = {
   };
 };
 
-const Input = (): JSX.Element => {
+const Input = ({placeholder, error}: InputProps): JSX.Element => {
   const {isOnline} = useApp();
-  const translate = useTranslations('main');
   const {chatbot, setChatbot} = useHome();
 
   const handleUpdateInput = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -78,9 +87,9 @@ const Input = (): JSX.Element => {
       const requestSchema = object().shape({
         input: string()
           .ensure()
-          .required(translate('home.chatbot.error.empty'))
-          .min(1, translate('home.chatbot.error.tooShort'))
-          .max(160, translate('home.chatbot.error.tooLong'))
+          .required(error.empty)
+          .min(1, error.tooShort)
+          .max(160, error.tooLong)
       });
       const request: AskChatbotReq = {
         input: sanitize(chatbot.input).trim()
@@ -100,23 +109,23 @@ const Input = (): JSX.Element => {
               (socketError: Error, response: AskChatbotRes): void => {
                 let chatError: string = '';
                 if (socketError) {
-                  chatError = translate('home.chatbot.error.server');
+                  chatError = error.server;
                 }
                 if (response && !response.success) {
                   switch (response.error.code) {
                     case 40001:
                     case 4220101:
                     case 4220102:
-                      chatError = translate('home.chatbot.error.empty');
+                      chatError = error.empty;
                       break;
                     case 4220103:
-                      chatError = translate('home.chatbot.error.tooShort');
+                      chatError = error.tooShort;
                       break;
                     case 4220104:
-                      chatError = translate('home.chatbot.error.tooLong');
+                      chatError = error.tooLong;
                       break;
                     default:
-                      chatError = translate('home.chatbot.error.client');
+                      chatError = error.client;
                       break;
                   }
                 }
@@ -150,7 +159,7 @@ const Input = (): JSX.Element => {
                 message:
                   validationError.inner[0]?.message ??
                   validationError.message ??
-                  translate('home.chatbot.error.client')
+                  error.client
               }
             ]
           });
@@ -166,7 +175,7 @@ const Input = (): JSX.Element => {
       <input
         className='w-full flex-1 bg-gray-100 px-3 py-2 outline-0 md:text-sm'
         type='text'
-        placeholder={translate('home.chatbot.input.placeholder')}
+        placeholder={placeholder}
         value={chatbot.input}
         maxLength={160}
         onChange={(event): void => handleUpdateInput(event)}
@@ -191,5 +200,5 @@ const Input = (): JSX.Element => {
   );
 };
 
-export type {AskChatbotReq, AskChatbotRes};
+export type {InputProps, AskChatbotReq, AskChatbotRes};
 export default Input;
