@@ -35,7 +35,9 @@
           "mobileLegendsPlayer": "MOBILE LEGENDS PLAYER",
           "horrorEnthusiast": "HORROR ENTHUSIAST"
         },
-        "bio": "Analytical programmer with a strong problem-solving mindset, adept at optimizing code for performance and efficiency."
+        "bio": "Analytical programmer with a strong problem-solving mindset, adept at optimizing code for performance and efficiency.",
+        "chatbot": "HELLO",
+        "explore": "EXPLORE"
       }
     }
   }
