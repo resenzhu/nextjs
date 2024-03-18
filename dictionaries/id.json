@@ -61,6 +61,12 @@
           "server": "Ups! Sepertinya ada yang bermasalah di sisi saya dan saya tidak bisa memberikan respons pada saat ini. Saya mohon maaf atas segala ketidaknyamanan yang terjadi. Mohon kembali lagi nanti, dan saya akan kembali beroperasi. Terima kasih atas kesabarannya."
         }
       }
+    },
+    "about": {
+      "metadata": {
+        "title": "About | Resen",
+        "description": "Temui Resen, pengembang web yang bersemangat, menampilkan keterampilan, proyek, dan pengalaman menarik dalam industri yang dinamis dari web development."
+      }
     }
   }
 }

@@ -8,14 +8,24 @@ import {
 import {Footer, Header} from '@components/main/shared';
 import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import {DateTime} from 'luxon';
+import type {Metadata} from 'next';
 import {createMetadata} from '@utils/metadata';
+import {getTranslations} from 'next-intl/server';
+import {locales} from '@navigation';
 
-const metadata = createMetadata({
-  title: 'About | Resen',
-  description:
-    'Meet Resen, a passionate web developer showcasing skills, projects, and experiences in the dynamic field of web development.',
-  url: '/about'
-});
+const generateMetadata = async ({
+  params: {locale}
+}: {
+  params: {locale: (typeof locales)[number]};
+}): Promise<Metadata> => {
+  const translate = await getTranslations({locale: locale});
+  return createMetadata({
+    title: translate('main.about.metadata.title'),
+    description: translate('main.about.metadata.description'),
+    url: '/about',
+    locale: locale
+  });
+};
 
 const Page = (): JSX.Element => (
   <>
@@ -152,5 +162,5 @@ const Page = (): JSX.Element => (
   </>
 );
 
-export {metadata};
+export {generateMetadata};
 export default Page;
