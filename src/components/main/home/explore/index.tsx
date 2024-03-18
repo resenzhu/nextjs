@@ -8,7 +8,7 @@ import {
   TExploreResources
 } from '@components/main/home/explore/transition';
 import Home from '@components/main/home/explore/home';
-import Link from 'next/link';
+import {Link} from '@navigation';
 
 type ExploreProps = {
   label: {
@@ -37,69 +37,64 @@ const Explore = ({label}: ExploreProps): JSX.Element => (
         </div>
       </TExploreHome>
       <TExploreAbout>
-        <Link
-          className='group/about relative'
-          href='/about'
-        >
-          <div className='absolute h-full w-full bg-[url("/images/main/home-explore-about.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
-          <div className='relative h-full'>
-            <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/about:bg-white group-hover/about:text-gray-700 group-hover/about:shadow-md'>
-              {label.about}
+        <div className='group/about relative'>
+          <Link href='/about'>
+            <div className='absolute h-full w-full bg-[url("/images/main/home-explore-about.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
+            <div className='relative h-full'>
+              <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/about:bg-white group-hover/about:text-gray-700 group-hover/about:shadow-md'>
+                {label.about}
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </TExploreAbout>
       <TExplorePortfolio>
-        <Link
-          className='group/portfolio relative col-span-2 md:col-span-1 md:row-span-2'
-          href='/portfolio'
-        >
-          <div className='absolute h-full w-full bg-[url("/images/main/home-explore-portfolio.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
-          <div className='relative h-full'>
-            <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/portfolio:bg-white group-hover/portfolio:text-gray-700 group-hover/portfolio:shadow-md'>
-              {label.portfolio}
+        <div className='group/portfolio relative col-span-2 md:col-span-1 md:row-span-2'>
+          <Link href='/portfolio'>
+            <div className='absolute h-full w-full bg-[url("/images/main/home-explore-portfolio.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
+            <div className='relative h-full'>
+              <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/portfolio:bg-white group-hover/portfolio:text-gray-700 group-hover/portfolio:shadow-md'>
+                {label.portfolio}
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </TExplorePortfolio>
       <TExploreResources>
-        <Link
-          className='group/resources relative col-span-2 md:col-span-1 md:row-span-2'
-          href='/resources'
-        >
-          <div className='absolute h-full w-full bg-[url("/images/main/home-explore-resources.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
-          <div className='relative h-full'>
-            <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/resources:bg-white group-hover/resources:text-gray-700 group-hover/resources:shadow-md'>
-              {label.resources}
+        <div className='group/resources relative col-span-2 md:col-span-1 md:row-span-2'>
+          <Link href='/resources'>
+            <div className='absolute h-full w-full bg-[url("/images/main/home-explore-resources.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
+            <div className='relative h-full'>
+              <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/resources:bg-white group-hover/resources:text-gray-700 group-hover/resources:shadow-md'>
+                {label.resources}
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </TExploreResources>
       <TExploreContact>
-        <Link
-          className='group/contact relative'
-          href='/contact'
-        >
-          <div className='absolute h-full w-full bg-[url("/images/main/home-explore-contact.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
-          <div className='relative h-full'>
-            <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/contact:bg-white group-hover/contact:text-gray-700 group-hover/contact:shadow-md'>
-              {label.contact}
+        <div className='group/contact relative'>
+          <Link href='/contact'>
+            <div className='absolute h-full w-full bg-[url("/images/main/home-explore-contact.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
+            <div className='relative h-full'>
+              <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/contact:bg-white group-hover/contact:text-gray-700 group-hover/contact:shadow-md'>
+                {label.contact}
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </TExploreContact>
       <TExploreGitHub>
-        <Link
-          className='group/github relative md:col-span-2'
-          href='https://github.com/resenzhu/nextjs'
-        >
-          <div className='absolute h-full w-full bg-[url("/images/main/home-explore-github.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
-          <div className='relative h-full'>
-            <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/github:bg-white group-hover/github:text-gray-700 group-hover/github:shadow-md'>
-              {label.github}
+        <div className='group/github relative md:col-span-2'>
+          <Link href='https://github.com/resenzhu/nextjs'>
+            <div className='absolute h-full w-full bg-[url("/images/main/home-explore-github.webp")] bg-cover bg-center bg-no-repeat brightness-50'></div>
+            <div className='relative h-full'>
+              <div className='absolute bottom-0 w-full px-2 py-1 text-start text-sm font-bold text-white duration-150 group-hover/github:bg-white group-hover/github:text-gray-700 group-hover/github:shadow-md'>
+                {label.github}
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </TExploreGitHub>
     </div>
   </TExplore>
