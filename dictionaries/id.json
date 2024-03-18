@@ -53,7 +53,12 @@
           "placeholder": "Ketikkan pesan"
         },
         "error": {
-          "offline": "Ups! Tampaknya Anda sedang tidak terhubung ke internet. Mohon pastikan bahwa Anda terhubung ke internet dan coba lagi nanti."
+          "offline": "Ups! Tampaknya Anda sedang tidak terhubung ke internet. Mohon pastikan bahwa Anda terhubung ke internet dan coba lagi nanti.",
+          "empty": "Ups! Sepertinya Anda lupa menulis pesan. Mohon masukkan pesan Anda sebelum mengirimkannya kepada saya.",
+          "tooShort": "Ups! Pesan Anda harus memiliki setidaknya 1 karakter. Mohon masukkan pesan dengan setidaknya 1 karakter sebelum mengirimkannya.",
+          "tooLong": "Ups! Pesan Anda melewati batas maksimum 160 karakter. Mohon perpendek pesan Anda dan coba lagi.",
+          "client": "Ups! Sepertinya ada masalah dengan pesan Anda. Mohon pastikan Anda telah memasukkan pesan yang valid dan coba lagi.",
+          "server": "Ups! Sepertinya ada yang bermasalah di sisi saya dan saya tidak bisa memberikan respons pada saat ini. Saya mohon maaf atas segala ketidaknyamanan yang terjadi. Mohon kembali lagi nanti, dan saya akan kembali beroperasi. Terima kasih atas kesabarannya."
         }
       }
     }
