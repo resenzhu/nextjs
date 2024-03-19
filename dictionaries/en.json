@@ -138,6 +138,17 @@
         "description": "Looking to learn more about my professional background? Visit my LinkedIn profile to uncover my extensive experience, industry insights, and professional achievements. Let's connect and forge valuable professional connections.",
         "connect": "Let's connect!"
       }
+    },
+    "portfolio": {
+      "metadata": {
+        "title": "Portfolio | Resen",
+        "description": "Explore my diverse collection of projects showcasing my creativity, skills, and passion for web development."
+      },
+      "header": {
+        "title": "portfolio",
+        "subtitle": "A Showcase of Innovative Projects and Personal Endeavors",
+        "description": "Discover a captivating collection of my projects, where innovation meets design. Immerse yourself in an inspiring showcase of creativity and explore the limitless possibilities of my work."
+      }
     }
   }
 }

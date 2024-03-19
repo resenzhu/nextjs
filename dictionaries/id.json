@@ -138,6 +138,12 @@
         "description": "Ingin mengetahui lebih banyak tentang latar belakang profesional saya? Silakan kunjungi profil LinkedIn saya untuk melihat pengalaman, wawasan industri, dan prestasi profesional saya. Ayo terhubung dan bangun hubungan profesional yang berharga bersama-sama.",
         "connect": "Ayo terhubung!"
       }
+    },
+    "portfolio": {
+      "metadata": {
+        "title": "Portofolio | Resen",
+        "description": "Temukan beragam koleksi proyek saya yang menampilkan kreativitas, keterampilan, dan semangat saya dalam pengembangan web."
+      }
     }
   }
 }
