@@ -1,11 +1,11 @@
 import Timeline, {
-  type Experience as TimelineExperience
+  type TimelineProps
 } from '@components/main/about/experience/timeline';
 import {LazyLoad} from '@components/main/shared';
 
 type ExperienceProps = {
   title: string;
-  experiences: TimelineExperience[];
+  experiences: TimelineProps['experiences'];
 };
 
 const Experience = ({title, experiences}: ExperienceProps): JSX.Element => (

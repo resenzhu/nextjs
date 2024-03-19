@@ -3,15 +3,13 @@
 import {Chrono} from 'react-chrono';
 import useApp from '@hooks/app/use-app';
 
-type Experience = {
-  title: string;
-  cardTitle: string;
-  cardSubtitle: string;
-  cardDetailedText: string;
-};
-
 type TimelineProps = {
-  experiences: Experience[];
+  experiences: {
+    title: string;
+    cardTitle: string;
+    cardSubtitle: string;
+    cardDetailedText: string;
+  }[];
 };
 
 const Timeline = ({experiences}: TimelineProps): JSX.Element => {
@@ -32,8 +30,12 @@ const Timeline = ({experiences}: TimelineProps): JSX.Element => {
       activeItemIndex={999}
       disableAutoScrollOnClick={true}
       disableClickOnCircle={true}
+      disableInteraction={true}
       disableNavOnKey={true}
+      disableToolbar={true}
       enableBreakPoint={false}
+      enableLayoutSwitch={false}
+      enableQuickJump={false}
       hideControls={true}
       scrollable={false}
       useReadMore={false}
@@ -41,5 +43,5 @@ const Timeline = ({experiences}: TimelineProps): JSX.Element => {
   );
 };
 
-export type {Experience, TimelineProps};
+export type {TimelineProps};
 export default Timeline;
