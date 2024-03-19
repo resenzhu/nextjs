@@ -19,8 +19,8 @@
     },
     "home": {
       "metadata": {
-        "title": "Resen | Full Stack Developer",
-        "description": "Selamat datang di situs web NextJS saya, sebuah showcase dari portofolio dan proyek-proyek saya yang dihidupkan dengan teknologi mutakhir."
+        "title": "Resen | Developer Full Stack",
+        "description": "Selamat datang di situs web NextJS saya, sebuah showcase dari portofolio dan proyek-proyek saya yang dihidupkan menggunakan teknologi mutakhir."
       },
       "profile": {
         "picture": {
@@ -53,19 +53,90 @@
           "placeholder": "Ketikkan pesan"
         },
         "error": {
-          "offline": "Ups! Tampaknya Anda sedang tidak terhubung ke internet. Mohon pastikan bahwa Anda terhubung ke internet dan coba lagi nanti.",
+          "offline": "Ups! Tampaknya Anda sedang tidak terhubung ke internet. Mohon pastikan bahwa Anda terhubung ke internet dan coba lagi.",
           "empty": "Ups! Sepertinya Anda lupa menulis pesan. Mohon masukkan pesan Anda sebelum mengirimkannya kepada saya.",
-          "tooShort": "Ups! Pesan Anda harus memiliki setidaknya 1 karakter. Mohon masukkan pesan dengan setidaknya 1 karakter sebelum mengirimkannya.",
+          "tooShort": "Ups! Pesan Anda harus memiliki setidaknya 1 karakter. Mohon masukkan pesan dengan setidaknya 1 karakter sebelum mengirimkannya kepada saya.",
           "tooLong": "Ups! Pesan Anda melewati batas maksimum 160 karakter. Mohon perpendek pesan Anda dan coba lagi.",
           "client": "Ups! Sepertinya ada masalah dengan pesan Anda. Mohon pastikan Anda telah memasukkan pesan yang valid dan coba lagi.",
-          "server": "Ups! Sepertinya ada yang bermasalah di sisi saya dan saya tidak bisa memberikan respons pada saat ini. Saya mohon maaf atas segala ketidaknyamanan yang terjadi. Mohon kembali lagi nanti, dan saya akan kembali beroperasi. Terima kasih atas kesabarannya."
+          "server": "Ups! Sepertinya ada masalah di sisi saya dan saya tidak bisa memberikan respons pada saat ini. Saya mohon maaf atas segala ketidaknyamanan yang terjadi. Mohon kembali lagi nanti, dan saya akan kembali beroperasi. Terima kasih atas kesabarannya."
         }
       }
     },
     "about": {
       "metadata": {
-        "title": "About | Resen",
-        "description": "Temui Resen, pengembang web yang bersemangat, menampilkan keterampilan, proyek, dan pengalaman menarik dalam industri yang dinamis dari web development."
+        "title": "Tentang | Resen",
+        "description": "Kenali Resen, seorang developer web berbakat yang menampilkan keterampilan, proyek, dan pengalamannya dalam dunia yang dinamis dari pengembangan web."
+      },
+      "header": {
+        "title": "tentang",
+        "subtitle": "Mengupas Pikiran dan Visi di Balik Konsepsi Situs Web",
+        "description": "Ikutlah ke belakang layar dan terjunlah ke dalam dunia pikiran seorang penggemar digital, saat saya berbagi kisah petualangan dalam desain dan pengembangan."
+      },
+      "author": {
+        "title": "KENALI RESEN",
+        "content": {
+          "paragraph1": "Selamat datang di situs web portofolio pribadi saya! Nama saya Resen, dan saya adalah seorang developer Full Stack yang berbasis di Jakarta dengan pengalaman lebih dari {years} tahun di bidang ini.",
+          "paragraph2": "Saya mengkhususkan diri dalam pengembangan Front End dan Back End, membawa beragam keterampilan yang komprehensif. Dengan fokus yang kuat pada pengembangan aplikasi web yang menarik secara visual dan ramah pengguna, saya menggunakan teknologi seperti ReactJS, NextJS, NodeJS, MySQL, dan lainnya untuk memberikan hasil yang luar biasa.",
+          "paragraph3": "Dari merancang antarmuka pengguna yang menarik hingga menerapkan fungsionalitas yang solid, saya berupaya menciptakan situs web yang lancar dan efisien. Semangat saya dalam pengembangan mendorong saya untuk terus mengasah keterampilan saya, memastikan bahwa saya memberikan solusi berkualitas tinggi yang sesuai dengan kebutuhan unik dari setiap proyek.",
+          "paragraph4": "Jangan ragu untuk menjelajahi portofolio saya dan temukan beberapa proyek yang telah saya kerjakan. Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi saya. Saya selalu siap untuk terhubung dengan siapapun yang memiliki minat dalam pengembangan web dan inovasi."
+        }
+      },
+      "experience": {
+        "title": "PENGALAMAN KERJA",
+        "career": {
+          "position1": {
+            "startDate": "Mar 2017",
+            "company": "Bina Nusantara IT Division",
+            "title": "Developer Web | Magang",
+            "description": "Bina Nusantara IT Division merupakan salah satu divisi Bina Nusantara yang memberikan dukungan teknologi informasi untuk unit-unit lain di bawah naungan Yayasan Bina Nusantara. Di sinilah saya memulai karier sebagai developer web Full Stack, di mana saya menangani proyek bernama Binusmaya, yang merupakan aplikasi sistem manajemen pembelajaran berbasis framework CodeIgniter."
+          },
+          "position2": {
+            "startDate": "Feb 2019",
+            "company": "Kreator PDF Gear",
+            "title": "Developer .NET | Wirausaha",
+            "description": "Saya adalah individu yang penuh rasa ingin tahu dan menikmati pembelajaran hal baru. Semuanya dimulai dari rasa ingin tahu saya, di mana saya belajar bagaimana membuat aplikasi desktop sederhana menggunakan framework Windows Presentation Foundation (WPF) berbasis bahasa pemrograman C#. Secara bertahap, dengan menerapkan fitur satu per satu, saya tidak menyadari bahwa pada akhirnya, saya berhasil mengembangkan sebuah aplikasi manipulasi dokumen PDF yang kompleks yang saya beri nama PDF Gear."
+          },
+          "position3": {
+            "startDate": "Nov 2020",
+            "company": "PT Bintang Aplikasi Perkasa",
+            "title": "Developer Web | Penuh Waktu",
+            "description": "PT Bintang Aplikasi Perkasa adalah perusahaan konsultan TI yang mengkhususkan diri dalam jaringan komputer. Di perusahaan start-up ini, saya bekerja sebagai developer Full Stack, menangani berbagai proyek web. Tanggung jawab saya di antaranya mengembangkan produk baru dan mengelola aplikasi yang sudah ada, di mana sebagian besar menggunakan CodeIgniter, React.js, dan Node.js."
+          },
+          "position4": {
+            "startDate": "Jul 2022",
+            "company": "PT Bank CIMB Niaga Tbk",
+            "title": "Developer Middleware | Penuh Waktu",
+            "description": "PT Bank CIMB Niaga Tbk adalah bank terbesar keenam di Indonesia berdasarkan aset, didirikan pada tahun 1955. Dalam peran saya sebagai developer middleware di divisi Enterprise Service Bus (ESB), yang relatif baru bagi saya, saya bertanggung jawab mengembangkan API yang digunakan untuk berbagai tujuan integrasi aplikasi menggunakan tools seperti IBM MQ, IBM App Connect, dan lainnya."
+          }
+        }
+      },
+      "skill": {
+        "title": "SKILL SET",
+        "set": "HTML,CSS,Bootstrap,SASS,TailwindCSS,JavaScript,jQuery,ReactJS,NextJS,Redux,NodeJS,ExpressJS,SocketIO,CSharp,DotNet,PHP,CodeIgniter,MySQL,SQLServer,GraphQL,YAML,Postman,Heroku,GitHub,Trello,VSCode"
+      },
+      "github": {
+        "title": "DI BALIK LAYAR",
+        "content": {
+          "paragraph1": "Di sini, saya akan memberikan beberapa pandangan mengenai teknologi dan framework yang saya terapkan untuk mengoperasikan situs web portofolio pribadi saya.",
+          "paragraph2": "Situs web ini dibangun menggunakan Next.js, framework React yang kuat untuk rendering sisi server. Next.js memungkinkan saya untuk membuat halaman-halaman statis dan dinamis, sehingga menghasilkan pengalaman pengguna yang cepat dan efisien.",
+          "paragraph3": "Untuk mendesain situs web ini, saya menggunakan Tailwind CSS, sebuah framework CSS yang sederhana dan mudah digunakan. Tailwind CSS menyediakan berbagai komponen dan kelas utilitas yang telah dibuat sebelumnya, sehingga memudahkan dalam membuat desain yang menarik dan responsif.",
+          "paragraph4": "Untuk mengatur status aplikasi, saya menggunakan Redux. Redux adalah sebuah perpustakaan pengaturan status yang dapat diandalkan yang memusatkan aliran data di aplikasi saya. Dengan Redux, saya bisa mengatasi interaksi data yang rumit dan memastikan pengalaman pengguna yang lancar.",
+          "paragraph5": "Pada sisi backend, saya menggunakan Node.js, sebuah lingkungan runtime JavaScript. Node.js memungkinkan saya untuk mengatur logika di sisi server dan permintaan API, memberikan fondasi yang dapat diandalkan dan efisien untuk aplikasi web saya.",
+          "paragraph6": "Untuk menyimpan dan mengelola data aplikasi, saya menggunakan MySQL, yang merupakan sistem manajemen basis data relasional yang handal. MySQL menawarkan keandalan, kemampuan untuk berkembang, dan kinerja yang baik, sehingga menjadi pilihan yang bagus untuk menangani data terstruktur dalam aplikasi web saya.",
+          "paragraph7": "Untuk memungkinkan komunikasi real-time antara frontend dan backend, saya menggunakan Socket.io. Socket.io adalah sebuah perpustakaan yang kuat yang memfasilitasi komunikasi dua arah dan berbasis event. Dengan demikian, situs web saya dapat memperoleh pembaruan instan dan interaksi langsung, meningkatkan pengalaman pengguna secara keseluruhan.",
+          "paragraph8": "Jika Anda tertarik untuk menjelajahi kode sumber situs web saya, Anda bisa menemukannya di repositori GitHub saya. Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan atau ingin tahu lebih banyak tentang pekerjaan saya."
+        },
+        "repository": {
+          "label": {
+            "frontEnd": "Kode sumber (frontend)",
+            "backEnd": "Kode sumber (backend)"
+          }
+        }
+      },
+      "linkedin": {
+        "title": "TERHUBUNG",
+        "description": "Ingin mengetahui lebih banyak tentang latar belakang profesional saya? Silakan kunjungi profil LinkedIn saya untuk melihat pengalaman, wawasan industri, dan prestasi profesional saya. Ayo terhubung dan bangun hubungan profesional yang berharga bersama-sama.",
+        "connect": "Ayo terhubung!"
       }
     }
   }
