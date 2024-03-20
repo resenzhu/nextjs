@@ -33,12 +33,13 @@ const Page = (): JSX.Element => {
       </section>
       <section className='h-full min-h-[40vh]'>
         <Showcase
-          title='PROJECTS'
+          title={translate('portfolio.showcase.title')}
           projects={[
             {
-              name: 'Breezy',
-              description:
-                'Effortless communication is just a tap away with Breezy. Designed to simplify your conversations, Breezy offers a clean and intuitive platform where you can effortlessly chat with friends and build meaningful connections. Enjoy the freedom of breezy conversations that let you focus on what truly matters.',
+              name: translate('portfolio.showcase.project.breezy.title'),
+              description: translate(
+                'portfolio.showcase.project.breezy.description'
+              ),
               url: '/project/breezy'
             }
           ]}

@@ -4,14 +4,14 @@
       "brand": {
         "label": "RESEN",
         "logo": {
-          "alt": "logo web"
+          "alt": "logo utama untuk navigasi situs web"
         }
       },
       "menu": {
         "home": "Beranda",
         "about": "Tentang",
         "portfolio": "Portofolio",
-        "resources": "Konten",
+        "resources": "Bahan",
         "contact": "Kontak",
         "github": "GitHub",
         "language": "Bahasa"
@@ -19,23 +19,23 @@
     },
     "home": {
       "metadata": {
-        "title": "Resen | Developer Full Stack",
-        "description": "Selamat datang di situs web NextJS saya, sebuah showcase dari portofolio dan proyek-proyek saya yang dihidupkan menggunakan teknologi mutakhir."
+        "title": "Resen | Pengembang Full Stack",
+        "description": "Selamat datang di situs web NextJS saya, sebuah peragaan portofolio dan proyek-proyek saya yang dihidupkan dengan teknologi mutakhir."
       },
       "profile": {
         "picture": {
-          "alt": "foto profil penulis"
+          "alt": "foto profil pengembang"
         },
         "name": "RESEN",
         "specialty": {
-          "fullStackDeveloper": "DEVELOPER FULL STACK",
-          "frontEndDeveloper": "DEVELOPER FRONT END",
-          "backEndDeveloper": "DEVELOPER BACK END",
-          "middlewareDeveloper": "DEVELOPER MIDDLEWARE",
+          "fullStackDeveloper": "PENGEMBANG FULL STACK",
+          "frontEndDeveloper": "PENGEMBANG FRONT END",
+          "backEndDeveloper": "PENGEMBANG BACK END",
+          "middlewareDeveloper": "PENGEMBANG MIDDLEWARE",
           "mobileLegendsPlayer": "PEMAIN MOBILE LEGENDS",
           "horrorEnthusiast": "PENGGEMAR HORROR"
         },
-        "bio": "Programmer analitis dengan pola pikir pemecahan masalah yang kuat, terampil dalam meningkatkan kode untuk kinerja dan efisiensi yang optimal.",
+        "bio": "Programmer analitis dengan pola pikir yang kuat dalam memecahkan masalah, terampil dalam mengoptimalkan kode untuk performa dan efisiensi.",
         "chatbot": "HALO",
         "explore": "JELAJAH"
       },
@@ -43,7 +43,7 @@
         "home": "BERANDA",
         "about": "TENTANG",
         "portfolio": "PORTOFOLIO",
-        "resources": "KONTEN",
+        "resources": "BAHAN",
         "contact": "KONTAK",
         "github": "GITHUB"
       },
@@ -53,32 +53,32 @@
           "placeholder": "Ketikkan pesan"
         },
         "error": {
-          "offline": "Ups! Tampaknya Anda sedang tidak terhubung ke internet. Mohon pastikan bahwa Anda terhubung ke internet dan coba lagi.",
-          "empty": "Ups! Sepertinya Anda lupa menulis pesan. Mohon masukkan pesan Anda sebelum mengirimkannya kepada saya.",
-          "tooShort": "Ups! Pesan Anda harus memiliki setidaknya 1 karakter. Mohon masukkan pesan dengan setidaknya 1 karakter sebelum mengirimkannya kepada saya.",
-          "tooLong": "Ups! Pesan Anda melewati batas maksimum 160 karakter. Mohon perpendek pesan Anda dan coba lagi.",
-          "client": "Ups! Sepertinya ada masalah dengan pesan Anda. Mohon pastikan Anda telah memasukkan pesan yang valid dan coba lagi.",
-          "server": "Ups! Sepertinya ada masalah di sisi saya dan saya tidak bisa memberikan respons pada saat ini. Saya mohon maaf atas segala ketidaknyamanan yang terjadi. Mohon kembali lagi nanti, dan saya akan kembali beroperasi. Terima kasih atas kesabarannya."
+          "offline": "Ups! Tampaknya Anda sedang offline saat ini. Pastikan Anda terhubung ke internet dan coba lagi nanti.",
+          "empty": "Ups! Sepertinya Anda lupa menulis pesan. Silakan masukkan pesan Anda sebelum mengirimkannya kepada saya.",
+          "tooShort": "Ups! Pesan Anda harus memiliki minimal 1 karakter. Silakan masukkan pesan dengan minimal 1 karakter sebelum mengirimkannya.",
+          "tooLong": "Ups! Pesan Anda melebihi batas maksimum 160 karakter. Mohon mempersingkat pesan Anda dan coba lagi.",
+          "client": "Ups! Sepertinya ada masalah dengan pesan Anda. Pastikan Anda telah memasukkan pesan yang valid dan coba lagi.",
+          "server": "Ups! Sepertinya ada masalah pada sisi saya, dan saya tidak dapat memberikan respons saat ini. Saya mohon maaf atas segala ketidaknyamanan yang disebabkan. Silakan kembali nanti, dan saya akan kembali berfungsi. Terima kasih atas kesabaran Anda."
         }
       }
     },
     "about": {
       "metadata": {
         "title": "Tentang | Resen",
-        "description": "Kenali Resen, seorang developer web berbakat yang menampilkan keterampilan, proyek, dan pengalamannya dalam dunia yang dinamis dari pengembangan web."
+        "description": "Kenali Resen, seorang pengembang web berbakat yang menampilkan keterampilan, proyek, dan pengalamannya dalam bidang pengembangan web yang dinamis."
       },
       "header": {
         "title": "tentang",
         "subtitle": "Mengupas Pikiran dan Visi di Balik Konsepsi Situs Web",
-        "description": "Ikutlah ke belakang layar dan terjunlah ke dalam dunia pikiran seorang penggemar digital, saat saya berbagi kisah petualangan dalam desain dan pengembangan."
+        "description": "Ikutlah ke belakang layar dan terjunlah ke dalam dunia pikiran seorang penggemar digital, saat saya berbagi kisah petualangan saya dalam desain dan pengembangan."
       },
       "author": {
         "title": "KENALI RESEN",
         "content": {
-          "paragraph1": "Selamat datang di situs web portofolio pribadi saya! Nama saya Resen, dan saya adalah seorang developer Full Stack yang berbasis di Jakarta dengan pengalaman lebih dari {years} tahun di bidang ini.",
-          "paragraph2": "Saya mengkhususkan diri dalam pengembangan Front End dan Back End, membawa beragam keterampilan yang komprehensif. Dengan fokus yang kuat pada pengembangan aplikasi web yang menarik secara visual dan ramah pengguna, saya menggunakan teknologi seperti ReactJS, NextJS, NodeJS, MySQL, dan lainnya untuk memberikan hasil yang luar biasa.",
-          "paragraph3": "Dari merancang antarmuka pengguna yang menarik hingga menerapkan fungsionalitas yang solid, saya berupaya menciptakan situs web yang lancar dan efisien. Semangat saya dalam pengembangan mendorong saya untuk terus mengasah keterampilan saya, memastikan bahwa saya memberikan solusi berkualitas tinggi yang sesuai dengan kebutuhan unik dari setiap proyek.",
-          "paragraph4": "Jangan ragu untuk menjelajahi portofolio saya dan temukan beberapa proyek yang telah saya kerjakan. Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi saya. Saya selalu siap untuk terhubung dengan siapapun yang memiliki minat dalam pengembangan web dan inovasi."
+          "paragraph1": "Selamat datang di situs web portofolio pribadi saya! Nama saya Resen, dan saya adalah seorang pengembang Full Stack yang berbasis di Jakarta dengan pengalaman lebih dari {years} tahun di bidang ini.",
+          "paragraph2": "Saya mengkhususkan diri dalam pengembangan Front End dan Back End, membawa beragam keterampilan yang komprehensif. Dengan fokus yang kuat pada pengembangan aplikasi web yang menarik secara visual dan ramah pengguna, saya memanfaatkan teknologi seperti ReactJS, NextJS, NodeJS, MySQL, dan lainnya untuk memberikan hasil yang luar biasa.",
+          "paragraph3": "Dari merancang antarmuka pengguna yang menarik hingga mengimplementasikan fungsionalitas yang solid, saya berupaya untuk mengembangkan situs web yang mulus dan efisien. Semangat saya dalam pengembangan mendorong saya untuk terus mengasah keterampilan saya, memastikan bahwa saya memberikan solusi berkualitas tinggi yang memenuhi kebutuhan unik dari setiap proyek.",
+          "paragraph4": "Silakan jelajahi portofolio saya dan temukan beberapa proyek yang telah saya kerjakan. Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi saya. Saya selalu terbuka untuk berhubungan dengan siapa pun yang memiliki minat dalam pengembangan web dan inovasi."
         }
       },
       "experience": {
@@ -87,44 +87,44 @@
           "position1": {
             "startDate": "Mar 2017",
             "company": "Bina Nusantara IT Division",
-            "title": "Developer Web | Magang",
-            "description": "Bina Nusantara IT Division merupakan salah satu divisi Bina Nusantara yang memberikan dukungan teknologi informasi untuk unit-unit lain di bawah naungan Yayasan Bina Nusantara. Di sinilah saya memulai karier sebagai developer web Full Stack, di mana saya menangani proyek bernama Binusmaya, yang merupakan aplikasi sistem manajemen pembelajaran berbasis framework CodeIgniter."
+            "title": "Pengembang Web | Magang",
+            "description": "Bina Nusantara IT Division merupakan salah satu divisi Bina Nusantara yang memberikan dukungan teknologi informasi untuk unit-unit lain di bawah naungan Yayasan Bina Nusantara. Di sinilah saya memulai karier sebagai developer web Full Stack, di mana saya menangani proyek bernama Binusmaya, yang merupakan aplikasi sistem manajemen pembelajaran berbasis kerangka kerja CodeIgniter."
           },
           "position2": {
             "startDate": "Feb 2019",
             "company": "Kreator PDF Gear",
             "title": "Developer .NET | Wirausaha",
-            "description": "Saya adalah individu yang penuh rasa ingin tahu dan menikmati pembelajaran hal baru. Semuanya dimulai dari rasa ingin tahu saya, di mana saya belajar bagaimana membuat aplikasi desktop sederhana menggunakan framework Windows Presentation Foundation (WPF) berbasis bahasa pemrograman C#. Secara bertahap, dengan menerapkan fitur satu per satu, saya tidak menyadari bahwa pada akhirnya, saya berhasil mengembangkan sebuah aplikasi manipulasi dokumen PDF yang kompleks yang saya beri nama PDF Gear."
+            "description": "Saya adalah individu yang penuh rasa ingin tahu dan senang belajar hal-hal baru. Semuanya dimulai dari rasa ingin tahu saya, di mana saya belajar bagaimana membuat aplikasi desktop sederhana menggunakan kerangka kerja Windows Presentation Foundation (WPF) yang berbasis bahasa pemrograman C#. Secara bertahap mengimplementasikan fitur satu per satu, saya tidak menyadari bahwa pada akhirnya, saya berhasil mengembangkan aplikasi manipulasi dokumen PDF yang kompleks yang saya beri nama PDF Gear."
           },
           "position3": {
             "startDate": "Nov 2020",
             "company": "PT Bintang Aplikasi Perkasa",
-            "title": "Developer Web | Penuh Waktu",
-            "description": "PT Bintang Aplikasi Perkasa adalah perusahaan konsultan TI yang mengkhususkan diri dalam jaringan komputer. Di perusahaan start-up ini, saya bekerja sebagai developer Full Stack, menangani berbagai proyek web. Tanggung jawab saya di antaranya mengembangkan produk baru dan mengelola aplikasi yang sudah ada, di mana sebagian besar menggunakan CodeIgniter, React.js, dan Node.js."
+            "title": "Pengembang Web | Penuh Waktu",
+            "description": "PT Bintang Aplikasi Perkasa adalah perusahaan konsultan TI yang mengkhususkan diri dalam jaringan komputer. Di perusahaan start-up ini, saya bekerja sebagai pengembang Full Stack, menangani berbagai proyek web. Tanggung jawab saya termasuk mengembangkan produk baru dan mengelola aplikasi yang sudah ada, di mana sebagian besar menggunakan CodeIgniter, React.js, dan Node.js."
           },
           "position4": {
             "startDate": "Jul 2022",
             "company": "PT Bank CIMB Niaga Tbk",
-            "title": "Developer Middleware | Penuh Waktu",
-            "description": "PT Bank CIMB Niaga Tbk adalah bank terbesar keenam di Indonesia berdasarkan aset, didirikan pada tahun 1955. Dalam peran saya sebagai developer middleware di divisi Enterprise Service Bus (ESB), yang relatif baru bagi saya, saya bertanggung jawab mengembangkan API yang digunakan untuk berbagai tujuan integrasi aplikasi menggunakan tools seperti IBM MQ, IBM App Connect, dan lainnya."
+            "title": "Pengembang Middleware | Penuh Waktu",
+            "description": "PT Bank CIMB Niaga Tbk adalah bank terbesar keenam di Indonesia berdasarkan aset, didirikan pada tahun 1955. Dalam peran saya sebagai pengembang middleware di divisi Enterprise Service Bus (ESB), yang relatif baru bagi saya, saya bertanggung jawab untuk mengembangkan API yang digunakan untuk berbagai tujuan integrasi aplikasi menggunakan tools seperti IBM MQ, IBM App Connect, dan lainnya."
           }
         }
       },
       "skill": {
-        "title": "SKILL SET",
+        "title": "KEAHLIAN",
         "set": "HTML,CSS,Bootstrap,SASS,TailwindCSS,JavaScript,jQuery,ReactJS,NextJS,Redux,NodeJS,ExpressJS,SocketIO,CSharp,DotNet,PHP,CodeIgniter,MySQL,SQLServer,GraphQL,YAML,Postman,Heroku,GitHub,Trello,VSCode"
       },
       "github": {
         "title": "DI BALIK LAYAR",
         "content": {
-          "paragraph1": "Di sini, saya akan memberikan beberapa pandangan mengenai teknologi dan framework yang saya terapkan untuk mengoperasikan situs web portofolio pribadi saya.",
-          "paragraph2": "Situs web ini dibangun menggunakan Next.js, framework React yang kuat untuk rendering sisi server. Next.js memungkinkan saya untuk membuat halaman-halaman statis dan dinamis, sehingga menghasilkan pengalaman pengguna yang cepat dan efisien.",
-          "paragraph3": "Untuk mendesain situs web ini, saya menggunakan Tailwind CSS, sebuah framework CSS yang sederhana dan mudah digunakan. Tailwind CSS menyediakan berbagai komponen dan kelas utilitas yang telah dibuat sebelumnya, sehingga memudahkan dalam membuat desain yang menarik dan responsif.",
+          "paragraph1": "Di sini, saya akan memberikan beberapa wawasan tentang teknologi dan kerangka kerja yang saya terapkan untuk mengoperasikan situs web portofolio pribadi saya.",
+          "paragraph2": "Website ini dibangun menggunakan Next.js, sebuah kerangka kerja React yang kuat untuk rendering sisi server. Next.js memungkinkan saya untuk membuat halaman-halaman statis dan dinamis, sehingga menghasilkan pengalaman pengguna yang cepat dan efisien.",
+          "paragraph3": "Untuk mendesain website ini, saya menggunakan Tailwind CSS, sebuah kerangka kerja CSS utilitas yang serbaguna. Tailwind CSS menawarkan kumpulan komponen yang sudah dibangun sebelumnya dan kelas utilitas yang lengkap, sehingga memudahkan untuk membuat desain yang menarik secara visual dan responsif.",
           "paragraph4": "Untuk mengatur status aplikasi, saya menggunakan Redux. Redux adalah sebuah perpustakaan pengaturan status yang dapat diandalkan yang memusatkan aliran data di aplikasi saya. Dengan Redux, saya bisa mengatasi interaksi data yang rumit dan memastikan pengalaman pengguna yang lancar.",
-          "paragraph5": "Pada sisi backend, saya menggunakan Node.js, sebuah lingkungan runtime JavaScript. Node.js memungkinkan saya untuk mengatur logika di sisi server dan permintaan API, memberikan fondasi yang dapat diandalkan dan efisien untuk aplikasi web saya.",
-          "paragraph6": "Untuk menyimpan dan mengelola data aplikasi, saya menggunakan MySQL, yang merupakan sistem manajemen basis data relasional yang handal. MySQL menawarkan keandalan, kemampuan untuk berkembang, dan kinerja yang baik, sehingga menjadi pilihan yang bagus untuk menangani data terstruktur dalam aplikasi web saya.",
-          "paragraph7": "Untuk memungkinkan komunikasi real-time antara frontend dan backend, saya menggunakan Socket.io. Socket.io adalah sebuah perpustakaan yang kuat yang memfasilitasi komunikasi dua arah dan berbasis event. Dengan demikian, situs web saya dapat memperoleh pembaruan instan dan interaksi langsung, meningkatkan pengalaman pengguna secara keseluruhan.",
-          "paragraph8": "Jika Anda tertarik untuk menjelajahi kode sumber situs web saya, Anda bisa menemukannya di repositori GitHub saya. Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan atau ingin tahu lebih banyak tentang pekerjaan saya."
+          "paragraph5": "Di sisi belakang, saya menggunakan Node.js, sebuah lingkungan runtime JavaScript. Node.js memungkinkan saya untuk mengatur logika di sisi server dan permintaan API, memberikan fondasi yang dapat diperluas dan efisien untuk aplikasi web saya.",
+          "paragraph6": "Untuk menyimpan dan mengelola data aplikasi, saya menggunakan MySQL, sebuah sistem manajemen basis data relasional yang handal. MySQL menawarkan kehandalan, skalabilitas, dan kinerja yang baik, menjadikannya pilihan yang sangat baik untuk mengelola data terstruktur dalam aplikasi web saya.",
+          "paragraph7": "Untuk memungkinkan komunikasi real-time antara bagian depan dan belakang aplikasi, saya menggunakan Socket.io. Socket.io adalah sebuah perpustakaan handal yang memfasilitasi komunikasi dua arah dan berbasis peristiwa. Dengan demikian, situs web saya dapat memperoleh pembaruan instan dan interaksi langsung, meningkatkan pengalaman pengguna secara keseluruhan.",
+          "paragraph8": "Jika Anda tertarik untuk menjelajahi kode sumber website saya, Anda dapat menemukannya di repositori GitHub saya. Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan atau ingin tahu lebih banyak tentang pekerjaan saya."
         },
         "repository": {
           "label": {
@@ -134,8 +134,8 @@
         }
       },
       "linkedin": {
-        "title": "TERHUBUNG",
-        "description": "Ingin mengetahui lebih banyak tentang latar belakang profesional saya? Silakan kunjungi profil LinkedIn saya untuk melihat pengalaman, wawasan industri, dan prestasi profesional saya. Ayo terhubung dan bangun hubungan profesional yang berharga bersama-sama.",
+        "title": "TERHUBUNGLAH",
+        "description": "Ingin mengetahui lebih banyak tentang latar belakang profesional saya? Kunjungi profil LinkedIn saya untuk melihat pengalaman, wawasan industri, dan pencapaian profesional saya. Ayo terhubung dan bangun hubungan profesional yang berharga bersama-sama.",
         "connect": "Ayo terhubung!"
       }
     },
@@ -143,6 +143,21 @@
       "metadata": {
         "title": "Portofolio | Resen",
         "description": "Temukan beragam koleksi proyek saya yang menampilkan kreativitas, keterampilan, dan semangat saya dalam pengembangan web."
+      },
+      "header": {
+        "title": "portofolio",
+        "subtitle": "Peragaan Proyek Inovatif dan Upaya Pribadi",
+        "description": "Temukan koleksi menarik dari proyek-proyek saya, di mana inovasi bertemu dengan desain. Rasakan pengalaman dalam pameran inspiratif kreativitas dan jelajahi berbagai kemungkinan dari karya-karya saya."
+      },
+      "showcase": {
+        "title": "PROYEK",
+        "project": {
+          "breezy": {
+            "title": "Breezy",
+            "description": "Komunikasi yang mudah hanya sejauh satu ketukan dengan Breezy. Dirancang untuk menyederhanakan percakapan Anda, Breezy menawarkan platform yang bersih dan intuitif di mana Anda dapat dengan mudah mengobrol dengan teman dan membangun hubungan yang berarti. Nikmati kebebasan dari percakapan yang santai yang memungkinkan Anda fokus pada hal-hal yang benar-benar penting."
+          },
+          "viewProject": "LIHAT PROYEK"
+        }
       }
     }
   }

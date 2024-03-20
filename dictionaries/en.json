@@ -4,7 +4,7 @@
       "brand": {
         "label": "RESEN",
         "logo": {
-          "alt": "web logo"
+          "alt": "main logo for website navigation"
         }
       },
       "menu": {
@@ -24,7 +24,7 @@
       },
       "profile": {
         "picture": {
-          "alt": "author profile picture"
+          "alt": "developer profile picture"
         },
         "name": "RESEN",
         "specialty": {
@@ -148,6 +148,16 @@
         "title": "portfolio",
         "subtitle": "A Showcase of Innovative Projects and Personal Endeavors",
         "description": "Discover a captivating collection of my projects, where innovation meets design. Immerse yourself in an inspiring showcase of creativity and explore the limitless possibilities of my work."
+      },
+      "showcase": {
+        "title": "PROJECTS",
+        "project": {
+          "breezy": {
+            "title": "Breezy",
+            "description": "Effortless communication is just a tap away with Breezy. Designed to simplify your conversations, Breezy offers a clean and intuitive platform where you can effortlessly chat with friends and build meaningful connections. Enjoy the freedom of breezy conversations that let you focus on what truly matters."
+          },
+          "viewProject": "VIEW PROJECT"
+        }
       }
     }
   }
