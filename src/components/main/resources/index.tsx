@@ -1,1 +1,1 @@
-export {default as Dev} from '@components/main/resources/dev';
+export {default as Development} from '@components/main/resources/development';

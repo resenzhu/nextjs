@@ -159,6 +159,26 @@
           "viewProject": "LIHAT PROYEK"
         }
       }
+    },
+    "resources": {
+      "metadata": {
+        "title": "Bahan | Resen",
+        "description": "Temukan berbagai macam panduan, tutorial, dan bahan lain yang bisa diunduh yang mungkin bermanfaat untuk Anda."
+      },
+      "header": {
+        "title": "bahan",
+        "subtitle": "Pintu Gerbangmu Menuju Inspirasi dan Pembelajaran Tak Terbatas",
+        "description": "Jelajahi dunia pengetahuan dengan koleksi bahan saya yang bisa diunduh. Mulai dari panduan hingga tutorial, koleksi yang saya susun dengan teliti mencakup berbagai minat dan disiplin, membantu kegiatan belajar Anda."
+      },
+      "development": {
+        "content": {
+          "paragraph1": "Terima kasih telah mengunjungi halaman bahan situs portofolio pribadi saya. Saya sangat senang sekali memberitahukan bahwa situs web ini sedang dalam proses pengembangan dan ada pembaruan menarik yang sedang dikembangkan.",
+          "paragraph2": "Saya aktif mengembangkan kumpulan panduan, tutorial, dan bahan lainnya guna meningkatkan pengalaman Anda. Meskipun belum ada materi yang dapat diunduh saat ini, jangan khawatir karena saya sedang berupaya untuk menyusun bahan yang komprehensif.",
+          "paragraph3": "Saya menghargai kesabaran dan pengertian Anda selama fase pengembangan ini. Dukungan Anda memotivasi saya untuk menyediakan bahan sebaik mungkin bagi Anda. Silakan periksa kembali dalam waktu dekat karena saya terus berupaya untuk memperluas halaman bahan ini.",
+          "paragraph4": "Jika Anda memiliki permintaan atau saran khusus untuk jenis materi yang ingin Anda lihat, jangan sungkan untuk menghubungi saya. Masukan Anda sangat berharga karena membantu saya menyesuaikan konten dengan kebutuhan Anda.",
+          "paragraph5": "Terima kasih atas ketertarikan Anda, dan saya juga tidak sabar untuk segera berbagi koleksi bahan saya yang luar biasa bersama Anda!"
+        }
+      }
     }
   }
 }

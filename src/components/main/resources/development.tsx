@@ -1,10 +1,10 @@
 import {LazyLoad} from '@components/main/shared';
 
-type DevProps = {
+type DevelopmentProps = {
   content: string[];
 };
 
-const Dev = ({content}: DevProps): JSX.Element => (
+const Development = ({content}: DevelopmentProps): JSX.Element => (
   <div className='mx-4 flex flex-col items-center space-y-6 pt-8 md:mx-0'>
     <div className='space-y-6 text-center text-gray-600 md:mx-auto md:w-2/3 lg:w-1/2'>
       {content.map(
@@ -24,5 +24,5 @@ const Dev = ({content}: DevProps): JSX.Element => (
   </div>
 );
 
-export type {DevProps};
-export default Dev;
+export type {DevelopmentProps};
+export default Development;
