@@ -49,8 +49,8 @@
       },
       "chatbot": {
         "botName": "{botName} [BOT]",
-        "input": {
-          "placeholder": "Type a message"
+        "placeholder": {
+          "input": "Type a message"
         },
         "error": {
           "offline": "Oops! It appears that you're currently offline. Please ensure that you're connected to the internet and try again later.",
@@ -178,6 +178,59 @@
           "paragraph4": "If you have any specific requests or suggestions for the type of materials you'd like to see, please don't hesitate to reach out. Your feedback is highly valued as it helps me tailor the content to your needs.",
           "paragraph5": "Thank you for your interest, and I look forward to sharing an exceptional collection of resources with you very soon!"
         }
+      }
+    },
+    "contact": {
+      "metadata": {
+        "title": "Contact | Resen",
+        "description": "Interested in my work? Use this contact page to reach out and learn more about my portfolio. I am here to answer your queries."
+      },
+      "header": {
+        "title": "contact",
+        "subtitle": "Explore Your Options by Getting in Touch",
+        "description": "Have a friendly message to share, feedback to provide, insights to offer, or want to stay updated? Feel free to reach out to me directly, and I'll be happy to provide the answers and support you're looking for."
+      },
+      "form": {
+        "title": "STAY CONNECTED",
+        "description": "I'd love to hear from you! Whether you have a question, feedback, or just want to chat, feel free to reach out using the contact form below. Let's stay connected!",
+        "placeholder": {
+          "name": "Name",
+          "email": "Email",
+          "message": "Message",
+          "honeypot": "Phone"
+        },
+        "label": {
+          "submit": "SUBMIT"
+        },
+        "error": {
+          "offline": "You are currently offline. Please check your internet connection and try again later.",
+          "throttle": "You are submitting too quickly. Please take a moment and try again.",
+          "input": {
+            "name": {
+              "empty": "Please enter your name.",
+              "tooShort": "Your name is too short. Please enter at least 2 characters.",
+              "tooLong": "Your name is too long. Please enter a maximum of 120 characters.",
+              "invalid": "Please enter a valid name using only letters and spaces."
+            },
+            "email": {
+              "empty": "Please enter your email address.",
+              "tooShort": "Your email is too short. Please enter at least 3 characters.",
+              "tooLong": "Your email is too long. Please enter a maximum of 320 characters.",
+              "invalid": "Please enter a valid email address."
+            },
+            "message": {
+              "empty": "Please enter a message.",
+              "tooShort": "Your message is too short. Please enter at least 15 characters.",
+              "tooLong": "Your message is too long. Please enter a maximum of 2000 characters."
+            },
+            "honeypot": "Bot detection system triggered. Please ensure you are a human and not a bot.",
+            "recaptcha": "Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again."
+          },
+          "client": "There was an error processing your form submission. Please review your information and try again.",
+          "server": "Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.",
+          "limit": "You have exceeded the maximum number of contact form submissions for today. Please try again tomorrow."
+        },
+        "success": "Thank you! Your form has been successfully submitted."
       }
     }
   }

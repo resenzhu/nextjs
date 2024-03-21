@@ -10,16 +10,19 @@ import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/app/use-app';
 import useContact from '@hooks/main/use-contact';
 import {useGoogleReCaptcha} from 'react-google-recaptcha-v3';
+
 import validator from 'validator';
 
-type Label = {
-  name: string;
-  email: string;
-  message: string;
-  submit: string;
-};
-
-type Message = {
+type InputProps = {
+  placeholder: {
+    name: string;
+    email: string;
+    message: string;
+    honeypot: string;
+  };
+  label: {
+    submit: string;
+  };
   error: {
     offline: string;
     throttle: string;
@@ -51,11 +54,6 @@ type Message = {
   success: string;
 };
 
-type InputProps = {
-  label: Label;
-  message: Message;
-};
-
 type SubmitContactFormReq = {
   name: string;
   email: string;
@@ -73,8 +71,13 @@ type SubmitContactFormRes = {
   data: {};
 };
 
-const Input = ({label, message}: InputProps): JSX.Element => {
-  const {online} = useApp();
+const Input = ({
+  placeholder,
+  label,
+  error,
+  success
+}: InputProps): JSX.Element => {
+  const {isOnline} = useApp();
   const {form, setForm} = useContact();
   const [rendered, setRendered] = useState<boolean>(false);
   const [throttle, setThrottle] = useState<boolean>(true);
@@ -92,8 +95,8 @@ const Input = ({label, message}: InputProps): JSX.Element => {
       setForm({
         ...form,
         [fieldName]: value,
-        error: '',
-        success: ''
+        isSuccess: false,
+        error: ''
       });
     }
   };
@@ -110,27 +113,27 @@ const Input = ({label, message}: InputProps): JSX.Element => {
       setForm({
         ...form,
         [fieldName]: value.trim(),
-        error: '',
-        success: ''
+        isSuccess: false,
+        error: ''
       });
     }
   };
 
   const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    if (!form.submitting) {
+    if (!form.isSubmitting) {
       let formError: string = '';
-      if (!online) {
-        formError = message.error.offline;
+      if (!isOnline) {
+        formError = error.offline;
       }
       if (throttle) {
-        formError = message.error.throttle;
+        formError = error.throttle;
       }
       setForm({
         ...form,
-        submitting: online && !throttle,
-        error: formError,
-        success: ''
+        isSubmitting: isOnline && !throttle,
+        isSuccess: false,
+        error: formError
       });
     }
   };
@@ -150,7 +153,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
   }, [rendered]);
 
   useEffect((): void => {
-    if (form.submitting) {
+    if (form.isSubmitting) {
       new Promise<string>(async (resolve): Promise<void> => {
         let newRecaptcha: string = '';
         if (executeRecaptcha && form.recaptcha.length === 0) {
@@ -161,21 +164,21 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         const requestSchema = object().shape({
           name: string()
             .ensure()
-            .required(message.error.input.name.empty)
-            .min(2, message.error.input.name.tooShort)
-            .max(120, message.error.input.name.tooLong),
+            .required(error.input.name.empty)
+            .min(2, error.input.name.tooShort)
+            .max(120, error.input.name.tooLong),
           email: string()
             .ensure()
-            .required(message.error.input.email.empty)
-            .min(3, message.error.input.email.tooShort)
-            .max(320, message.error.input.email.tooLong),
+            .required(error.input.email.empty)
+            .min(3, error.input.email.tooShort)
+            .max(320, error.input.email.tooLong),
           message: string()
             .ensure()
-            .required(message.error.input.message.empty)
-            .min(15, message.error.input.message.tooShort)
-            .max(2000, message.error.input.message.tooLong),
-          honeypot: string().ensure().length(0, message.error.input.honeypot),
-          recaptcha: string().ensure().required(message.error.input.recaptcha)
+            .required(error.input.message.empty)
+            .min(15, error.input.message.tooShort)
+            .max(2000, error.input.message.tooLong),
+          honeypot: string().ensure().length(0, error.input.honeypot),
+          recaptcha: string().ensure().required(error.input.recaptcha)
         });
         const request: SubmitContactFormReq = {
           name: sanitize(form.name).trim(),
@@ -191,14 +194,14 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           .then((): void => {
             if (!validator.isAlpha(request.name, 'en-US', {ignore: ' '})) {
               throw new ValidationError(
-                message.error.input.name.invalid,
+                error.input.name.invalid,
                 request.name,
                 'name'
               );
             }
             if (!validator.isEmail(request.email)) {
               throw new ValidationError(
-                message.error.input.email.invalid,
+                error.input.email.invalid,
                 request.email,
                 'email'
               );
@@ -211,78 +214,78 @@ const Input = ({label, message}: InputProps): JSX.Element => {
                 (socketError: Error, response: SubmitContactFormRes): void => {
                   let formError: string = '';
                   if (socketError) {
-                    formError = message.error.server;
+                    formError = error.server;
                   }
                   if (response && !response.success) {
                     switch (response.error.code) {
                       case 40001:
                       case 4220101:
                       case 4220102:
-                        formError = message.error.input.name.empty;
+                        formError = error.input.name.empty;
                         break;
                       case 4220103:
-                        formError = message.error.input.name.tooShort;
+                        formError = error.input.name.tooShort;
                         break;
                       case 4220104:
-                        formError = message.error.input.name.tooLong;
+                        formError = error.input.name.tooLong;
                         break;
                       case 4220105:
-                        formError = message.error.input.name.invalid;
+                        formError = error.input.name.invalid;
                         break;
                       case 40002:
                       case 4220201:
                       case 4220202:
-                        formError = message.error.input.email.empty;
+                        formError = error.input.email.empty;
                         break;
                       case 4220203:
-                        formError = message.error.input.email.tooShort;
+                        formError = error.input.email.tooShort;
                         break;
                       case 4220204:
-                        formError = message.error.input.email.tooLong;
+                        formError = error.input.email.tooLong;
                         break;
                       case 4220205:
-                        formError = message.error.input.email.invalid;
+                        formError = error.input.email.invalid;
                         break;
                       case 40003:
                       case 4220301:
                       case 4220302:
-                        formError = message.error.input.message.empty;
+                        formError = error.input.message.empty;
                         break;
                       case 4220303:
-                        formError = message.error.input.message.tooShort;
+                        formError = error.input.message.tooShort;
                         break;
                       case 4220304:
-                        formError = message.error.input.message.tooLong;
+                        formError = error.input.message.tooLong;
                         break;
                       case 40004:
                       case 4220401:
                       case 4220402:
                       case 40304:
-                        formError = message.error.input.honeypot;
+                        formError = error.input.honeypot;
                         break;
                       case 40005:
                       case 4220501:
                       case 4220502:
-                        formError = message.error.input.recaptcha;
+                        formError = error.input.recaptcha;
                         break;
                       case 429:
-                        formError = message.error.limit;
+                        formError = error.limit;
                         break;
                       case 500:
                       case 503:
-                        formError = message.error.server;
+                        formError = error.server;
                         break;
                       default:
-                        formError = message.error.client;
+                        formError = error.client;
                         break;
                     }
                   }
                   setForm({
                     ...form,
                     recaptcha: '',
-                    submitting: false,
-                    error: formError,
-                    success: response && response.success ? message.success : ''
+                    isSubmitting: false,
+                    isSuccess: response && response.success,
+                    error: formError
                   });
                 }
               );
@@ -291,16 +294,16 @@ const Input = ({label, message}: InputProps): JSX.Element => {
             setForm({
               ...form,
               recaptcha: request.recaptcha,
-              submitting: false,
+              isSubmitting: false,
               error:
                 validationError.inner[0]?.message ??
                 validationError.message ??
-                message.error.client
+                error.client
             });
           });
       });
     }
-  }, [form.submitting]);
+  }, [form.isSubmitting]);
 
   useEffect((): (() => void) => {
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -330,19 +333,19 @@ const Input = ({label, message}: InputProps): JSX.Element => {
             className='font-semibold'
             htmlFor='name'
           >
-            {label.name}
+            {placeholder.name}
           </label>
         )}
         <input
           className='border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           name='name'
           type='text'
-          placeholder={label.name}
+          placeholder={placeholder.name}
           value={form.name}
           maxLength={120}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
-          disabled={form.submitting}
+          disabled={form.isSubmitting}
         />
       </div>
       <div className='flex animate-fade-left flex-col text-start animate-duration-700'>
@@ -351,19 +354,19 @@ const Input = ({label, message}: InputProps): JSX.Element => {
             className='font-semibold'
             htmlFor='email'
           >
-            {label.email}
+            {placeholder.email}
           </label>
         )}
         <input
           className='border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           name='email'
           type='text'
-          placeholder={label.email}
+          placeholder={placeholder.email}
           value={form.email}
           maxLength={320}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
-          disabled={form.submitting}
+          disabled={form.isSubmitting}
         />
       </div>
       <div className='flex animate-fade-right flex-col text-start animate-duration-700'>
@@ -372,18 +375,18 @@ const Input = ({label, message}: InputProps): JSX.Element => {
             className='font-semibold'
             htmlFor='message'
           >
-            {label.message}
+            {placeholder.message}
           </label>
         )}
         <textarea
           className='min-h-[20vh] resize-none border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           name='message'
-          placeholder={label.message}
+          placeholder={placeholder.message}
           value={form.message}
           maxLength={2000}
           onChange={(event): void => handleUpdateForm(event)}
           onBlur={(event): void => handleTrimForm(event)}
-          disabled={form.submitting}
+          disabled={form.isSubmitting}
         />
       </div>
       <div className='hidden'>
@@ -391,21 +394,21 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           className='w-full border-b-2 pb-2 pt-1 outline-0 disabled:border-b-0 disabled:bg-white'
           name='phone'
           type='text'
-          placeholder='Phone'
+          placeholder={placeholder.honeypot}
           value={form.honeypot}
           onChange={(event): void => handleUpdateForm(event)}
-          disabled={form.submitting}
+          disabled={form.isSubmitting}
         />
       </div>
-      {form.error.length !== 0 && (
+      {!form.isSuccess && form.error.length !== 0 && (
         <div className='bg-red-500 p-2 text-white'>{form.error}</div>
       )}
-      {form.success.length !== 0 && (
-        <div className='bg-green-600 p-2 text-white'>{form.success}</div>
+      {form.isSuccess && (
+        <div className='bg-green-600 p-2 text-white'>{success}</div>
       )}
       <Button
         className={`w-36 animate-fade-left place-self-center animate-duration-700 ${
-          form.submitting ? 'cursor-default' : 'active:bg-cyan-700'
+          form.isSubmitting ? 'cursor-default' : 'active:bg-cyan-700'
         }`}
         type='submit'
         disabled={
@@ -414,8 +417,8 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           form.message.trim().length === 0
         }
       >
-        {!form.submitting && <span>{label.submit}</span>}
-        {form.submitting && (
+        {!form.isSubmitting && <span>{label.submit}</span>}
+        {form.isSubmitting && (
           <FontAwesomeIcon
             className='animate-spin text-xl animate-infinite'
             icon={faSpinner}
@@ -426,11 +429,5 @@ const Input = ({label, message}: InputProps): JSX.Element => {
   );
 };
 
-export type {
-  Label,
-  Message,
-  InputProps,
-  SubmitContactFormReq,
-  SubmitContactFormRes
-};
+export type {InputProps, SubmitContactFormReq, SubmitContactFormRes};
 export default Input;

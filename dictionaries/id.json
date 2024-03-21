@@ -49,8 +49,8 @@
       },
       "chatbot": {
         "botName": "{botName} [BOT]",
-        "input": {
-          "placeholder": "Ketikkan pesan"
+        "placeholder": {
+          "input": "Ketikkan pesan"
         },
         "error": {
           "offline": "Ups! Tampaknya Anda sedang offline saat ini. Pastikan Anda terhubung ke internet dan coba lagi nanti.",
@@ -178,6 +178,59 @@
           "paragraph4": "Jika Anda memiliki permintaan atau saran khusus untuk jenis materi yang ingin Anda lihat, jangan sungkan untuk menghubungi saya. Masukan Anda sangat berharga karena membantu saya menyesuaikan konten dengan kebutuhan Anda.",
           "paragraph5": "Terima kasih atas ketertarikan Anda, dan saya juga tidak sabar untuk segera berbagi koleksi bahan saya yang luar biasa bersama Anda!"
         }
+      }
+    },
+    "contact": {
+      "metadata": {
+        "title": "Kontak | Resen",
+        "description": "Tertarik dengan karya saya? Gunakan halaman kontak ini untuk menghubungi saya dan mempelajari lebih lanjut tentang portofolio saya. Saya di sini untuk menjawab pertanyaan Anda."
+      },
+      "header": {
+        "title": "kontak",
+        "subtitle": "Jelajahi Pilihan Anda dengan Menghubungi Saya",
+        "description": "Jika Anda ingin membagikan pesan, masukan, atau pandangan, atau ingin tetap terinformasi, jangan ragu untuk menghubungi saya langsung. Saya akan dengan senang hati memberikan jawaban dan dukungan yang Anda butuhkan."
+      },
+      "form": {
+        "title": "TETAP TERHUBUNG",
+        "description": "Saya senang mendengar dari Anda! Entah Anda memiliki pertanyaan, masukan, atau hanya ingin ngobrol, jangan ragu untuk menghubungi saya menggunakan formulir kontak di bawah ini. Ayo kita tetap terhubung!",
+        "placeholder": {
+          "name": "Nama",
+          "email": "Email",
+          "message": "Pesan",
+          "honeypot": "Telepon"
+        },
+        "label": {
+          "submit": "KIRIM"
+        },
+        "error": {
+          "offline": "Anda sedang offline saat ini. Silakan periksa koneksi internet Anda dan coba lagi nanti.",
+          "throttle": "Anda mengirim terlalu cepat. Harap beri waktu sejenak dan coba lagi.",
+          "input": {
+            "name": {
+              "empty": "Harap masukkan nama Anda.",
+              "tooShort": "Nama Anda terlalu singkat. Harap masukkan setidaknya 2 karakter.",
+              "tooLong": "Nama Anda terlalu panjang. Harap masukkan maksimal 120 karakter.",
+              "invalid": "Please enter a valid name using only letters and spaces."
+            },
+            "email": {
+              "empty": "Please enter your email address.",
+              "tooShort": "Your email is too short. Please enter at least 3 characters.",
+              "tooLong": "Your email is too long. Please enter a maximum of 320 characters.",
+              "invalid": "Please enter a valid email address."
+            },
+            "message": {
+              "empty": "Please enter a message.",
+              "tooShort": "Your message is too short. Please enter at least 15 characters.",
+              "tooLong": "Your message is too long. Please enter a maximum of 2000 characters."
+            },
+            "honeypot": "Bot detection system triggered. Please ensure you are a human and not a bot.",
+            "recaptcha": "Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again."
+          },
+          "client": "There was an error processing your form submission. Please review your information and try again.",
+          "server": "Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.",
+          "limit": "You have exceeded the maximum number of contact form submissions for today. Please try again tomorrow."
+        },
+        "success": "Thank you! Your form has been successfully submitted."
       }
     }
   }

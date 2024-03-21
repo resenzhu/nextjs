@@ -35,7 +35,7 @@ const Chatbot = ({botName}: ChatbotProps): JSX.Element => {
             </div>
             <div className='border-t-2'>
               <Input
-                placeholder={translate('home.chatbot.input.placeholder')}
+                placeholder={translate('home.chatbot.placeholder.input')}
                 error={{
                   empty: translate('home.chatbot.error.empty'),
                   tooShort: translate('home.chatbot.error.tooShort'),
