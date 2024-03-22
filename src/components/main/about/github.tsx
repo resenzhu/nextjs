@@ -1,7 +1,7 @@
 import {Button, LazyLoad} from '@components/main/shared';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
+import {Link} from '@navigation';
 
 type Repository = {
   icon: IconDefinition;

@@ -11,7 +11,7 @@ import Chatbot from '@components/main/home/profile/chatbot';
 import Explore from '@components/main/home/profile/explore';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import type {IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
+import {Link} from '@navigation';
 import Picture from '@components/main/home/profile/picture';
 import Specialty from '@components/main/home/profile/specialty';
 import {useTranslations} from 'next-intl';
