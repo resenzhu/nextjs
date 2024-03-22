@@ -208,29 +208,29 @@
           "input": {
             "name": {
               "empty": "Harap masukkan nama Anda.",
-              "tooShort": "Nama Anda terlalu singkat. Harap masukkan setidaknya 2 karakter.",
+              "tooShort": "Nama Anda terlalu singkat. Harap masukkan minimal 2 karakter.",
               "tooLong": "Nama Anda terlalu panjang. Harap masukkan maksimal 120 karakter.",
-              "invalid": "Please enter a valid name using only letters and spaces."
+              "invalid": "Harap masukkan nama yang valid dengan menggunakan huruf dan spasi saja."
             },
             "email": {
-              "empty": "Please enter your email address.",
-              "tooShort": "Your email is too short. Please enter at least 3 characters.",
-              "tooLong": "Your email is too long. Please enter a maximum of 320 characters.",
-              "invalid": "Please enter a valid email address."
+              "empty": "Harap masukkan email Anda.",
+              "tooShort": "Email Anda terlalu singkat. Harap masukkan minimal 3 karakter.",
+              "tooLong": "Email Anda terlalu panjang. Harap masukkan maksimal 320 karakter.",
+              "invalid": "Harap masukkan alamat email yang valid."
             },
             "message": {
-              "empty": "Please enter a message.",
-              "tooShort": "Your message is too short. Please enter at least 15 characters.",
-              "tooLong": "Your message is too long. Please enter a maximum of 2000 characters."
+              "empty": "Harap masukkan pesan.",
+              "tooShort": "Pesan Anda terlalu singkat. Harap masukkan minimal 15 karakter.",
+              "tooLong": "Pesan Anda terlalu panjang. Harap masukkan maksimal 2000 karakter."
             },
-            "honeypot": "Bot detection system triggered. Please ensure you are a human and not a bot.",
-            "recaptcha": "Apologies, the reCAPTCHA verification is not ready yet. Please wait a moment and try again."
+            "honeypot": "Sistem pendeteksian bot teraktivasi. Harap pastikan Anda adalah manusia dan bukan bot.",
+            "recaptcha": "Maaf, verifikasi reCAPTCHA belum siap. Silakan tunggu sebentar dan coba lagi."
           },
-          "client": "There was an error processing your form submission. Please review your information and try again.",
-          "server": "Form submission failed due to a server error. We apologize for the inconvenience. Please try again later.",
-          "limit": "You have exceeded the maximum number of contact form submissions for today. Please try again tomorrow."
+          "client": "Terjadi kesalahan dalam memproses pengiriman formulir Anda. Silakan periksa kembali informasi yang Anda masukkan dan coba lagi.",
+          "server": "Pengiriman formulir gagal karena adanya kesalahan pada server. Kami mohon maaf atas ketidaknyamanannya. Silakan coba lagi nanti.",
+          "limit": "Anda telah mencapai batas maksimum pengiriman formulir kontak untuk hari ini. Silakan coba lagi besok."
         },
-        "success": "Thank you! Your form has been successfully submitted."
+        "success": "Terima kasih! Formulir Anda telah berhasil dikirim."
       }
     }
   }
