@@ -232,6 +232,10 @@
         },
         "success": "Thank you! Your form has been successfully submitted."
       }
+    },
+    "footer": {
+      "author": "RESEN",
+      "slogan": "Crafting Code with Passion and Purpose"
     }
   }
 }

@@ -8,8 +8,9 @@ import {faArrowCircleUp, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import {DateTime} from 'luxon';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {LazyLoad} from '@components/main/shared';
-import Link from 'next/link';
+import {Link} from '@navigation';
 import Scroll from '@components/main/shared/footer/scroll';
+import {useTranslations} from 'next-intl';
 
 type Social = {
   name: string;
@@ -40,7 +41,7 @@ const Footer = (): JSX.Element => {
       url: 'mailto:resen.zhu@gmail.com'
     }
   ];
-
+  const translate = useTranslations('main');
   return (
     <LazyLoad offset={0}>
       <footer className='animate-fade bg-gradient-to-b from-cyan-700 to-cyan-900 animate-duration-700'>
@@ -48,10 +49,10 @@ const Footer = (): JSX.Element => {
           <Scroll icon={faArrowCircleUp} />
           <div className='flex flex-col items-center space-y-5 pt-8'>
             <div className='flex flex-col items-center'>
-              <div className='text-xl font-bold'>RESEN</div>
-              <div className='italic'>
-                Crafting Code with Passion and Purpose
+              <div className='text-xl font-bold'>
+                {translate('footer.author')}
               </div>
+              <div className='italic'>{translate('footer.slogan')}</div>
             </div>
             <div className='flex w-2/3 justify-between'>
               {socials.map(
@@ -68,7 +69,8 @@ const Footer = (): JSX.Element => {
               )}
             </div>
             <div className='font-semibold'>
-              &#169; {DateTime.utc().toLocal().year} RESEN
+              &#169; {DateTime.utc().toLocal().year}{' '}
+              {translate('footer.author')}
             </div>
           </div>
         </div>

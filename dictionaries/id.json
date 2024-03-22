@@ -232,6 +232,10 @@
         },
         "success": "Terima kasih! Formulir Anda telah berhasil dikirim."
       }
+    },
+    "footer": {
+      "author": "RESEN",
+      "slogan": "Menyusun Kode dengan Semangat dan Makna"
     }
   }
 }
