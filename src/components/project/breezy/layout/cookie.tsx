@@ -2,7 +2,7 @@
 
 import {type ReactNode, useEffect, useState} from 'react';
 import cookie from 'js-cookie';
-import {usePathname} from 'next/navigation';
+import {usePathname} from '@navigation';
 
 type CookieProps = {
   children: ReactNode;
@@ -22,7 +22,7 @@ const Cookie = ({children}: CookieProps): JSX.Element => {
     if (rendered) {
       const cookieName = process.env.NEXT_PUBLIC_APP_COOKIE_BREEZY;
       if (
-        ['/project/breezy/signup', '/project/breezy/login'].some(
+        ['/project/breezy/login', '/project/breezy/signup'].some(
           (auth): boolean => pathname === auth
         )
       ) {
