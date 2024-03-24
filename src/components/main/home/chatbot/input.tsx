@@ -182,7 +182,7 @@ const Input = ({placeholder, error}: InputProps): JSX.Element => {
         onBlur={handleTrimInput}
       />
       <Button
-        className='h-9 w-9 rounded-full py-0 hover:bg-cyan-700'
+        className='h-9 w-9 rounded-full pt-[.3125rem] hover:bg-cyan-700'
         type='submit'
         disabled={
           !isOnline ||
