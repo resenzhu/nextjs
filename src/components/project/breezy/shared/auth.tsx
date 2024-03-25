@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
+import {Link} from '@navigation';
 import type {ReactNode} from 'react';
 import {faCircleArrowLeft} from '@fortawesome/free-solid-svg-icons';
 

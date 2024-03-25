@@ -250,6 +250,9 @@
           "title": "Login",
           "subtitle": "Instantly access your account and start chatting in seconds.",
           "form": {
+            "placeholder": {
+              "userName": "Username"
+            },
             "signup": {
               "description": "Don't have an account?",
               "label": "Sign up here!"

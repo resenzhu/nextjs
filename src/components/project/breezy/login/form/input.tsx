@@ -201,7 +201,7 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
                 let formErrorField: string = '';
                 let formErrorMessage: string = '';
                 if (socketError) {
-                  formErrorMessage = message.error.server;
+                  formErrorMessage = error.server;
                 }
                 if (response) {
                   if (response.success) {
@@ -222,64 +222,62 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
                       case 4220101:
                       case 4220102:
                         formErrorField = 'userName';
-                        formErrorMessage = message.error.input.userName.empty;
+                        formErrorMessage = error.input.userName.empty;
                         break;
                       case 4220103:
                         formErrorField = 'userName';
-                        formErrorMessage =
-                          message.error.input.userName.tooShort;
+                        formErrorMessage = error.input.userName.tooShort;
                         break;
                       case 4220104:
                         formErrorField = 'userName';
-                        formErrorMessage = message.error.input.userName.tooLong;
+                        formErrorMessage = error.input.userName.tooLong;
                         break;
                       case 4220105:
                         formErrorField = 'userName';
-                        formErrorMessage = message.error.input.userName.invalid;
+                        formErrorMessage = error.input.userName.invalid;
                         break;
                       case 40002:
                       case 4220201:
                       case 4220202:
                         formErrorField = 'password';
-                        formErrorMessage = message.error.input.password.empty;
+                        formErrorMessage = error.input.password.empty;
                         break;
                       case 4220203:
                         formErrorField = 'password';
-                        formErrorMessage =
-                          message.error.input.password.tooShort;
+                        formErrorMessage = error.input.password.tooShort;
                         break;
                       case 4220204:
                         formErrorField = 'password';
-                        formErrorMessage = message.error.input.password.tooLong;
+                        formErrorMessage = error.input.password.tooLong;
                         break;
                       case 40003:
                       case 4220301:
                       case 4220302:
                       case 40303:
-                        formErrorMessage = message.error.input.honeypot;
+                        formErrorMessage = error.input.honeypot;
                         break;
                       case 40004:
                       case 4220401:
                       case 4220402:
-                        formErrorMessage = message.error.input.recaptcha;
+                        formErrorMessage = error.input.recaptcha;
                         break;
                       case 401:
-                        formErrorMessage = message.error.invalid;
+                        formErrorMessage = error.invalid;
                         break;
                       case 500:
                       case 503:
-                        formErrorMessage = message.error.server;
+                        formErrorMessage = error.server;
                         break;
                       default:
-                        formErrorMessage = message.error.client;
+                        formErrorMessage = error.client;
                         break;
                     }
                     setForm({
                       ...form,
                       recaptcha: '',
-                      submitting: false,
+                      isSubmitting: false,
                       error: {
-                        field: formErrorField,
+                        field: formErrorField as typeof form.error.field,
                         message: formErrorMessage
                       }
                     });
@@ -292,14 +290,10 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
         .catch((validationError: ValidationError): void => {
           setForm({
             ...form,
-            submitting: false,
+            isSubmitting: false,
             error: {
-              field:
-                validationError.inner[0]?.path ?? validationError.path ?? '',
-              message:
-                validationError.inner[0]?.message ??
-                validationError.message ??
-                message.error.client
+              field: validationError.inner[0]?.path as typeof form.error.field ?? validationError.path as typeof form.error.field,
+              message: validationError.inner[0]?.message ?? validationError.message ?? error.client
             }
           });
         });
@@ -369,7 +363,7 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
           />
         )}
       </button>
-      {!form.isSuccess && form.error.message.length !== 0 && (
+      {form.error.message.length !== 0 && (
         <div className='rounded-lg bg-red-500 p-2 text-center text-sm text-white md:text-xs'>
           {form.error.message}
         </div>
