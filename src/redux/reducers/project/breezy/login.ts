@@ -7,7 +7,6 @@ type Form = {
   honeypot: string;
   recaptcha: string;
   isSubmitting: boolean;
-  isSuccess: boolean;
   error: {
     field: 'userName' | 'password' | null;
     message: string;
@@ -32,7 +31,6 @@ const initialState: State = {
     honeypot: '',
     recaptcha: '',
     isSubmitting: false,
-    isSuccess: false,
     error: {
       field: null,
       message: ''
