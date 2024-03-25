@@ -9,7 +9,7 @@ type Form = {
   isSubmitting: boolean;
   isSuccess: boolean;
   error: {
-    field: string | null;
+    field: 'userName' | 'password' | null;
     message: string;
   };
 };

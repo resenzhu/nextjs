@@ -237,5 +237,26 @@
       "author": "RESEN",
       "slogan": "Crafting Code with Passion and Purpose"
     }
+  },
+  "project": {
+    "breezy": {
+      "login": {
+        "metadata": {
+          "title": "Breezy | Resen",
+          "description": "Login to Breezy and start chatting with friends and loved ones in a breeze. Stay connected anytime, anywhere."
+        },
+        "auth": {
+          "welcome": "Welcome to Breezy",
+          "title": "Login",
+          "subtitle": "Instantly access your account and start chatting in seconds.",
+          "form": {
+            "signup": {
+              "description": "Don't have an account?",
+              "label": "Sign up here!"
+            }
+          }
+        }
+      }
+    }
   }
 }

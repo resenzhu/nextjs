@@ -18,42 +18,38 @@ import {initialState} from '@redux/reducers/project/breezy/login';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/app/use-app';
 import useLogin from '@hooks/project/breezy/use-login';
-import {useRouter} from 'next/navigation';
-
-type Label = {
-  userName: string;
-  password: string;
-  submit: string;
-};
-
-type Message = {
-  error: {
-    offline: string;
-    throttle: string;
-    input: {
-      userName: {
-        empty: string;
-        tooShort: string;
-        tooLong: string;
-        invalid: string;
-      };
-      password: {
-        empty: string;
-        tooShort: string;
-        tooLong: string;
-      };
-      honeypot: string;
-      recaptcha: string;
-    };
-    client: string;
-    server: string;
-    invalid: string;
-  };
-};
+import {useRouter} from '@navigation';
 
 type InputProps = {
-  label: Label;
-  message: Message;
+  placeholder: {
+    userName: string;
+    password: string;
+  },
+  label: {
+    submit: string;
+  },
+  error: {
+    offline: string,
+    throttle: string,
+    input: {
+      userName: {
+        empty: string,
+        tooShort: string,
+        tooLong: string,
+        invalid: string
+      },
+      password: {
+        empty: string,
+        tooShort: string,
+        tooLong: string
+      },
+      honeypot: string,
+      recaptcha: string
+    },
+    client: string,
+    server: string,
+    invalid: string
+  };
 };
 
 type LoginReq = {
@@ -74,15 +70,15 @@ type LoginRes = {
   };
 };
 
-const Input = ({label, message}: InputProps): JSX.Element => {
-  const {online} = useApp();
+const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
+  const {isOnline} = useApp();
   const recaptcha = useRef<Recaptcha>(null);
   const {form, setForm} = useLogin();
   const [rendered, setRendered] = useState<boolean>(false);
   const [throttle, setThrottle] = useState<boolean>(true);
   const {push} = useRouter();
 
-  const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleUpdateInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const fieldName = event.target.name as keyof typeof form;
     const {value} = event.target;
     if (form[fieldName] !== value) {
@@ -97,7 +93,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
     }
   };
 
-  const handleTrimForm = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleTrimInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const fieldName = event.target.name as keyof typeof form;
     const {value} = event.target;
     if (form[fieldName] !== value.trim()) {
@@ -112,11 +108,11 @@ const Input = ({label, message}: InputProps): JSX.Element => {
     }
   };
 
-  const handleToggleRevealPassword = (reveal: boolean): void => {
-    if (form.reveal !== reveal) {
+  const handleToggleRevealPassword = (visible: boolean): void => {
+    if (form.isPasswordVisible !== visible) {
       setForm({
         ...form,
-        reveal: reveal
+        isPasswordVisible: visible
       });
     }
   };
@@ -136,17 +132,17 @@ const Input = ({label, message}: InputProps): JSX.Element => {
 
   const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    if (!form.submitting) {
+    if (!form.isSubmitting) {
       let formError: string = '';
-      if (!online) {
-        formError = message.error.offline;
+      if (!isOnline) {
+        formError = error.offline;
       }
       if (throttle) {
-        formError = message.error.throttle;
+        formError = error.throttle;
       }
       setForm({
         ...form,
-        submitting: online && !throttle,
+        isSubmitting: isOnline && !throttle,
         error: {
           field: null,
           message: formError
@@ -171,21 +167,21 @@ const Input = ({label, message}: InputProps): JSX.Element => {
   }, [rendered]);
 
   useEffect((): void => {
-    if (form.submitting) {
+    if (form.isSubmitting) {
       const requestSchema = object().shape({
         userName: string()
           .ensure()
-          .required(message.error.input.userName.empty)
-          .min(2, message.error.input.userName.tooShort)
-          .max(15, message.error.input.userName.tooLong)
-          .matches(/^[a-zA-Z0-9_-]+$/u, message.error.input.userName.invalid),
+          .required(error.input.userName.empty)
+          .min(2, error.input.userName.tooShort)
+          .max(15, error.input.userName.tooLong)
+          .matches(/^[a-zA-Z0-9_-]+$/u, error.input.userName.invalid),
         password: string()
           .ensure()
-          .required(message.error.input.password.empty)
-          .min(8, message.error.input.password.tooShort)
-          .max(64, message.error.input.password.tooLong),
-        honeypot: string().ensure().length(0, message.error.input.honeypot),
-        recaptcha: string().ensure().required(message.error.input.recaptcha)
+          .required(error.input.password.empty)
+          .min(8, error.input.password.tooShort)
+          .max(64, error.input.password.tooLong),
+        honeypot: string().ensure().length(0, error.input.honeypot),
+        recaptcha: string().ensure().required(error.input.recaptcha)
       });
       const request: LoginReq = {
         userName: sanitize(form.userName).trim().toLowerCase(),
@@ -308,7 +304,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           });
         });
     }
-  }, [form.submitting]);
+  }, [form.isSubmitting]);
 
   return (
     <form
@@ -321,12 +317,12 @@ const Input = ({label, message}: InputProps): JSX.Element => {
         }`}
         name='userName'
         type='text'
-        placeholder={label.userName}
+        placeholder={placeholder.userName}
         value={form.userName}
         maxLength={15}
-        onChange={(event): void => handleUpdateForm(event)}
-        onBlur={(event): void => handleTrimForm(event)}
-        disabled={form.submitting}
+        onChange={(event): void => handleUpdateInput(event)}
+        onBlur={(event): void => handleTrimInput(event)}
+        disabled={form.isSubmitting}
       />
       <div className='flex'>
         <input
@@ -334,18 +330,18 @@ const Input = ({label, message}: InputProps): JSX.Element => {
             form.error.field === 'password' && 'border-red-500'
           }`}
           name='password'
-          type={form.reveal ? 'text' : 'password'}
-          placeholder={label.password}
+          type={form.isPasswordVisible ? 'text' : 'password'}
+          placeholder={placeholder.password}
           value={form.password}
           maxLength={64}
-          onChange={(event): void => handleUpdateForm(event)}
-          onBlur={(event): void => handleTrimForm(event)}
-          disabled={form.submitting}
+          onChange={(event): void => handleUpdateInput(event)}
+          onBlur={(event): void => handleTrimInput(event)}
+          disabled={form.isSubmitting}
         />
         <FontAwesomeIcon
           className='rounded-r-lg bg-purple-500 p-4 text-xl text-white md:p-3 md:text-sm'
-          icon={form.reveal ? faEyeSlash : faEye}
-          onClick={(): void => handleToggleRevealPassword(!form.reveal)}
+          icon={form.isPasswordVisible ? faEyeSlash : faEye}
+          onClick={(): void => handleToggleRevealPassword(!form.isPasswordVisible)}
         />
       </div>
       <div className='place-self-center'>
@@ -356,7 +352,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
       </div>
       <button
         className={`rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 disabled:bg-gray-300 md:text-sm ${
-          form.submitting ? 'cursor-default' : 'active:bg-purple-600'
+          form.isSubmitting ? 'cursor-default' : 'active:bg-purple-600'
         }`}
         type='submit'
         disabled={
@@ -365,15 +361,15 @@ const Input = ({label, message}: InputProps): JSX.Element => {
           form.recaptcha.trim().length === 0
         }
       >
-        {!form.submitting && <span>{label.submit}</span>}
-        {form.submitting && (
+        {!form.isSubmitting && <span>{label.submit}</span>}
+        {form.isSubmitting && (
           <FontAwesomeIcon
             className='animate-spin text-xl animate-infinite'
             icon={faSpinner}
           />
         )}
       </button>
-      {form.error.message.length !== 0 && (
+      {!form.isSuccess && form.error.message.length !== 0 && (
         <div className='rounded-lg bg-red-500 p-2 text-center text-sm text-white md:text-xs'>
           {form.error.message}
         </div>
@@ -382,5 +378,5 @@ const Input = ({label, message}: InputProps): JSX.Element => {
   );
 };
 
-export type {Label, Message, InputProps, LoginReq, LoginRes};
+export type {InputProps, LoginReq, LoginRes};
 export default Input;
