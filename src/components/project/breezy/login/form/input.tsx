@@ -292,9 +292,8 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
             ...form,
             isSubmitting: false,
             error: {
-              field:
-                (validationError.inner[0]?.path as typeof form.error.field) ??
-                (validationError.path as typeof form.error.field),
+              field: (validationError.inner[0]?.path ??
+                validationError.path) as typeof form.error.field,
               message:
                 validationError.inner[0]?.message ??
                 validationError.message ??
