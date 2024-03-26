@@ -24,31 +24,31 @@ type InputProps = {
   placeholder: {
     userName: string;
     password: string;
-  },
+  };
   label: {
     submit: string;
-  },
+  };
   error: {
-    offline: string,
-    throttle: string,
+    offline: string;
+    throttle: string;
     input: {
       userName: {
-        empty: string,
-        tooShort: string,
-        tooLong: string,
-        invalid: string
-      },
+        empty: string;
+        tooShort: string;
+        tooLong: string;
+        invalid: string;
+      };
       password: {
-        empty: string,
-        tooShort: string,
-        tooLong: string
-      },
-      honeypot: string,
-      recaptcha: string
-    },
-    client: string,
-    server: string,
-    invalid: string
+        empty: string;
+        tooShort: string;
+        tooLong: string;
+      };
+      honeypot: string;
+      recaptcha: string;
+    };
+    client: string;
+    server: string;
+    invalid: string;
   };
 };
 
@@ -292,8 +292,13 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
             ...form,
             isSubmitting: false,
             error: {
-              field: validationError.inner[0]?.path as typeof form.error.field ?? validationError.path as typeof form.error.field,
-              message: validationError.inner[0]?.message ?? validationError.message ?? error.client
+              field:
+                (validationError.inner[0]?.path as typeof form.error.field) ??
+                (validationError.path as typeof form.error.field),
+              message:
+                validationError.inner[0]?.message ??
+                validationError.message ??
+                error.client
             }
           });
         });
@@ -335,7 +340,9 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
         <FontAwesomeIcon
           className='rounded-r-lg bg-purple-500 p-4 text-xl text-white md:p-3 md:text-sm'
           icon={form.isPasswordVisible ? faEyeSlash : faEye}
-          onClick={(): void => handleToggleRevealPassword(!form.isPasswordVisible)}
+          onClick={(): void =>
+            handleToggleRevealPassword(!form.isPasswordVisible)
+          }
         />
       </div>
       <div className='place-self-center'>

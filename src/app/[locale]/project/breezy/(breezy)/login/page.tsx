@@ -28,7 +28,12 @@ const Page = (): JSX.Element => {
       title={translate('login.auth.title')}
       subtitle={translate('login.auth.subtitle')}
     >
-      <Form signup={{description: translate('login.auth.form.signup.description'), label: translate('login.auth.form.signup.label'), url: '/project/breezy/signup'}}
+      <Form
+        signup={{
+          description: translate('login.auth.form.signup.description'),
+          label: translate('login.auth.form.signup.label'),
+          url: '/project/breezy/signup'
+        }}
       />
     </Auth>
   );

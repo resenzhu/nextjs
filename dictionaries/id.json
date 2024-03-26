@@ -203,7 +203,7 @@
           "submit": "KIRIM"
         },
         "error": {
-          "offline": "Anda sedang offline saat ini. Silakan periksa koneksi internet Anda dan coba lagi nanti.",
+          "offline": "Anda sedang offline saat ini. Harap periksa koneksi internet Anda dan coba lagi nanti.",
           "throttle": "Anda mengirim terlalu cepat. Harap beri waktu sejenak dan coba lagi.",
           "input": {
             "name": {
@@ -236,6 +236,56 @@
     "footer": {
       "author": "RESEN",
       "slogan": "Menyusun Kode dengan Semangat dan Makna"
+    }
+  },
+  "project": {
+    "breezy": {
+      "login": {
+        "metadata": {
+          "title": "Breezy | Resen",
+          "description": "Masuk ke Breezy dan mulai berbincang dengan teman dan keluarga dengan mudah. Tetap terhubung kapan saja, di mana saja."
+        },
+        "auth": {
+          "welcome": "Selamat Datang di Breezy",
+          "title": "Masuk",
+          "subtitle": "Akses akun Anda dan mulai chatting.",
+          "form": {
+            "placeholder": {
+              "userName": "Nama Pengguna",
+              "password": "Kata Sandi"
+            },
+            "label": {
+              "submit": "Masuk"
+            },
+            "error": {
+              "offline": "Anda sedang offline saat ini. Harap periksa koneksi internet Anda dan coba lagi nanti.",
+              "throttle": "Anda mengirim terlalu cepat. Harap beri waktu sejenak dan coba lagi.",
+              "input": {
+                "userName": {
+                  "empty": "Harap masukkan nama pengguna Anda.",
+                  "tooShort": "Nama pengguna Anda terlalu singkat. Harap masukkan setidaknya 2 karakter.",
+                  "tooLong": "Nama pengguna Anda terlalu panjang. Harap masukkan maksimal 15 karakter.",
+                  "invalid": "Harap masukkan nama pengguna yang hanya terdiri dari huruf, angka, tanda hubung, dan garis bawah."
+                },
+                "password": {
+                  "empty": "Harap masukkan kata sandi Anda.",
+                  "tooShort": "Kata sandi Anda terlalu singkat. Harap masukkan minimal 8 karakter.",
+                  "tooLong": "Kata sandi Anda terlalu panjang. Harap masukkan maksimal 64 karakter."
+                },
+                "honeypot": "Sistem pendeteksian bot teraktivasi. Harap pastikan Anda adalah manusia dan bukan bot.",
+                "recaptcha": "Harap lengkapi verifikasi reCAPTCHA."
+              },
+              "client": "Ada kesalahan pada proses login Anda. Silakan periksa informasi Anda dan coba lagi.",
+              "server": "Maaf, terjadi kesalahan yang tidak terduga saat proses login. Harap coba masuk lagi nanti.",
+              "invalid": "Nama pengguna atau kata sandi tidak valid."
+            },
+            "signup": {
+              "description": "Belum memiliki akun?",
+              "label": "Daftar di sini!"
+            }
+          }
+        }
+      }
     }
   }
 }
