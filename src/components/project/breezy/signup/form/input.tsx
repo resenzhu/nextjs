@@ -17,18 +17,19 @@ import cookie from 'js-cookie';
 import {initialState} from '@redux/reducers/project/breezy/signup';
 import {sanitize} from 'isomorphic-dompurify';
 import useApp from '@hooks/app/use-app';
-import {useRouter} from 'next/navigation';
+import {useRouter} from '@navigation';
 import useSignUp from '@hooks/project/breezy/use-signup';
 import validator from 'validator';
 
-type Label = {
-  userName: string;
-  displayName: string;
-  password: string;
-  submit: string;
-};
-
-type Message = {
+type InputProps = {
+  placeholder: {
+    userName: string;
+    displayName: string;
+    password: string;
+  };
+  label: {
+    submit: string;
+  };
   error: {
     offline: string;
     throttle: string;
@@ -59,11 +60,6 @@ type Message = {
   };
 };
 
-type InputProps = {
-  label: Label;
-  message: Message;
-};
-
 type SignUpReq = {
   userName: string;
   displayName: string;
@@ -83,15 +79,15 @@ type SignUpRes = {
   };
 };
 
-const Input = ({label, message}: InputProps): JSX.Element => {
-  const {online} = useApp();
+const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
+  const {isOnline} = useApp();
   const recaptcha = useRef<Recaptcha>(null);
   const {form, setForm} = useSignUp();
   const [rendered, setRendered] = useState<boolean>(false);
   const [throttle, setThrottle] = useState<boolean>(true);
   const {push} = useRouter();
 
-  const handleUpdateForm = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleUpdateInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const fieldName = event.target.name as keyof typeof form;
     const {value} = event.target;
     if (form[fieldName] !== value) {
@@ -106,7 +102,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
     }
   };
 
-  const handleTrimForm = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleTrimInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const fieldName = event.target.name as keyof typeof form;
     const {value} = event.target;
     if (form[fieldName] !== value.trim()) {
@@ -121,11 +117,11 @@ const Input = ({label, message}: InputProps): JSX.Element => {
     }
   };
 
-  const handleToggleRevealPassword = (reveal: boolean): void => {
-    if (form.reveal !== reveal) {
+  const handleToggleRevealPassword = (visible: boolean): void => {
+    if (form.isPasswordVisible !== visible) {
       setForm({
         ...form,
-        reveal: reveal
+        isPasswordVisible: visible
       });
     }
   };
@@ -145,17 +141,17 @@ const Input = ({label, message}: InputProps): JSX.Element => {
 
   const handleSubmitForm = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    if (!form.submitting) {
+    if (!form.isSubmitting) {
       let formError: string = '';
-      if (!online) {
-        formError = message.error.offline;
+      if (!isOnline) {
+        formError = error.offline;
       }
       if (throttle) {
-        formError = message.error.throttle;
+        formError = error.throttle;
       }
       setForm({
         ...form,
-        submitting: online && !throttle,
+        isSubmitting: isOnline && !throttle,
         error: {
           field: null,
           message: formError
@@ -180,7 +176,7 @@ const Input = ({label, message}: InputProps): JSX.Element => {
   }, [rendered]);
 
   useEffect((): void => {
-    if (form.submitting) {
+    if (form.isSubmitting) {
       const requestSchema = object().shape({
         userName: string()
           .ensure()

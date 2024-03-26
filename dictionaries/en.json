@@ -285,6 +285,23 @@
             }
           }
         }
+      },
+      "signup": {
+        "metadata": {
+          "title": "Breezy | Resen",
+          "description": "Sign up for Breezy and discover a new level of simplicity in messaging and staying connected."
+        },
+        "auth": {
+          "welcome": "Welcome to Breezy",
+          "title": "Sign Up",
+          "subtitle": "Join Breezy and start connecting with others in no time.",
+          "form": {
+            "login": {
+              "description": "Already have an account?",
+              "label": "Login here!"
+            }
+          }
+        }
       }
     }
   }
