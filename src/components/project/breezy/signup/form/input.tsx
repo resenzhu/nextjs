@@ -180,22 +180,22 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
       const requestSchema = object().shape({
         userName: string()
           .ensure()
-          .required(message.error.input.userName.empty)
-          .min(2, message.error.input.userName.tooShort)
-          .max(15, message.error.input.userName.tooLong)
-          .matches(/^[a-zA-Z0-9_-]+$/u, message.error.input.userName.invalid),
+          .required(error.input.userName.empty)
+          .min(2, error.input.userName.tooShort)
+          .max(15, error.input.userName.tooLong)
+          .matches(/^[a-zA-Z0-9_-]+$/u, error.input.userName.invalid),
         displayName: string()
           .ensure()
-          .required(message.error.input.displayName.empty)
-          .min(2, message.error.input.displayName.tooShort)
-          .max(25, message.error.input.displayName.tooLong),
+          .required(error.input.displayName.empty)
+          .min(2, error.input.displayName.tooShort)
+          .max(25, error.input.displayName.tooLong),
         password: string()
           .ensure()
-          .required(message.error.input.password.empty)
-          .min(8, message.error.input.password.tooShort)
-          .max(64, message.error.input.password.tooLong),
-        honeypot: string().ensure().length(0, message.error.input.honeypot),
-        recaptcha: string().ensure().required(message.error.input.recaptcha)
+          .required(error.input.password.empty)
+          .min(8, error.input.password.tooShort)
+          .max(64, error.input.password.tooLong),
+        honeypot: string().ensure().length(0, error.input.honeypot),
+        recaptcha: string().ensure().required(error.input.recaptcha)
       });
       const request: SignUpReq = {
         userName: sanitize(form.userName).trim().toLowerCase(),
@@ -209,7 +209,7 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
         .then((): void => {
           if (!validator.isAlpha(request.displayName, 'en-US', {ignore: ' '})) {
             throw new ValidationError(
-              message.error.input.displayName.invalid,
+              error.input.displayName.invalid,
               request.displayName,
               'displayName'
             );
@@ -223,7 +223,7 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
                 let formErrorField: string = '';
                 let formErrorMessage: string = '';
                 if (socketError) {
-                  formErrorMessage = message.error.server;
+                  formErrorMessage = error.server;
                 }
                 if (response) {
                   if (response.success) {
@@ -244,87 +244,81 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
                       case 4220101:
                       case 4220102:
                         formErrorField = 'userName';
-                        formErrorMessage = message.error.input.userName.empty;
+                        formErrorMessage = error.input.userName.empty;
                         break;
                       case 4220103:
                         formErrorField = 'userName';
-                        formErrorMessage =
-                          message.error.input.userName.tooShort;
+                        formErrorMessage = error.input.userName.tooShort;
                         break;
                       case 4220104:
                         formErrorField = 'userName';
-                        formErrorMessage = message.error.input.userName.tooLong;
+                        formErrorMessage = error.input.userName.tooLong;
                         break;
                       case 4220105:
                         formErrorField = 'userName';
-                        formErrorMessage = message.error.input.userName.invalid;
+                        formErrorMessage = error.input.userName.invalid;
                         break;
                       case 40901:
                         formErrorField = 'userName';
-                        formErrorMessage = message.error.input.userName.taken;
+                        formErrorMessage = error.input.userName.taken;
                         break;
                       case 40002:
                       case 4220201:
                       case 4220202:
                         formErrorField = 'displayName';
-                        formErrorMessage =
-                          message.error.input.displayName.empty;
+                        formErrorMessage = error.input.displayName.empty;
                         break;
                       case 4220203:
                         formErrorField = 'displayName';
-                        formErrorMessage =
-                          message.error.input.displayName.tooShort;
+                        formErrorMessage = error.input.displayName.tooShort;
                         break;
                       case 4220204:
                         formErrorField = 'displayName';
-                        formErrorMessage =
-                          message.error.input.displayName.tooLong;
+                        formErrorMessage = error.input.displayName.tooLong;
                         break;
                       case 4220205:
                         formErrorField = 'displayName';
-                        formErrorMessage =
-                          message.error.input.displayName.invalid;
+                        formErrorMessage = error.input.displayName.invalid;
                         break;
                       case 40003:
                       case 4220301:
                       case 4220302:
                         formErrorField = 'password';
-                        formErrorMessage = message.error.input.password.empty;
+                        formErrorMessage = error.input.password.empty;
                         break;
                       case 4220303:
                         formErrorField = 'password';
-                        formErrorMessage =
-                          message.error.input.password.tooShort;
+                        formErrorMessage = error.input.password.tooShort;
                         break;
                       case 4220304:
                         formErrorField = 'password';
-                        formErrorMessage = message.error.input.password.tooLong;
+                        formErrorMessage = error.input.password.tooLong;
                         break;
                       case 40004:
                       case 4220401:
                       case 4220402:
                       case 40304:
-                        formErrorMessage = message.error.input.honeypot;
+                        formErrorMessage = error.input.honeypot;
                         break;
                       case 40005:
                       case 4220501:
                       case 4220502:
-                        formErrorMessage = message.error.input.recaptcha;
+                        formErrorMessage = error.input.recaptcha;
                         break;
                       case 500:
                       case 503:
-                        formErrorMessage = message.error.server;
+                        formErrorMessage = error.server;
                         break;
                       default:
-                        formErrorMessage = message.error.client;
+                        formErrorMessage = error.client;
                         break;
                     }
                     setForm({
                       ...form,
                       recaptcha: '',
-                      submitting: false,
+                      isSubmitting: false,
                       error: {
-                        field: formErrorField,
+                        field: formErrorField as typeof form.error.field,
                         message: formErrorMessage
                       }
                     });
@@ -337,19 +331,19 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
         .catch((validationError: ValidationError): void => {
           setForm({
             ...form,
-            submitting: false,
+            isSubmitting: false,
             error: {
-              field:
-                validationError.inner[0]?.path ?? validationError.path ?? '',
+              field: (validationError.inner[0]?.path ??
+                validationError.path) as typeof form.error.field,
               message:
                 validationError.inner[0]?.message ??
                 validationError.message ??
-                message.error.client
+                error.client
             }
           });
         });
     }
-  }, [form.submitting]);
+  }, [form.isSubmitting]);
 
   return (
     <form
@@ -362,12 +356,12 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
         }`}
         name='userName'
         type='text'
-        placeholder={label.userName}
+        placeholder={placeholder.userName}
         value={form.userName}
         maxLength={15}
-        onChange={(event): void => handleUpdateForm(event)}
-        onBlur={(event): void => handleTrimForm(event)}
-        disabled={form.submitting}
+        onChange={(event): void => handleUpdateInput(event)}
+        onBlur={(event): void => handleTrimInput(event)}
+        disabled={form.isSubmitting}
       />
       <input
         className={`rounded-lg border-2 px-3 py-2 outline-0 disabled:bg-gray-100 md:text-xs ${
@@ -375,12 +369,12 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
         }`}
         name='displayName'
         type='text'
-        placeholder={label.displayName}
+        placeholder={placeholder.displayName}
         value={form.displayName}
         maxLength={25}
-        onChange={(event): void => handleUpdateForm(event)}
-        onBlur={(event): void => handleTrimForm(event)}
-        disabled={form.submitting}
+        onChange={(event): void => handleUpdateInput(event)}
+        onBlur={(event): void => handleTrimInput(event)}
+        disabled={form.isSubmitting}
       />
       <div className='flex'>
         <input
@@ -388,18 +382,20 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
             form.error.field === 'password' && 'border-red-500'
           }`}
           name='password'
-          type={form.reveal ? 'text' : 'password'}
-          placeholder={label.password}
+          type={form.isPasswordVisible ? 'text' : 'password'}
+          placeholder={placeholder.password}
           value={form.password}
           maxLength={64}
-          onChange={(event): void => handleUpdateForm(event)}
-          onBlur={(event): void => handleTrimForm(event)}
-          disabled={form.submitting}
+          onChange={(event): void => handleUpdateInput(event)}
+          onBlur={(event): void => handleTrimInput(event)}
+          disabled={form.isSubmitting}
         />
         <FontAwesomeIcon
           className='cursor-pointer rounded-r-lg bg-purple-500 p-4 text-xl text-white md:p-3 md:text-sm'
-          icon={form.reveal ? faEyeSlash : faEye}
-          onClick={(): void => handleToggleRevealPassword(!form.reveal)}
+          icon={form.isPasswordVisible ? faEyeSlash : faEye}
+          onClick={(): void =>
+            handleToggleRevealPassword(!form.isPasswordVisible)
+          }
         />
       </div>
       <div className='place-self-center'>
@@ -410,7 +406,7 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
       </div>
       <button
         className={`rounded-lg bg-purple-500 py-2 text-lg font-semibold tracking-wide text-white duration-150 disabled:bg-gray-300 md:text-sm ${
-          form.submitting ? 'cursor-default' : 'active:bg-purple-600'
+          form.isSubmitting ? 'cursor-default' : 'active:bg-purple-600'
         }`}
         type='submit'
         disabled={
@@ -420,8 +416,8 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
           form.recaptcha.trim().length === 0
         }
       >
-        {!form.submitting && <span>{label.submit}</span>}
-        {form.submitting && (
+        {!form.isSubmitting && <span>{label.submit}</span>}
+        {form.isSubmitting && (
           <FontAwesomeIcon
             className='animate-spin text-xl animate-infinite'
             icon={faSpinner}
@@ -437,5 +433,5 @@ const Input = ({placeholder, label, error}: InputProps): JSX.Element => {
   );
 };
 
-export type {Label, Message, InputProps, SignUpReq, SignUpRes};
+export type {InputProps, SignUpReq, SignUpRes};
 export default Input;
