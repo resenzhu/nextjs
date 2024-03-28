@@ -35,7 +35,7 @@
           "mobileLegendsPlayer": "PEMAIN MOBILE LEGENDS",
           "horrorEnthusiast": "PENGGEMAR HORROR"
         },
-        "bio": "Programmer analitis dengan pola pikir yang kuat dalam memecahkan masalah, terampil dalam mengoptimalkan kode untuk performa dan efisiensi.",
+        "bio": "Programmer analitis dengan pola pikir pemecahan masalah yang kuat, terampil dalam mengoptimalkan kode untuk kinerja dan efisiensi yang maksimal.",
         "chatbot": "HALO",
         "explore": "JELAJAH"
       },
@@ -53,12 +53,12 @@
           "input": "Ketikkan pesan"
         },
         "error": {
-          "offline": "Ups! Tampaknya Anda sedang offline saat ini. Pastikan Anda terhubung ke internet dan coba lagi nanti.",
+          "offline": "Ups! Tampaknya Anda sedang offline saat ini. Pastikan Anda terhubung ke internet dan coba lagi.",
           "empty": "Ups! Sepertinya Anda lupa menulis pesan. Silakan masukkan pesan Anda sebelum mengirimkannya kepada saya.",
           "tooShort": "Ups! Pesan Anda harus memiliki minimal 1 karakter. Silakan masukkan pesan dengan minimal 1 karakter sebelum mengirimkannya.",
-          "tooLong": "Ups! Pesan Anda melebihi batas maksimum 160 karakter. Mohon mempersingkat pesan Anda dan coba lagi.",
+          "tooLong": "Ups! Pesan Anda melebihi batas maksimum 160 karakter. Silakan persingkat pesan Anda dan coba lagi.",
           "client": "Ups! Sepertinya ada masalah dengan pesan Anda. Pastikan Anda telah memasukkan pesan yang valid dan coba lagi.",
-          "server": "Ups! Sepertinya ada masalah pada sisi saya, dan saya tidak dapat memberikan respons saat ini. Saya mohon maaf atas segala ketidaknyamanan yang disebabkan. Silakan kembali nanti, dan saya akan kembali berfungsi. Terima kasih atas kesabaran Anda."
+          "server": "Ups! Sepertinya ada masalah di sisi saya, dan saya belum bisa memberikan respons saat ini. Saya mohon maaf atas segala ketidaknyamanan yang terjadi. Silakan kembali nanti, dan saya akan kembali beroperasi. Terima kasih atas kesabarannya."
         }
       }
     },
@@ -69,8 +69,8 @@
       },
       "header": {
         "title": "tentang",
-        "subtitle": "Mengupas Pikiran dan Visi di Balik Konsepsi Situs Web",
-        "description": "Ikutlah ke belakang layar dan terjunlah ke dalam dunia pikiran seorang penggemar digital, saat saya berbagi kisah petualangan saya dalam desain dan pengembangan."
+        "subtitle": "Mengupas Pikiran dan Visi di Balik Situs Web",
+        "description": "Ikutlah ke belakang layar dan explorasi pikiran seorang penggemar digital, di saat saya berbagi kisah petualangan saya dalam desain dan pengembangan."
       },
       "author": {
         "title": "KENALI RESEN",
@@ -78,7 +78,7 @@
           "paragraph1": "Selamat datang di situs web portofolio pribadi saya! Nama saya Resen, dan saya adalah seorang pengembang Full Stack yang berbasis di Jakarta dengan pengalaman lebih dari {years} tahun di bidang ini.",
           "paragraph2": "Saya mengkhususkan diri dalam pengembangan Front End dan Back End, membawa beragam keterampilan yang komprehensif. Dengan fokus yang kuat pada pengembangan aplikasi web yang menarik secara visual dan ramah pengguna, saya memanfaatkan teknologi seperti ReactJS, NextJS, NodeJS, MySQL, dan lainnya untuk memberikan hasil yang luar biasa.",
           "paragraph3": "Dari merancang antarmuka pengguna yang menarik hingga mengimplementasikan fungsionalitas yang solid, saya berupaya untuk mengembangkan situs web yang mulus dan efisien. Semangat saya dalam pengembangan mendorong saya untuk terus mengasah keterampilan saya, memastikan bahwa saya memberikan solusi berkualitas tinggi yang memenuhi kebutuhan unik dari setiap proyek.",
-          "paragraph4": "Silakan jelajahi portofolio saya dan temukan beberapa proyek yang telah saya kerjakan. Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi saya. Saya selalu terbuka untuk berhubungan dengan siapa pun yang memiliki minat dalam pengembangan web dan inovasi."
+          "paragraph4": "Silakan jelajahi portofolio saya dan temukan beberapa proyek yang telah saya kerjakan. Jika Anda memiliki pertanyaan, jangan ragu untuk menghubungi saya. Saya senang berhubungan dengan siapa pun yang memiliki minat dalam pengembangan web dan inovasi."
         }
       },
       "experience": {
@@ -88,7 +88,7 @@
             "startDate": "Mar 2017",
             "company": "Bina Nusantara IT Division",
             "title": "Pengembang Web | Magang",
-            "description": "Bina Nusantara IT Division merupakan salah satu divisi Bina Nusantara yang memberikan dukungan teknologi informasi untuk unit-unit lain di bawah naungan Yayasan Bina Nusantara. Di sinilah saya memulai karier sebagai developer web Full Stack, di mana saya menangani proyek bernama Binusmaya, yang merupakan aplikasi sistem manajemen pembelajaran berbasis kerangka kerja CodeIgniter."
+            "description": "Bina Nusantara IT Division merupakan salah satu divisi Bina Nusantara yang memberikan dukungan teknologi informasi untuk unit-unit lain di bawah naungan Yayasan Bina Nusantara. Di sinilah saya memulai karier sebagai pengembang web Full Stack, di mana saya menangani proyek bernama Binusmaya, yang merupakan aplikasi sistem manajemen pembelajaran berbasis kerangka kerja CodeIgniter."
           },
           "position2": {
             "startDate": "Feb 2019",
@@ -106,7 +106,7 @@
             "startDate": "Jul 2022",
             "company": "PT Bank CIMB Niaga Tbk",
             "title": "Pengembang Middleware | Penuh Waktu",
-            "description": "PT Bank CIMB Niaga Tbk adalah bank terbesar keenam di Indonesia berdasarkan aset, didirikan pada tahun 1955. Dalam peran saya sebagai pengembang middleware di divisi Enterprise Service Bus (ESB), yang relatif baru bagi saya, saya bertanggung jawab untuk mengembangkan API yang digunakan untuk berbagai tujuan integrasi aplikasi menggunakan tools seperti IBM MQ, IBM App Connect, dan lainnya."
+            "description": "PT Bank CIMB Niaga Tbk adalah bank terbesar keenam di Indonesia berdasarkan aset, didirikan pada tahun 1955. Dalam peran saya sebagai pengembang middleware di divisi Enterprise Service Bus (ESB), yang relatif baru bagi saya, saya bertanggung jawab mengembangkan API yang digunakan untuk berbagai tujuan integrasi aplikasi menggunakan tools seperti IBM MQ, IBM App Connect, dan lainnya."
           }
         }
       },
@@ -117,9 +117,9 @@
       "github": {
         "title": "DI BALIK LAYAR",
         "content": {
-          "paragraph1": "Di sini, saya akan memberikan beberapa wawasan tentang teknologi dan kerangka kerja yang saya terapkan untuk mengoperasikan situs web portofolio pribadi saya.",
-          "paragraph2": "Website ini dibangun menggunakan Next.js, sebuah kerangka kerja React yang kuat untuk rendering sisi server. Next.js memungkinkan saya untuk membuat halaman-halaman statis dan dinamis, sehingga menghasilkan pengalaman pengguna yang cepat dan efisien.",
-          "paragraph3": "Untuk mendesain website ini, saya menggunakan Tailwind CSS, sebuah kerangka kerja CSS utilitas yang serbaguna. Tailwind CSS menawarkan kumpulan komponen yang sudah dibangun sebelumnya dan kelas utilitas yang lengkap, sehingga memudahkan untuk membuat desain yang menarik secara visual dan responsif.",
+          "paragraph1": "Di sini, saya akan memberikan informasi terkait teknologi dan kerangka kerja yang saya terapkan untuk mengoperasikan situs web portofolio pribadi saya.",
+          "paragraph2": "Website ini dikembangkan menggunakan Next.js, sebuah kerangka kerja React yang mumpuni untuk rendering sisi server. Next.js memungkinkan saya untuk membuat halaman-halaman statis dan dinamis, sehingga menghasilkan pengalaman pengguna yang cepat dan efisien.",
+          "paragraph3": "Dalam mendesain situs web ini, saya menggunakan Tailwind CSS, sebuah kerangka kerja CSS utilitas yang serbaguna. Tailwind CSS menawarkan kumpulan komponen yang sudah dibangun sebelumnya dan kelas utilitas yang lengkap, sehingga memudahkan untuk membuat desain yang menarik secara visual dan responsif.",
           "paragraph4": "Untuk mengatur status aplikasi, saya menggunakan Redux. Redux adalah sebuah perpustakaan pengaturan status yang dapat diandalkan yang memusatkan aliran data di aplikasi saya. Dengan Redux, saya bisa mengatasi interaksi data yang rumit dan memastikan pengalaman pengguna yang lancar.",
           "paragraph5": "Di sisi belakang, saya menggunakan Node.js, sebuah lingkungan runtime JavaScript. Node.js memungkinkan saya untuk mengatur logika di sisi server dan permintaan API, memberikan fondasi yang dapat diperluas dan efisien untuk aplikasi web saya.",
           "paragraph6": "Untuk menyimpan dan mengelola data aplikasi, saya menggunakan MySQL, sebuah sistem manajemen basis data relasional yang handal. MySQL menawarkan kehandalan, skalabilitas, dan kinerja yang baik, menjadikannya pilihan yang sangat baik untuk mengelola data terstruktur dalam aplikasi web saya.",
@@ -302,21 +302,21 @@
               "password": "Kata Sandi"
             },
             "label": {
-              "submit": "Sign Up"
+              "submit": "Daftar"
             },
             "error": {
-              "offline": "You are currently offline. Please check your internet connection and try again later.",
-              "throttle": "You are submitting too quickly. Please take a moment and try again.",
+              "offline": "Anda sedang offline saat ini. Harap periksa koneksi internet Anda dan coba lagi nanti.",
+              "throttle": "Anda mengirim terlalu cepat. Harap beri waktu sejenak dan coba lagi.",
               "input": {
                 "userName": {
-                  "empty": "Please enter your username.",
-                  "tooShort": "Your username is too short. Please enter at least 2 characters.",
-                  "tooLong": "Your username is too long. Please enter a maximum of 15 characters.",
-                  "invalid": "Please enter a username containing only letters, numbers, hyphen, and underscore.",
-                  "taken": "The username you entered is already taken. Please choose a different username."
+                  "empty": "Harap masukkan nama pengguna Anda.",
+                  "tooShort": "Nama pengguna Anda terlalu singkat. Harap masukkan setidaknya 2 karakter.",
+                  "tooLong": "Nama pengguna Anda terlalu panjang. Harap masukkan maksimal 15 karakter.",
+                  "invalid": "Harap masukkan nama pengguna yang hanya terdiri dari huruf, angka, tanda hubung, dan garis bawah.",
+                  "taken": "Nama pengguna yang Anda masukkan sudah dipakai. Silakan pilih nama pengguna lain."
                 },
                 "displayName": {
-                  "empty": "Please enter your display name.",
+                  "empty": "Harap masukkan nama tampilan Anda.",
                   "tooShort": "Your display name is too short. Please enter at least 2 characters.",
                   "tooLong": "Your display name is too long. Please enter a maximum of 25 characters.",
                   "invalid": "Please enter a valid display name using only letters and spaces."
